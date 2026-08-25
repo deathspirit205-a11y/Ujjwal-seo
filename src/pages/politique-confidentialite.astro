@@ -1,0 +1,55 @@
+---
+/**
+ * politique-confidentialite.astro — Privacy policy
+ * URL: /politique-confidentialite/
+ * Per spec §35: real information only.
+ * Full content when analytics/forms are configured.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { buildTitle } from '../utils/seo';
+---
+
+<BaseLayout
+  title={buildTitle('Politique de confidentialité — Ujjwal SEO')}
+  description="Politique de confidentialité du site ujjwalseo.fr — traitement des données personnelles, formulaire de contact, cookies."
+  canonicalPath="/politique-confidentialite/"
+  noIndex={true}
+>
+  <Header />
+  <main id="main-content">
+    <div class="container">
+      <h1>Politique de confidentialité</h1>
+
+      <section aria-labelledby="collecte-heading">
+        <h2 id="collecte-heading">Données collectées</h2>
+        <p>
+          Ce site collecte uniquement les données nécessaires au traitement de vos demandes
+          (formulaire de contact : nom, adresse e-mail, message).
+        </p>
+        <p>
+          Aucune donnée n'est revendue à des tiers.
+        </p>
+      </section>
+
+      <section aria-labelledby="cookies-heading">
+        <h2 id="cookies-heading">Cookies et mesure d'audience</h2>
+        <p>
+          <!-- PLACEHOLDER: à compléter selon la solution d'analyse choisie (GA4, Plausible, etc.) -->
+          <em>[À compléter selon la solution d'analyse retenue — spec §36]</em>
+        </p>
+      </section>
+
+      <section aria-labelledby="droits-heading">
+        <h2 id="droits-heading">Vos droits</h2>
+        <p>
+          Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression
+          de vos données. Pour exercer ces droits, contactez-nous via le
+          <a href="/contact/">formulaire de contact</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

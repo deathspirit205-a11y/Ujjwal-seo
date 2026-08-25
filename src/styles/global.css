@@ -1,0 +1,122 @@
+/*
+ * Ujjwal SEO — Global Design Tokens
+ * Phase 2: Token shell only. Full design system implemented in Phase 3.
+ *
+ * Brand direction: warm cream / deep charcoal / restrained SEO green
+ * Editorial + premium + technical + trustworthy
+ */
+
+/* ─── Google Fonts ─── */
+/* Loaded in BaseLayout <head>. Fonts: [TO BE CONFIRMED IN PHASE 3] */
+
+/* ─── Design Tokens ─── */
+:root {
+  /* Colors — Phase 3 will finalize with HSL-tuned palette */
+  --color-bg:          #f9f7f4;   /* warm cream */
+  --color-surface:     #ffffff;
+  --color-text:        #1c1c1c;   /* deep charcoal */
+  --color-text-muted:  #5a5a5a;
+  --color-accent:      #2d6a4f;   /* restrained SEO green */
+  --color-accent-light:#52b788;
+  --color-border:      #e0dbd4;
+
+  /* Typography — Phase 3 will finalize families */
+  --font-sans: system-ui, -apple-system, sans-serif;   /* replaced with Google Font in Phase 3 */
+  --font-serif: Georgia, serif;                         /* replaced with editorial font in Phase 3 */
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+
+  /* Spacing */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  --max-width-content: 72rem;
+  --max-width-prose:   65ch;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ─── Accessibility ─── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ─── Container ─── */
+.container {
+  width: 100%;
+  max-width: var(--max-width-content);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}

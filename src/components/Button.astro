@@ -1,0 +1,22 @@
+---
+/**
+ * Button.astro
+ * Reusable button/link component.
+ * Variants: primary | secondary | ghost
+ * Full design: Phase 3/4.
+ */
+export interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  type?: 'button' | 'submit' | 'reset';
+  id?: string;
+}
+
+const { href, variant = 'primary', type = 'button', id } = Astro.props;
+const cls = `btn btn--${variant}`;
+---
+
+{href
+  ? <a href={href} class={cls} id={id}><slot /></a>
+  : <button type={type} class={cls} id={id}><slot /></button>
+}

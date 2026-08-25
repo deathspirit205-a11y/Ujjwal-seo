@@ -1,0 +1,31 @@
+---
+/**
+ * services/index.astro — Services hub
+ * URL: /services/
+ * Full content: Phase 6
+ */
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { buildTitle } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services/' },
+];
+---
+
+<ServiceLayout
+  title={buildTitle('Services SEO — Audit, SEO local, technique et accompagnement')}
+  description="Découvrez tous les services SEO d'Ujjwal SEO : audit SEO, SEO local, SEO technique, optimisation on-page et accompagnement SEO mensuel à Rennes et en Bretagne."
+  canonicalPath="/services/"
+  breadcrumbs={breadcrumbs}
+>
+  <Header />
+  <main id="main-content">
+    <h1>Services SEO</h1>
+    <!-- Full hub content: Phase 6 -->
+    <p><em>Page en construction — Phase 6.</em></p>
+  </main>
+  <Footer />
+</ServiceLayout>

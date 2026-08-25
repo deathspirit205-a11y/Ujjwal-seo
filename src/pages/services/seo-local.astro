@@ -1,0 +1,32 @@
+---
+/**
+ * services/seo-local.astro — SEO Local service page
+ * URL: /services/seo-local/
+ * Full content: Phase 6
+ */
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { buildTitle } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'SEO Local', href: '/services/seo-local/' },
+];
+---
+
+<ServiceLayout
+  title={buildTitle('SEO Local — Référencement local à Rennes et en Bretagne')}
+  description="Service de référencement local : optimisation Google Business Profile, cohérence des informations, contenu local et visibilité dans les recherches géolocalisées."
+  canonicalPath="/services/seo-local/"
+  breadcrumbs={breadcrumbs}
+>
+  <Header />
+  <main id="main-content">
+    <h1>SEO Local</h1>
+    <!-- Full content: Phase 6 -->
+    <p><em>Page en construction — Phase 6.</em></p>
+  </main>
+  <Footer />
+</ServiceLayout>

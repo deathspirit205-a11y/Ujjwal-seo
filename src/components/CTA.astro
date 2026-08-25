@@ -1,0 +1,34 @@
+---
+/**
+ * CTA.astro
+ * Standalone CTA block used at section ends and page bottoms.
+ * Per spec §32: placed according to user intent, not after every section.
+ * Full design: Phase 4.
+ */
+export interface Props {
+  heading?: string;
+  body?: string;
+  primaryCTA?: { label: string; href: string };
+  secondaryCTA?: { label: string; href: string };
+}
+
+const {
+  heading = 'Parlons de votre visibilité sur Google.',
+  body,
+  primaryCTA = { label: 'Réserver un appel', href: '/reserver-un-appel/' },
+  secondaryCTA,
+} = Astro.props;
+---
+
+<section class="cta-block" aria-labelledby="cta-heading">
+  <div class="container">
+    <h2 class="cta-block__heading" id="cta-heading">{heading}</h2>
+    {body && <p class="cta-block__body">{body}</p>}
+    <div class="cta-block__actions">
+      <a href={primaryCTA.href} class="btn-primary">{primaryCTA.label}</a>
+      {secondaryCTA && (
+        <a href={secondaryCTA.href} class="btn-secondary">{secondaryCTA.label}</a>
+      )}
+    </div>
+  </div>
+</section>

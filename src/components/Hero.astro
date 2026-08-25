@@ -1,0 +1,31 @@
+---
+/**
+ * Hero.astro
+ * Page hero section. Accepts heading, supporting copy, and CTA props.
+ * Full design and animation: Phase 4/5.
+ */
+export interface Props {
+  heading: string;
+  subheading?: string;
+  primaryCTA?: { label: string; href: string };
+  secondaryCTA?: { label: string; href: string };
+  /** Optional eyebrow label above the H1 */
+  eyebrow?: string;
+}
+
+const { heading, subheading, primaryCTA, secondaryCTA, eyebrow } = Astro.props;
+---
+
+<section class="hero">
+  {eyebrow && <p class="hero__eyebrow">{eyebrow}</p>}
+  <h1 class="hero__heading">{heading}</h1>
+  {subheading && <p class="hero__subheading">{subheading}</p>}
+  <div class="hero__actions">
+    {primaryCTA && (
+      <a href={primaryCTA.href} class="btn-primary">{primaryCTA.label}</a>
+    )}
+    {secondaryCTA && (
+      <a href={secondaryCTA.href} class="btn-secondary">{secondaryCTA.label}</a>
+    )}
+  </div>
+</section>

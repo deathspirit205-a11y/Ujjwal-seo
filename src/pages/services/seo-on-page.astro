@@ -1,0 +1,32 @@
+---
+/**
+ * services/seo-on-page.astro — SEO On-Page service page
+ * URL: /services/seo-on-page/
+ * Full content: Phase 6
+ */
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { buildTitle } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'SEO On-Page', href: '/services/seo-on-page/' },
+];
+---
+
+<ServiceLayout
+  title={buildTitle('SEO On-Page — Optimisation de contenu et de structure')}
+  description="Optimisation on-page : intention de recherche, recherche de mots-clés, titres, balises, structure du contenu et maillage interne pour maximiser la pertinence de vos pages."
+  canonicalPath="/services/seo-on-page/"
+  breadcrumbs={breadcrumbs}
+>
+  <Header />
+  <main id="main-content">
+    <h1>SEO On-Page</h1>
+    <!-- Full content: Phase 6 -->
+    <p><em>Page en construction — Phase 6.</em></p>
+  </main>
+  <Footer />
+</ServiceLayout>

@@ -1,0 +1,40 @@
+---
+/**
+ * ServiceLayout.astro
+ * Wraps all /services/* pages with breadcrumb schema and service-specific structure.
+ * Extends BaseLayout.
+ */
+import BaseLayout from './BaseLayout.astro';
+import type { Props as BaseProps } from './BaseLayout.astro';
+
+export interface Props extends BaseProps {
+  /** Breadcrumb trail: [{label, href}] ending with the current page */
+  breadcrumbs?: Array<{ label: string; href: string }>;
+}
+
+const { breadcrumbs = [], ...baseProps } = Astro.props;
+
+// BreadcrumbList structured data
+const breadcrumbSchema = breadcrumbs.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((crumb, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: crumb.label,
+        item: crumb.href.startsWith('http') ? crumb.href : `https://ujjwalseo.fr${crumb.href}`,
+      })),
+    }
+  : undefined;
+
+const schemas = [
+  ...(Array.isArray(baseProps.schema) ? baseProps.schema : baseProps.schema ? [baseProps.schema] : []),
+  ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+];
+---
+
+<BaseLayout {...baseProps} schema={schemas}>
+  <!-- Breadcrumbs rendered here in Phase 4 when the Breadcrumbs component is built -->
+  <slot />
+</BaseLayout>

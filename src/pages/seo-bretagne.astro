@@ -1,0 +1,25 @@
+---
+/**
+ * seo-bretagne.astro — SEO Bretagne local landing page
+ * URL: /seo-bretagne/
+ * Full content: Phase 7
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { buildTitle } from '../utils/seo';
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO Bretagne — Référencement naturel en Bretagne')}
+  description="Consultant SEO en Bretagne : stratégie SEO adaptée aux entreprises bretonnes. Référencement local, technique et on-page pour développer votre visibilité régionale."
+  canonicalPath="/seo-bretagne/"
+>
+  <Header />
+  <main id="main-content">
+    <h1>Consultant SEO en Bretagne</h1>
+    <!-- Full content: Phase 7 -->
+    <p><em>Page en construction — Phase 7.</em></p>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+/**
+ * BlogCard.astro
+ * Article preview card used on /blog/ index and homepage blog section.
+ * Full design: Phase 4/9.
+ */
+export interface Props {
+  title: string;
+  slug: string;
+  description: string;
+  pubDate: Date;
+  featuredImage?: string;
+  featuredImageAlt?: string;
+  categories?: string[];
+}
+
+const { title, slug, description, pubDate, featuredImage, featuredImageAlt = '', categories = [] } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(pubDate);
+---
+
+<article class="blog-card">
+  {featuredImage && (
+    <a href={`/blog/${slug}/`} tabindex="-1" aria-hidden="true">
+      <img
+        src={featuredImage}
+        alt={featuredImageAlt}
+        width="800"
+        height="450"
+        loading="lazy"
+        decoding="async"
+        class="blog-card__image"
+      />
+    </a>
+  )}
+  <div class="blog-card__body">
+    {categories.length > 0 && (
+      <ul class="blog-card__categories" aria-label="Catégories">
+        {categories.map((cat) => <li>{cat}</li>)}
+      </ul>
+    )}
+    <h3 class="blog-card__title">
+      <a href={`/blog/${slug}/`}>{title}</a>
+    </h3>
+    <p class="blog-card__description">{description}</p>
+    <time class="blog-card__date" datetime={pubDate.toISOString()}>{formattedDate}</time>
+  </div>
+</article>

@@ -1,0 +1,32 @@
+---
+/**
+ * services/accompagnement-seo.astro — Accompagnement SEO service page
+ * URL: /services/accompagnement-seo/
+ * Full content: Phase 6
+ */
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { buildTitle } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Accompagnement SEO', href: '/services/accompagnement-seo/' },
+];
+---
+
+<ServiceLayout
+  title={buildTitle('Accompagnement SEO — Suivi mensuel et stratégie continue')}
+  description="Accompagnement SEO mensuel : audit initial, stratégie, priorisation, implémentation, contenu, monitoring et itération. Le SEO est un travail continu, pas une action ponctuelle."
+  canonicalPath="/services/accompagnement-seo/"
+  breadcrumbs={breadcrumbs}
+>
+  <Header />
+  <main id="main-content">
+    <h1>Accompagnement SEO</h1>
+    <!-- Full content: Phase 6 -->
+    <p><em>Page en construction — Phase 6.</em></p>
+  </main>
+  <Footer />
+</ServiceLayout>

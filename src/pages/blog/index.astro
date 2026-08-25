@@ -1,0 +1,42 @@
+---
+/**
+ * blog/index.astro — Blog index
+ * URL: /blog/
+ * Full content + article listing: Phase 9
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { buildTitle } from '../../utils/seo';
+import { getCollection } from 'astro:content';
+
+// Fetch published articles, sorted newest first
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title={buildTitle('Blog SEO — Conseils et stratégies pour améliorer votre référencement')}
+  description="Articles SEO par Ujjwal Lage : référencement local, SEO technique, optimisation on-page et stratégies pour améliorer votre visibilité sur Google."
+  canonicalPath="/blog/"
+>
+  <Header />
+  <main id="main-content">
+    <div class="container">
+      <h1>Blog SEO</h1>
+      {posts.length === 0
+        ? <p><em>Les articles seront publiés prochainement — Phase 9.</em></p>
+        : (
+          <ul>
+            {posts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

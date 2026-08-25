@@ -1,0 +1,75 @@
+---
+/**
+ * BlogLayout.astro
+ * Wraps all blog article pages.
+ * Handles: Article OG type, Article schema (JSON-LD), reading structure.
+ * Extends BaseLayout.
+ */
+import BaseLayout from './BaseLayout.astro';
+import { DEFAULT_AUTHOR, SITE_URL } from '../utils/seo';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  author?: string;
+  featuredImage?: string;
+  featuredImageAlt?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  pubDate,
+  updatedDate,
+  author = DEFAULT_AUTHOR,
+  featuredImage,
+  featuredImageAlt = '',
+} = Astro.props;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: {
+    '@type': 'Person',
+    name: author,
+    url: `${SITE_URL}/a-propos/`,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+  datePublished: pubDate.toISOString(),
+  ...(updatedDate && { dateModified: updatedDate.toISOString() }),
+  ...(featuredImage && {
+    image: {
+      '@type': 'ImageObject',
+      url: featuredImage.startsWith('http') ? featuredImage : `${SITE_URL}${featuredImage}`,
+      description: featuredImageAlt,
+    },
+  }),
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}${canonicalPath}`,
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  ogType="article"
+  ogImage={featuredImage}
+  publishedTime={pubDate.toISOString()}
+  modifiedTime={updatedDate?.toISOString()}
+  schema={articleSchema}
+>
+  <slot />
+</BaseLayout>

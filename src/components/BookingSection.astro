@@ -1,0 +1,26 @@
+---
+/**
+ * BookingSection.astro
+ * Booking/scheduling section for /reserver-un-appel/.
+ * Booking embed (Calendly / Cal.com / etc.) wired in Phase 10.
+ * The booking provider slot keeps the surrounding page stable.
+ */
+---
+
+<section class="booking-section" aria-labelledby="booking-heading">
+  <div class="container">
+    <h2 id="booking-heading">Réservez un appel découverte</h2>
+    <p>
+      Un échange de 30 minutes pour discuter de votre projet, de votre situation actuelle
+      et de la manière dont le SEO peut vous aider à développer votre activité.
+    </p>
+
+    <!-- Booking embed — provider to be connected in Phase 10 -->
+    <div class="booking-embed" aria-label="Calendrier de réservation">
+      <p>
+        <em>La prise de rendez-vous en ligne sera disponible prochainement.</em><br />
+        En attendant, contactez-moi directement via le <a href="/contact/">formulaire de contact</a>.
+      </p>
+    </div>
+  </div>
+</section>

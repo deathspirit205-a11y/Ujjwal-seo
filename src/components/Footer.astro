@@ -1,0 +1,25 @@
+---
+/**
+ * Footer.astro
+ * Site-wide footer with navigation, legal links, and copyright.
+ * Full design: Phase 4.
+ */
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <!-- Full implementation: Phase 4 -->
+  <div class="container">
+    <p>
+      &copy; {currentYear} Ujjwal SEO — Consultant SEO indépendant à Rennes et en Bretagne.
+    </p>
+
+    <nav aria-label="Navigation secondaire">
+      <ul>
+        <li><a href="/mentions-legales/">Mentions légales</a></li>
+        <li><a href="/politique-confidentialite/">Politique de confidentialité</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>

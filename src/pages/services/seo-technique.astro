@@ -1,0 +1,32 @@
+---
+/**
+ * services/seo-technique.astro — SEO Technique service page
+ * URL: /services/seo-technique/
+ * Full content: Phase 6
+ */
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { buildTitle } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'SEO Technique', href: '/services/seo-technique/' },
+];
+---
+
+<ServiceLayout
+  title={buildTitle('SEO Technique — Optimisation technique de votre site web')}
+  description="Audit et optimisation technique SEO : crawlabilité, indexation, Core Web Vitals, architecture, maillage interne et données structurées pour améliorer votre référencement."
+  canonicalPath="/services/seo-technique/"
+  breadcrumbs={breadcrumbs}
+>
+  <Header />
+  <main id="main-content">
+    <h1>SEO Technique</h1>
+    <!-- Full content: Phase 6 -->
+    <p><em>Page en construction — Phase 6.</em></p>
+  </main>
+  <Footer />
+</ServiceLayout>

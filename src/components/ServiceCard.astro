@@ -1,0 +1,25 @@
+---
+/**
+ * ServiceCard.astro
+ * Card linking to a service page. Used in homepage services grid and /services/ hub.
+ * Full design: Phase 4.
+ */
+export interface Props {
+  title: string;
+  slug: string;
+  description: string;
+  icon?: string;
+}
+
+const { title, slug, description } = Astro.props;
+---
+
+<article class="service-card">
+  <h3 class="service-card__title">
+    <a href={slug}>{title}</a>
+  </h3>
+  <p class="service-card__description">{description}</p>
+  <a href={slug} class="service-card__link" aria-label={`En savoir plus sur ${title}`}>
+    En savoir plus →
+  </a>
+</article>

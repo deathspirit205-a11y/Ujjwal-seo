@@ -1,0 +1,61 @@
+---
+/**
+ * mentions-legales.astro — Legal notices
+ * URL: /mentions-legales/
+ * Per spec §35: DO NOT invent SIRET, address, or legal status.
+ * Real business information must be supplied before launch.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { buildTitle } from '../utils/seo';
+---
+
+<BaseLayout
+  title={buildTitle('Mentions légales — Ujjwal SEO')}
+  description="Mentions légales du site ujjwalseo.fr — Ujjwal SEO, consultant SEO indépendant."
+  canonicalPath="/mentions-legales/"
+  noIndex={true}
+>
+  <Header />
+  <main id="main-content">
+    <div class="container">
+      <h1>Mentions légales</h1>
+
+      <section aria-labelledby="editeur-heading">
+        <h2 id="editeur-heading">Éditeur du site</h2>
+        <p>
+          <strong>Ujjwal SEO</strong><br />
+          Consultant SEO indépendant<br />
+          <!-- PLACEHOLDER: Statut juridique — à compléter avec les informations officielles -->
+          Statut juridique : <em>[À compléter]</em><br />
+          <!-- PLACEHOLDER: SIRET — ne pas inventer -->
+          SIRET : <em>[À compléter]</em><br />
+          <!-- PLACEHOLDER: Adresse officielle -->
+          Adresse : <em>[À compléter]</em><br />
+          <!-- PLACEHOLDER: Contact -->
+          Contact : <em>[À compléter]</em>
+        </p>
+      </section>
+
+      <section aria-labelledby="hebergeur-heading">
+        <h2 id="hebergeur-heading">Hébergement</h2>
+        <p>
+          Ce site est hébergé par :<br />
+          <!-- PLACEHOLDER: Hébergeur — à compléter avec informations Netlify officielles -->
+          <em>[Nom de l'hébergeur — à compléter]</em>
+        </p>
+      </section>
+
+      <section aria-labelledby="propriete-heading">
+        <h2 id="propriete-heading">Propriété intellectuelle</h2>
+        <p>
+          L'ensemble des contenus présents sur ce site (textes, images, structure) est la propriété
+          exclusive d'Ujjwal SEO, sauf mention contraire. Toute reproduction est interdite sans
+          autorisation préalable.
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+/**
+ * services/audit-seo.astro — Audit SEO service page (key conversion page)
+ * URL: /services/audit-seo/
+ * Full content: Phase 6
+ */
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { buildTitle } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Audit SEO', href: '/services/audit-seo/' },
+];
+---
+
+<ServiceLayout
+  title={buildTitle('Audit SEO — Diagnostic complet de votre site web')}
+  description="Audit SEO complet : analyse technique, indexation, architecture, contenu, mots-clés, maillage interne et concurrents. Recevez un plan d'action clair et priorisé."
+  canonicalPath="/services/audit-seo/"
+  breadcrumbs={breadcrumbs}
+>
+  <Header />
+  <main id="main-content">
+    <h1>Audit SEO</h1>
+    <!-- Full content: Phase 6 -->
+    <p><em>Page en construction — Phase 6.</em></p>
+  </main>
+  <Footer />
+</ServiceLayout>

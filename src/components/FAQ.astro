@@ -1,0 +1,31 @@
+---
+/**
+ * FAQ.astro
+ * Accessible accordion FAQ component.
+ * Uses native <details>/<summary> for zero-JS progressive enhancement.
+ * Per spec §24: genuine questions and honest answers only.
+ * Full design and optional JSON-LD schema: Phase 4/11.
+ */
+export interface Props {
+  items: Array<{ id: string; question: string; answer: string }>;
+  heading?: string;
+}
+
+const { items, heading = 'Questions fréquentes' } = Astro.props;
+---
+
+<section class="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <h2 id="faq-heading">{heading}</h2>
+    <dl class="faq__list">
+      {items.map((item) => (
+        <details class="faq__item" id={`faq-${item.id}`}>
+          <summary class="faq__question">{item.question}</summary>
+          <dd class="faq__answer">
+            <p>{item.answer}</p>
+          </dd>
+        </details>
+      ))}
+    </dl>
+  </div>
+</section>

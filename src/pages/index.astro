@@ -1,0 +1,42 @@
+---
+/**
+ * index.astro — Homepage
+ * URL: /
+ * H1: Consultant SEO à Rennes et en Bretagne (spec §9)
+ * Full content and design: Phase 5
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { buildTitle } from '../utils/seo';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Ujjwal SEO',
+  description: 'Consultant SEO indépendant à Rennes et en Bretagne. SEO local, SEO technique, audit SEO et accompagnement SEO.',
+  url: 'https://ujjwalseo.fr',
+  areaServed: ['Rennes', 'Ille-et-Vilaine', 'Bretagne', 'France'],
+  founder: {
+    '@type': 'Person',
+    name: 'Ujjwal Lage',
+    jobTitle: 'Consultant SEO indépendant',
+    url: 'https://ujjwalseo.fr/a-propos/',
+  },
+};
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO à Rennes et en Bretagne', true)}
+  description="Ujjwal SEO — Consultant SEO indépendant à Rennes et en Bretagne. Améliorez votre visibilité sur Google grâce à une stratégie SEO claire, technique et adaptée à votre activité."
+  canonicalPath="/"
+  schema={organizationSchema}
+>
+  <Header />
+  <main id="main-content">
+    <h1>Consultant SEO à Rennes et en Bretagne</h1>
+    <!-- Full homepage content: Phase 5 -->
+    <p><em>Page en construction — Phase 5.</em></p>
+  </main>
+  <Footer />
+</BaseLayout>

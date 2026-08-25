@@ -1,0 +1,25 @@
+---
+/**
+ * contact.astro — Contact page
+ * URL: /contact/
+ * Full content + form wiring: Phase 10
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { buildTitle } from '../utils/seo';
+---
+
+<BaseLayout
+  title={buildTitle('Contact — Ujjwal SEO')}
+  description="Contactez Ujjwal Lage, consultant SEO à Rennes. Posez vos questions, décrivez votre projet ou demandez un audit SEO. Réponse sous 48h."
+  canonicalPath="/contact/"
+>
+  <Header />
+  <main id="main-content">
+    <h1>Contactez-moi</h1>
+    <!-- Full form and content: Phase 10 -->
+    <p><em>Page en construction — Phase 10.</em></p>
+  </main>
+  <Footer />
+</BaseLayout>

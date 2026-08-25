@@ -1,0 +1,36 @@
+---
+/**
+ * Header.astro
+ * Site-wide header with primary navigation and CTA.
+ * Mobile navigation implemented in Phase 4.
+ *
+ * Navigation (spec §8):
+ *   Accueil | Services ▾ | SEO Rennes | SEO Bretagne | À propos | Réalisations | Blog | Contact
+ * Primary CTA: Réserver un appel
+ */
+---
+
+<header class="site-header">
+  <!-- Full implementation: Phase 4 -->
+  <a href="/" aria-label="Ujjwal SEO — Accueil">
+    <!-- Logo: Phase 3/4 -->
+    <span>Ujjwal SEO</span>
+  </a>
+
+  <nav aria-label="Navigation principale">
+    <ul>
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/seo-rennes/">SEO Rennes</a></li>
+      <li><a href="/seo-bretagne/">SEO Bretagne</a></li>
+      <li><a href="/a-propos/">À propos</a></li>
+      <li><a href="/realisations/">Réalisations</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+
+  <a href="/reserver-un-appel/" class="btn-primary">
+    Réserver un appel
+  </a>
+</header>

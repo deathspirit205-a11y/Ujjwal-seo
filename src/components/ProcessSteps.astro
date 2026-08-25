@@ -1,0 +1,37 @@
+---
+/**
+ * ProcessSteps.astro
+ * Numbered process/methodology visualization.
+ * Used on homepage (spec §9 Process section) and service pages.
+ * Full design: Phase 4.
+ */
+export interface Step {
+  number: number;
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  steps: Step[];
+  heading?: string;
+}
+
+const { steps, heading = 'Ma méthode de travail' } = Astro.props;
+---
+
+<section class="process" aria-labelledby="process-heading">
+  <div class="container">
+    <h2 id="process-heading">{heading}</h2>
+    <ol class="process__steps">
+      {steps.map((step) => (
+        <li class="process__step">
+          <span class="process__number" aria-hidden="true">{step.number}</span>
+          <div class="process__content">
+            <h3 class="process__title">{step.title}</h3>
+            <p class="process__description">{step.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
