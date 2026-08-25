@@ -28,11 +28,14 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
         ? <p><em>Les articles seront publiés prochainement — Phase 9.</em></p>
         : (
           <ul>
-            {posts.map((post) => (
-              <li>
-                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-              </li>
-            ))}
+            {posts.map((post) => {
+              const slug = post.id.replace(/\.mdx?$/, '');
+              return (
+                <li>
+                  <a href={`/blog/${slug}/`}>{post.data.title}</a>
+                </li>
+              );
+            })}
           </ul>
         )
       }

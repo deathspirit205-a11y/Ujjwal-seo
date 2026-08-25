@@ -4,7 +4,7 @@
  * URL: /blog/[slug]/
  * Full design: Phase 9
  *
- * Uses Astro content collections. Each markdown file in src/content/blog/
+ * Uses Astro Content Layer API (v5+). Each markdown file in src/content/blog/
  * automatically generates a page at /blog/[filename-without-extension]/
  */
 import BlogLayout from '../../layouts/BlogLayout.astro';
@@ -15,19 +15,22 @@ import { getCollection, render } from 'astro:content';
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
-    params: { slug: post.id },
+    // In Astro v5 Content Layer, entry.id is the file path relative to base
+    // Strip extension to get clean slug
+    params: { slug: post.id.replace(/\.mdx?$/, '') },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
+const slug = post.id.replace(/\.mdx?$/, '');
 const { Content } = await render(post);
 ---
 
 <BlogLayout
   title={post.data.title}
   description={post.data.description}
-  canonicalPath={`/blog/${post.id}/`}
+  canonicalPath={`/blog/${slug}/`}
   pubDate={post.data.pubDate}
   updatedDate={post.data.updatedDate}
   author={post.data.author}
