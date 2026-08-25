@@ -3,26 +3,105 @@
  * index.astro — Homepage
  * URL: /
  * H1: Consultant SEO à Rennes et en Bretagne (spec §9)
- * Full content and design: Phase 5
+ *
+ * Sections (spec §9):
+ *  1. Hero
+ *  2. Problèmes clients
+ *  3. Services
+ *  4. Processus
+ *  5. Pourquoi Ujjwal SEO
+ *  6. Zones géographiques
+ *  7. Réalisations (transparent — pas de faux résultats)
+ *  8. Blog (récents articles, vide pour l'instant)
+ *  9. FAQ
+ * 10. CTA final
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { buildTitle } from '../utils/seo';
+import ServiceCard from '../components/ServiceCard.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { buildTitle, SITE_URL } from '../utils/seo';
+import { services } from '../data/services';
+import { faqGeneral } from '../data/faq';
+import { getCollection } from 'astro:content';
 
+// Fetch latest published blog posts (max 3 for homepage)
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const latestPosts = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+// Process steps per spec §9
+const processSteps = [
+  {
+    number: 1,
+    title: 'Analyse',
+    description: 'Audit de votre site, de votre positionnement actuel et de vos concurrents pour établir un état des lieux précis.',
+  },
+  {
+    number: 2,
+    title: 'Stratégie',
+    description: 'Définition des priorités, des mots-clés cibles et des axes d\'optimisation en fonction de vos objectifs.',
+  },
+  {
+    number: 3,
+    title: 'Optimisation',
+    description: 'Correction des problèmes techniques, amélioration de l\'architecture et de l\'expérience utilisateur.',
+  },
+  {
+    number: 4,
+    title: 'Contenu',
+    description: 'Création et optimisation des pages et articles pour répondre aux intentions de recherche de vos clients.',
+  },
+  {
+    number: 5,
+    title: 'Mesure',
+    description: 'Suivi régulier des positions, du trafic organique et des conversions pour évaluer les progrès.',
+  },
+  {
+    number: 6,
+    title: 'Amélioration',
+    description: 'Ajustement continu de la stratégie selon les données réelles et l\'évolution de votre marché.',
+  },
+];
+
+// Homepage-specific FAQ items
+const homeFAQ = faqGeneral;
+
+// Organization + WebSite schema
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Ujjwal SEO',
   description: 'Consultant SEO indépendant à Rennes et en Bretagne. SEO local, SEO technique, audit SEO et accompagnement SEO.',
-  url: 'https://ujjwalseo.fr',
-  areaServed: ['Rennes', 'Ille-et-Vilaine', 'Bretagne', 'France'],
+  url: SITE_URL,
+  areaServed: [
+    { '@type': 'City', name: 'Rennes' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+    { '@type': 'AdministrativeArea', name: 'Bretagne' },
+    { '@type': 'Country', name: 'France' },
+  ],
   founder: {
     '@type': 'Person',
     name: 'Ujjwal Lage',
     jobTitle: 'Consultant SEO indépendant',
-    url: 'https://ujjwalseo.fr/a-propos/',
+    url: `${SITE_URL}/a-propos/`,
   },
+  knowsAbout: [
+    'SEO local', 'Référencement naturel', 'SEO technique', 'Audit SEO',
+    'Optimisation on-page', 'Google Business Profile', 'Core Web Vitals',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Ujjwal SEO',
+  url: SITE_URL,
 };
 ---
 
@@ -30,13 +109,837 @@ const organizationSchema = {
   title={buildTitle('Consultant SEO à Rennes et en Bretagne', true)}
   description="Ujjwal SEO — Consultant SEO indépendant à Rennes et en Bretagne. Améliorez votre visibilité sur Google grâce à une stratégie SEO claire, technique et adaptée à votre activité."
   canonicalPath="/"
-  schema={organizationSchema}
+  schema={[organizationSchema, websiteSchema]}
 >
   <Header />
+
   <main id="main-content">
-    <h1>Consultant SEO à Rennes et en Bretagne</h1>
-    <!-- Full homepage content: Phase 5 -->
-    <p><em>Page en construction — Phase 5.</em></p>
+
+    <!-- ══════════════════════════════════════
+         1. HERO
+    ══════════════════════════════════════ -->
+    <section class="home-hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="home-hero__content">
+          <p class="eyebrow">Consultant SEO indépendant</p>
+          <h1 class="home-hero__heading" id="hero-heading">
+            Consultant SEO à<br />
+            <em>Rennes</em> et en <em>Bretagne</em>
+          </h1>
+          <p class="home-hero__lead lead">
+            Améliorez votre visibilité sur Google grâce à une stratégie SEO claire,
+            technique et adaptée à votre activité. SEO local, SEO technique,
+            optimisation on-page et accompagnement pour les entreprises à Rennes et en Bretagne.
+          </p>
+          <div class="home-hero__actions">
+            <a href="/services/audit-seo/" class="btn btn--primary btn--lg">
+              Demander un audit SEO
+            </a>
+            <a href="/reserver-un-appel/" class="btn btn--secondary btn--lg">
+              Réserver un appel
+            </a>
+          </div>
+          <div class="home-hero__trust">
+            <span class="trust-item">✓ Sans jargon inutile</span>
+            <span class="trust-item">✓ Approche orientée résultats</span>
+            <span class="trust-item">✓ Premier échange gratuit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         2. PROBLÈMES CLIENTS
+    ══════════════════════════════════════ -->
+    <section class="problems section section--surface" aria-labelledby="problems-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Vous vous reconnaissez ?</p>
+          <h2 id="problems-heading">Les problèmes SEO les plus fréquents</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            La plupart des entreprises locales rencontrent les mêmes obstacles sur Google.
+            Ces problèmes se résolvent avec une stratégie SEO structurée.
+          </p>
+        </div>
+
+        <ul class="problems__grid" role="list">
+          <li class="problem-card">
+            <span class="problem-card__icon" aria-hidden="true">👁️</span>
+            <div>
+              <h3 class="problem-card__title">Site invisible sur Google</h3>
+              <p class="problem-card__desc">
+                Vos clients cherchent vos services en ligne, mais c'est toujours votre concurrent
+                qui apparaît en premier.
+              </p>
+            </div>
+          </li>
+          <li class="problem-card">
+            <span class="problem-card__icon" aria-hidden="true">📍</span>
+            <div>
+              <h3 class="problem-card__title">Faible visibilité locale</h3>
+              <p class="problem-card__desc">
+                Votre fiche Google Business Profile est incomplète ou mal optimisée,
+                et vous n'apparaissez pas dans les recherches locales.
+              </p>
+            </div>
+          </li>
+          <li class="problem-card">
+            <span class="problem-card__icon" aria-hidden="true">⚙️</span>
+            <div>
+              <h3 class="problem-card__title">Problèmes techniques non détectés</h3>
+              <p class="problem-card__desc">
+                Des erreurs d'indexation, une vitesse insuffisante ou une mauvaise
+                architecture pénalisent votre référencement sans que vous le sachiez.
+              </p>
+            </div>
+          </li>
+          <li class="problem-card">
+            <span class="problem-card__icon" aria-hidden="true">🔑</span>
+            <div>
+              <h3 class="problem-card__title">Pas de stratégie de mots-clés</h3>
+              <p class="problem-card__desc">
+                Vos pages ne ciblent pas les bons termes de recherche, ou visent
+                des mots-clés trop compétitifs sans potentiel réaliste.
+              </p>
+            </div>
+          </li>
+          <li class="problem-card">
+            <span class="problem-card__icon" aria-hidden="true">📊</span>
+            <div>
+              <h3 class="problem-card__title">Trafic non qualifié</h3>
+              <p class="problem-card__desc">
+                Vous recevez des visiteurs, mais ils ne correspondent pas à votre
+                clientèle cible et ne génèrent pas de contacts.
+              </p>
+            </div>
+          </li>
+          <li class="problem-card">
+            <span class="problem-card__icon" aria-hidden="true">🗺️</span>
+            <div>
+              <h3 class="problem-card__title">Pas de cap SEO clair</h3>
+              <p class="problem-card__desc">
+                Vous avez essayé différentes actions sans résultats durables, faute
+                d'une stratégie cohérente et d'un suivi régulier.
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="problems__cta">
+          <p>Ces problèmes ont des solutions concrètes.</p>
+          <a href="/services/audit-seo/" class="btn btn--primary">
+            Diagnostiquer mon site
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         3. SERVICES
+    ══════════════════════════════════════ -->
+    <section class="home-services section" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Ce que je propose</p>
+          <h2 id="services-heading">Services SEO</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Des services complémentaires, conçus pour couvrir les différents aspects
+            du référencement naturel selon vos besoins et votre situation.
+          </p>
+        </div>
+
+        <div class="grid-auto">
+          {services.map((service, i) => (
+            <ServiceCard
+              title={service.title}
+              slug={service.slug}
+              description={service.shortDescription}
+              index={i + 1}
+            />
+          ))}
+        </div>
+
+        <div class="home-services__footer">
+          <a href="/services/" class="btn btn--secondary">
+            Voir tous les services →
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         4. PROCESSUS
+    ══════════════════════════════════════ -->
+    <ProcessSteps
+      steps={processSteps}
+      heading="Une méthode SEO structurée, étape par étape"
+      subheading="Le SEO efficace n'est pas une question de recettes magiques. C'est un processus itératif, basé sur l'analyse des données et l'amélioration continue."
+    />
+
+
+    <!-- ══════════════════════════════════════
+         5. POURQUOI UJJWAL SEO
+    ══════════════════════════════════════ -->
+    <section class="about-intro section section--surface" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-intro__grid">
+
+          <div class="about-intro__text">
+            <p class="eyebrow">À propos</p>
+            <h2 id="about-heading">Pourquoi travailler avec Ujjwal SEO ?</h2>
+
+            <p class="lead" style="margin-top: var(--space-5); margin-bottom: var(--space-8)">
+              En tant que consultant SEO indépendant, j'interviens directement sur votre projet,
+              sans intermédiaire et avec une vision globale de votre visibilité en ligne.
+            </p>
+
+            <ul class="about-intro__points">
+              <li class="about-point">
+                <span class="about-point__marker" aria-hidden="true">01</span>
+                <div>
+                  <h3 class="about-point__title">Approche orientée business</h3>
+                  <p class="about-point__desc">
+                    Le SEO n'est pas une fin en soi. Chaque décision d'optimisation
+                    est évaluée en fonction de son impact potentiel sur votre activité
+                    et vos objectifs commerciaux.
+                  </p>
+                </div>
+              </li>
+              <li class="about-point">
+                <span class="about-point__marker" aria-hidden="true">02</span>
+                <div>
+                  <h3 class="about-point__title">Méthode claire et transparente</h3>
+                  <p class="about-point__desc">
+                    Vous comprenez ce qui est fait et pourquoi. Chaque recommandation
+                    est expliquée, priorisée et accompagnée d'un plan d'action concret.
+                  </p>
+                </div>
+              </li>
+              <li class="about-point">
+                <span class="about-point__marker" aria-hidden="true">03</span>
+                <div>
+                  <h3 class="about-point__title">Compétences techniques et éditoriales</h3>
+                  <p class="about-point__desc">
+                    Du SEO technique au contenu, en passant par le SEO local,
+                    j'interviens sur l'ensemble des leviers du référencement naturel.
+                  </p>
+                </div>
+              </li>
+              <li class="about-point">
+                <span class="about-point__marker" aria-hidden="true">04</span>
+                <div>
+                  <h3 class="about-point__title">Spécialisé Rennes et Bretagne</h3>
+                  <p class="about-point__desc">
+                    Une connaissance du tissu économique local pour des stratégies
+                    adaptées à la réalité des marchés rennais et breton.
+                  </p>
+                </div>
+              </li>
+            </ul>
+
+            <a href="/a-propos/" class="btn btn--secondary" style="margin-top: var(--space-8)">
+              En savoir plus sur mon parcours
+            </a>
+          </div>
+
+          <div class="about-intro__visual">
+            <div class="about-intro__portrait-placeholder" aria-hidden="true">
+              <!-- Portrait photo: à ajouter — spec §47 -->
+              <div class="portrait-placeholder__inner">
+                <span>Photo à venir</span>
+              </div>
+            </div>
+            <div class="about-intro__card">
+              <p class="about-intro__card-quote">
+                "Le SEO est un investissement à long terme qui, bien exécuté,
+                génère un flux constant de visiteurs qualifiés."
+              </p>
+              <p class="about-intro__card-author">— Ujjwal Lage</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         6. ZONES GÉOGRAPHIQUES
+    ══════════════════════════════════════ -->
+    <section class="local-section section" aria-labelledby="local-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Zones d'intervention</p>
+          <h2 id="local-heading">SEO à Rennes et en Bretagne</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Basé en Bretagne, j'accompagne prioritairement les entreprises rennaises
+            et bretonnes dans leur développement de visibilité organique.
+          </p>
+        </div>
+
+        <div class="local-cards">
+          <article class="local-card">
+            <div class="local-card__body">
+              <h3 class="local-card__title">
+                <a href="/seo-rennes/">Consultant SEO Rennes</a>
+              </h3>
+              <p class="local-card__desc">
+                Vous exercez à Rennes ou dans son agglomération ?
+                Une stratégie SEO locale ciblée peut vous aider à apparaître
+                dans les recherches de vos clients potentiels rennais.
+              </p>
+              <ul class="local-card__features">
+                <li>Référencement local Rennes</li>
+                <li>Google Business Profile</li>
+                <li>Contenu local ciblé</li>
+                <li>SEO pour TPE et PME rennaises</li>
+              </ul>
+              <a href="/seo-rennes/" class="btn btn--primary">
+                SEO Rennes →
+              </a>
+            </div>
+          </article>
+
+          <article class="local-card">
+            <div class="local-card__body">
+              <h3 class="local-card__title">
+                <a href="/seo-bretagne/">Consultant SEO Bretagne</a>
+              </h3>
+              <p class="local-card__desc">
+                Vous couvrez plusieurs villes ou tout le territoire breton ?
+                Je vous accompagne dans la construction d'une visibilité
+                organique adaptée aux spécificités du marché régional.
+              </p>
+              <ul class="local-card__features">
+                <li>Référencement régional Bretagne</li>
+                <li>Stratégie multi-villes</li>
+                <li>Contenu régional pertinent</li>
+                <li>Visibilité à l'échelle bretonne</li>
+              </ul>
+              <a href="/seo-bretagne/" class="btn btn--secondary">
+                SEO Bretagne →
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p class="local-section__note">
+          J'interviens également en <a href="/services/seo-local/">SEO local</a>
+          pour des entreprises basées hors de Bretagne, selon disponibilité.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         7. RÉALISATIONS (transparent)
+    ══════════════════════════════════════ -->
+    <section class="realisations-preview section section--warm" aria-labelledby="realisations-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Projets</p>
+          <h2 id="realisations-heading">Réalisations</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Les études de cas détaillées seront publiées au fur et à mesure,
+            avec les autorisations des clients concernés. Chaque cas présentera
+            le contexte réel, les actions menées et les résultats mesurables.
+          </p>
+        </div>
+
+        <div class="realisations-placeholder">
+          <div class="realisations-placeholder__inner">
+            <p class="realisations-placeholder__text">
+              Les études de cas arrivent prochainement.<br />
+              <a href="/contact/">Contactez-moi</a> pour en discuter directement.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: var(--space-8)">
+          <a href="/realisations/" class="btn btn--secondary">
+            Voir les réalisations →
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         8. BLOG (récents articles)
+    ══════════════════════════════════════ -->
+    <section class="home-blog section section--surface" aria-labelledby="blog-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="home-blog__header-row">
+            <div>
+              <p class="eyebrow">Ressources</p>
+              <h2 id="blog-heading">Articles SEO</h2>
+            </div>
+            <a href="/blog/" class="btn btn--secondary home-blog__all-link">
+              Tous les articles →
+            </a>
+          </div>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Conseils, méthodes et explications pour comprendre le SEO et améliorer
+            votre visibilité sur Google.
+          </p>
+        </div>
+
+        {latestPosts.length > 0
+          ? (
+            <div class="grid-3">
+              {latestPosts.map((post) => {
+                const slug = post.id.replace(/\.mdx?$/, '');
+                return (
+                  <BlogCard
+                    title={post.data.title}
+                    slug={slug}
+                    description={post.data.description}
+                    pubDate={post.data.pubDate}
+                    featuredImage={post.data.featuredImage}
+                    featuredImageAlt={post.data.featuredImageAlt}
+                    categories={post.data.categories}
+                  />
+                );
+              })}
+            </div>
+          )
+          : (
+            <div class="home-blog__empty">
+              <p>
+                Les premiers articles sont en cours de rédaction.
+                <a href="/blog/">Consultez la page blog</a> pour suivre les publications.
+              </p>
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         9. FAQ
+    ══════════════════════════════════════ -->
+    <FAQ items={homeFAQ} heading="Questions fréquentes sur le SEO" />
+
+
+    <!-- ══════════════════════════════════════
+         10. CTA FINAL
+    ══════════════════════════════════════ -->
+    <CTA
+      heading="Parlons de votre visibilité sur Google."
+      body="Un premier échange de 30 minutes pour comprendre votre situation et voir si je peux vous aider. Gratuit, sans engagement."
+      primaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Demander un audit SEO', href: '/services/audit-seo/' }}
+      variant="dark"
+    />
+
   </main>
+
   <Footer />
 </BaseLayout>
+
+<style>
+/* ══ HERO ══ */
+.home-hero {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-20);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle decorative background mark */
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: -8rem;
+  right: -8rem;
+  width: 40rem;
+  height: 40rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-accent-light) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.home-hero__content {
+  max-width: 48rem;
+}
+
+.home-hero__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+}
+
+.home-hero__heading em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.home-hero__lead {
+  max-width: 42rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-10);
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.home-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.trust-item {
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+}
+
+@media (max-width: 480px) {
+  .home-hero {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-12);
+  }
+  .home-hero__actions {
+    flex-direction: column;
+  }
+  .home-hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .home-hero::before {
+    display: none;
+  }
+}
+
+
+/* ══ PROBLEMS ══ */
+.problems__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-12);
+}
+
+.problem-card {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.problem-card:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.problem-card__icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.problem-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+}
+
+.problem-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.problems__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.problems__cta p {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+  .problems__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* ══ SERVICES FOOTER ══ */
+.home-services__footer {
+  margin-top: var(--space-10);
+  text-align: center;
+}
+
+
+/* ══ ABOUT INTRO ══ */
+.about-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .about-intro__grid {
+    grid-template-columns: 1fr;
+  }
+  .about-intro__visual {
+    display: none; /* Hidden until portrait is supplied */
+  }
+}
+
+.about-intro__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.about-point {
+  display: flex;
+  gap: var(--space-5);
+  align-items: flex-start;
+}
+
+.about-point__marker {
+  font-family: var(--font-serif);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  min-width: 2rem;
+  padding-top: 0.2rem;
+}
+
+.about-point__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-1);
+}
+
+.about-point__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* Portrait placeholder — replaced with real photo in Phase 8 */
+.about-intro__visual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.about-intro__portrait-placeholder {
+  aspect-ratio: 3 / 4;
+  background-color: var(--color-surface-warm);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.portrait-placeholder__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+}
+
+.about-intro__card {
+  padding: var(--space-6);
+  background-color: var(--color-surface-dark);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-inverse);
+}
+
+.about-intro__card-quote {
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  font-style: italic;
+  color: rgba(249, 246, 241, 0.85);
+  margin-bottom: var(--space-4);
+}
+
+.about-intro__card-author {
+  font-size: var(--text-sm);
+  color: var(--color-accent-light);
+  font-weight: var(--weight-medium);
+}
+
+
+/* ══ LOCAL SECTION ══ */
+.local-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .local-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.local-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.local-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.local-card__body {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.local-card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+}
+
+.local-card__title a {
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.local-card__title a:hover {
+  color: var(--color-accent);
+}
+
+.local-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.local-card__features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.local-card__features li {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  padding-left: var(--space-5);
+  position: relative;
+}
+
+.local-card__features li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-size: var(--text-xs);
+}
+
+.local-section__note {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.local-section__note a {
+  color: var(--color-accent);
+  text-underline-offset: 3px;
+}
+
+
+/* ══ RÉALISATIONS PLACEHOLDER ══ */
+.realisations-placeholder {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.realisations-placeholder__inner {
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-12) var(--space-8);
+  text-align: center;
+}
+
+.realisations-placeholder__text {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.realisations-placeholder__text a {
+  color: var(--color-accent);
+  text-underline-offset: 3px;
+}
+
+
+/* ══ BLOG ══ */
+.home-blog__header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.home-blog__all-link {
+  flex-shrink: 0;
+}
+
+.home-blog__empty {
+  background-color: var(--color-surface-warm);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10);
+  text-align: center;
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+}
+
+.home-blog__empty a {
+  color: var(--color-accent);
+  text-underline-offset: 3px;
+}
+</style>
