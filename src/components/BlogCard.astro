@@ -1,8 +1,7 @@
 ---
 /**
  * BlogCard.astro
- * Article preview card used on /blog/ index and homepage blog section.
- * Full design: Phase 4/9.
+ * Article preview card — /blog/ index and homepage blog section.
  */
 export interface Props {
   title: string;
@@ -14,18 +13,28 @@ export interface Props {
   categories?: string[];
 }
 
-const { title, slug, description, pubDate, featuredImage, featuredImageAlt = '', categories = [] } = Astro.props;
+const {
+  title,
+  slug,
+  description,
+  pubDate,
+  featuredImage,
+  featuredImageAlt = '',
+  categories = [],
+} = Astro.props;
 
 const formattedDate = new Intl.DateTimeFormat('fr-FR', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
 }).format(pubDate);
+
+const href = `/blog/${slug}/`;
 ---
 
 <article class="blog-card">
   {featuredImage && (
-    <a href={`/blog/${slug}/`} tabindex="-1" aria-hidden="true">
+    <a href={href} class="blog-card__image-wrap" tabindex="-1" aria-hidden="true">
       <img
         src={featuredImage}
         alt={featuredImageAlt}
@@ -37,16 +46,132 @@ const formattedDate = new Intl.DateTimeFormat('fr-FR', {
       />
     </a>
   )}
+
   <div class="blog-card__body">
     {categories.length > 0 && (
       <ul class="blog-card__categories" aria-label="Catégories">
-        {categories.map((cat) => <li>{cat}</li>)}
+        {categories.map((cat) => (
+          <li><span class="tag">{cat}</span></li>
+        ))}
       </ul>
     )}
+
     <h3 class="blog-card__title">
-      <a href={`/blog/${slug}/`}>{title}</a>
+      <a href={href} class="blog-card__link">{title}</a>
     </h3>
+
     <p class="blog-card__description">{description}</p>
-    <time class="blog-card__date" datetime={pubDate.toISOString()}>{formattedDate}</time>
+
+    <footer class="blog-card__footer">
+      <time class="blog-card__date" datetime={pubDate.toISOString()}>
+        {formattedDate}
+      </time>
+    </footer>
   </div>
 </article>
+
+<style>
+.blog-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.blog-card:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.blog-card:has(.blog-card__link:focus-visible) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Image area */
+.blog-card__image-wrap {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.blog-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.blog-card:hover .blog-card__image {
+  transform: scale(1.03);
+}
+
+/* Body */
+.blog-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  flex: 1;
+}
+
+.blog-card__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.blog-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+}
+
+.blog-card__link {
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+/* Extend click area to full card */
+.blog-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.blog-card__link:hover {
+  color: var(--color-accent);
+}
+
+.blog-card__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  /* Clamp to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card__footer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.blog-card__date {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+}
+</style>

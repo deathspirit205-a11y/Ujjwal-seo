@@ -1,15 +1,16 @@
 ---
 /**
  * CTA.astro
- * Standalone CTA block used at section ends and page bottoms.
- * Per spec §32: placed according to user intent, not after every section.
- * Full design: Phase 4.
+ * Standalone CTA section — used at section ends and page bottoms.
+ * Per spec §32: placed intentionally, not after every section.
  */
 export interface Props {
   heading?: string;
   body?: string;
   primaryCTA?: { label: string; href: string };
   secondaryCTA?: { label: string; href: string };
+  /** 'cream' (default), 'green', 'dark' */
+  variant?: 'cream' | 'green' | 'dark';
 }
 
 const {
@@ -17,18 +18,98 @@ const {
   body,
   primaryCTA = { label: 'Réserver un appel', href: '/reserver-un-appel/' },
   secondaryCTA,
+  variant = 'cream',
 } = Astro.props;
 ---
 
-<section class="cta-block" aria-labelledby="cta-heading">
+<section class:list={['cta-block', `cta-block--${variant}`]} aria-labelledby="cta-heading">
   <div class="container">
-    <h2 class="cta-block__heading" id="cta-heading">{heading}</h2>
-    {body && <p class="cta-block__body">{body}</p>}
-    <div class="cta-block__actions">
-      <a href={primaryCTA.href} class="btn-primary">{primaryCTA.label}</a>
-      {secondaryCTA && (
-        <a href={secondaryCTA.href} class="btn-secondary">{secondaryCTA.label}</a>
-      )}
+    <div class="cta-block__inner">
+      <div class="cta-block__text">
+        <h2 class="cta-block__heading" id="cta-heading">{heading}</h2>
+        {body && <p class="cta-block__body">{body}</p>}
+      </div>
+      <div class="cta-block__actions">
+        <a href={primaryCTA.href} class:list={['btn', 'btn--lg', variant === 'dark' ? 'btn--cta-dark-primary' : 'btn--primary']}>
+          {primaryCTA.label}
+        </a>
+        {secondaryCTA && (
+          <a href={secondaryCTA.href} class:list={['btn', 'btn--lg', 'btn--secondary']}>
+            {secondaryCTA.label}
+          </a>
+        )}
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+.cta-block {
+  padding-block: var(--space-20);
+}
+
+.cta-block--cream {
+  background-color: var(--color-surface-warm);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.cta-block--green {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.cta-block--dark {
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-inverse);
+}
+
+.cta-block__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  flex-wrap: wrap;
+}
+
+.cta-block__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  max-width: 32rem;
+}
+
+.cta-block__body {
+  margin-top: var(--space-3);
+  font-size: var(--text-lg);
+  opacity: 0.75;
+}
+
+.cta-block__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+/* Light primary button for dark/green sections */
+.btn--cta-dark-primary {
+  background-color: var(--color-text-inverse);
+  border-color: var(--color-text-inverse);
+  color: var(--color-text);
+}
+
+.btn--cta-dark-primary:hover {
+  background-color: var(--color-accent-light);
+  border-color: var(--color-accent-light);
+}
+
+@media (max-width: 768px) {
+  .cta-block__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>

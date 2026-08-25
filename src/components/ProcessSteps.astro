@@ -2,8 +2,7 @@
 /**
  * ProcessSteps.astro
  * Numbered process/methodology visualization.
- * Used on homepage (spec §9 Process section) and service pages.
- * Full design: Phase 4.
+ * Homepage: Analyse → Stratégie → Optimisation → Contenu → Mesure → Amélioration (spec §9)
  */
 export interface Step {
   number: number;
@@ -14,24 +13,104 @@ export interface Step {
 export interface Props {
   steps: Step[];
   heading?: string;
+  subheading?: string;
 }
 
-const { steps, heading = 'Ma méthode de travail' } = Astro.props;
+const {
+  steps,
+  heading = 'Ma méthode de travail',
+  subheading,
+} = Astro.props;
 ---
 
-<section class="process" aria-labelledby="process-heading">
+<section class="process section" aria-labelledby="process-heading">
   <div class="container">
-    <h2 id="process-heading">{heading}</h2>
+    <div class="section-header--centered">
+      <h2 id="process-heading">{heading}</h2>
+      {subheading && <p class="lead" style="margin-top: var(--space-4)">{subheading}</p>}
+    </div>
+
     <ol class="process__steps">
-      {steps.map((step) => (
+      {steps.map((step, i) => (
         <li class="process__step">
-          <span class="process__number" aria-hidden="true">{step.number}</span>
-          <div class="process__content">
-            <h3 class="process__title">{step.title}</h3>
-            <p class="process__description">{step.description}</p>
+          <!-- Connecting line (decorative, hidden from AT) -->
+          {i < steps.length - 1 && (
+            <div class="process__connector" aria-hidden="true"></div>
+          )}
+          <div class="process__step-inner">
+            <div class="process__number-wrap" aria-hidden="true">
+              <span class="process__number">{step.number}</span>
+            </div>
+            <div class="process__content">
+              <h3 class="process__title">{step.title}</h3>
+              <p class="process__description">{step.description}</p>
+            </div>
           </div>
         </li>
       ))}
     </ol>
   </div>
 </section>
+
+<style>
+.process__steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: var(--space-6);
+  position: relative;
+  list-style: none;
+}
+
+.process__step {
+  position: relative;
+}
+
+.process__step-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  height: 100%;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.process__step-inner:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Number badge */
+.process__number-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--color-accent-light);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.process__number {
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.process__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.process__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+</style>
