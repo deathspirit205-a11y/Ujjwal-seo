@@ -2,44 +2,235 @@
 /**
  * blog/index.astro — Blog index
  * URL: /blog/
- * Full content + article listing: Phase 9
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { buildTitle } from '../../utils/seo';
+import BlogCard from '../../components/BlogCard.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
 import { getCollection } from 'astro:content';
 
-// Fetch published articles, sorted newest first
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Blog SEO', href: '/blog/' },
+];
+
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// Get unique categories
+const allCategories = [...new Set(posts.flatMap((p) => p.data.categories))].sort();
+
+const blogListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Blog SEO — Ujjwal Lage',
+  description: 'Conseils SEO, stratégies de référencement et guides pratiques pour améliorer la visibilité de votre entreprise sur Google.',
+  url: `${SITE_URL}/blog/`,
+  author: {
+    '@type': 'Person',
+    name: 'Ujjwal Lage',
+    url: `${SITE_URL}/a-propos/`,
+  },
+};
 ---
 
 <BaseLayout
   title={buildTitle('Blog SEO — Conseils et stratégies pour améliorer votre référencement')}
   description="Articles SEO par Ujjwal Lage : référencement local, SEO technique, optimisation on-page et stratégies pour améliorer votre visibilité sur Google."
   canonicalPath="/blog/"
+  schema={blogListSchema}
 >
   <Header />
   <main id="main-content">
-    <div class="container">
-      <h1>Blog SEO</h1>
-      {posts.length === 0
-        ? <p><em>Les articles seront publiés prochainement — Phase 9.</em></p>
-        : (
-          <ul>
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="blog-hero section">
+      <div class="container">
+        <span class="blog-hero__eyebrow">Blog</span>
+        <h1>Ressources SEO</h1>
+        <p class="blog-hero__lead">
+          Des guides pratiques et des stratégies concrètes pour améliorer votre référencement naturel.
+          Écrits par un consultant SEO, pour des dirigeants qui veulent comprendre sans perdre de temps.
+        </p>
+      </div>
+    </section>
+
+    <!-- Categories filter -->
+    {allCategories.length > 0 && (
+      <section class="blog-categories section--compact">
+        <div class="container">
+          <div class="categories-bar">
+            <span class="categories-bar__label">Catégories :</span>
+            {allCategories.map((cat) => (
+              <span class="category-pill">{cat}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Articles grid -->
+    <section class="blog-grid section">
+      <div class="container">
+        {posts.length === 0 ? (
+          <p class="blog-empty">Les articles seront publiés prochainement.</p>
+        ) : (
+          <div class="articles-grid">
             {posts.map((post) => {
               const slug = post.id.replace(/\.mdx?$/, '');
               return (
-                <li>
-                  <a href={`/blog/${slug}/`}>{post.data.title}</a>
-                </li>
+                <BlogCard
+                  title={post.data.title}
+                  description={post.data.description}
+                  pubDate={post.data.pubDate}
+                  slug={slug}
+                  categories={post.data.categories}
+                />
               );
             })}
-          </ul>
-        )
-      }
-    </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="newsletter-cta">
+          <div class="newsletter-cta__text">
+            <h2>Vous voulez aller plus loin ?</h2>
+            <p>
+              Chaque article de ce blog représente des dizaines d'heures d'expérience terrain.
+              Si vous souhaitez appliquer ces stratégies à votre site, parlons-en.
+            </p>
+          </div>
+          <div class="newsletter-cta__action">
+            <a href="/reserver-un-appel/" class="btn btn--primary">Réserver un appel gratuit</a>
+            <a href="/services/audit-seo/" class="btn btn--outline">Demander un audit SEO</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+  .blog-hero {
+    padding-top: var(--space-12);
+  }
+
+  .blog-hero__eyebrow {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-green);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  .blog-hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-5);
+  }
+
+  .blog-hero__lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    line-height: 1.8;
+    max-width: 680px;
+  }
+
+  /* Categories */
+  .section--compact {
+    padding-top: 0;
+    padding-bottom: var(--space-4);
+  }
+
+  .categories-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .categories-bar__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-muted);
+  }
+
+  .category-pill {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 100px;
+    font-size: var(--text-sm);
+    color: var(--color-charcoal);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .category-pill:hover {
+    background: var(--color-charcoal);
+    color: white;
+    border-color: var(--color-charcoal);
+  }
+
+  /* Articles grid */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .blog-empty {
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  /* Newsletter CTA */
+  .newsletter-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-8);
+    flex-wrap: wrap;
+  }
+
+  .newsletter-cta__text h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-3);
+  }
+
+  .newsletter-cta__text p {
+    color: var(--color-muted);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  .newsletter-cta__action {
+    display: flex;
+    gap: var(--space-3);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .newsletter-cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

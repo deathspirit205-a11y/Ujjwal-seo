@@ -1,0 +1,11 @@
+# robots.txt — Ujjwal SEO
+# Production domain: https://ujjwalseo.fr (configured in astro.config.mjs)
+
+User-agent: *
+Allow: /
+
+# Legal and privacy pages are crawlable but carry noindex meta tags.
+# They are intentionally excluded from the sitemap.
+# No Disallow needed: noindex is handled at the HTML level.
+
+Sitemap: https://ujjwalseo.fr/sitemap-index.xml

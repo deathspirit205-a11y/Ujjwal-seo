@@ -1,32 +1,645 @@
 ---
 /**
- * services/audit-seo.astro — Audit SEO service page (key conversion page)
+ * services/audit-seo.astro — Audit SEO service page (primary conversion page)
  * URL: /services/audit-seo/
- * Full content: Phase 6
+ * This is the main CTA destination from the homepage hero.
  */
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { buildTitle } from '../../utils/seo';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
 
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services/' },
   { label: 'Audit SEO', href: '/services/audit-seo/' },
 ];
+
+// Page-specific FAQ
+const faqItems = [
+  {
+    id: 'audit-duree',
+    question: 'Combien de temps prend la réalisation d\'un audit SEO ?',
+    answer:
+      'Cela dépend de la taille et de la complexité du site. Pour un site de 20 à 100 pages, comptez 7 à 10 jours ouvrés. Pour un site plus volumineux ou un secteur très concurrentiel, davantage de temps est nécessaire pour une analyse approfondie.',
+  },
+  {
+    id: 'audit-acces',
+    question: 'Que faut-il me fournir pour commencer ?',
+    answer:
+      'Un accès en lecture à Google Search Console et Google Analytics (si vous les utilisez) améliore sensiblement la qualité de l\'analyse. L\'audit peut cependant se dérouler sur la base du seul site public si vous ne disposez pas de ces accès ou préférez ne pas les partager.',
+  },
+  {
+    id: 'audit-implantation',
+    question: 'Puis-je implémenter les recommandations moi-même ?',
+    answer:
+      'Oui. Le rapport est conçu pour être compréhensible avec ou sans compétences techniques approfondies. Chaque recommandation est accompagnée d\'une explication, d\'un niveau de priorité et de son impact attendu. Certaines nécessitent un développeur, d\'autres sont accessibles directement.',
+  },
+  {
+    id: 'audit-apres',
+    question: 'Que se passe-t-il après l\'audit ?',
+    answer:
+      'Vous disposez d\'un plan d\'action concret. Vous pouvez le mettre en œuvre vous-même (avec votre équipe ou un développeur) ou opter pour un accompagnement SEO mensuel pour un suivi dans la durée. Il n\'y a pas d\'engagement automatique vers une prestation suivante.',
+  },
+  {
+    id: 'audit-garanties',
+    question: 'L\'audit inclut-il des garanties de résultats ?',
+    answer:
+      'Non. L\'audit diagnostique la situation et identifie les leviers d\'amélioration. Les résultats dépendent de l\'implémentation des recommandations, de la concurrence dans votre secteur et du comportement de l\'algorithme Google. Tout prestataire qui garantit des positions précises vous induit en erreur.',
+  },
+];
+
+// Service JSON-LD schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Audit SEO',
+  description:
+    'Analyse complète du référencement naturel d\'un site web : technique, architecture, contenu, mots-clés, concurrence. Livrable : rapport détaillé et plan d\'action priorisé.',
+  url: `${SITE_URL}/services/audit-seo/`,
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Rennes' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+    { '@type': 'AdministrativeArea', name: 'Bretagne' },
+    { '@type': 'Country', name: 'France' },
+  ],
+};
 ---
 
 <ServiceLayout
-  title={buildTitle('Audit SEO — Diagnostic complet de votre site web')}
-  description="Audit SEO complet : analyse technique, indexation, architecture, contenu, mots-clés, maillage interne et concurrents. Recevez un plan d'action clair et priorisé."
+  title={buildTitle('Audit SEO — Diagnostic complet de votre référencement')}
+  description="Audit SEO complet : analyse technique, indexation, architecture, contenu, mots-clés et concurrence. Recevez un rapport détaillé et un plan d'action priorisé. Consultant SEO Rennes."
   canonicalPath="/services/audit-seo/"
   breadcrumbs={breadcrumbs}
+  schema={serviceSchema}
 >
   <Header />
   <main id="main-content">
-    <h1>Audit SEO</h1>
-    <!-- Full content: Phase 6 -->
-    <p><em>Page en construction — Phase 6.</em></p>
+
+    <!-- ══ HERO ══ -->
+    <section class="service-hero section" aria-labelledby="page-heading">
+      <div class="container">
+        <div class="service-hero__content">
+          <p class="eyebrow">Service</p>
+          <h1 id="page-heading" class="service-hero__h1">
+            Audit SEO — Diagnostic complet de votre référencement
+          </h1>
+          <p class="lead">
+            Avant d'optimiser quoi que ce soit, il faut comprendre pourquoi votre site ne performe
+            pas comme vous le souhaitez. L'audit SEO pose cet état des lieux : une analyse structurée
+            qui identifie précisément ce qui freine votre visibilité et ce qui représente les meilleures
+            opportunités pour votre situation.
+          </p>
+          <a href="/reserver-un-appel/" class="btn btn--primary btn--lg">
+            Demander un audit SEO
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ POUR QUI ══ -->
+    <section class="section section--surface" aria-labelledby="pourqui-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Pour qui</p>
+          <h2 id="pourqui-heading">L'audit SEO est fait pour vous si…</h2>
+        </div>
+        <ul class="check-list" role="list">
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Votre site n'apparaît pas</strong> dans les premières positions pour vos mots-clés cibles, et vous ne savez pas pourquoi.
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Vous venez de lancer ou de refondre un site</strong> et vous voulez vérifier que les bases SEO sont correctes avant de publier du contenu.
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Vous avez déjà investi en SEO</strong> — en interne ou via une agence — sans résultats durables, et vous souhaitez un diagnostic indépendant.
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Votre trafic organique a chuté</strong> récemment (après une mise à jour Google, une migration de site, ou sans raison apparente).
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Vous préparez une refonte ou une migration</strong> et vous voulez vous assurer que vous ne perdrez pas votre référencement existant.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ══ CE QUE COMPREND L'AUDIT ══ -->
+    <section class="section" aria-labelledby="contenu-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Périmètre</p>
+          <h2 id="contenu-heading">Ce que comprend l'audit</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            L'audit couvre l'ensemble des dimensions du référencement naturel. Chaque point est
+            analysé en détail, avec une observation et une recommandation associée.
+          </p>
+        </div>
+
+        <div class="audit-grid">
+          <article class="audit-item">
+            <h3 class="audit-item__title">
+              <span class="audit-item__icon" aria-hidden="true">⚙️</span>
+              Analyse technique
+            </h3>
+            <p class="audit-item__desc">
+              Exploration complète du site pour détecter les erreurs d'indexation, les redirections
+              défaillantes, les pages en erreur (4xx, 5xx), les problèmes de canonical, de balises
+              noindex et de fichiers robots.txt.
+            </p>
+          </article>
+
+          <article class="audit-item">
+            <h3 class="audit-item__title">
+              <span class="audit-item__icon" aria-hidden="true">⚡</span>
+              Vitesse et Core Web Vitals
+            </h3>
+            <p class="audit-item__desc">
+              Mesure des indicateurs de performance définis par Google (LCP, INP, CLS) sur mobile
+              et desktop. Identification des facteurs qui ralentissent le rendu et dégradent
+              l'expérience utilisateur.
+            </p>
+          </article>
+
+          <article class="audit-item">
+            <h3 class="audit-item__title">
+              <span class="audit-item__icon" aria-hidden="true">🗂️</span>
+              Architecture et maillage interne
+            </h3>
+            <p class="audit-item__desc">
+              Analyse de la structure des URLs, de la profondeur de crawl, de la logique
+              thématique du site et des liens internes. Identification des opportunités pour
+              renforcer l'autorité des pages stratégiques.
+            </p>
+          </article>
+
+          <article class="audit-item">
+            <h3 class="audit-item__title">
+              <span class="audit-item__icon" aria-hidden="true">📝</span>
+              Contenu et balises
+            </h3>
+            <p class="audit-item__desc">
+              Revue des titres, méta descriptions, balises Hn, couverture des mots-clés et
+              alignement avec les intentions de recherche. Détection des doublons de contenu
+              et des pages à consolider ou à enrichir.
+            </p>
+          </article>
+
+          <article class="audit-item">
+            <h3 class="audit-item__title">
+              <span class="audit-item__icon" aria-hidden="true">🔍</span>
+              Analyse concurrentielle
+            </h3>
+            <p class="audit-item__desc">
+              Identification des principaux concurrents organiques sur vos mots-clés cibles.
+              Comparaison de votre positionnement, analyse des mots-clés où ils vous devancent
+              et des opportunités de différenciation.
+            </p>
+          </article>
+
+          <article class="audit-item">
+            <h3 class="audit-item__title">
+              <span class="audit-item__icon" aria-hidden="true">📊</span>
+              Google Search Console
+            </h3>
+            <p class="audit-item__desc">
+              Analyse des rapports de couverture d'index, des erreurs de crawl, des requêtes
+              existantes et des pages en perte de performance. Croisement avec les données
+              Analytics si disponibles.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ MÉTHODE ══ -->
+    <section class="section section--warm" aria-labelledby="methode-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Méthode</p>
+          <h2 id="methode-heading">Comment se déroule l'audit</h2>
+        </div>
+
+        <ol class="method-steps" role="list">
+          <li class="method-step">
+            <div class="method-step__number" aria-hidden="true">01</div>
+            <div class="method-step__body">
+              <h3 class="method-step__title">Échange initial</h3>
+              <p class="method-step__desc">
+                Un appel de 30 minutes pour comprendre vos objectifs, votre marché, vos concurrents
+                connus et les outils déjà en place (Analytics, Search Console). Cet échange permet
+                de calibrer l'analyse sur ce qui compte vraiment pour votre activité.
+              </p>
+            </div>
+          </li>
+          <li class="method-step">
+            <div class="method-step__number" aria-hidden="true">02</div>
+            <div class="method-step__body">
+              <h3 class="method-step__title">Analyse approfondie</h3>
+              <p class="method-step__desc">
+                Crawl complet du site, analyse manuelle des pages stratégiques, croisement avec
+                les données de Search Console et Analytics si disponibles, revue de la concurrence
+                organique. Durée : 7 à 14 jours selon la taille du site.
+              </p>
+            </div>
+          </li>
+          <li class="method-step">
+            <div class="method-step__number" aria-hidden="true">03</div>
+            <div class="method-step__body">
+              <h3 class="method-step__title">Rapport détaillé</h3>
+              <p class="method-step__desc">
+                Production d'un document structuré présentant l'ensemble des observations,
+                classées par catégorie et par niveau de priorité (critique / important / optimisation).
+                Chaque point est accompagné d'une explication et d'une recommandation actionnable.
+              </p>
+            </div>
+          </li>
+          <li class="method-step">
+            <div class="method-step__number" aria-hidden="true">04</div>
+            <div class="method-step__body">
+              <h3 class="method-step__title">Appel de restitution</h3>
+              <p class="method-step__desc">
+                Présentation des résultats (30 minutes), commentaires des points clés, réponses
+                à vos questions et définition ensemble des premières priorités. Le rapport
+                est disponible en format éditable pour vos annotations.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- ══ LIVRABLES ══ -->
+    <section class="section" aria-labelledby="livrables-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Livrables</p>
+          <h2 id="livrables-heading">Ce que vous recevez</h2>
+        </div>
+        <ul class="deliverables-list" role="list">
+          <li class="deliverable-item">
+            <span class="deliverable-item__icon" aria-hidden="true">📄</span>
+            <div>
+              <strong>Rapport SEO complet</strong> — Document structuré couvrant l'ensemble
+              du périmètre d'analyse, avec observations, explications et recommandations.
+            </div>
+          </li>
+          <li class="deliverable-item">
+            <span class="deliverable-item__icon" aria-hidden="true">✅</span>
+            <div>
+              <strong>Plan d'action priorisé</strong> — Classement des actions par urgence
+              et par impact : corrections immédiates, optimisations à court terme, opportunités
+              à moyen terme.
+            </div>
+          </li>
+          <li class="deliverable-item">
+            <span class="deliverable-item__icon" aria-hidden="true">📞</span>
+            <div>
+              <strong>Appel de restitution inclus</strong> — Présentation des résultats,
+              réponses à vos questions et recommandations sur les premières priorités.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ══ ÉTAPES SUIVANTES ══ -->
+    <section class="section section--surface" aria-labelledby="suite-heading">
+      <div class="container">
+        <div class="suite-grid">
+          <div>
+            <p class="eyebrow">Et après l'audit ?</p>
+            <h2 id="suite-heading">L'audit est un point de départ, pas une fin</h2>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed); margin-bottom: var(--space-6)">
+              Le rapport vous donne une vision claire de la situation. Ce qui compte ensuite,
+              c'est ce qu'on en fait. Si vous disposez d'un développeur et d'un rédacteur
+              en interne, vous pouvez implémenter les recommandations vous-même.
+            </p>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed)">
+              Si vous souhaitez un accompagnement dans la durée, l'audit sert naturellement
+              de point de départ à un suivi mensuel. Il n'y a pas d'engagement automatique :
+              c'est vous qui décidez de la suite.
+            </p>
+          </div>
+          <div class="suite-links">
+            <p class="suite-links__label">Services complémentaires</p>
+            <a href="/services/accompagnement-seo/" class="suite-link">
+              <span class="suite-link__title">Accompagnement SEO</span>
+              <span class="suite-link__desc">Implémenter les recommandations dans la durée</span>
+              <span class="suite-link__arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="/services/seo-technique/" class="suite-link">
+              <span class="suite-link__title">SEO Technique</span>
+              <span class="suite-link__desc">Si l'audit révèle des problèmes techniques importants</span>
+              <span class="suite-link__arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="/services/seo-on-page/" class="suite-link">
+              <span class="suite-link__title">SEO On-Page</span>
+              <span class="suite-link__desc">Optimiser le contenu et les balises de vos pages</span>
+              <span class="suite-link__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ FAQ ══ -->
+    <FAQ
+      items={faqItems}
+      heading="Questions fréquentes sur l'audit SEO"
+    />
+
+
+    <!-- ══ CTA FINAL ══ -->
+    <CTA
+      heading="Prêt à comprendre ce qui freine votre visibilité ?"
+      body="Premier échange de 30 minutes pour discuter de votre situation et préciser le périmètre de l'audit. Gratuit, sans engagement."
+      primaryCTA={{ label: 'Demander un audit SEO', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Voir tous les services', href: '/services/' }}
+      variant="dark"
+    />
+
   </main>
   <Footer />
 </ServiceLayout>
+
+<style>
+/* ══ SERVICE HERO ══ */
+.service-hero {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-12);
+}
+
+.service-hero__content {
+  max-width: 44rem;
+}
+
+.service-hero__h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-5);
+}
+
+/* ══ SHARED PROSE HEADER ══ */
+.prose-header {
+  max-width: 40rem;
+  margin-bottom: var(--space-10);
+}
+
+.prose-header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-top: var(--space-2);
+}
+
+/* ══ CHECK LIST ══ */
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 48rem;
+}
+
+.check-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-5);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+}
+
+.check-item__marker {
+  color: var(--color-accent);
+  font-weight: var(--weight-bold);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.check-item div {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.check-item strong {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
+/* ══ AUDIT GRID ══ */
+.audit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: var(--space-5);
+}
+
+.audit-item {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+  transition: border-color var(--transition-base);
+}
+
+.audit-item:hover {
+  border-color: var(--color-border);
+}
+
+.audit-item__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+}
+
+.audit-item__icon {
+  font-size: 1.1rem;
+}
+
+.audit-item__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ══ METHOD STEPS ══ */
+.method-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 48rem;
+}
+
+.method-step {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+}
+
+.method-step__number {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  width: 2.5rem;
+}
+
+.method-step__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.method-step__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ══ DELIVERABLES ══ */
+.deliverables-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 44rem;
+}
+
+.deliverable-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-5) var(--space-6);
+  border-left: 3px solid var(--color-accent);
+  background-color: var(--color-surface);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.deliverable-item__icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.deliverable-item div {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.deliverable-item strong {
+  color: var(--color-text);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+/* ══ SUITE / NEXT STEPS ══ */
+.suite-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .suite-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+.suite-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.suite-links__label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--space-2);
+}
+
+.suite-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0 var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  align-items: center;
+}
+
+.suite-link:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-surface);
+}
+
+.suite-link__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.suite-link__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.suite-link__arrow {
+  color: var(--color-accent);
+  grid-column: 2;
+  grid-row: 1 / 3;
+  font-size: 1.1rem;
+}
+</style>

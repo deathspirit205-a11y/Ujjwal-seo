@@ -2,31 +2,462 @@
 /**
  * services/seo-technique.astro — SEO Technique service page
  * URL: /services/seo-technique/
- * Full content: Phase 6
  */
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { buildTitle } from '../../utils/seo';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
 
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services/' },
   { label: 'SEO Technique', href: '/services/seo-technique/' },
 ];
+
+const faqItems = [
+  {
+    id: 'tech-dev',
+    question: 'Puis-je faire du SEO technique sans développeur ?',
+    answer:
+      'Certaines optimisations ne nécessitent pas de développeur : mise à jour de balises meta, amélioration de la structure de contenu, configuration d\'un plugin SEO sur WordPress. D\'autres, comme l\'amélioration des Core Web Vitals ou la correction de problèmes de serveur, demandent une intervention technique. Le rapport distingue clairement les deux catégories.',
+  },
+  {
+    id: 'tech-cms',
+    question: 'Mon site est sur WordPress / Shopify / Wix — est-ce compatible ?',
+    answer:
+      'Le SEO technique s\'applique à tous les CMS. Certaines optimisations sont plus directes sur WordPress (avec des plugins comme Yoast ou Rank Math) que sur des plateformes plus fermées comme Wix. J\'adapte les recommandations à votre environnement et à ce qui est réalisable dans votre contexte.',
+  },
+  {
+    id: 'tech-cwv',
+    question: 'Qu\'est-ce que les Core Web Vitals et est-ce vraiment important ?',
+    answer:
+      'Les Core Web Vitals (LCP, INP, CLS) sont des indicateurs de performance définis par Google pour mesurer l\'expérience utilisateur : vitesse d\'affichage, réactivité et stabilité visuelle. Depuis 2021, ils font partie des signaux de classement. Un mauvais score peut vous pénaliser par rapport à des concurrents mieux optimisés, notamment sur mobile.',
+  },
+  {
+    id: 'tech-priorite',
+    question: 'Faut-il commencer par le SEO technique ou par le contenu ?',
+    answer:
+      'La technique est le prérequis. Si Google ne peut pas explorer ou indexer correctement vos pages, travailler le contenu ne servira à rien. En pratique, la plupart des sites ont des problèmes des deux côtés : on commence par les problèmes techniques bloquants, puis on travaille le contenu en parallèle.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'SEO Technique',
+  description:
+    'Optimisation technique SEO : crawlabilité, indexation, Core Web Vitals, architecture, données structurées, redirections. Fondations techniques pour un référencement efficace.',
+  url: `${SITE_URL}/services/seo-technique/`,
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Rennes' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+    { '@type': 'AdministrativeArea', name: 'Bretagne' },
+    { '@type': 'Country', name: 'France' },
+  ],
+};
 ---
 
 <ServiceLayout
   title={buildTitle('SEO Technique — Optimisation technique de votre site web')}
-  description="Audit et optimisation technique SEO : crawlabilité, indexation, Core Web Vitals, architecture, maillage interne et données structurées pour améliorer votre référencement."
+  description="SEO technique : crawlabilité, indexation, Core Web Vitals, architecture, données structurées, redirections. Les fondations techniques d'un référencement durable. Consultant SEO Rennes."
   canonicalPath="/services/seo-technique/"
   breadcrumbs={breadcrumbs}
+  schema={serviceSchema}
 >
   <Header />
   <main id="main-content">
-    <h1>SEO Technique</h1>
-    <!-- Full content: Phase 6 -->
-    <p><em>Page en construction — Phase 6.</em></p>
+
+    <!-- ══ HERO ══ -->
+    <section class="service-hero section" aria-labelledby="page-heading">
+      <div class="container">
+        <div class="service-hero__content">
+          <p class="eyebrow">Service</p>
+          <h1 id="page-heading" class="service-hero__h1">
+            SEO Technique — Les fondations de votre référencement
+          </h1>
+          <p class="lead">
+            Un site peut avoir un excellent contenu et des mots-clés parfaitement ciblés —
+            et rester totalement invisible sur Google pour des raisons techniques. Si Google
+            ne peut pas explorer, comprendre et indexer vos pages correctement, aucune
+            stratégie éditoriale ne peut compenser.
+          </p>
+          <a href="/reserver-un-appel/" class="btn btn--primary btn--lg">
+            Réserver un appel
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ POURQUOI C'EST IMPORTANT ══ -->
+    <section class="section section--surface" aria-labelledby="pourquoi-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">L'essentiel</p>
+          <h2 id="pourquoi-heading">Pourquoi la technique est le prérequis</h2>
+        </div>
+        <div class="prose-split">
+          <div>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed)">
+              Google fonctionne en trois étapes : il explore votre site (crawl), il analyse et
+              stocke les pages (indexation), puis il les classe dans ses résultats. Un problème
+              à l'une de ces trois étapes empêche les suivantes de fonctionner correctement.
+            </p>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed); margin-top: var(--space-4)">
+              Le SEO technique s'assure que ces trois étapes se déroulent sans obstacle :
+              les bons robots peuvent explorer les bonnes pages, les bonnes pages sont indexées
+              (et seulement les bonnes), et le site envoie des signaux clairs sur son contenu
+              et sa structure.
+            </p>
+          </div>
+          <div>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed)">
+              C'est aussi la dimension SEO la plus directement liée à l'expérience utilisateur.
+              Un site lent, instable visuellement ou mal adapté au mobile pénalise à la fois
+              vos visiteurs et votre classement Google — notamment depuis l'introduction des
+              Core Web Vitals comme signal de ranking.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ DOMAINES ══ -->
+    <section class="section" aria-labelledby="domaines-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Périmètre d'intervention</p>
+          <h2 id="domaines-heading">Les domaines du SEO technique</h2>
+        </div>
+
+        <div class="domaines-grid">
+          <article class="domaine-item">
+            <div class="domaine-item__header">
+              <span class="domaine-item__icon" aria-hidden="true">🕷️</span>
+              <h3 class="domaine-item__title">Crawlabilité</h3>
+            </div>
+            <ul class="domaine-item__list">
+              <li>Fichier robots.txt et directives de crawl</li>
+              <li>Budget crawl et priorisation des pages</li>
+              <li>Détection des pages orphelines</li>
+              <li>Vérification des blocages involontaires</li>
+            </ul>
+          </article>
+
+          <article class="domaine-item">
+            <div class="domaine-item__header">
+              <span class="domaine-item__icon" aria-hidden="true">📋</span>
+              <h3 class="domaine-item__title">Indexation</h3>
+            </div>
+            <ul class="domaine-item__list">
+              <li>Sitemap XML (cohérence et fraîcheur)</li>
+              <li>Balises noindex et canonical</li>
+              <li>Pages indexées mais inutiles (duplication, thin content)</li>
+              <li>Contrôle de la Search Console (couverture d'index)</li>
+            </ul>
+          </article>
+
+          <article class="domaine-item">
+            <div class="domaine-item__header">
+              <span class="domaine-item__icon" aria-hidden="true">⚡</span>
+              <h3 class="domaine-item__title">Performance et Core Web Vitals</h3>
+            </div>
+            <ul class="domaine-item__list">
+              <li>LCP (Largest Contentful Paint — vitesse d'affichage)</li>
+              <li>INP (Interaction to Next Paint — réactivité)</li>
+              <li>CLS (Cumulative Layout Shift — stabilité visuelle)</li>
+              <li>Optimisation des images, scripts et polices</li>
+            </ul>
+          </article>
+
+          <article class="domaine-item">
+            <div class="domaine-item__header">
+              <span class="domaine-item__icon" aria-hidden="true">📱</span>
+              <h3 class="domaine-item__title">Mobile et accessibilité</h3>
+            </div>
+            <ul class="domaine-item__list">
+              <li>Compatibilité mobile (responsive design)</li>
+              <li>Vérification du rendu sur mobile via Search Console</li>
+              <li>Accessibilité de base (facteur indirect de ranking)</li>
+            </ul>
+          </article>
+
+          <article class="domaine-item">
+            <div class="domaine-item__header">
+              <span class="domaine-item__icon" aria-hidden="true">🔗</span>
+              <h3 class="domaine-item__title">URLs et redirections</h3>
+            </div>
+            <ul class="domaine-item__list">
+              <li>Structure et cohérence des URLs</li>
+              <li>Redirections 301 et chaînes de redirections</li>
+              <li>Gestion des erreurs 404 stratégiques</li>
+              <li>Canonicalisation HTTPS et www/non-www</li>
+            </ul>
+          </article>
+
+          <article class="domaine-item">
+            <div class="domaine-item__header">
+              <span class="domaine-item__icon" aria-hidden="true">🏷️</span>
+              <h3 class="domaine-item__title">Données structurées</h3>
+            </div>
+            <ul class="domaine-item__list">
+              <li>Vérification des schémas Schema.org existants</li>
+              <li>Identification des opportunités de balisage pertinent</li>
+              <li>Rich snippets : FAQ, articles, services, LocalBusiness</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ POUR QUI ══ -->
+    <section class="section section--warm" aria-labelledby="pourqui-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Pour qui</p>
+          <h2 id="pourqui-heading">Le SEO technique est particulièrement adapté si…</h2>
+        </div>
+        <ul class="check-list" role="list">
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Votre site a subi une migration ou une refonte récente</strong> et vous voulez vérifier que le référencement existant n'a pas été impacté.
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Google Search Console signale des erreurs</strong> d'exploration ou d'indexation que vous ne savez pas interpréter ou corriger.
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Votre site est lent sur mobile</strong> et vous soupçonnez que cela affecte vos positions.
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Vous développez un nouveau site</strong> et vous souhaitez intégrer les bonnes pratiques SEO dès la conception plutôt qu'après coup.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ══ RELATED ══ -->
+    <section class="section section--surface" aria-labelledby="related-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Services complémentaires</p>
+          <h2 id="related-heading">Technique et contenu : les deux piliers</h2>
+          <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed); margin-top: var(--space-4); max-width: 40rem">
+            Le SEO technique pose les fondations. Le SEO on-page assure ensuite que chaque
+            page répond précisément à une intention de recherche. Les deux sont nécessaires.
+          </p>
+        </div>
+        <div class="related-grid">
+          <a href="/services/audit-seo/" class="suite-link">
+            <span class="suite-link__title">Audit SEO</span>
+            <span class="suite-link__desc">Pour identifier l'ensemble des problèmes techniques en amont</span>
+            <span class="suite-link__arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/services/seo-on-page/" class="suite-link">
+            <span class="suite-link__title">SEO On-Page</span>
+            <span class="suite-link__desc">Une fois la technique en ordre, optimiser le contenu</span>
+            <span class="suite-link__arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/services/accompagnement-seo/" class="suite-link">
+            <span class="suite-link__title">Accompagnement SEO</span>
+            <span class="suite-link__desc">Suivi technique continu dans le cadre d'une mission mensuelle</span>
+            <span class="suite-link__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ FAQ ══ -->
+    <FAQ items={faqItems} heading="Questions fréquentes sur le SEO technique" />
+
+
+    <!-- ══ CTA ══ -->
+    <CTA
+      heading="Des bases techniques solides, c'est la condition de tout le reste."
+      body="Premier échange pour faire le point sur votre situation technique et identifier les priorités."
+      primaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Demander un audit SEO', href: '/services/audit-seo/' }}
+      variant="dark"
+    />
+
   </main>
   <Footer />
 </ServiceLayout>
+
+<style>
+.service-hero {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-12);
+}
+.service-hero__content {
+  max-width: 44rem;
+}
+.service-hero__h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+}
+.prose-header {
+  max-width: 40rem;
+  margin-bottom: var(--space-10);
+}
+.prose-header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-top: var(--space-2);
+}
+
+.prose-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+}
+@media (max-width: 768px) {
+  .prose-split { grid-template-columns: 1fr; }
+}
+
+/* ══ DOMAINES ══ */
+.domaines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-4);
+}
+.domaine-item {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+}
+.domaine-item__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.domaine-item__icon {
+  font-size: 1.25rem;
+}
+.domaine-item__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+}
+.domaine-item__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.domaine-item__list li {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  padding-left: var(--space-4);
+  position: relative;
+  line-height: var(--leading-relaxed);
+}
+.domaine-item__list li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+}
+
+/* ══ CHECK LIST ══ */
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 48rem;
+}
+.check-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-5);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+}
+.check-item__marker {
+  color: var(--color-accent);
+  font-weight: var(--weight-bold);
+  flex-shrink: 0;
+}
+.check-item div {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+.check-item strong {
+  color: var(--color-text);
+}
+
+/* ══ RELATED ══ */
+.related-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 40rem;
+}
+.suite-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0 var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  align-items: center;
+}
+.suite-link:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-surface);
+}
+.suite-link__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  grid-column: 1;
+  grid-row: 1;
+}
+.suite-link__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  grid-column: 1;
+  grid-row: 2;
+}
+.suite-link__arrow {
+  color: var(--color-accent);
+  grid-column: 2;
+  grid-row: 1 / 3;
+  font-size: 1.1rem;
+}
+</style>

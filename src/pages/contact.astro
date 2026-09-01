@@ -2,24 +2,231 @@
 /**
  * contact.astro — Contact page
  * URL: /contact/
- * Full content + form wiring: Phase 10
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { buildTitle } from '../utils/seo';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { buildTitle, SITE_URL } from '../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Contact', href: '/contact/' },
+];
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact — Ujjwal SEO',
+  description: 'Contactez Ujjwal Lage, consultant SEO indépendant à Rennes. Posez vos questions sur le référencement naturel.',
+  url: `${SITE_URL}/contact/`,
+  mainEntity: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+    telephone: '[PLACEHOLDER]',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Rennes',
+      addressRegion: 'Ille-et-Vilaine',
+      addressCountry: 'FR',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Rennes' },
+      { '@type': 'AdministrativeArea', name: 'Bretagne' },
+      { '@type': 'Country', name: 'France' },
+    ],
+  },
+};
+
+const infos = [
+  {
+    icon: '📍',
+    label: 'Localisation',
+    value: 'Rennes, Ille-et-Vilaine',
+    note: 'Interventions dans toute la Bretagne et en France',
+  },
+  {
+    icon: '⏱️',
+    label: 'Délai de réponse',
+    value: 'Sous 24–48 h',
+    note: 'Du lundi au vendredi',
+  },
+  {
+    icon: '📞',
+    label: 'Appel découverte',
+    value: '30 min, gratuit',
+    note: 'Sans engagement — réservez directement en ligne',
+  },
+];
 ---
 
 <BaseLayout
-  title={buildTitle('Contact — Ujjwal SEO')}
+  title={buildTitle('Contact — Parlez de votre projet SEO')}
   description="Contactez Ujjwal Lage, consultant SEO à Rennes. Posez vos questions, décrivez votre projet ou demandez un audit SEO. Réponse sous 48h."
   canonicalPath="/contact/"
+  schema={contactSchema}
 >
   <Header />
   <main id="main-content">
-    <h1>Contactez-moi</h1>
-    <!-- Full form and content: Phase 10 -->
-    <p><em>Page en construction — Phase 10.</em></p>
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="contact-section section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Left: info -->
+          <div class="contact-info">
+            <span class="contact-info__eyebrow">Contact</span>
+            <h1>Parlons de votre projet SEO</h1>
+            <p class="contact-info__lead">
+              Vous avez un projet, une question ou vous voulez simplement savoir ce que le SEO
+              peut apporter à votre entreprise ? Écrivez-moi — je réponds personnellement
+              à chaque message.
+            </p>
+
+            <ul class="contact-details">
+              {infos.map((info) => (
+                <li class="contact-detail">
+                  <span class="contact-detail__icon" aria-hidden="true">{info.icon}</span>
+                  <div class="contact-detail__text">
+                    <span class="contact-detail__label">{info.label}</span>
+                    <span class="contact-detail__value">{info.value}</span>
+                    <span class="contact-detail__note">{info.note}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div class="contact-booking-nudge">
+              <p>Préférez-vous un échange direct ?</p>
+              <a href="/reserver-un-appel/" class="btn btn--outline">
+                Réserver un appel de 30 min →
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: form -->
+          <div class="contact-form-wrapper">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+  .contact-section {
+    padding-top: var(--space-12);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  /* Info side */
+  .contact-info__eyebrow {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-green);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  .contact-info h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-5);
+    line-height: 1.2;
+  }
+
+  .contact-info__lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: var(--space-8);
+  }
+
+  .contact-details {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+  }
+
+  .contact-detail {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  .contact-detail__icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-detail__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .contact-detail__label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+  }
+
+  .contact-detail__value {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-charcoal);
+  }
+
+  .contact-detail__note {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .contact-booking-nudge {
+    padding: var(--space-5);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .contact-booking-nudge p {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  /* Form wrapper */
+  .contact-form-wrapper {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+  }
+</style>

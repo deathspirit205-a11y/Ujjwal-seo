@@ -1,32 +1,561 @@
 ---
 /**
- * services/accompagnement-seo.astro — Accompagnement SEO service page
+ * services/accompagnement-seo.astro — Accompagnement SEO mensuel
  * URL: /services/accompagnement-seo/
- * Full content: Phase 6
  */
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { buildTitle } from '../../utils/seo';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
 
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services/' },
   { label: 'Accompagnement SEO', href: '/services/accompagnement-seo/' },
 ];
+
+const faqItems = [
+  {
+    id: 'accomp-engagement',
+    question: 'Quelle est la durée minimale d\'engagement ?',
+    answer:
+      'Je travaille sur des missions d\'au minimum 3 mois. Le SEO produit des résultats sur des cycles longs : les premières améliorations peuvent apparaître dès 2 à 3 mois, mais des résultats significatifs et durables se construisent sur 6 à 12 mois. Un engagement plus court n\'est pas rentable pour vous.',
+  },
+  {
+    id: 'accomp-livrables',
+    question: 'Qu\'est-ce qui est inclus chaque mois ?',
+    answer:
+      'Le contenu varie selon les priorités définies ensemble en début de mission. En pratique, cela peut inclure des optimisations de pages existantes, la création de nouveaux contenus, des corrections techniques, le suivi des positions et un rapport mensuel. La répartition est ajustée chaque trimestre en fonction des données.',
+  },
+  {
+    id: 'accomp-resultats',
+    question: 'Comment sont mesurés les résultats ?',
+    answer:
+      'Via Google Search Console (positions, impressions, clics sur les requêtes ciblées), Google Analytics (trafic organique, comportement, conversions) et des outils de suivi de positions si pertinent. Un rapport mensuel synthétise les actions réalisées et les indicateurs clés.',
+  },
+  {
+    id: 'accomp-arret',
+    question: 'Que se passe-t-il si je veux arrêter ?',
+    answer:
+      'L\'accompagnement se structure par périodes définies, sans renouvellement automatique implicite. Avant chaque nouvelle période, nous faisons un bilan pour décider ensemble de la suite. Pas de reconduction forcée.',
+  },
+  {
+    id: 'accomp-audit',
+    question: 'Faut-il commencer par un audit avant l\'accompagnement ?',
+    answer:
+      'Si votre site n\'a jamais fait l\'objet d\'une analyse SEO, un audit est le point de départ idéal : il permet de poser un diagnostic clair et de définir une stratégie cohérente. Si un audit récent existe déjà, nous pouvons partir directement de ces données.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Accompagnement SEO',
+  description:
+    'Suivi SEO mensuel : optimisation continue, création de contenu, reporting, ajustement stratégique. Pour les entreprises qui souhaitent une croissance organique durable.',
+  url: `${SITE_URL}/services/accompagnement-seo/`,
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Rennes' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+    { '@type': 'AdministrativeArea', name: 'Bretagne' },
+    { '@type': 'Country', name: 'France' },
+  ],
+};
 ---
 
 <ServiceLayout
-  title={buildTitle('Accompagnement SEO — Suivi mensuel et stratégie continue')}
-  description="Accompagnement SEO mensuel : audit initial, stratégie, priorisation, implémentation, contenu, monitoring et itération. Le SEO est un travail continu, pas une action ponctuelle."
+  title={buildTitle('Accompagnement SEO — Stratégie et suivi mensuel')}
+  description="Accompagnement SEO mensuel : stratégie continue, optimisation de contenu, corrections techniques et reporting. Pour les entreprises qui veulent une visibilité organique durable. Rennes et Bretagne."
   canonicalPath="/services/accompagnement-seo/"
   breadcrumbs={breadcrumbs}
+  schema={serviceSchema}
 >
   <Header />
   <main id="main-content">
-    <h1>Accompagnement SEO</h1>
-    <!-- Full content: Phase 6 -->
-    <p><em>Page en construction — Phase 6.</em></p>
+
+    <!-- ══ HERO ══ -->
+    <section class="service-hero section" aria-labelledby="page-heading">
+      <div class="container">
+        <div class="service-hero__content">
+          <p class="eyebrow">Service</p>
+          <h1 id="page-heading" class="service-hero__h1">
+            Accompagnement SEO — Stratégie et suivi mensuel
+          </h1>
+          <p class="lead">
+            Le SEO n'est pas un projet avec une date de fin. Google évolue en permanence,
+            vos concurrents agissent, votre marché change. L'accompagnement SEO mensuel
+            vous assure une visibilité qui progresse régulièrement, avec un interlocuteur
+            dédié qui connaît votre site et votre secteur.
+          </p>
+          <a href="/reserver-un-appel/" class="btn btn--primary btn--lg">
+            Discuter de mon projet
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ POURQUOI L'ACCOMPAGNEMENT ══ -->
+    <section class="section section--surface" aria-labelledby="pourquoi-heading">
+      <div class="container">
+        <div class="accomp-intro-grid">
+          <div>
+            <p class="eyebrow">La réalité du SEO</p>
+            <h2 id="pourquoi-heading">Pourquoi le SEO demande un suivi continu</h2>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed); margin-top: var(--space-4)">
+              Un site optimisé une seule fois peut progresser initialement, puis stagner ou reculer.
+              Les mises à jour d'algorithme de Google sont fréquentes. Les concurrents publient du
+              contenu, acquièrent des liens, améliorent leur technique. Ce qui était suffisant hier
+              peut devenir insuffisant demain.
+            </p>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed); margin-top: var(--space-4)">
+              L'accompagnement SEO transforme le référencement en processus continu plutôt qu'en
+              projet ponctuel. Chaque mois, on analyse les données, on ajuste la stratégie et on
+              avance sur les priorités — avec une vision à long terme.
+            </p>
+          </div>
+          <div class="accomp-stat-block">
+            <div class="accomp-stat">
+              <span class="accomp-stat__label">Délai habituel pour les premiers résultats visibles</span>
+              <span class="accomp-stat__value">3 – 6 mois</span>
+              <span class="accomp-stat__note">selon la concurrence et l'état du site</span>
+            </div>
+            <div class="accomp-stat">
+              <span class="accomp-stat__label">Pour des résultats significatifs et durables</span>
+              <span class="accomp-stat__value">6 – 12 mois</span>
+              <span class="accomp-stat__note">de travail structuré et régulier</span>
+            </div>
+            <p class="accomp-stat-note">
+              Ces fourchettes reflètent les réalités du secteur SEO,
+              pas des résultats personnels garantis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ CE QUI EST FAIT CHAQUE MOIS ══ -->
+    <section class="section" aria-labelledby="mensuel-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Contenu de la mission</p>
+          <h2 id="mensuel-heading">Ce qui est travaillé chaque mois</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Les actions mensuelles sont définies ensemble au départ selon les priorités de votre site,
+            puis ajustées trimestriellement en fonction des données. La liste ci-dessous reflète
+            les domaines d'intervention habituels.
+          </p>
+        </div>
+
+        <div class="mensuel-grid">
+          <article class="mensuel-item">
+            <h3 class="mensuel-item__title">Optimisation de contenu</h3>
+            <p class="mensuel-item__desc">
+              Amélioration des pages existantes sous-performantes : structure, balises,
+              profondeur de contenu, alignement avec l'intention de recherche.
+            </p>
+          </article>
+          <article class="mensuel-item">
+            <h3 class="mensuel-item__title">Création de nouvelles pages</h3>
+            <p class="mensuel-item__desc">
+              Rédaction ou recommandation de contenus ciblant des requêtes à fort potentiel :
+              pages de services, pages locales, articles de fond.
+            </p>
+          </article>
+          <article class="mensuel-item">
+            <h3 class="mensuel-item__title">Suivi technique</h3>
+            <p class="mensuel-item__desc">
+              Détection et correction des problèmes techniques récurrents : erreurs d'indexation,
+              problèmes de performance, nouvelles erreurs Search Console.
+            </p>
+          </article>
+          <article class="mensuel-item">
+            <h3 class="mensuel-item__title">Suivi des positions</h3>
+            <p class="mensuel-item__desc">
+              Monitoring des mots-clés cibles et du trafic organique. Identification
+              des pages qui progressent, stagnent ou régressent.
+            </p>
+          </article>
+          <article class="mensuel-item">
+            <h3 class="mensuel-item__title">Veille concurrentielle</h3>
+            <p class="mensuel-item__desc">
+              Observation régulière des évolutions de vos concurrents organiques et
+              identification des nouvelles opportunités de positionnement.
+            </p>
+          </article>
+          <article class="mensuel-item">
+            <h3 class="mensuel-item__title">Rapport mensuel</h3>
+            <p class="mensuel-item__desc">
+              Synthèse des actions réalisées, des évolutions de trafic et de positions,
+              et des priorités du mois suivant.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ COMMENT ÇA SE PASSE ══ -->
+    <section class="section section--warm" aria-labelledby="deroulement-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Déroulement</p>
+          <h2 id="deroulement-heading">Comment se structure l'accompagnement</h2>
+        </div>
+
+        <ol class="method-steps" role="list">
+          <li class="method-step">
+            <div class="method-step__number" aria-hidden="true">01</div>
+            <div class="method-step__body">
+              <h3 class="method-step__title">Diagnostic initial</h3>
+              <p class="method-step__desc">
+                Si ce n'est pas déjà fait, une analyse de l'état actuel du site pose le point
+                de départ : ce qui fonctionne, ce qui pose problème, ce qui représente les
+                meilleures opportunités. Ce diagnostic oriente les priorités des premiers mois.
+              </p>
+            </div>
+          </li>
+          <li class="method-step">
+            <div class="method-step__number" aria-hidden="true">02</div>
+            <div class="method-step__body">
+              <h3 class="method-step__title">Définition de la stratégie</h3>
+              <p class="method-step__desc">
+                Identification des mots-clés prioritaires, des pages à créer ou optimiser,
+                et des objectifs trimestriels. La stratégie est partagée et validée ensemble
+                avant le démarrage.
+              </p>
+            </div>
+          </li>
+          <li class="method-step">
+            <div class="method-step__number" aria-hidden="true">03</div>
+            <div class="method-step__body">
+              <h3 class="method-step__title">Exécution mensuelle</h3>
+              <p class="method-step__desc">
+                Chaque mois, les actions définies sont réalisées selon les priorités.
+                Un point régulier (appel ou écrit) permet de maintenir la communication
+                et d'ajuster si nécessaire.
+              </p>
+            </div>
+          </li>
+          <li class="method-step">
+            <div class="method-step__number" aria-hidden="true">04</div>
+            <div class="method-step__body">
+              <h3 class="method-step__title">Révision trimestrielle</h3>
+              <p class="method-step__desc">
+                Tous les trois mois, bilan des résultats et révision de la stratégie.
+                La priorité entre contenu, technique et local peut évoluer au fil du temps
+                selon ce que les données montrent.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- ══ POUR QUI ══ -->
+    <section class="section section--surface" aria-labelledby="pourqui-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Pour qui</p>
+          <h2 id="pourqui-heading">L'accompagnement est adapté si…</h2>
+        </div>
+        <ul class="check-list" role="list">
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Vous souhaitez une croissance organique durable</strong> plutôt qu'une hausse de trafic payant qui s'arrête dès que vous coupez le budget.
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Vous n'avez pas de ressource SEO interne</strong> et vous avez besoin d'un expert qui prend en charge l'ensemble du sujet.
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Vous avez déjà essayé le SEO</strong> de manière ponctuelle, sans résultats durables, et vous comprenez maintenant que la régularité est clé.
+            </div>
+          </li>
+          <li class="check-item">
+            <span class="check-item__marker" aria-hidden="true">→</span>
+            <div>
+              <strong>Votre marché est concurrentiel</strong> et maintenir ou améliorer vos positions demande un travail continu plutôt qu'une intervention unique.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ══ RELATED ══ -->
+    <section class="section" aria-labelledby="related-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Services complémentaires</p>
+          <h2 id="related-heading">Pour bien démarrer</h2>
+        </div>
+        <div class="related-grid">
+          <a href="/services/audit-seo/" class="suite-link">
+            <span class="suite-link__title">Audit SEO</span>
+            <span class="suite-link__desc">Le point de départ si le site n'a jamais été analysé</span>
+            <span class="suite-link__arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/services/seo-local/" class="suite-link">
+            <span class="suite-link__title">SEO Local</span>
+            <span class="suite-link__desc">Intégrable dans un accompagnement pour les entreprises locales</span>
+            <span class="suite-link__arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/services/seo-technique/" class="suite-link">
+            <span class="suite-link__title">SEO Technique</span>
+            <span class="suite-link__desc">Souvent prioritaire lors des premiers mois d'accompagnement</span>
+            <span class="suite-link__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ FAQ ══ -->
+    <FAQ items={faqItems} heading="Questions fréquentes sur l'accompagnement SEO" />
+
+
+    <!-- ══ CTA ══ -->
+    <CTA
+      heading="Construisons votre visibilité organique dans la durée."
+      body="Un premier échange pour comprendre votre situation, vos objectifs et voir si un accompagnement mensuel correspond à ce dont vous avez besoin."
+      primaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Commencer par un audit', href: '/services/audit-seo/' }}
+      variant="dark"
+    />
+
   </main>
   <Footer />
 </ServiceLayout>
+
+<style>
+.service-hero {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-12);
+}
+.service-hero__content {
+  max-width: 44rem;
+}
+.service-hero__h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+}
+.prose-header {
+  max-width: 40rem;
+  margin-bottom: var(--space-10);
+}
+.prose-header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-top: var(--space-2);
+}
+
+/* ══ INTRO GRID ══ */
+.accomp-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .accomp-intro-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.accomp-stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.accomp-stat {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5) var(--space-6);
+  background-color: var(--color-surface-dark);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-inverse);
+}
+
+.accomp-stat__label {
+  font-size: var(--text-xs);
+  color: rgba(249,246,241,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-2);
+}
+
+.accomp-stat__value {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-accent-light);
+}
+
+.accomp-stat__note {
+  font-size: var(--text-xs);
+  color: rgba(249,246,241,0.5);
+  margin-top: var(--space-1);
+}
+
+.accomp-stat-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  font-style: italic;
+  line-height: var(--leading-relaxed);
+}
+
+/* ══ MENSUEL GRID ══ */
+.mensuel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-4);
+}
+.mensuel-item {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+}
+.mensuel-item__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+.mensuel-item__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ══ METHOD ══ */
+.method-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 48rem;
+}
+.method-step {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+}
+.method-step__number {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  width: 2.5rem;
+}
+.method-step__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+}
+.method-step__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ══ CHECK LIST ══ */
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 48rem;
+}
+.check-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-5);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+}
+.check-item__marker {
+  color: var(--color-accent);
+  font-weight: var(--weight-bold);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.check-item div {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+.check-item strong {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
+/* ══ RELATED ══ */
+.related-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 40rem;
+}
+.suite-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0 var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  align-items: center;
+}
+.suite-link:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-surface);
+}
+.suite-link__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  grid-column: 1;
+  grid-row: 1;
+}
+.suite-link__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  grid-column: 1;
+  grid-row: 2;
+}
+.suite-link__arrow {
+  color: var(--color-accent);
+  grid-column: 2;
+  grid-row: 1 / 3;
+  font-size: 1.1rem;
+}
+</style>

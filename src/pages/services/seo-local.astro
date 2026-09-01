@@ -2,31 +2,530 @@
 /**
  * services/seo-local.astro — SEO Local service page
  * URL: /services/seo-local/
- * Full content: Phase 6
  */
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { buildTitle } from '../../utils/seo';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
 
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services/' },
   { label: 'SEO Local', href: '/services/seo-local/' },
 ];
+
+const faqItems = [
+  {
+    id: 'local-difference',
+    question: 'Quelle différence entre le SEO local et le SEO classique ?',
+    answer:
+      'Le SEO local cible les requêtes géolocalisées (\"plombier Rennes\", \"avocat Bretagne\") et vise l\'apparition dans le Pack Local — les résultats avec la carte Google. Le SEO classique concerne les positions dans les résultats organiques standards. Les deux sont complémentaires mais utilisent des leviers différents.',
+  },
+  {
+    id: 'local-gbp',
+    question: 'Ai-je besoin d\'une fiche Google Business Profile ?',
+    answer:
+      'Oui. C\'est le levier le plus déterminant du SEO local. Sans fiche GBP complète et optimisée, vous n\'apparaissez pas dans les résultats de carte, quelle que soit la qualité de votre site. La fiche GBP est le point de départ obligatoire de toute stratégie locale.',
+  },
+  {
+    id: 'local-deplacement',
+    question: 'Cela fonctionne-t-il pour les prestataires qui se déplacent chez leurs clients ?',
+    answer:
+      'Oui. Google Business Profile permet de définir une zone de service (un rayon kilométrique ou une liste de villes) même sans adresse physique visible. C\'est adapté aux artisans, aux thérapeutes à domicile ou aux consultants qui n\'ont pas de locaux ouverts au public.',
+  },
+  {
+    id: 'local-delai',
+    question: 'Combien de temps avant d\'apparaître dans Google Maps ?',
+    answer:
+      'Plusieurs semaines à quelques mois selon la concurrence locale et l\'état de départ de votre présence. L\'optimisation de la fiche GBP produit souvent les premiers effets plus rapidement que le SEO organique classique, mais aucun délai précis ne peut être garanti.',
+  },
+  {
+    id: 'local-site',
+    question: 'Ai-je besoin d\'un site web pour faire du SEO local ?',
+    answer:
+      'Un site web renforce considérablement les résultats du SEO local, en particulier pour les requêtes hors carte (résultats organiques). Un GBP bien optimisé seul peut suffire pour certaines catégories d\'activité, mais la combinaison site + GBP est nettement plus efficace.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'SEO Local',
+  description:
+    'Optimisation du référencement local : Google Business Profile, citations, contenu géolocalisé pour apparaître dans les recherches locales et sur Google Maps.',
+  url: `${SITE_URL}/services/seo-local/`,
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Rennes' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+    { '@type': 'AdministrativeArea', name: 'Bretagne' },
+    { '@type': 'Country', name: 'France' },
+  ],
+};
 ---
 
 <ServiceLayout
   title={buildTitle('SEO Local — Référencement local à Rennes et en Bretagne')}
-  description="Service de référencement local : optimisation Google Business Profile, cohérence des informations, contenu local et visibilité dans les recherches géolocalisées."
+  description="SEO local : optimisez votre visibilité dans les recherches géolocalisées et Google Maps. Google Business Profile, citations locales, contenu de proximité. Consultant SEO Rennes."
   canonicalPath="/services/seo-local/"
   breadcrumbs={breadcrumbs}
+  schema={serviceSchema}
 >
   <Header />
   <main id="main-content">
-    <h1>SEO Local</h1>
-    <!-- Full content: Phase 6 -->
-    <p><em>Page en construction — Phase 6.</em></p>
+
+    <!-- ══ HERO ══ -->
+    <section class="service-hero section" aria-labelledby="page-heading">
+      <div class="container">
+        <div class="service-hero__content">
+          <p class="eyebrow">Service</p>
+          <h1 id="page-heading" class="service-hero__h1">
+            SEO Local — Référencement local à Rennes et en Bretagne
+          </h1>
+          <p class="lead">
+            Vous exercez dans une ville ou une zone géographique précise ? Le SEO local vous
+            permet d'apparaître lorsque des clients potentiels recherchent vos services près
+            de chez eux — sur Google Search et sur Google Maps. C'est un levier concret pour
+            les entreprises dont l'activité dépend d'une clientèle locale.
+          </p>
+          <a href="/reserver-un-appel/" class="btn btn--primary btn--lg">
+            Réserver un appel
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ QU'EST-CE QUE LE SEO LOCAL ══ -->
+    <section class="section section--surface" aria-labelledby="definition-heading">
+      <div class="container">
+        <div class="prose-split">
+          <div>
+            <p class="eyebrow">Comprendre</p>
+            <h2 id="definition-heading">Qu'est-ce que le SEO local ?</h2>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed); margin-top: var(--space-4)">
+              Lorsqu'un utilisateur tape "restaurant Rennes", "expert-comptable Bretagne" ou
+              "plombier urgence Saint-Malo", Google affiche en priorité un <strong>Pack Local</strong>
+              — un bloc de 3 entreprises avec une carte. Ces résultats sont distincts des positions
+              organiques classiques et obéissent à leurs propres règles d'optimisation.
+            </p>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed); margin-top: var(--space-4)">
+              Le SEO local optimise votre présence pour ces requêtes géolocalisées. Le levier
+              principal est la <strong>fiche Google Business Profile</strong>, complétée par
+              la cohérence de vos informations à travers les annuaires, et par du contenu
+              qui ancre votre entreprise dans son territoire.
+            </p>
+          </div>
+          <div class="local-highlight">
+            <p class="local-highlight__label">Requêtes locales typiques</p>
+            <ul class="local-queries">
+              <li>"consultant SEO Rennes"</li>
+              <li>"cabinet comptable Bretagne"</li>
+              <li>"photographe mariage Ille-et-Vilaine"</li>
+              <li>"restaurant gastronomique Rennes"</li>
+              <li>"plombier Cesson-Sévigné"</li>
+              <li>"kinésithérapeute près de moi"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ POUR QUI ══ -->
+    <section class="section" aria-labelledby="pourqui-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Pour qui</p>
+          <h2 id="pourqui-heading">Le SEO local convient si vous…</h2>
+        </div>
+        <div class="pourqui-grid">
+          <div class="pourqui-item">
+            <h3 class="pourqui-item__title">Recevez des clients physiquement</h3>
+            <p class="pourqui-item__desc">
+              Commerce, cabinet, restaurant, atelier — toute activité avec un lieu d'accueil
+              dépend directement de la visibilité locale.
+            </p>
+          </div>
+          <div class="pourqui-item">
+            <h3 class="pourqui-item__title">Intervenez dans une zone géographique</h3>
+            <p class="pourqui-item__desc">
+              Artisan, prestataire à domicile, consultant — vous ciblez une ville, un département
+              ou une région précise.
+            </p>
+          </div>
+          <div class="pourqui-item">
+            <h3 class="pourqui-item__title">Exercez une profession réglementée</h3>
+            <p class="pourqui-item__desc">
+              Médecin, avocat, architecte, expert-comptable — les recherches locales représentent
+              une part importante des nouvelles consultations.
+            </p>
+          </div>
+          <div class="pourqui-item">
+            <h3 class="pourqui-item__title">N'apparaissez pas dans Google Maps</h3>
+            <p class="pourqui-item__desc">
+              Votre fiche GBP est absente, incomplète ou mal optimisée — et vos concurrents
+              apparaissent à votre place.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ LEVIERS ══ -->
+    <section class="section section--warm" aria-labelledby="leviers-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Ce que j'optimise</p>
+          <h2 id="leviers-heading">Les leviers du SEO local</h2>
+        </div>
+
+        <div class="leviers-list">
+          <article class="levier-item">
+            <div class="levier-item__index" aria-hidden="true">01</div>
+            <div class="levier-item__body">
+              <h3 class="levier-item__title">Google Business Profile</h3>
+              <p class="levier-item__desc">
+                Optimisation complète de la fiche : catégories, description, horaires, services,
+                photos, attributs. La fiche GBP est le premier facteur de classement dans le Pack
+                Local — une fiche incomplète ou générique pénalise directement votre visibilité.
+              </p>
+            </div>
+          </article>
+
+          <article class="levier-item">
+            <div class="levier-item__index" aria-hidden="true">02</div>
+            <div class="levier-item__body">
+              <h3 class="levier-item__title">Cohérence NAP</h3>
+              <p class="levier-item__desc">
+                Vérification et harmonisation de vos informations (Nom, Adresse, Téléphone) à travers
+                les principaux annuaires en ligne — PagesJaunes, Yelp, Kompass, etc. Des informations
+                contradictoires entre sources affaiblissent la confiance de Google dans votre fiche.
+              </p>
+            </div>
+          </article>
+
+          <article class="levier-item">
+            <div class="levier-item__index" aria-hidden="true">03</div>
+            <div class="levier-item__body">
+              <h3 class="levier-item__title">Contenu local</h3>
+              <p class="levier-item__desc">
+                Création ou optimisation de pages de destination ciblant vos zones géographiques
+                et vos services locaux. Ces pages permettent d'apparaître dans les résultats organiques
+                complémentaires au Pack Local.
+              </p>
+            </div>
+          </article>
+
+          <article class="levier-item">
+            <div class="levier-item__index" aria-hidden="true">04</div>
+            <div class="levier-item__body">
+              <h3 class="levier-item__title">Données structurées locales</h3>
+              <p class="levier-item__desc">
+                Intégration du balisage Schema.org (LocalBusiness) sur votre site pour confirmer
+                à Google les informations de votre établissement et renforcer la cohérence entre
+                votre site et votre fiche GBP.
+              </p>
+            </div>
+          </article>
+
+          <article class="levier-item">
+            <div class="levier-item__index" aria-hidden="true">05</div>
+            <div class="levier-item__body">
+              <h3 class="levier-item__title">Suivi des positions locales</h3>
+              <p class="levier-item__desc">
+                Monitoring régulier de vos positions dans le Pack Local et les résultats organiques
+                locaux, sur mobile et desktop, pour identifier les évolutions et ajuster la stratégie.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ ZONES ══ -->
+    <section class="section section--surface" aria-labelledby="zones-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Zones d'intervention</p>
+          <h2 id="zones-heading">SEO local à Rennes, en Bretagne et en France</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Basé à Rennes, j'accompagne prioritairement les entreprises rennaises et bretonnes.
+            J'interviens également pour des clients hors Bretagne selon disponibilité.
+          </p>
+        </div>
+        <div class="zones-links">
+          <a href="/seo-rennes/" class="zone-link">
+            <strong>Consultant SEO Rennes</strong>
+            <span>Référencement local à Rennes et agglomération →</span>
+          </a>
+          <a href="/seo-bretagne/" class="zone-link">
+            <strong>Consultant SEO Bretagne</strong>
+            <span>Visibilité à l'échelle bretonne →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ RELATED SERVICES ══ -->
+    <section class="section" aria-labelledby="related-heading">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow">Services complémentaires</p>
+          <h2 id="related-heading">Le SEO local ne fonctionne pas seul</h2>
+          <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed); margin-top: var(--space-4); max-width: 40rem">
+            Une stratégie locale efficace s'appuie sur des fondations techniques solides
+            et, souvent, sur un accompagnement régulier pour maintenir et améliorer les positions.
+          </p>
+        </div>
+        <div class="related-grid">
+          <a href="/services/audit-seo/" class="suite-link">
+            <span class="suite-link__title">Audit SEO</span>
+            <span class="suite-link__desc">Diagnostic de votre présence locale actuelle</span>
+            <span class="suite-link__arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/services/seo-technique/" class="suite-link">
+            <span class="suite-link__title">SEO Technique</span>
+            <span class="suite-link__desc">Fondations techniques pour le référencement local</span>
+            <span class="suite-link__arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/services/accompagnement-seo/" class="suite-link">
+            <span class="suite-link__title">Accompagnement SEO</span>
+            <span class="suite-link__desc">Suivi mensuel pour consolider et progresser</span>
+            <span class="suite-link__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ FAQ ══ -->
+    <FAQ items={faqItems} heading="Questions fréquentes sur le SEO local" />
+
+
+    <!-- ══ CTA ══ -->
+    <CTA
+      heading="Votre entreprise mérite d'apparaître quand vos clients vous cherchent."
+      body="Discutons de votre situation locale et des leviers les plus pertinents pour votre activité. Premier échange gratuit."
+      primaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Demander un audit SEO', href: '/services/audit-seo/' }}
+      variant="dark"
+    />
+
   </main>
   <Footer />
 </ServiceLayout>
+
+<style>
+.service-hero {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-12);
+}
+.service-hero__content {
+  max-width: 44rem;
+}
+.service-hero__h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+}
+
+.prose-header {
+  max-width: 40rem;
+  margin-bottom: var(--space-10);
+}
+.prose-header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-top: var(--space-2);
+}
+
+/* ══ DEFINITION SPLIT ══ */
+.prose-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .prose-split {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.local-highlight {
+  background-color: var(--color-surface-dark);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  color: var(--color-text-inverse);
+}
+.local-highlight__label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-light);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-4);
+}
+.local-queries {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.local-queries li {
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-sm);
+  color: rgba(249,246,241,0.8);
+  padding: var(--space-2) var(--space-3);
+  background-color: rgba(255,255,255,0.06);
+  border-radius: var(--radius-sm);
+}
+
+/* ══ POUR QUI GRID ══ */
+.pourqui-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-4);
+}
+.pourqui-item {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+}
+.pourqui-item__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+}
+.pourqui-item__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ══ LEVIERS ══ */
+.leviers-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 52rem;
+}
+.levier-item {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+  padding: var(--space-6);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+}
+.levier-item__index {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  min-width: 2rem;
+}
+.levier-item__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+}
+.levier-item__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ══ ZONES ══ */
+.zones-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 36rem;
+}
+.zone-link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: border-color var(--transition-fast);
+}
+.zone-link:hover {
+  border-color: var(--color-accent);
+}
+.zone-link strong {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+}
+.zone-link span {
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+}
+
+/* ══ RELATED ══ */
+.related-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 40rem;
+}
+.suite-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0 var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  align-items: center;
+}
+.suite-link:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-surface);
+}
+.suite-link__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  grid-column: 1;
+  grid-row: 1;
+}
+.suite-link__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  grid-column: 1;
+  grid-row: 2;
+}
+.suite-link__arrow {
+  color: var(--color-accent);
+  grid-column: 2;
+  grid-row: 1 / 3;
+  font-size: 1.1rem;
+}
+</style>

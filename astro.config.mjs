@@ -10,6 +10,12 @@ export default defineConfig({
   output: 'static',
 
   integrations: [
-    sitemap(),
+    sitemap({
+      // Exclude pages marked noIndex — they carry noindex meta tags and
+      // should not appear in the sitemap (contradictory signals to Google).
+      filter: (page) =>
+        !page.includes('/mentions-legales/') &&
+        !page.includes('/politique-confidentialite/'),
+    }),
   ],
 });

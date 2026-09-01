@@ -2,7 +2,6 @@
 /**
  * blog/[...slug].astro — Dynamic blog article route
  * URL: /blog/[slug]/
- * Full design: Phase 9
  *
  * Uses Astro Content Layer API (v5+). Each markdown file in src/content/blog/
  * automatically generates a page at /blog/[filename-without-extension]/
@@ -10,13 +9,13 @@
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection, render } from 'astro:content';
+import { SITE_URL, buildTitle } from '../../utils/seo';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
-    // In Astro v5 Content Layer, entry.id is the file path relative to base
-    // Strip extension to get clean slug
     params: { slug: post.id.replace(/\.mdx?$/, '') },
     props: { post },
   }));
@@ -25,10 +24,46 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const slug = post.id.replace(/\.mdx?$/, '');
 const { Content } = await render(post);
+
+// Build related articles (same category, excluding current)
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const relatedPosts = allPosts
+  .filter(
+    (p) =>
+      p.id !== post.id &&
+      p.data.categories.some((c: string) => post.data.categories.includes(c))
+  )
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+// Service links map
+const serviceLinks: Record<string, { label: string; href: string }> = {
+  'seo-local': { label: 'SEO Local', href: '/services/seo-local/' },
+  'seo-technique': { label: 'SEO Technique', href: '/services/seo-technique/' },
+  'seo-on-page': { label: 'SEO On-Page', href: '/services/seo-on-page/' },
+  'audit-seo': { label: 'Audit SEO', href: '/services/audit-seo/' },
+  'accompagnement-seo': { label: 'Accompagnement SEO', href: '/services/accompagnement-seo/' },
+};
+
+const relatedServices = (post.data.relatedServices || [])
+  .map((id: string) => serviceLinks[id])
+  .filter(Boolean);
+
+const pubDateFormatted = new Intl.DateTimeFormat('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(post.data.pubDate);
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: post.data.title, href: `/blog/${slug}/` },
+];
 ---
 
 <BlogLayout
-  title={post.data.title}
+  title={buildTitle(post.data.title)}
   description={post.data.description}
   canonicalPath={`/blog/${slug}/`}
   pubDate={post.data.pubDate}
@@ -39,23 +74,587 @@ const { Content } = await render(post);
 >
   <Header />
   <main id="main-content">
-    <article class="blog-article">
-      <div class="container">
-        <header class="blog-article__header">
-          <h1>{post.data.title}</h1>
-          <p class="blog-article__description">{post.data.description}</p>
-          <time datetime={post.data.pubDate.toISOString()}>
-            {new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(post.data.pubDate)}
-          </time>
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="article-layout container">
+      <!-- Main content -->
+      <article class="article-main">
+        <header class="article-header">
+          <!-- Categories -->
+          {post.data.categories.length > 0 && (
+            <div class="article-categories">
+              {post.data.categories.map((cat: string) => (
+                <span class="article-category">{cat}</span>
+              ))}
+            </div>
+          )}
+
+          <h1 class="article-title">{post.data.title}</h1>
+          <p class="article-description">{post.data.description}</p>
+
+          <div class="article-meta">
+            <span class="article-meta__author">Par <strong>{post.data.author}</strong></span>
+            <span class="article-meta__sep">·</span>
+            <time class="article-meta__date" datetime={post.data.pubDate.toISOString()}>
+              {pubDateFormatted}
+            </time>
+            {post.data.updatedDate && (
+              <>
+                <span class="article-meta__sep">·</span>
+                <span class="article-meta__updated">
+                  Mis à jour le{' '}
+                  {new Intl.DateTimeFormat('fr-FR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  }).format(post.data.updatedDate)}
+                </span>
+              </>
+            )}
+          </div>
         </header>
 
-        <div class="blog-article__content prose">
+        <div class="article-body prose">
           <Content />
         </div>
 
-        <!-- Related articles and services: Phase 9 -->
-      </div>
-    </article>
+        <!-- Tags -->
+        {post.data.tags.length > 0 && (
+          <div class="article-tags">
+            <span class="article-tags__label">Mots-clés :</span>
+            {post.data.tags.map((tag: string) => (
+              <span class="article-tag">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <!-- Author box -->
+        <div class="author-box">
+          <div class="author-box__avatar" aria-hidden="true">UL</div>
+          <div class="author-box__content">
+            <p class="author-box__name">{post.data.author}</p>
+            <p class="author-box__bio">
+              Consultant SEO indépendant à Rennes, Ujjwal Lage accompagne les TPE et PME bretonnes
+              dans leur stratégie de référencement naturel. Il partage ici ses retours d'expérience
+              et ses méthodes de travail.
+            </p>
+            <a href="/a-propos/" class="author-box__link">En savoir plus →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="article-sidebar">
+        <!-- CTA -->
+        <div class="sidebar-cta">
+          <h2>Besoin d'aide pour votre SEO ?</h2>
+          <p>Discutons de votre projet lors d'un appel de 30 min gratuit et sans engagement.</p>
+          <a href="/reserver-un-appel/" class="btn btn--primary btn--full">Réserver un appel</a>
+          <a href="/contact/" class="btn btn--outline btn--full">Envoyer un message</a>
+        </div>
+
+        <!-- Related services -->
+        {relatedServices.length > 0 && (
+          <div class="sidebar-services">
+            <h3>Services associés</h3>
+            <ul>
+              {relatedServices.map((s: { label: string; href: string }) => (
+                <li>
+                  <a href={s.href} class="sidebar-service-link">{s.label} →</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <!-- Back to blog -->
+        <div class="sidebar-back">
+          <a href="/blog/" class="sidebar-back-link">← Retour au blog</a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Related articles -->
+    {relatedPosts.length > 0 && (
+      <section class="related-articles section section--alt">
+        <div class="container">
+          <h2 class="section-title">Articles similaires</h2>
+          <div class="related-grid">
+            {relatedPosts.map((p) => {
+              const relSlug = p.id.replace(/\.mdx?$/, '');
+              return (
+                <article class="related-card">
+                  {p.data.categories.length > 0 && (
+                    <span class="related-card__cat">{p.data.categories[0]}</span>
+                  )}
+                  <h3 class="related-card__title">
+                    <a href={`/blog/${relSlug}/`}>{p.data.title}</a>
+                  </h3>
+                  <p class="related-card__desc">{p.data.description}</p>
+                  <a href={`/blog/${relSlug}/`} class="related-card__cta">Lire l'article →</a>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    )}
   </main>
   <Footer />
 </BlogLayout>
+
+<style>
+  /* Layout */
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: var(--space-12);
+    align-items: start;
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-16);
+  }
+
+  /* Article header */
+  .article-categories {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .article-category {
+    background: rgba(79, 150, 100, 0.1);
+    color: var(--color-green);
+    border: 1px solid rgba(79, 150, 100, 0.3);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 100px;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .article-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    color: var(--color-charcoal);
+    line-height: 1.2;
+    margin-bottom: var(--space-4);
+  }
+
+  .article-description {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin-bottom: var(--space-5);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-8);
+    flex-wrap: wrap;
+  }
+
+  .article-meta__sep {
+    color: var(--color-border);
+  }
+
+  .article-meta strong {
+    color: var(--color-charcoal);
+  }
+
+  /* Prose styles for article body */
+  .article-body.prose {
+    color: var(--color-charcoal);
+    line-height: 1.85;
+    font-size: var(--text-base);
+  }
+
+  .article-body.prose :global(h2) {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    color: var(--color-charcoal);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .article-body.prose :global(h3) {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-charcoal);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+
+  .article-body.prose :global(h4) {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-charcoal);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+  }
+
+  .article-body.prose :global(p) {
+    margin-bottom: var(--space-5);
+    color: #374151;
+  }
+
+  .article-body.prose :global(ul),
+  .article-body.prose :global(ol) {
+    margin: var(--space-5) 0;
+    padding-left: var(--space-6);
+  }
+
+  .article-body.prose :global(li) {
+    margin-bottom: var(--space-2);
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .article-body.prose :global(strong) {
+    color: var(--color-charcoal);
+    font-weight: 600;
+  }
+
+  .article-body.prose :global(em) {
+    font-style: italic;
+    color: var(--color-muted);
+  }
+
+  .article-body.prose :global(a) {
+    color: var(--color-green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .article-body.prose :global(a:hover) {
+    text-decoration-thickness: 2px;
+  }
+
+  .article-body.prose :global(blockquote) {
+    border-left: 4px solid var(--color-green);
+    padding: var(--space-4) var(--space-6);
+    margin: var(--space-6) 0;
+    background: rgba(79, 150, 100, 0.05);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+
+  .article-body.prose :global(blockquote p) {
+    margin: 0;
+    font-style: italic;
+    color: var(--color-muted);
+  }
+
+  .article-body.prose :global(code) {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: 0.875em;
+    font-family: 'Courier New', monospace;
+    color: var(--color-charcoal);
+  }
+
+  .article-body.prose :global(pre) {
+    background: var(--color-charcoal);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    overflow-x: auto;
+    margin: var(--space-6) 0;
+  }
+
+  .article-body.prose :global(pre code) {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #e5e7eb;
+    font-size: var(--text-sm);
+  }
+
+  .article-body.prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-6) 0;
+    font-size: var(--text-sm);
+  }
+
+  .article-body.prose :global(th) {
+    background: var(--color-surface);
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-charcoal);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .article-body.prose :global(td) {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    color: #374151;
+    vertical-align: top;
+  }
+
+  .article-body.prose :global(tr:hover td) {
+    background: var(--color-surface);
+  }
+
+  .article-body.prose :global(hr) {
+    border: none;
+    border-top: 2px solid var(--color-border);
+    margin: var(--space-10) 0;
+  }
+
+  /* Tags */
+  .article-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .article-tags__label {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    font-weight: 500;
+  }
+
+  .article-tag {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 100px;
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+  }
+
+  /* Author box */
+  .author-box {
+    display: flex;
+    gap: var(--space-5);
+    align-items: flex-start;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-top: var(--space-10);
+  }
+
+  .author-box__avatar {
+    width: 60px;
+    height: 60px;
+    background: var(--color-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-base);
+    flex-shrink: 0;
+    font-family: var(--font-serif);
+  }
+
+  .author-box__name {
+    font-weight: 600;
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-2);
+  }
+
+  .author-box__bio {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin-bottom: var(--space-3);
+  }
+
+  .author-box__link {
+    font-size: var(--text-sm);
+    color: var(--color-green);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* Sidebar */
+  .article-sidebar {
+    position: sticky;
+    top: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .sidebar-cta {
+    background: var(--color-charcoal);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+
+  .sidebar-cta h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    color: white;
+    margin-bottom: var(--space-3);
+  }
+
+  .sidebar-cta p {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin-bottom: var(--space-5);
+  }
+
+  .sidebar-cta .btn {
+    margin-bottom: var(--space-2);
+  }
+
+  .btn--full {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+
+  .sidebar-cta .btn--outline {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .sidebar-cta .btn--outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .sidebar-services {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  .sidebar-services h3 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-4);
+  }
+
+  .sidebar-services ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .sidebar-service-link {
+    font-size: var(--text-sm);
+    color: var(--color-green);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .sidebar-service-link:hover {
+    text-decoration: underline;
+  }
+
+  .sidebar-back-link {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sidebar-back-link:hover {
+    color: var(--color-charcoal);
+  }
+
+  /* Related articles */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  .related-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .related-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .related-card__cat {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-green);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2);
+    display: block;
+  }
+
+  .related-card__title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: var(--space-3);
+  }
+
+  .related-card__title a {
+    color: var(--color-charcoal);
+    text-decoration: none;
+  }
+
+  .related-card__title a:hover {
+    color: var(--color-green);
+  }
+
+  .related-card__desc {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    flex-grow: 1;
+  }
+
+  .related-card__cta {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-green);
+    text-decoration: none;
+  }
+
+  .related-card__cta:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .article-sidebar {
+      position: static;
+      order: -1;
+    }
+  }
+</style>

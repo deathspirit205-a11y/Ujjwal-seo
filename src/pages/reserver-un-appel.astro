@@ -2,24 +2,348 @@
 /**
  * reserver-un-appel.astro — Booking page
  * URL: /reserver-un-appel/
- * Full content + booking embed: Phase 10
+ * Booking placeholder with clear Calendly/Cal.com integration point.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { buildTitle } from '../utils/seo';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import { buildTitle, SITE_URL } from '../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Réserver un appel', href: '/reserver-un-appel/' },
+];
+
+const bookingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Appel découverte SEO — 30 minutes gratuit',
+  description: 'Appel découverte de 30 minutes gratuit et sans engagement avec Ujjwal Lage, consultant SEO indépendant à Rennes.',
+  url: `${SITE_URL}/reserver-un-appel/`,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    description: 'Appel découverte gratuit de 30 minutes',
+  },
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+};
+
+const faqAppel = [
+  {
+    question: 'Cet appel est-il vraiment gratuit ?',
+    answer: 'Oui, sans aucune condition. L\'appel découverte de 30 minutes est gratuit et sans engagement. Vous n\'avez rien à acheter à l\'issue de l\'appel.',
+  },
+  {
+    question: 'Que se passe-t-il lors de l\'appel ?',
+    answer: 'On discute de votre activité, de votre site actuel, de vos objectifs de visibilité et de vos concurrents. J\'essaie de comprendre votre situation avant tout. À la fin, je vous donne un premier avis honnête sur ce que le SEO peut vous apporter.',
+  },
+  {
+    question: 'Devez-vous préparer quelque chose ?',
+    answer: 'Idéalement, ayez l\'URL de votre site sous la main et une idée de vos principaux concurrents. Mais ce n\'est pas obligatoire — on peut partir de zéro.',
+  },
+  {
+    question: 'Combien de temps dure l\'appel ?',
+    answer: '30 minutes. Ni plus, ni moins — sauf si on a beaucoup à creuser et que vous êtes disponible.',
+  },
+  {
+    question: 'Que se passe-t-il après l\'appel ?',
+    answer: 'Si votre projet correspond à ce que je fais, je vous envoie une proposition personnalisée sous 48h. Si je ne suis pas le bon prestataire pour vous, je vous le dis franchement.',
+  },
+];
+
+const etapes = [
+  { num: '01', title: 'Réservez un créneau', desc: 'Choisissez un horaire qui vous convient dans le calendrier ci-dessous.' },
+  { num: '02', title: 'Confirmez votre rendez-vous', desc: 'Vous recevrez une confirmation par e-mail avec le lien de la visioconférence.' },
+  { num: '03', title: 'On se parle 30 minutes', desc: 'Votre situation, vos objectifs, vos concurrents. Un échange direct, sans jargon.' },
+  { num: '04', title: 'Proposition sous 48h', desc: 'Si c\'est une bonne piste, je vous envoie une proposition SEO sur mesure.' },
+];
 ---
 
 <BaseLayout
-  title={buildTitle('Réserver un appel découverte — Ujjwal SEO')}
-  description="Réservez un appel découverte de 30 minutes avec Ujjwal Lage, consultant SEO à Rennes. Discutons de votre projet et de vos objectifs de visibilité."
+  title={buildTitle('Réserver un appel découverte — 30 min gratuit avec Ujjwal SEO')}
+  description="Réservez un appel découverte de 30 minutes avec Ujjwal Lage, consultant SEO à Rennes. Gratuit et sans engagement. On discute de votre projet et de vos objectifs SEO."
   canonicalPath="/reserver-un-appel/"
+  schema={bookingSchema}
 >
   <Header />
   <main id="main-content">
-    <h1>Réserver un appel découverte</h1>
-    <!-- Booking embed: Phase 10 -->
-    <p><em>Page en construction — Phase 10.</em></p>
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- Hero -->
+    <section class="booking-hero section">
+      <div class="container">
+        <div class="booking-hero__grid">
+          <div class="booking-hero__text">
+            <span class="booking-hero__badge">Gratuit · Sans engagement</span>
+            <h1>Réservez un appel<br />découverte de 30 minutes</h1>
+            <p class="booking-hero__lead">
+              Vous vous demandez si le SEO peut vraiment faire la différence pour votre entreprise ?
+              Discutons-en directement. 30 minutes, gratuit, sans engagement.
+            </p>
+            <ul class="booking-benefits">
+              <li>
+                <span aria-hidden="true">✓</span>
+                Bilan de votre situation SEO actuelle
+              </li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                Identification de vos opportunités les plus rapides
+              </li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                Réponses à toutes vos questions SEO
+              </li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                Proposition personnalisée si pertinent
+              </li>
+            </ul>
+          </div>
+
+          <div class="booking-hero__steps">
+            {etapes.map((e) => (
+              <div class="booking-step">
+                <span class="booking-step__num">{e.num}</span>
+                <div class="booking-step__content">
+                  <strong>{e.title}</strong>
+                  <p>{e.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking embed -->
+    <section class="booking-embed section section--alt">
+      <div class="container">
+        <h2 class="section-title">Choisissez un créneau</h2>
+        <div class="booking-embed__wrapper">
+          <!--
+            [PLACEHOLDER] Booking widget
+            Replace this placeholder with your actual booking embed:
+
+            Option A — Calendly:
+            <div class="calendly-inline-widget"
+              data-url="https://calendly.com/votre-compte/appel-decouverte"
+              style="min-width:320px;height:630px;">
+            </div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+            Option B — Cal.com:
+            <cal-inline calLink="votre-compte/appel-decouverte"></cal-inline>
+            <script async src="https://cdn.cal.com/embed.js"></script>
+
+            Option C — Link to external booking page:
+            <a href="https://calendly.com/votre-compte" class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">
+              Accéder au calendrier →
+            </a>
+          -->
+          <div class="booking-placeholder">
+            <div class="booking-placeholder__icon" aria-hidden="true">📅</div>
+            <h3>Calendrier de réservation</h3>
+            <p>
+              Le système de réservation sera intégré ici (Calendly, Cal.com ou équivalent).
+              En attendant, vous pouvez me contacter directement par e-mail.
+            </p>
+            <a href="/contact/" class="btn btn--primary">Me contacter par e-mail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Questions sur l'appel découverte</h2>
+        <FAQ items={faqAppel} />
+      </div>
+    </section>
+
+    <!-- Alternative contact -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="alt-contact">
+          <p class="alt-contact__text">
+            Vous préférez écrire plutôt qu'appeler ?
+          </p>
+          <a href="/contact/" class="btn btn--outline">Envoyer un message</a>
+        </div>
+      </div>
+    </section>
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+  /* Hero */
+  .booking-hero {
+    padding-top: var(--space-12);
+  }
+
+  .booking-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .booking-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: rgba(79, 150, 100, 0.1);
+    color: var(--color-green);
+    border: 1px solid rgba(79, 150, 100, 0.3);
+    padding: var(--space-2) var(--space-4);
+    border-radius: 100px;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-5);
+  }
+
+  .booking-hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    color: var(--color-charcoal);
+    line-height: 1.15;
+    margin-bottom: var(--space-5);
+  }
+
+  .booking-hero__lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: var(--space-6);
+  }
+
+  .booking-benefits {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .booking-benefits li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-base);
+    color: var(--color-charcoal);
+  }
+
+  .booking-benefits span {
+    color: var(--color-green);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* Steps */
+  .booking-hero__steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .booking-step {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+  }
+
+  .booking-step__num {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-green);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .booking-step__content strong {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-1);
+  }
+
+  .booking-step__content p {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Booking embed */
+  .booking-embed__wrapper {
+    margin-top: var(--space-8);
+  }
+
+  .booking-placeholder {
+    background: white;
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-16);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .booking-placeholder__icon {
+    font-size: 4rem;
+    opacity: 0.4;
+  }
+
+  .booking-placeholder h3 {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-charcoal);
+  }
+
+  .booking-placeholder p {
+    color: var(--color-muted);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  .btn--lg {
+    font-size: var(--text-lg);
+    padding: var(--space-4) var(--space-8);
+  }
+
+  /* Alt contact */
+  .alt-contact {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    justify-content: center;
+  }
+
+  .alt-contact__text {
+    color: var(--color-muted);
+    font-size: var(--text-base);
+  }
+
+  @media (max-width: 768px) {
+    .booking-hero__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
