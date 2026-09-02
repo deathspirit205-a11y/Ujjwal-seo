@@ -4,6 +4,9 @@
  * Accessible accordion using native <details>/<summary>.
  * Zero JavaScript — progressive enhancement.
  * Per spec §24: genuine questions and honest answers only.
+ *
+ * Also emits FAQPage JSON-LD structured data so Google can display
+ * FAQ rich results (collapsible Q&A) directly in SERPs.
  */
 export interface Props {
   items: Array<{ id: string; question: string; answer: string }>;
@@ -13,7 +16,24 @@ export interface Props {
 }
 
 const { items, heading = 'Questions fréquentes', showHeading = true } = Astro.props;
+
+// Build FAQPage schema from items
+// https://developers.google.com/search/docs/appearance/structured-data/faqpage
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <section class="faq" aria-labelledby={showHeading ? 'faq-heading' : undefined}>
   <div class="container">

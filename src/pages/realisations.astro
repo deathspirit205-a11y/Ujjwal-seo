@@ -10,11 +10,47 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CTA from '../components/CTA.astro';
-import { buildTitle } from '../utils/seo';
+import { buildTitle, SITE_URL } from '../utils/seo';
 
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
   { label: 'Réalisations', href: '/realisations/' },
+];
+
+// CollectionPage schema — portfolio/case studies page
+// https://schema.org/CollectionPage
+const realisationsSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Réalisations SEO — Ujjwal Lage',
+    description: 'Exemples de projets SEO réalisés par Ujjwal Lage : audits, optimisations techniques, SEO local et accompagnements pour des entreprises à Rennes et en Bretagne.',
+    url: `${SITE_URL}/realisations/`,
+    author: {
+      '@type': 'Person',
+      name: 'Ujjwal Lage',
+      url: `${SITE_URL}/a-propos/`,
+    },
+    inLanguage: 'fr',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Accueil',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Réalisations',
+        item: `${SITE_URL}/realisations/`,
+      },
+    ],
+  },
 ];
 
 // NOTE: Replace with real anonymized case studies when available.
@@ -47,6 +83,7 @@ const typesResultats = [
   title={buildTitle('Réalisations — Projets SEO de Ujjwal Lage')}
   description="Découvrez les projets SEO de Ujjwal Lage : audits, optimisations techniques, SEO local et accompagnements pour des entreprises à Rennes et en Bretagne."
   canonicalPath="/realisations/"
+  schema={realisationsSchema}
 >
   <Header />
   <main id="main-content">
