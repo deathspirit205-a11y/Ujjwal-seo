@@ -13,6 +13,8 @@ export interface Props {
   description: string;
   canonicalPath?: string;
   ogImage?: string;
+  /** Alt text for the OG image (accessibility for social sharing) */
+  ogImageAlt?: string;
   ogType?: 'website' | 'article';
   noIndex?: boolean;
   publishedTime?: string;
@@ -26,6 +28,7 @@ const {
   description,
   canonicalPath = Astro.url.pathname,
   ogImage = '/assets/og-default.jpg',
+  ogImageAlt = 'Ujjwal SEO — Consultant SEO indépendant à Rennes et en Bretagne',
   ogType = 'website',
   noIndex = false,
   publishedTime,
@@ -68,6 +71,9 @@ const schemaArray = schema
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:locale" content="fr_FR" />
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}

@@ -1,0 +1,172 @@
+---
+/**
+ * merci.astro — Contact form thank-you page
+ * URL: /merci/
+ * Shown after successful Netlify Forms submission (action="/merci/" on ContactForm).
+ * noIndex: true — this page should not appear in Google search results.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { buildTitle } from '../utils/seo';
+---
+
+<BaseLayout
+  title={buildTitle('Message envoyé — Merci !')}
+  description="Votre message a bien été reçu. Ujjwal Lage vous répondra sous 24 à 48 heures."
+  canonicalPath="/merci/"
+  noIndex={true}
+>
+  <Header />
+  <main id="main-content">
+    <section class="merci-section section">
+      <div class="container">
+        <div class="merci-card">
+
+          <div class="merci-card__icon" aria-hidden="true">✓</div>
+
+          <h1>Message bien reçu !</h1>
+
+          <p class="merci-card__lead">
+            Merci de m'avoir contacté. Je lis chaque message personnellement
+            et je vous répondrai <strong>sous 24 à 48 heures</strong> (du lundi au vendredi).
+          </p>
+
+          <div class="merci-card__steps">
+            <div class="merci-step">
+              <span class="merci-step__num">1</span>
+              <p>Votre message est dans ma boîte de réception.</p>
+            </div>
+            <div class="merci-step">
+              <span class="merci-step__num">2</span>
+              <p>Je l'analyse et prépare une réponse adaptée à votre situation.</p>
+            </div>
+            <div class="merci-step">
+              <span class="merci-step__num">3</span>
+              <p>Vous recevrez ma réponse par e-mail sous 24 à 48h.</p>
+            </div>
+          </div>
+
+          <div class="merci-card__cta">
+            <p>En attendant, vous pouvez aussi réserver un appel découverte de 30 minutes :</p>
+            <a href="/reserver-un-appel/" class="btn btn--primary">
+              Réserver un appel gratuit
+            </a>
+            <a href="/" class="btn btn--outline">
+              Retour à l'accueil
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .merci-section {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .merci-card {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .merci-card__icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    background: var(--color-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .merci-card h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-charcoal);
+    line-height: 1.2;
+  }
+
+  .merci-card__lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+
+  .merci-card__steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    width: 100%;
+    text-align: left;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+
+  .merci-step {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  .merci-step__num {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .merci-step p {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin-top: 0.2rem;
+  }
+
+  .merci-card__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .merci-card__cta p {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .merci-card__cta .btn {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    justify-content: center;
+  }
+</style>

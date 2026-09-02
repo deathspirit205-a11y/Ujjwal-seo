@@ -15,7 +15,8 @@ export default defineConfig({
       // should not appear in the sitemap (contradictory signals to Google).
       filter: (page) =>
         !page.includes('/mentions-legales/') &&
-        !page.includes('/politique-confidentialite/'),
+        !page.includes('/politique-confidentialite/') &&
+        !page.includes('/merci/'),
     }),
   ],
 });
