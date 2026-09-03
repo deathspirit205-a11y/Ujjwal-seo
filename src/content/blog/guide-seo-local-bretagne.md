@@ -1,6 +1,8 @@
 ---
 title: "SEO Local : le guide complet pour les entreprises bretonnes"
 description: "Tout ce que vous devez savoir sur le SEO local en Bretagne : Google Business Profile, citations locales, mots-clés géolocalisés et stratégies pour dominer les recherches de proximité."
+featuredImage: "/assets/blog/seo-local-bretagne.jpg"
+featuredImageAlt: "Carte de la Bretagne avec un pin de localisation sur Rennes pour le SEO local"
 pubDate: 2025-02-10
 author: "Ujjwal Lage"
 categories: ["SEO Local"]
