@@ -44,6 +44,38 @@ const infoLinks = [
         <a href="/reserver-un-appel/" class="btn btn--primary btn--sm">
           Réserver un appel
         </a>
+
+        <!-- Social media links -->
+        <div class="footer-social" aria-label="Réseaux sociaux">
+          <a
+            href="https://www.linkedin.com/in/ujjwal2050"
+            class="footer-social__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Suivre Ujjwal Lage sur LinkedIn"
+          >in</a>
+          <a
+            href="https://www.instagram.com/seo_ujjwalfr/"
+            class="footer-social__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Suivre sur Instagram"
+          >Ig</a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61589067783854"
+            class="footer-social__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Page Facebook Ujjwal SEO"
+          >Fb</a>
+          <a
+            href="https://wa.me/33757579666"
+            class="footer-social__link footer-social__link--wa"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contacter sur WhatsApp"
+          >WA</a>
+        </div>
       </div>
 
       <!-- Navigation columns -->
@@ -150,6 +182,48 @@ const infoLinks = [
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
   color: rgba(249, 246, 241, 0.65);
+}
+
+/* Social links row */
+.footer-social {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.footer-social__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgba(249, 246, 241, 0.2);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: rgba(249, 246, 241, 0.7);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background-color var(--transition-fast),
+              color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.footer-social__link:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+.footer-social__link--wa {
+  background-color: rgba(37, 211, 102, 0.15);
+  border-color: rgba(37, 211, 102, 0.3);
+  color: #25D366;
+}
+
+.footer-social__link--wa:hover {
+  background-color: #25D366;
+  color: white;
 }
 
 /* Nav columns */

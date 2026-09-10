@@ -153,14 +153,46 @@ const etapes = [
               Accéder au calendrier →
             </a>
           -->
-          <div class="booking-placeholder">
-            <div class="booking-placeholder__icon" aria-hidden="true">📅</div>
-            <h3>Calendrier de réservation</h3>
-            <p>
-              Le système de réservation sera intégré ici (Calendly, Cal.com ou équivalent).
-              En attendant, vous pouvez me contacter directement par e-mail.
-            </p>
-            <a href="/contact/" class="btn btn--primary">Me contacter par e-mail</a>
+          <!--
+            [FUTURE] Booking widget — replace the WhatsApp CTA below with:
+
+            Option A — Calendly:
+            <div class="calendly-inline-widget"
+              data-url="https://calendly.com/votre-compte/appel-decouverte"
+              style="min-width:320px;height:630px;">
+            </div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+            Option B — Cal.com:
+            <cal-inline calLink="votre-compte/appel-decouverte"></cal-inline>
+            <script async src="https://cdn.cal.com/embed.js"></script>
+          -->
+          <div class="booking-whatsapp">
+            <div class="booking-whatsapp__icon" aria-hidden="true">💬</div>
+            <div class="booking-whatsapp__content">
+              <h3>Réservez votre créneau via WhatsApp</h3>
+              <p>
+                Envoyez-moi un message WhatsApp pour fixer un créneau de 30 minutes qui vous convient.
+                Je vous réponds généralement dans la journée (lundi–vendredi).
+              </p>
+              <div class="booking-whatsapp__actions">
+                <a
+                  href="https://wa.me/33757579666?text=Bonjour%20Ujjwal%2C%20je%20souhaite%20r%C3%A9server%20un%20appel%20d%C3%A9couverte%20SEO."
+                  class="btn btn--primary btn--lg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ouvrir WhatsApp pour réserver un appel"
+                >
+                  <span aria-hidden="true">💬</span> Réserver via WhatsApp
+                </a>
+                <a href="/contact/" class="btn btn--outline">
+                  Préférer le formulaire de contact
+                </a>
+              </div>
+              <p class="booking-whatsapp__note">
+                📱 +33 7 57 57 96 66 · Réponse sous 24h en semaine
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -299,33 +331,66 @@ const etapes = [
     margin-top: var(--space-8);
   }
 
-  .booking-placeholder {
-    background: white;
-    border: 2px dashed var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: var(--space-16);
-    text-align: center;
+  .booking-whatsapp {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-10) var(--space-10);
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+  }
+
+  .booking-whatsapp__icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    line-height: 1;
+    padding-top: var(--space-1);
+  }
+
+  .booking-whatsapp__content {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: var(--space-4);
   }
 
-  .booking-placeholder__icon {
-    font-size: 4rem;
-    opacity: 0.4;
-  }
-
-  .booking-placeholder h3 {
+  .booking-whatsapp__content h3 {
     font-family: var(--font-serif);
-    font-size: var(--text-xl);
-    color: var(--color-charcoal);
+    font-size: var(--text-2xl);
+    color: var(--color-text);
+    line-height: 1.3;
   }
 
-  .booking-placeholder p {
-    color: var(--color-muted);
-    max-width: 480px;
+  .booking-whatsapp__content p {
+    color: var(--color-text-muted);
     line-height: 1.7;
+    max-width: 520px;
+  }
+
+  .booking-whatsapp__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .booking-whatsapp__note {
+    font-size: var(--text-sm) !important;
+    color: var(--color-text-subtle) !important;
+  }
+
+  @media (max-width: 600px) {
+    .booking-whatsapp {
+      flex-direction: column;
+    }
+    .booking-whatsapp__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .booking-whatsapp__actions .btn {
+      text-align: center;
+      justify-content: center;
+    }
   }
 
   .btn--lg {

@@ -21,6 +21,8 @@ export interface Props {
   modifiedTime?: string;
   /** JSON-LD structured data object(s) */
   schema?: object | object[];
+  /** Page author (renders meta name=author) */
+  author?: string;
 }
 
 const {
@@ -34,6 +36,7 @@ const {
   publishedTime,
   modifiedTime,
   schema,
+  author,
 } = Astro.props;
 
 const canonical = buildCanonical(canonicalPath);
@@ -50,6 +53,7 @@ const schemaArray = schema
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F9F6F1" />
 
     <!-- Google Fonts — Playfair Display (editorial serif) + Inter (modern sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,6 +68,7 @@ const schemaArray = schema
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    {author && <meta name="author" content={author} />}
 
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
