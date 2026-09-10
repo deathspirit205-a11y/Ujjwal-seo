@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   // Replace with final production domain before launch
-  site: 'https://ujjwalseo.fr',
+  site: 'https://ujjwalseo.com',
 
   output: 'static',
 

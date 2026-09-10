@@ -95,10 +95,11 @@ const outils = [
         <div class="about-hero__grid">
           <div class="about-hero__text">
             <span class="about-hero__eyebrow">À propos</span>
-            <h1>Ujjwal Lage<br /><span class="accent">Consultant SEO indépendant à Rennes</span></h1>
+            <h1>Ujjwal Lage<br /><span class="accent">Consultant SEO indépendant en Bretagne</span></h1>
             <p class="about-hero__lead">
-              J'aide les TPE et PME bretonnes à attirer plus de clients grâce au référencement naturel.
-              Pas de grands discours — juste une méthode rigoureuse, de la transparence et des résultats mesurables.
+              Un regard humain et une approche concrète du web.
+              J'aide les TPE, PME, artisans, commerçants et indépendants à développer
+              leur visibilité en ligne.
             </p>
             <div class="about-hero__actions">
               <a href="/reserver-un-appel/" class="btn btn--primary">Réserver un appel découverte</a>
@@ -106,10 +107,14 @@ const outils = [
             </div>
           </div>
           <div class="about-hero__portrait">
-            <div class="portrait-placeholder" aria-label="Photo de Ujjwal Lage">
-              <span class="portrait-placeholder__initials">UL</span>
-              <p class="portrait-placeholder__note">Photo à venir</p>
-            </div>
+            <img
+              src="/assets/ujjwal-lage-portrait.jpg"
+              alt="Ujjwal Lage — Consultant SEO indépendant en Bretagne"
+              width="400"
+              height="600"
+              loading="eager"
+              class="portrait-photo"
+            />
           </div>
         </div>
       </div>
@@ -122,38 +127,61 @@ const outils = [
           <div class="story-content">
             <h2>Mon parcours</h2>
             <p>
-              Passionné par le web et le marketing digital depuis mes études, j'ai développé
-              une expertise SEO au fil de missions pour des entreprises de tailles et de secteurs
-              très variés — e-commerce, services BtoB, artisanat, santé, tourisme.
+              Mon parcours est assez différent de celui d'un consultant SEO traditionnel.
+              Avant de me consacrer au web, j'ai travaillé plusieurs années dans le
+              <strong>tourisme, l'hôtellerie, la gestion de projets et l'accompagnement de clients</strong>.
+              Ces expériences m'ont appris une chose essentielle : derrière chaque recherche Google,
+              chaque visite sur un site et chaque demande de contact, il y a avant tout une personne.
             </p>
             <p>
-              Ce qui m'a frappé dans chacune de ces expériences, c'est le même constat :
-              beaucoup d'entreprises ont un excellent produit ou service, mais restent invisibles
-              sur Google. Leur site existe, mais personne ne le trouve.
+              Aujourd'hui, j'utilise cette expérience pour aider les TPE, PME, artisans,
+              commerçants, indépendants et professions libérales à développer leur visibilité en ligne.
+            </p>
+
+            <h2>Je privilégie le concret</h2>
+            <p>
+              Un site internet ne doit pas seulement être esthétique. Il doit être compréhensible,
+              rapide, accessible et pensé pour les personnes qui vont réellement l'utiliser.
+            </p>
+            <p>Mon travail associe :</p>
+            <ul>
+              <li>Création ou amélioration de sites web</li>
+              <li>Référencement naturel (SEO)</li>
+              <li>SEO local</li>
+              <li>Optimisation technique et des contenus</li>
+              <li>Structure et expérience utilisateur</li>
+              <li>Accompagnement personnalisé</li>
+            </ul>
+            <p>
+              Je prends le temps de comprendre votre activité, vos clients et vos objectifs
+              avant de proposer des solutions. L'objectif n'est pas de multiplier les fonctionnalités
+              ou de promettre des résultats irréalistes, mais de construire une présence en ligne
+              utile, crédible et durable.
+            </p>
+
+            <h2>Une collaboration simple et transparente</h2>
+            <p>
+              Je travaille directement avec mes clients, sans multiplier les intermédiaires.
+              Vous savez ce qui est réalisé, pourquoi c'est réalisé et quelles sont les prochaines étapes.
+              Lorsque quelque chose n'est pas nécessaire, je préfère le dire plutôt que de vous le vendre.
             </p>
             <p>
-              C'est ce gap que j'ai décidé de combler en me lançant à mon compte.
-              Basé à Rennes, je travaille avec des entreprises bretonnes qui veulent
-              une approche SEO sérieuse, sans jargon et sans promesses irréalistes.
-            </p>
-            <p>
-              Mon engagement : vous expliquer clairement ce que je fais, pourquoi je le fais,
-              et vous montrer les résultats chaque mois.
+              Votre site doit travailler pour votre activité, pas simplement exister sur internet.
             </p>
           </div>
           <div class="story-aside">
             <div class="info-card">
               <div class="info-card__item">
                 <span class="info-card__label">Localisation</span>
-                <span class="info-card__value">Rennes, Ille-et-Vilaine</span>
+                <span class="info-card__value">Bretagne (Ille-et-Vilaine)</span>
               </div>
               <div class="info-card__item">
                 <span class="info-card__label">Statut</span>
-                <span class="info-card__value">Consultant indépendant</span>
+                <span class="info-card__value">Micro-entreprise</span>
               </div>
               <div class="info-card__item">
                 <span class="info-card__label">Zones d'intervention</span>
-                <span class="info-card__value">Rennes · Bretagne · France</span>
+                <span class="info-card__value">Rennes · Vitré · La Guerche-de-Bretagne · Bretagne</span>
               </div>
               <div class="info-card__item">
                 <span class="info-card__label">Spécialités</span>
@@ -315,31 +343,14 @@ const outils = [
   }
 
   /* Portrait */
-  .portrait-placeholder {
-    width: 260px;
-    height: 320px;
-    background: linear-gradient(135deg, var(--color-surface) 0%, #e8e8e8 100%);
-    border-radius: var(--radius-xl);
-    border: 2px dashed var(--color-border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-3);
-  }
-
-  .portrait-placeholder__initials {
-    font-family: var(--font-serif);
-    font-size: 4rem;
-    font-weight: 700;
-    color: var(--color-green);
-    opacity: 0.6;
-  }
-
-  .portrait-placeholder__note {
-    font-size: var(--text-xs);
-    color: var(--color-muted);
-    opacity: 0.7;
+  .portrait-photo {
+    width: 280px;
+    height: 350px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius-lg);
+    border: 3px solid var(--color-border-light);
+    box-shadow: var(--shadow-md);
   }
 
   /* Story */
