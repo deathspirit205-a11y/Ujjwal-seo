@@ -106,16 +106,6 @@ const outils = [
               <a href="/contact/" class="btn btn--outline">Me contacter</a>
             </div>
           </div>
-          <div class="about-hero__portrait">
-            <img
-              src="/assets/ujjwal-lage-portrait.jpg"
-              alt="Ujjwal Lage — Consultant SEO indépendant en Bretagne"
-              width="400"
-              height="600"
-              loading="eager"
-              class="portrait-photo"
-            />
-          </div>
         </div>
       </div>
     </section>
@@ -297,10 +287,7 @@ const outils = [
   }
 
   .about-hero__grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: var(--space-12);
-    align-items: center;
+    max-width: 720px;
   }
 
   .about-hero__eyebrow {
@@ -342,16 +329,7 @@ const outils = [
     flex-wrap: wrap;
   }
 
-  /* Portrait */
-  .portrait-photo {
-    width: 280px;
-    height: 350px;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: var(--radius-lg);
-    border: 3px solid var(--color-border-light);
-    box-shadow: var(--shadow-md);
-  }
+
 
   /* Story */
   .story-grid {
@@ -550,11 +528,7 @@ const outils = [
 
   @media (max-width: 900px) {
     .about-hero__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .about-hero__portrait {
-      display: none;
+      max-width: 100%;
     }
 
     .story-grid {

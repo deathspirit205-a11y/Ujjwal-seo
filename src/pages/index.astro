@@ -346,11 +346,15 @@ const websiteSchema = {
           </div>
 
           <div class="about-intro__visual">
-            <div class="about-intro__portrait-placeholder" aria-hidden="true">
-              <!-- Portrait photo: à ajouter — spec §47 -->
-              <div class="portrait-placeholder__inner">
-                <span>Photo à venir</span>
-              </div>
+            <div class="about-intro__portrait">
+              <img
+                src="/assets/ujjwal-lage-homepage.jpg"
+                alt="Ujjwal Lage — Consultant SEO indépendant en Bretagne"
+                width="682"
+                height="1024"
+                loading="lazy"
+                class="about-intro__portrait-img"
+              />
             </div>
             <div class="about-intro__card">
               <p class="about-intro__card-quote">
@@ -752,28 +756,25 @@ const websiteSchema = {
   line-height: var(--leading-relaxed);
 }
 
-/* Portrait placeholder — replaced with real photo in Phase 8 */
+/* Portrait photo */
 .about-intro__visual {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
 }
 
-.about-intro__portrait-placeholder {
+.about-intro__portrait {
   aspect-ratio: 3 / 4;
-  background-color: var(--color-surface-warm);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
-.portrait-placeholder__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.about-intro__portrait-img {
+  width: 100%;
   height: 100%;
-  font-size: var(--text-sm);
-  color: var(--color-text-subtle);
+  object-fit: cover;
+  display: block;
 }
 
 .about-intro__card {
