@@ -120,29 +120,81 @@ const websiteSchema = {
     ══════════════════════════════════════ -->
     <section class="home-hero" aria-labelledby="hero-heading">
       <div class="container">
-        <div class="home-hero__content">
-          <p class="eyebrow">Consultant SEO indépendant</p>
-          <h1 class="home-hero__heading" id="hero-heading">
-            Consultant SEO à<br />
-            <em>Rennes</em> et en <em>Bretagne</em>
-          </h1>
-          <p class="home-hero__lead lead">
-            Améliorez votre visibilité sur Google grâce à une stratégie SEO claire,
-            technique et adaptée à votre activité. SEO local, SEO technique,
-            optimisation on-page et accompagnement pour les entreprises à Rennes et en Bretagne.
-          </p>
-          <div class="home-hero__actions">
-            <a href="/services/audit-seo/" class="btn btn--primary btn--lg">
-              Demander un audit SEO
-            </a>
-            <a href="/reserver-un-appel/" class="btn btn--secondary btn--lg">
-              Réserver un appel
-            </a>
+        <div class="home-hero__grid">
+          <div class="home-hero__content">
+            <p class="eyebrow">Consultant SEO indépendant</p>
+            <h1 class="home-hero__heading" id="hero-heading">
+              Consultant SEO à<br />
+              <em>Rennes</em> et en <em>Bretagne</em>
+            </h1>
+            <p class="home-hero__lead lead">
+              Améliorez votre visibilité sur Google grâce à une stratégie SEO claire,
+              technique et adaptée à votre activité. SEO local, SEO technique,
+              optimisation on-page et accompagnement pour les entreprises à Rennes et en Bretagne.
+            </p>
+            <div class="home-hero__actions">
+              <a href="/services/audit-seo/" class="btn btn--primary btn--lg">
+                Demander un audit SEO
+              </a>
+              <a href="/reserver-un-appel/" class="btn btn--secondary btn--lg">
+                Réserver un appel
+              </a>
+            </div>
+            <div class="home-hero__trust">
+              <span class="trust-item">✓ Sans jargon inutile</span>
+              <span class="trust-item">✓ Approche orientée résultats</span>
+              <span class="trust-item">✓ Premier échange gratuit</span>
+            </div>
           </div>
-          <div class="home-hero__trust">
-            <span class="trust-item">✓ Sans jargon inutile</span>
-            <span class="trust-item">✓ Approche orientée résultats</span>
-            <span class="trust-item">✓ Premier échange gratuit</span>
+
+          <!-- Decorative SEO animation -->
+          <div class="hero-anim" aria-hidden="true">
+            <svg viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-anim__svg">
+              <!-- Search bar -->
+              <rect class="anim-searchbar" x="30" y="28" width="260" height="40" rx="20" stroke="var(--color-accent)" stroke-width="1.5" fill="rgba(43,107,78,0.06)" />
+              <circle cx="58" cy="48" r="10" stroke="var(--color-accent)" stroke-width="1.5" fill="none" />
+              <line x1="65" y1="55" x2="72" y2="62" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" />
+              <rect x="82" y="43" width="80" height="6" rx="3" fill="var(--color-accent)" opacity="0.2" />
+
+              <!-- Result rows -->
+              <g class="anim-result anim-result--1">
+                <rect x="30" y="88" width="260" height="48" rx="8" fill="rgba(43,107,78,0.08)" stroke="var(--color-accent)" stroke-width="1" />
+                <rect x="48" y="100" width="120" height="6" rx="3" fill="var(--color-accent)" opacity="0.5" />
+                <rect x="48" y="112" width="180" height="4" rx="2" fill="var(--color-text)" opacity="0.12" />
+                <rect x="48" y="120" width="140" height="4" rx="2" fill="var(--color-text)" opacity="0.08" />
+                <text x="258" y="110" font-size="11" font-weight="600" fill="var(--color-accent)" text-anchor="middle">#1</text>
+              </g>
+
+              <g class="anim-result anim-result--2">
+                <rect x="30" y="148" width="260" height="44" rx="8" fill="rgba(27,27,25,0.03)" stroke="var(--color-border-light)" stroke-width="1" />
+                <rect x="48" y="160" width="100" height="5" rx="2.5" fill="var(--color-text)" opacity="0.15" />
+                <rect x="48" y="170" width="160" height="4" rx="2" fill="var(--color-text)" opacity="0.08" />
+              </g>
+
+              <g class="anim-result anim-result--3">
+                <rect x="30" y="202" width="260" height="44" rx="8" fill="rgba(27,27,25,0.02)" stroke="var(--color-border-light)" stroke-width="1" />
+                <rect x="48" y="214" width="110" height="5" rx="2.5" fill="var(--color-text)" opacity="0.12" />
+                <rect x="48" y="224" width="150" height="4" rx="2" fill="var(--color-text)" opacity="0.06" />
+              </g>
+
+              <!-- Optimization nodes -->
+              <g class="anim-nodes">
+                <line x1="160" y1="262" x2="100" y2="300" stroke="var(--color-accent)" stroke-width="1" opacity="0.3" stroke-dasharray="4 3" />
+                <line x1="160" y1="262" x2="220" y2="300" stroke="var(--color-accent)" stroke-width="1" opacity="0.3" stroke-dasharray="4 3" />
+                <line x1="100" y1="300" x2="160" y2="330" stroke="var(--color-accent)" stroke-width="1" opacity="0.2" stroke-dasharray="4 3" />
+                <line x1="220" y1="300" x2="160" y2="330" stroke="var(--color-accent)" stroke-width="1" opacity="0.2" stroke-dasharray="4 3" />
+                <circle class="anim-node anim-node--1" cx="160" cy="262" r="5" fill="var(--color-accent)" opacity="0.6" />
+                <circle class="anim-node anim-node--2" cx="100" cy="300" r="4" fill="var(--color-accent)" opacity="0.4" />
+                <circle class="anim-node anim-node--3" cx="220" cy="300" r="4" fill="var(--color-accent)" opacity="0.4" />
+                <circle class="anim-node anim-node--4" cx="160" cy="330" r="3.5" fill="var(--color-accent)" opacity="0.3" />
+              </g>
+
+              <!-- Upward arrow -->
+              <g class="anim-arrow">
+                <line x1="270" y1="260" x2="270" y2="100" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.35" />
+                <polyline points="262,110 270,96 278,110" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />
+              </g>
+            </svg>
           </div>
         </div>
       </div>
@@ -575,6 +627,13 @@ const websiteSchema = {
   z-index: 1;
 }
 
+.home-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-12);
+  align-items: center;
+}
+
 .home-hero__content {
   max-width: 48rem;
 }
@@ -618,10 +677,113 @@ const websiteSchema = {
   color: var(--color-text-subtle);
 }
 
+/* Hero animation */
+.hero-anim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-anim__svg {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* Search bar fade in */
+.anim-searchbar {
+  animation: anim-fadeSlideDown 1s ease-out 0.3s both;
+}
+
+/* Result rows stagger in and first one rises */
+.anim-result--1 {
+  animation: anim-fadeIn 0.8s ease-out 0.8s both, anim-riseToTop 3s ease-in-out 2s infinite alternate;
+}
+.anim-result--2 {
+  animation: anim-fadeIn 0.8s ease-out 1.1s both;
+}
+.anim-result--3 {
+  animation: anim-fadeIn 0.8s ease-out 1.4s both;
+}
+
+/* Nodes pulse */
+.anim-node--1 { animation: anim-pulse 3s ease-in-out 1.8s infinite; }
+.anim-node--2 { animation: anim-pulse 3s ease-in-out 2.2s infinite; }
+.anim-node--3 { animation: anim-pulse 3s ease-in-out 2.6s infinite; }
+.anim-node--4 { animation: anim-pulse 3s ease-in-out 3.0s infinite; }
+
+/* Arrow subtle drift up */
+.anim-arrow {
+  animation: anim-fadeIn 1s ease-out 1.6s both, anim-driftUp 4s ease-in-out 2s infinite alternate;
+}
+
+@keyframes anim-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes anim-fadeSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes anim-riseToTop {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes anim-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 0.8; transform: scale(1.3); }
+}
+
+@keyframes anim-driftUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .anim-searchbar,
+  .anim-result--1,
+  .anim-result--2,
+  .anim-result--3,
+  .anim-node--1,
+  .anim-node--2,
+  .anim-node--3,
+  .anim-node--4,
+  .anim-arrow {
+    animation: none !important;
+    opacity: 1;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .home-hero__grid {
+    grid-template-columns: 1fr 240px;
+    gap: var(--space-8);
+  }
+  .hero-anim__svg {
+    max-width: 240px;
+  }
+}
+
 @media (max-width: 480px) {
   .home-hero {
     padding-top: var(--space-16);
     padding-bottom: var(--space-12);
+  }
+  .home-hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-anim {
+    max-width: 260px;
+    margin: var(--space-6) auto 0;
+  }
+  .hero-anim__svg {
+    max-width: 260px;
   }
   .home-hero__actions {
     flex-direction: column;
