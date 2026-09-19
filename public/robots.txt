@@ -1,5 +1,5 @@
 # robots.txt — Ujjwal SEO
-# Production domain: https://ujjwalseo.fr (configured in astro.config.mjs)
+# Production domain: https://ujjwalseo.com (configured in astro.config.mjs)
 
 User-agent: *
 Allow: /
@@ -8,4 +8,4 @@ Allow: /
 # They are intentionally excluded from the sitemap.
 # No Disallow needed: noindex is handled at the HTML level.
 
-Sitemap: https://ujjwalseo.fr/sitemap-index.xml
+Sitemap: https://ujjwalseo.com/sitemap-index.xml
