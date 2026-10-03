@@ -5,7 +5,6 @@
  * Extends BaseLayout.
  */
 import BaseLayout from './BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import type { Props as BaseProps } from './BaseLayout.astro';
 
 export interface Props extends BaseProps {
@@ -36,10 +35,5 @@ const schemas = [
 ---
 
 <BaseLayout {...baseProps} schema={schemas}>
-  {breadcrumbs.length > 0 && (
-    <div class="container">
-      <Breadcrumbs items={breadcrumbs} />
-    </div>
-  )}
   <slot />
 </BaseLayout>

@@ -80,8 +80,6 @@ const etapes = [
 >
   <Header />
   <main id="main-content">
-    <Breadcrumbs items={breadcrumbs} />
-
     <!-- Hero -->
     <section class="booking-hero section">
       <div class="container">
@@ -127,6 +125,8 @@ const etapes = [
         </div>
       </div>
     </section>
+
+    <Breadcrumbs items={breadcrumbs} />
 
     <!-- Booking embed -->
     <section class="booking-embed section section--alt">
@@ -224,7 +224,10 @@ const etapes = [
 <style>
   /* Hero */
   .booking-hero {
-    padding-top: var(--space-12);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+    background: linear-gradient(150deg, var(--color-navy, #1a2744) 0%, #111a2e 100%);
+    color: var(--color-bg);
   }
 
   .booking-hero__grid {
@@ -238,9 +241,9 @@ const etapes = [
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    background: rgba(79, 150, 100, 0.1);
-    color: var(--color-accent);
-    border: 1px solid rgba(79, 150, 100, 0.3);
+    background: rgba(93, 187, 119, 0.15);
+    color: #8ce1a3;
+    border: 1px solid rgba(93, 187, 119, 0.3);
     padding: var(--space-2) var(--space-4);
     border-radius: 100px;
     font-size: var(--text-sm);
@@ -251,14 +254,14 @@ const etapes = [
   .booking-hero h1 {
     font-family: var(--font-serif);
     font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-    color: var(--color-text);
+    color: #F9F6F1;
     line-height: 1.15;
     margin-bottom: var(--space-5);
   }
 
   .booking-hero__lead {
     font-size: var(--text-lg);
-    color: var(--color-text-muted);
+    color: rgba(249, 246, 241, 0.82);
     line-height: 1.8;
     margin-bottom: var(--space-6);
   }
@@ -276,11 +279,11 @@ const etapes = [
     align-items: center;
     gap: var(--space-3);
     font-size: var(--text-base);
-    color: var(--color-text);
+    color: rgba(249, 246, 241, 0.9);
   }
 
   .booking-benefits span {
-    color: var(--color-accent);
+    color: #8ce1a3;
     font-weight: 700;
     flex-shrink: 0;
   }
@@ -296,17 +299,18 @@ const etapes = [
     display: flex;
     gap: var(--space-4);
     align-items: flex-start;
-    background: white;
-    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-lg);
     padding: var(--space-4);
+    backdrop-filter: blur(8px);
   }
 
   .booking-step__num {
     font-family: var(--font-serif);
     font-size: var(--text-xl);
     font-weight: 700;
-    color: var(--color-accent);
+    color: #8ce1a3;
     flex-shrink: 0;
     line-height: 1;
   }
@@ -315,13 +319,13 @@ const etapes = [
     display: block;
     font-size: var(--text-sm);
     font-weight: 600;
-    color: var(--color-text);
+    color: #F9F6F1;
     margin-bottom: var(--space-1);
   }
 
   .booking-step__content p {
     font-size: var(--text-sm);
-    color: var(--color-text-muted);
+    color: rgba(249, 246, 241, 0.72);
     margin: 0;
     line-height: 1.5;
   }

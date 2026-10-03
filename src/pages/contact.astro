@@ -8,6 +8,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ContactForm from '../components/ContactForm.astro';
+import PageHero from '../components/PageHero.astro';
 import { buildTitle, SITE_URL } from '../utils/seo';
 
 const breadcrumbs = [
@@ -75,6 +76,15 @@ const infos = [
 >
   <Header />
   <main id="main-content">
+    <PageHero
+      bgImage="/assets/hero/calm-coast.jpg"
+      bgAlt="Littoral breton calme au lever du jour"
+      eyebrow="Contact"
+      title="Parlons de votre projet SEO"
+      description="Vous avez un projet, une question ou vous voulez simplement savoir ce que le SEO peut apporter à votre entreprise ?"
+      compact={true}
+    />
+
     <Breadcrumbs items={breadcrumbs} />
 
     <section class="contact-section section">
@@ -82,8 +92,6 @@ const infos = [
         <div class="contact-grid">
           <!-- Left: info -->
           <div class="contact-info">
-            <span class="contact-info__eyebrow">Contact</span>
-            <h1>Parlons de votre projet SEO</h1>
             <p class="contact-info__lead">
               Vous avez un projet, une question ou vous voulez simplement savoir ce que le SEO
               peut apporter à votre entreprise ? Écrivez-moi — je réponds personnellement

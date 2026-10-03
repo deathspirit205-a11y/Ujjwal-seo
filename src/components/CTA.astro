@@ -9,8 +9,9 @@ export interface Props {
   body?: string;
   primaryCTA?: { label: string; href: string };
   secondaryCTA?: { label: string; href: string };
-  /** 'cream' (default), 'green', 'dark' */
-  variant?: 'cream' | 'green' | 'dark';
+  /** 'cream' (default), 'green', 'dark', 'navy' */
+  variant?: 'cream' | 'green' | 'dark' | 'navy';
+  bgImage?: string;
 }
 
 const {
@@ -19,10 +20,26 @@ const {
   primaryCTA = { label: 'Réserver un appel', href: '/reserver-un-appel/' },
   secondaryCTA,
   variant = 'cream',
+  bgImage,
 } = Astro.props;
+
+const isDarkTheme = variant === 'dark' || variant === 'navy' || Boolean(bgImage);
 ---
 
-<section class:list={['cta-block', `cta-block--${variant}`]} aria-labelledby="cta-heading">
+<section
+  class:list={[
+    'cta-block',
+    `cta-block--${variant}`,
+    { 'cta-block--has-image': Boolean(bgImage) }
+  ]}
+  aria-labelledby="cta-heading"
+>
+  {bgImage && (
+    <div class="cta-block__bg" aria-hidden="true">
+      <img src={bgImage} alt="" loading="lazy" class="cta-block__bg-img" />
+      <div class="cta-block__overlay"></div>
+    </div>
+  )}
   <div class="container">
     <div class="cta-block__inner">
       <div class="cta-block__text">
@@ -30,11 +47,11 @@ const {
         {body && <p class="cta-block__body">{body}</p>}
       </div>
       <div class="cta-block__actions">
-        <a href={primaryCTA.href} class:list={['btn', 'btn--lg', variant === 'dark' ? 'btn--cta-dark-primary' : 'btn--primary']}>
+        <a href={primaryCTA.href} class:list={['btn', 'btn--lg', isDarkTheme ? 'btn--cta-dark-primary' : 'btn--primary']}>
           {primaryCTA.label}
         </a>
         {secondaryCTA && (
-          <a href={secondaryCTA.href} class:list={['btn', 'btn--lg', 'btn--secondary']}>
+          <a href={secondaryCTA.href} class:list={['btn', 'btn--lg', isDarkTheme ? 'btn--secondary cta-btn-secondary--light' : 'btn--secondary']}>
             {secondaryCTA.label}
           </a>
         )}
@@ -45,7 +62,32 @@ const {
 
 <style>
 .cta-block {
+  position: relative;
   padding-block: var(--space-20);
+  overflow: hidden;
+}
+
+.cta-block > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-block__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cta-block__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta-block__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26, 39, 68, 0.90) 0%, rgba(17, 26, 46, 0.95) 100%);
 }
 
 .cta-block--cream {
@@ -62,6 +104,31 @@ const {
 .cta-block--dark {
   background-color: var(--color-surface-dark);
   color: var(--color-text-inverse);
+}
+
+.cta-block--navy {
+  background: linear-gradient(150deg, var(--color-navy, #1a2744) 0%, #111a2e 100%);
+  color: #F9F6F1;
+}
+
+.cta-block--navy .cta-block__heading,
+.cta-block--has-image .cta-block__heading {
+  color: #F9F6F1;
+}
+
+.cta-block--navy .cta-block__body,
+.cta-block--has-image .cta-block__body {
+  color: rgba(249, 246, 241, 0.82);
+}
+
+.cta-btn-secondary--light {
+  border-color: rgba(249, 246, 241, 0.4);
+  color: #F9F6F1;
+}
+
+.cta-btn-secondary--light:hover {
+  border-color: #F9F6F1;
+  background-color: rgba(249, 246, 241, 0.1);
 }
 
 .cta-block__inner {

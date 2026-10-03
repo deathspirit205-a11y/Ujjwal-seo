@@ -8,6 +8,8 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import FAQ from '../../components/FAQ.astro';
 import CTA from '../../components/CTA.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { buildTitle, SITE_URL } from '../../utils/seo';
 
 const breadcrumbs = [
@@ -81,25 +83,17 @@ const serviceSchema = {
   <main id="main-content">
 
     <!-- ══ HERO ══ -->
-    <section class="service-hero section" aria-labelledby="page-heading">
-      <div class="container">
-        <div class="service-hero__content">
-          <p class="eyebrow">Service</p>
-          <h1 id="page-heading" class="service-hero__h1">
-            SEO Local — Référencement local à Rennes et en Bretagne
-          </h1>
-          <p class="lead">
-            Vous exercez dans une ville ou une zone géographique précise ? Le SEO local vous
-            permet d'apparaître lorsque des clients potentiels recherchent vos services près
-            de chez eux — sur Google Search et sur Google Maps. C'est un levier concret pour
-            les entreprises dont l'activité dépend d'une clientèle locale.
-          </p>
-          <a href="/reserver-un-appel/" class="btn btn--primary btn--lg">
-            Réserver un appel
-          </a>
-        </div>
-      </div>
-    </section>
+    <PageHero
+      bgImage="/assets/hero/french-town.jpg"
+      bgAlt="Architecture traditionnelle dans une ville française"
+      eyebrow="Service"
+      title="SEO Local — Référencement local à Rennes et en Bretagne"
+      description="Vous exercez dans une ville ou une zone géographique précise ? Le SEO local vous permet d'apparaître lorsque des clients potentiels recherchent vos services près de chez eux — sur Google Search et sur Google Maps."
+      primaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
 
 
     <!-- ══ QU'EST-CE QUE LE SEO LOCAL ══ -->

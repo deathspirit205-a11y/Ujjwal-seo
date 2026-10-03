@@ -11,43 +11,45 @@ export interface Props {
 const { items } = Astro.props;
 ---
 
-<nav aria-label="Fil d'Ariane" class="breadcrumbs">
-  <ol class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
-    {items.map((item, i) => {
-      const isLast = i === items.length - 1;
-      return (
-        <li
-          class="breadcrumbs__item"
-          itemprop="itemListElement"
-          itemscope
-          itemtype="https://schema.org/ListItem"
-        >
-          {isLast
-            ? (
-              <span
-                class="breadcrumbs__current"
-                itemprop="name"
-                aria-current="page"
-              >
-                {item.label}
-              </span>
-            )
-            : (
-              <a
-                href={item.href}
-                class="breadcrumbs__link"
-                itemprop="item"
-              >
-                <span itemprop="name">{item.label}</span>
-              </a>
-            )
-          }
-          <meta itemprop="position" content={String(i + 1)} />
-        </li>
-      );
-    })}
-  </ol>
-</nav>
+<div class="breadcrumbs-wrapper container">
+  <nav aria-label="Fil d'Ariane" class="breadcrumbs">
+    <ol class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+      {items.map((item, i) => {
+        const isLast = i === items.length - 1;
+        return (
+          <li
+            class="breadcrumbs__item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+          >
+            {isLast
+              ? (
+                <span
+                  class="breadcrumbs__current"
+                  itemprop="name"
+                  aria-current="page"
+                >
+                  {item.label}
+                </span>
+              )
+              : (
+                <a
+                  href={item.href}
+                  class="breadcrumbs__link"
+                  itemprop="item"
+                >
+                  <span itemprop="name">{item.label}</span>
+                </a>
+              )
+            }
+            <meta itemprop="position" content={String(i + 1)} />
+          </li>
+        );
+      })}
+    </ol>
+  </nav>
+</div>
 
 <style>
 .breadcrumbs {

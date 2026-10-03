@@ -10,6 +10,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CTA from '../components/CTA.astro';
+import PageHero from '../components/PageHero.astro';
 import { buildTitle, SITE_URL } from '../utils/seo';
 
 const breadcrumbs = [
@@ -87,20 +88,16 @@ const typesResultats = [
 >
   <Header />
   <main id="main-content">
-    <Breadcrumbs items={breadcrumbs} />
+    <PageHero
+      bgImage="/assets/hero/digital-network.jpg"
+      bgAlt="Visualisation de flux de données et graphiques de performance SEO"
+      eyebrow="Réalisations"
+      title="Des résultats concrets, mesurables"
+      description="Chaque mission part d'un objectif business clair — pas d'une liste de tâches SEO abstraites. Vous trouverez ici des exemples des résultats que j'obtiens pour mes clients, présentés honnêtement et sans exagération."
+      compact={true}
+    />
 
-    <!-- Hero -->
-    <section class="realisations-hero section">
-      <div class="container">
-        <span class="eyebrow">Réalisations</span>
-        <h1>Des résultats concrets, mesurables</h1>
-        <p class="realisations-hero__lead">
-          Chaque mission part d'un objectif business clair — pas d'une liste de tâches SEO abstraites.
-          Vous trouverez ici des exemples des résultats que j'obtiens pour mes clients,
-          présentés honnêtement et sans exagération.
-        </p>
-      </div>
-    </section>
+    <Breadcrumbs items={breadcrumbs} />
 
     <!-- Honest placeholder -->
     <section class="section section--alt">
@@ -180,30 +177,7 @@ const typesResultats = [
     padding-top: var(--space-12);
   }
 
-  .eyebrow {
-    display: block;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: var(--space-3);
-  }
 
-  .realisations-hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    color: var(--color-text);
-    margin-bottom: var(--space-6);
-    max-width: 700px;
-  }
-
-  .realisations-hero__lead {
-    font-size: var(--text-lg);
-    color: var(--color-text-muted);
-    line-height: 1.8;
-    max-width: 660px;
-  }
 
   /* Placeholder notice */
   .placeholder-notice {

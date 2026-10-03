@@ -8,6 +8,8 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import FAQ from '../../components/FAQ.astro';
 import CTA from '../../components/CTA.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { buildTitle, SITE_URL } from '../../utils/seo';
 
 const breadcrumbs = [
@@ -75,25 +77,17 @@ const serviceSchema = {
   <main id="main-content">
 
     <!-- ══ HERO ══ -->
-    <section class="service-hero section" aria-labelledby="page-heading">
-      <div class="container">
-        <div class="service-hero__content">
-          <p class="eyebrow">Service</p>
-          <h1 id="page-heading" class="service-hero__h1">
-            SEO Technique — Les fondations de votre référencement
-          </h1>
-          <p class="lead">
-            Un site peut avoir un excellent contenu et des mots-clés parfaitement ciblés —
-            et rester totalement invisible sur Google pour des raisons techniques. Si Google
-            ne peut pas explorer, comprendre et indexer vos pages correctement, aucune
-            stratégie éditoriale ne peut compenser.
-          </p>
-          <a href="/reserver-un-appel/" class="btn btn--primary btn--lg">
-            Réserver un appel
-          </a>
-        </div>
-      </div>
-    </section>
+    <PageHero
+      bgImage="/assets/hero/digital-network.jpg"
+      bgAlt="Réseau numérique abstrait sur fond bleu sombre"
+      eyebrow="Service"
+      title="SEO Technique — Les fondations de votre référencement"
+      description="Un site peut avoir un excellent contenu et des mots-clés parfaitement ciblés — et rester totalement invisible sur Google pour des raisons techniques. Si Google ne peut pas explorer, comprendre et indexer vos pages correctement, aucune stratégie éditoriale ne peut compenser."
+      primaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
 
 
     <!-- ══ POURQUOI C'EST IMPORTANT ══ -->

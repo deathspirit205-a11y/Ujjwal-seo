@@ -115,6 +115,15 @@
   --z-header:  100;
   --z-overlay: 200;
   --z-modal:   300;
+
+  /* ── Color: Navy / Atlantic (visual redesign) ── */
+  --color-navy:          #1a2744;
+  --color-navy-light:    #243557;
+  --color-atlantic:      #3d5a80;
+  --color-atlantic-muted:#6b8bae;
+  --color-overlay-dark:  rgba(26, 39, 68, 0.6);
+  --color-overlay-darker:rgba(26, 39, 68, 0.78);
+  --color-overlay-light: rgba(26, 39, 68, 0.35);
 }
 
 
@@ -526,6 +535,21 @@ p + p {
   font-size: var(--text-base);
 }
 
+/* CTA on dark/hero backgrounds: cream button for contrast */
+.btn--cta-dark-primary {
+  background-color: var(--color-text-inverse);
+  border-color: var(--color-text-inverse);
+  color: var(--color-navy);
+  font-weight: var(--weight-bold);
+}
+
+.btn--cta-dark-primary:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  box-shadow: 0 4px 16px rgba(43, 107, 78, 0.35);
+}
+
 
 /* ─────────────────────────────────────────
    FORM ELEMENTS
@@ -630,3 +654,51 @@ p + p {
   color: var(--color-accent);
   border-radius: var(--radius-full);
 }
+
+
+/* ─────────────────────────────────────────
+   NAVY DARK SECTION (visual redesign)
+───────────────────────────────────────── */
+
+.section--navy {
+  background-color: var(--color-navy);
+  color: var(--color-text-inverse);
+}
+
+.section--navy .eyebrow {
+  color: var(--color-atlantic-muted);
+}
+
+.section--navy h2,
+.section--navy h3 {
+  color: var(--color-text-inverse);
+}
+
+.section--navy .lead {
+  color: rgba(249, 246, 241, 0.7);
+}
+
+
+/* ─────────────────────────────────────────
+   SCROLL REVEAL ANIMATION
+───────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+

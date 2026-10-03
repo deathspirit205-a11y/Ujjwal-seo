@@ -10,6 +10,7 @@ import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
+import PageHero from '../components/PageHero.astro';
 import { buildTitle, SITE_URL } from '../utils/seo';
 
 const breadcrumbs = [
@@ -73,27 +74,21 @@ const localBusinessSchema = {
 >
   <Header />
   <main id="main-content">
-    <Breadcrumbs items={breadcrumbs} />
+    <PageHero
+      bgImage="/assets/hero/french-town.jpg"
+      bgAlt="Architecture traditionnelle dans une ville française"
+      eyebrow="📍 Rennes, Ille-et-Vilaine"
+      title="Consultant SEO à Rennes"
+      description="Vous êtes une entreprise rennaise et votre site n'apparaît pas en première page de Google ? Je suis Ujjwal Lage, consultant SEO indépendant basé à Rennes. J'aide les TPE et PME à gagner en visibilité organique, durablement."
+      primaryCTA={{ label: 'Réserver un appel gratuit', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: "Découvrir l'audit SEO", href: '/services/audit-seo/' }}
+    >
+      <p class="local-hero__reassurance">
+        ✓ Appel de 30 min gratuit et sans engagement &nbsp;·&nbsp; ✓ Réponse sous 24 h
+      </p>
+    </PageHero>
 
-    <!-- Hero local -->
-    <section class="local-hero">
-      <div class="container">
-        <div class="local-hero__badge">📍 Rennes, Ille-et-Vilaine</div>
-        <h1 class="local-hero__title">Consultant SEO<br /><span class="accent">à Rennes</span></h1>
-        <p class="local-hero__lead">
-          Vous êtes une entreprise rennaise et votre site n'apparaît pas en première page de Google ?
-          Je suis Ujjwal Lage, consultant SEO indépendant basé à Rennes. J'aide les TPE et PME
-          à gagner en visibilité organique, durablement.
-        </p>
-        <div class="local-hero__actions">
-          <a href="/reserver-un-appel/" class="btn btn--primary">Réserver un appel gratuit</a>
-          <a href="/services/audit-seo/" class="btn btn--outline">Découvrir l'audit SEO</a>
-        </div>
-        <p class="local-hero__reassurance">
-          ✓ Appel de 30 min gratuit et sans engagement &nbsp;·&nbsp; ✓ Réponse sous 24 h
-        </p>
-      </div>
-    </section>
+    <Breadcrumbs items={breadcrumbs} />
 
     <!-- Why Rennes -->
     <section class="local-context section">
@@ -339,9 +334,10 @@ const localBusinessSchema = {
     margin-bottom: var(--space-6);
   }
 
-  .local-hero__reassurance {
+  :global(.local-hero__reassurance) {
     font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(249, 246, 241, 0.6);
+    margin-top: var(--space-4);
   }
 
   /* Context section */

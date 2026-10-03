@@ -8,6 +8,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
 import { buildTitle, SITE_URL } from '../../utils/seo';
 import { getCollection } from 'astro:content';
 
@@ -46,18 +47,16 @@ const blogListSchema = {
 >
   <Header />
   <main id="main-content">
-    <Breadcrumbs items={breadcrumbs} />
+    <PageHero
+      bgImage="/assets/hero/local-shop.jpg"
+      bgAlt=""
+      eyebrow="Blog"
+      title="Ressources SEO"
+      description="Des guides pratiques et des stratégies concrètes pour améliorer votre référencement naturel. Écrits par un consultant SEO, pour des dirigeants qui veulent comprendre sans perdre de temps."
+      compact={true}
+    />
 
-    <section class="blog-hero section">
-      <div class="container">
-        <span class="blog-hero__eyebrow">Blog</span>
-        <h1>Ressources SEO</h1>
-        <p class="blog-hero__lead">
-          Des guides pratiques et des stratégies concrètes pour améliorer votre référencement naturel.
-          Écrits par un consultant SEO, pour des dirigeants qui veulent comprendre sans perdre de temps.
-        </p>
-      </div>
-    </section>
+    <Breadcrumbs items={breadcrumbs} />
 
     <!-- Categories filter -->
     {allCategories.length > 0 && (

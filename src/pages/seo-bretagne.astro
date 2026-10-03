@@ -9,6 +9,7 @@ import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
+import PageHero from '../components/PageHero.astro';
 import { buildTitle, SITE_URL } from '../utils/seo';
 
 const breadcrumbs = [
@@ -91,27 +92,21 @@ const secteurs = [
 >
   <Header />
   <main id="main-content">
-    <Breadcrumbs items={breadcrumbs} />
+    <PageHero
+      bgImage="/assets/hero/bretagne-coast.jpg"
+      bgAlt="Falaises du littoral breton face à l'Atlantique"
+      eyebrow="🌊 Bretagne — Grand Ouest"
+      title="Consultant SEO en Bretagne"
+      description="Votre entreprise bretonne mérite d'être visible sur Google. Basé à Rennes, j'accompagne les TPE et PME de toute la Bretagne dans leur développement SEO — du référencement local à la stratégie de contenu longue durée."
+      primaryCTA={{ label: 'Réserver un appel gratuit', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Voir mes services', href: '/services/' }}
+    >
+      <p class="local-hero__reassurance">
+        ✓ Appel de 30 min gratuit et sans engagement &nbsp;·&nbsp; ✓ Travail à distance dans toute la Bretagne
+      </p>
+    </PageHero>
 
-    <!-- Hero -->
-    <section class="local-hero">
-      <div class="container">
-        <div class="local-hero__badge">🌊 Bretagne — Grand Ouest</div>
-        <h1 class="local-hero__title">Consultant SEO<br /><span class="accent">en Bretagne</span></h1>
-        <p class="local-hero__lead">
-          Votre entreprise bretonne mérite d'être visible sur Google. Basé à Rennes,
-          j'accompagne les TPE et PME de toute la Bretagne dans leur développement
-          SEO — du référencement local à la stratégie de contenu longue durée.
-        </p>
-        <div class="local-hero__actions">
-          <a href="/reserver-un-appel/" class="btn btn--primary">Réserver un appel gratuit</a>
-          <a href="/services/" class="btn btn--outline">Voir mes services</a>
-        </div>
-        <p class="local-hero__reassurance">
-          ✓ Appel de 30 min gratuit et sans engagement &nbsp;·&nbsp; ✓ Travail à distance dans toute la Bretagne
-        </p>
-      </div>
-    </section>
+    <Breadcrumbs items={breadcrumbs} />
 
     <!-- Secteurs -->
     <section class="section">
@@ -284,9 +279,10 @@ const secteurs = [
     margin-bottom: var(--space-6);
   }
 
-  .local-hero__reassurance {
+  :global(.local-hero__reassurance) {
     font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(249, 246, 241, 0.6);
+    margin-top: var(--space-4);
   }
 
   /* Secteurs */

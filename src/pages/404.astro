@@ -17,11 +17,126 @@ import { buildTitle } from '../utils/seo';
 >
   <Header />
   <main id="main-content">
-    <div class="container">
-      <h1>Page introuvable</h1>
-      <p>La page que vous recherchez n'existe pas ou a été déplacée.</p>
-      <a href="/" class="btn btn--primary">Retour à l'accueil</a>
-    </div>
+    <section class="error-hero">
+      <div class="error-hero__bg">
+        <img
+          src="/assets/hero/foggy-path.jpg"
+          alt=""
+          width="1600"
+          height="900"
+          loading="eager"
+          decoding="async"
+          class="error-hero__img"
+        />
+      </div>
+      <div class="error-hero__overlay"></div>
+      <div class="container error-hero__content">
+        <p class="error-hero__code">404</p>
+        <h1 class="error-hero__title">Page introuvable</h1>
+        <p class="error-hero__desc">
+          La page que vous recherchez n'existe pas ou a été déplacée.
+        </p>
+        <div class="error-hero__actions">
+          <a href="/" class="btn btn--lg btn--cta-dark-primary">Retour à l'accueil</a>
+          <a href="/contact/" class="btn btn--lg btn--secondary error-hero__btn-secondary">Me contacter</a>
+        </div>
+      </div>
+    </section>
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+.error-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.error-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.error-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.error-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 39, 68, 0.5) 0%,
+    rgba(26, 39, 68, 0.75) 100%
+  );
+}
+
+.error-hero__content {
+  position: relative;
+  z-index: 2;
+}
+
+.error-hero__code {
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  color: rgba(249, 246, 241, 0.15);
+  letter-spacing: -0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.error-hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-inverse);
+  margin-bottom: var(--space-4);
+}
+
+.error-hero__desc {
+  font-size: var(--text-lg);
+  color: rgba(249, 246, 241, 0.7);
+  margin-bottom: var(--space-8);
+  max-width: 30rem;
+  margin-inline: auto;
+}
+
+.error-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+}
+
+.error-hero__btn-secondary {
+  border-color: rgba(249, 246, 241, 0.35);
+  color: var(--color-text-inverse);
+}
+
+.error-hero__btn-secondary:hover {
+  border-color: var(--color-text-inverse);
+  background-color: rgba(249, 246, 241, 0.1);
+  color: var(--color-text-inverse);
+}
+
+@media (max-width: 480px) {
+  .error-hero__actions {
+    flex-direction: column;
+  }
+  .error-hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>

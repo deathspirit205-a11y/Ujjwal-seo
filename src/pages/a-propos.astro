@@ -9,6 +9,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CTA from '../components/CTA.astro';
+import PageHero from '../components/PageHero.astro';
 import { buildTitle, SITE_URL } from '../utils/seo';
 
 const breadcrumbs = [
@@ -87,28 +88,17 @@ const outils = [
 >
   <Header />
   <main id="main-content">
-    <Breadcrumbs items={breadcrumbs} />
+    <PageHero
+      bgImage="/assets/hero/countryside-path.jpg"
+      bgAlt="Sentier de campagne bretonne au crépuscule"
+      eyebrow="À propos"
+      title="Ujjwal Lage — Consultant SEO indépendant en Bretagne"
+      description="Un regard humain et une approche concrète du web. J'aide les TPE, PME, artisans, commerçants et indépendants à développer leur visibilité en ligne."
+      primaryCTA={{ label: 'Réserver un appel découverte', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Me contacter', href: '/contact/' }}
+    />
 
-    <!-- Hero About -->
-    <section class="about-hero section">
-      <div class="container">
-        <div class="about-hero__grid">
-          <div class="about-hero__text">
-            <span class="about-hero__eyebrow">À propos</span>
-            <h1>Ujjwal Lage<br /><span class="accent">Consultant SEO indépendant en Bretagne</span></h1>
-            <p class="about-hero__lead">
-              Un regard humain et une approche concrète du web.
-              J'aide les TPE, PME, artisans, commerçants et indépendants à développer
-              leur visibilité en ligne.
-            </p>
-            <div class="about-hero__actions">
-              <a href="/reserver-un-appel/" class="btn btn--primary">Réserver un appel découverte</a>
-              <a href="/contact/" class="btn btn--outline">Me contacter</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Breadcrumbs items={breadcrumbs} />
 
     <!-- Mon parcours -->
     <section class="section section--alt">
