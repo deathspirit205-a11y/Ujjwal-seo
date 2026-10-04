@@ -4,7 +4,7 @@
  */
 
 export const SITE_NAME = 'Ujjwal SEO';
-export const SITE_URL = 'https://ujjwalseo.com';
+export const SITE_URL = 'https://ujjwal-seo.com';
 export const DEFAULT_AUTHOR = 'Ujjwal Lage';
 export const DEFAULT_LOCALE = 'fr_FR';
 export const TWITTER_HANDLE = ''; // Add if/when a Twitter/X account exists

@@ -6,6 +6,7 @@
  */
 import BaseLayout from './BaseLayout.astro';
 import type { Props as BaseProps } from './BaseLayout.astro';
+import { SITE_URL } from '../utils/seo';
 
 export interface Props extends BaseProps {
   /** Breadcrumb trail: [{label, href}] ending with the current page */
@@ -23,7 +24,7 @@ const breadcrumbSchema = breadcrumbs.length > 0
         '@type': 'ListItem',
         position: i + 1,
         name: crumb.label,
-        item: crumb.href.startsWith('http') ? crumb.href : `https://ujjwalseo.com${crumb.href}`,
+        item: crumb.href.startsWith('http') ? crumb.href : `${SITE_URL}${crumb.href}`,
       })),
     }
   : undefined;
