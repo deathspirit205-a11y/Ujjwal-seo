@@ -1,0 +1,149 @@
+---
+/**
+ * zones-intervention/seo-laval.astro — Local landing page for Laval
+ * URL: /zones-intervention/seo-laval/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'SEO Laval', href: '/zones-intervention/seo-laval/' },
+];
+
+const faqLaval = [
+  {
+    id: 'laval-b2b',
+    question: 'Le SEO est-il adapté aux entreprises B2B et industrielles à Laval ?',
+    answer: 'Tout à fait. À Laval, une grande partie du tissu économique repose sur la sous-traitance industrielle, l\'agroalimentaire et la tech. Les décideurs et acheteurs B2B recherchent des fournisseurs et prestataires spécialisés sur Google. Un référencement naturel technique et sémantique permet de capter ces consultations qualifiées à forte valeur unitaire.',
+  },
+  {
+    id: 'laval-presence',
+    question: 'Pouvons-nous organiser des réunions en présentiel à Laval ?',
+    answer: 'Oui. Laval est facilement accessible depuis l\'Ille-et-Vilaine (moins de 45 minutes). Je me déplace volontiers pour des réunions de cadrage, des audits sur site ou des sessions de restitution auprès de vos équipes.',
+  },
+];
+
+const schemaLaval = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Ujjwal SEO — Consultant SEO & GEO à Laval',
+  description: 'Consultant SEO & GEO intervenant à Laval et en Mayenne : référencement naturel, optimisation technique, SEO local et stratégie numérique pour les entreprises lavalloises.',
+  url: `${SITE_URL}/zones-intervention/seo-laval/`,
+  areaServed: [
+    { '@type': 'City', name: 'Laval', sameAs: 'https://www.wikidata.org/wiki/Q184283' },
+    { '@type': 'AdministrativeArea', name: 'Mayenne' },
+  ],
+};
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO à Laval — Référencement naturel en Mayenne')}
+  description="Consultant SEO & GEO à Laval (53) : développez votre visibilité sur Google et les moteurs IA. SEO local, technique, audit et stratégie pour entreprises lavalloises."
+  canonicalPath="/zones-intervention/seo-laval/"
+  schema={[schemaLaval]}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Mayenne & Pays de la Loire"
+      title="Consultant SEO & GEO à Laval"
+      description="Donnez une longueur d'avance à votre entreprise lavalloise : stratégie de visibilité organique, conquête du pack local Google et positionnement dans les nouveaux moteurs IA."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir l\'audit SEO', href: '/services/audit-seo/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="section section--surface" aria-labelledby="laval-context-heading">
+      <div class="container">
+        <div class="grid-2-asym">
+          <div>
+            <div class="prose-header">
+              <p class="eyebrow">Pôle Économique Mayennais</p>
+              <h2 id="laval-context-heading">Laval : carrefour de l'innovation et de l'industrie</h2>
+            </div>
+            <p class="lead" style="margin-top: var(--space-4)">
+              Préfecture de la Mayenne et agglomération de plus de 115 000 habitants, Laval est mondialement connue pour son salon Laval Virtual et son statut de pionnière des technologies immersives.
+            </p>
+            <p>
+              C'est également un bassin agroalimentaire et logistique de premier ordre abritant des fleurons nationaux. Pour les entreprises de Laval et de sa périphérie (Saint-Berthevin, Changé, Bonchamp-lès-Laval, Louverné), un référencement naturel rigoureux est le moyen le plus pérenne de capter des opportunités régionales et nationales.
+            </p>
+          </div>
+
+          <div class="local-fact-card">
+            <h3>Bassin Lavallois</h3>
+            <ul>
+              <li><strong>Périmètre :</strong> Laval, Saint-Berthevin, Changé, Bonchamp-lès-Laval, L'Huisserie, Louverné.</li>
+              <li><strong>Filières d'excellence :</strong> Réalité virtuelle & technologies immersives, transformation laitière, électronique, équipements industriels.</li>
+              <li><strong>Axe stratégique :</strong> Liaison directe Paris-Bretagne en 1h10 de TGV et par l'autoroute A81.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqLaval} heading="Questions fréquentes sur le SEO à Laval" />
+
+    <CTA
+      heading="Faisons grandir votre entreprise sur le marché mayennais."
+      body="Prenons 30 minutes pour analyser vos positions actuelles et identifier les gisements de croissance sur votre secteur."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter tous les services', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.grid-2-asym {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .grid-2-asym {
+    grid-template-columns: 1fr;
+  }
+}
+
+.local-fact-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-atlantic);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.local-fact-card h3 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.local-fact-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+}
+</style>

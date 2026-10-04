@@ -7,14 +7,13 @@
  */
 
 const navLinks = [
-  { label: 'Accueil',      href: '/' },
-  { label: 'Services',     href: '/services/' },
-  { label: 'SEO Rennes',   href: '/seo-rennes/' },
-  { label: 'SEO Bretagne', href: '/seo-bretagne/' },
-  { label: 'À propos',     href: '/a-propos/' },
-  { label: 'Réalisations', href: '/realisations/' },
-  { label: 'Blog',         href: '/blog/' },
-  { label: 'Contact',      href: '/contact/' },
+  { label: 'Accueil',               href: '/' },
+  { label: 'Services',              href: '/services/' },
+  { label: 'Approche',              href: '/approche/' },
+  { label: 'À propos',              href: '/a-propos/' },
+  { label: 'Blog',                  href: '/blog/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'Contact',               href: '/contact/' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -53,8 +52,8 @@ const currentPath = Astro.url.pathname;
 
     <!-- CTA + hamburger row -->
     <div class="site-header__actions">
-      <a href="/reserver-un-appel/" class="btn btn--primary btn--sm site-header__cta">
-        Réserver un appel
+      <a href="/contact/" class="btn btn--primary btn--sm site-header__cta">
+        Parler de votre projet
       </a>
 
       <!-- Mobile hamburger button -->
@@ -94,8 +93,8 @@ const currentPath = Astro.url.pathname;
       })}
     </ul>
 
-    <a href="/reserver-un-appel/" class="btn btn--primary mobile-menu__cta">
-      Réserver un appel
+    <a href="/contact/" class="btn btn--primary mobile-menu__cta">
+      Parler de votre projet
     </a>
   </nav>
 </div>

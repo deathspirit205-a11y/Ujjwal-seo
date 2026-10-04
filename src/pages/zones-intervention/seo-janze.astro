@@ -1,0 +1,149 @@
+---
+/**
+ * zones-intervention/seo-janze.astro — Local landing page for Janzé
+ * URL: /zones-intervention/seo-janze/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'SEO Janzé', href: '/zones-intervention/seo-janze/' },
+];
+
+const faqJanze = [
+  {
+    id: 'janze-taille',
+    question: 'Le SEO est-il rentable pour une entreprise dans une ville à taille humaine comme Janzé ?',
+    answer: 'Absolument. Janzé et le Pays de la Roche-aux-Fées regroupent plus de 25 000 habitants et des centaines d\'entreprises. Avec une concurrence numérique encore peu optimisée, quelques actions SEO bien ciblées suffisent souvent pour truster la 1ère place sur Google Maps et capter des clients réguliers.',
+  },
+  {
+    id: 'janze-rennes',
+    question: 'Comment articuler mon référencement entre Janzé et la métropole rennaise ?',
+    answer: 'Si votre activité nécessite de capter des clients à la fois sur Janzé et sur le sud de Rennes (Vern-sur-Seiche, Chantepie, Bruz), nous construisons une stratégie de ciblage géographique multicommunal cohérente sans risque de duplication.',
+  },
+];
+
+const schemaJanze = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Ujjwal SEO — Consultant SEO & GEO à Janzé',
+  description: 'Consultant SEO & GEO intervenant à Janzé et au Pays de la Roche-aux-Fées : référencement naturel local, visibilité Google Maps et stratégie numérique.',
+  url: `${SITE_URL}/zones-intervention/seo-janze/`,
+  areaServed: [
+    { '@type': 'City', name: 'Janzé', sameAs: 'https://www.wikidata.org/wiki/Q1011037' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+  ],
+};
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO à Janzé — Référencement naturel & Local')}
+  description="Consultant SEO & GEO à Janzé : positionnez votre entreprise sur Google et les moteurs IA. SEO local, pack Google Maps et accompagnement pour les artisans et PME de Janzé."
+  canonicalPath="/zones-intervention/seo-janze/"
+  schema={[schemaJanze]}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Pays de la Roche-aux-Fées & Sud Ille-et-Vilaine"
+      title="Consultant SEO & GEO à Janzé"
+      description="Développez la visibilité de votre entreprise à Janzé et dans le sud de l'Ille-et-Vilaine : un référencement local performant pour attirer des clients qualifiés sur votre territoire."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir l\'audit SEO', href: '/services/audit-seo/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="section section--surface" aria-labelledby="janze-context-heading">
+      <div class="container">
+        <div class="grid-2-asym">
+          <div>
+            <div class="prose-header">
+              <p class="eyebrow">Ancrage Territorial</p>
+              <h2 id="janze-context-heading">Janzé : pôle d'excellence agroalimentaire et artisanal</h2>
+            </div>
+            <p class="lead" style="margin-top: var(--space-4)">
+              Célèbre pour sa filière avicole reconnue nationalement, Janzé constitue le pôle central de la communauté de communes de Roche aux Fées Communauté.
+            </p>
+            <p>
+              Idéalement positionnée sur l'axe Rennes-Angers, la ville bénéficie d'une forte croissance démographique et d'un tissu dynamique d'artisans, commerçants, professions libérales et PME. Le SEO local est l'outil privilégié pour vous positionner comme l'artisan ou le prestataire de référence auprès des résidents du secteur.
+            </p>
+          </div>
+
+          <div class="local-fact-card">
+            <h3>Bassin de Janzé & Roche-aux-Fées</h3>
+            <ul>
+              <li><strong>Communes clés :</strong> Janzé, Retiers, Corps-Nuds, Châteaugiron, Vern-sur-Seiche, Brie, Amanlis.</li>
+              <li><strong>Secteurs porteurs :</strong> Élevage et agroalimentaire, construction et rénovation de l'habitat, santé, commerces de bouche.</li>
+              <li><strong>Atout majeur :</strong> Accès direct au marché rennais tout en conservant une forte identité locale.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqJanze} heading="Questions fréquentes sur le SEO à Janzé" />
+
+    <CTA
+      heading="Développons votre clientèle locale à Janzé."
+      body="Prenons 30 minutes pour auditer vos positions locales et identifier les opportunités de mots-clés sur votre zone."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter les services', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.grid-2-asym {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .grid-2-asym {
+    grid-template-columns: 1fr;
+  }
+}
+
+.local-fact-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-atlantic);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.local-fact-card h3 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.local-fact-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+}
+</style>

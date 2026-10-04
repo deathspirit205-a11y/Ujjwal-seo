@@ -1,109 +1,71 @@
 ---
 /**
- * services/index.astro — Services hub
+ * services/index.astro — Services Hub
  * URL: /services/
- * Overview page linking all 5 service pages with clear navigation logic.
+ *
+ * Comprehensive overview of the 6 core SEO & GEO services:
+ * Technique, Contenu, Local, Audit, Stratégie, GEO.
  */
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import CTA from '../../components/CTA.astro';
 import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
 import { buildTitle, SITE_URL } from '../../utils/seo';
+import { services } from '../../data/services';
 
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services/' },
 ];
 
-// Decision guide: help the visitor find the right service
-const decisionItems = [
+const decisionGuide = [
   {
-    question: 'Je ne sais pas pourquoi mon site ne remonte pas sur Google.',
-    answer: 'Audit SEO',
-    href: '/services/audit-seo/',
-    desc: 'Un diagnostic complet est la première étape.',
+    situation: 'Je ne comprends pas pourquoi mon site n\'apparaît pas sur Google.',
+    recommendedService: 'Audit SEO',
+    url: '/services/audit-seo/',
+    rationale: 'Un diagnostic complet de vos fondations techniques, sémantiques et concurrentielles pour isoler les blocages.',
   },
   {
-    question: 'Je veux apparaître dans les recherches de mes clients locaux.',
-    answer: 'SEO Local',
-    href: '/services/seo-local/',
-    desc: 'Google Maps et les requêtes géolocalisées.',
+    situation: 'Mon site a des erreurs d\'exploration, des lenteurs ou un balisage incomplet.',
+    recommendedService: 'SEO Technique',
+    url: '/services/seo-technique/',
+    rationale: 'Assainissement du crawl, accélération des Core Web Vitals, architecture propre et code Schema.org.',
   },
   {
-    question: 'Mon site a des problèmes techniques qui bloquent le référencement.',
-    answer: 'SEO Technique',
-    href: '/services/seo-technique/',
-    desc: 'Crawl, indexation, vitesse, Core Web Vitals.',
+    situation: 'Mes contenus manquent de visibilité ou ne ciblent pas les bonnes intentions.',
+    recommendedService: 'SEO Contenu & Sémantique',
+    url: '/services/seo-contenu/',
+    rationale: 'Cartographie des intentions de recherche, optimisation on-page et maillage interne thématique.',
   },
   {
-    question: 'Mes pages ne ciblent pas les bons mots-clés ou manquent de contenu.',
-    answer: 'SEO On-Page',
-    href: '/services/seo-on-page/',
-    desc: 'Intention de recherche, titres, structure, contenu.',
+    situation: 'Je veux être trouvé par des clients dans ma ville ou ma région.',
+    recommendedService: 'SEO Local',
+    url: '/services/seo-local/',
+    rationale: 'Optimisation Google Business Profile, signaux de proximité et pages locales à forte pertinence.',
   },
   {
-    question: 'Je veux un suivi régulier pour progresser dans la durée.',
-    answer: 'Accompagnement SEO',
-    href: '/services/accompagnement-seo/',
-    desc: 'Stratégie continue et reporting mensuel.',
-  },
-];
-
-const services = [
-  {
-    title: 'Audit SEO',
-    href: '/services/audit-seo/',
-    icon: '🔍',
-    tagline: 'Le point de départ',
-    description:
-      'Analyse complète de votre référencement : technique, contenu, architecture, concurrence. Vous recevez un rapport détaillé et un plan d\'action priorisé pour savoir exactement où agir.',
-    ideal: 'Idéal pour : comprendre votre situation actuelle, avant une refonte, après une baisse de trafic.',
+    situation: 'J\'ai besoin d\'une feuille de route claire pour guider mes investissements sur l\'année.',
+    recommendedService: 'Stratégie SEO',
+    url: '/services/strategie-seo/',
+    rationale: 'Étude de marché, benchmark de concurrence, priorisation ROI/effort et pilotage des KPIs.',
   },
   {
-    title: 'SEO Local',
-    href: '/services/seo-local/',
-    icon: '📍',
-    tagline: 'Pour les entreprises locales',
-    description:
-      'Optimisation de votre présence dans les recherches géolocalisées et Google Maps : fiche Google Business Profile, cohérence NAP, contenu local, suivi des positions locales.',
-    ideal: 'Idéal pour : commerces, artisans, professions libérales, prestataires de services.',
-  },
-  {
-    title: 'SEO Technique',
-    href: '/services/seo-technique/',
-    icon: '⚙️',
-    tagline: 'Les fondations',
-    description:
-      'Identification et correction des problèmes qui empêchent Google d\'explorer et d\'indexer votre site correctement : crawlabilité, indexation, Core Web Vitals, architecture, données structurées.',
-    ideal: 'Idéal pour : après une migration, si la Search Console signale des erreurs, site lent sur mobile.',
-  },
-  {
-    title: 'SEO On-Page',
-    href: '/services/seo-on-page/',
-    icon: '📝',
-    tagline: 'La pertinence de chaque page',
-    description:
-      'Optimisation du contenu et de la structure de chaque page : recherche de mots-clés, intention de recherche, balises, hiérarchie Hn, contenu, maillage interne.',
-    ideal: 'Idéal pour : site techniquement sain mais peu visible, nouveau contenu à créer.',
-  },
-  {
-    title: 'Accompagnement SEO',
-    href: '/services/accompagnement-seo/',
-    icon: '📈',
-    tagline: 'Le long terme',
-    description:
-      'Suivi mensuel avec stratégie définie, exécution priorisée et rapport mensuel. Couvre les aspects techniques, éditoriaux et locaux selon les besoins de votre site.',
-    ideal: 'Idéal pour : entreprises sans ressource SEO interne, croissance organique durable.',
+    situation: 'Je souhaite anticiper l\'impact de l\'IA et apparaître dans les synthèses génératives.',
+    recommendedService: 'GEO (Search IA)',
+    url: '/services/geo/',
+    rationale: 'Déclaration explicite des entités d\'affaires, graphes de données et optimisation pour les modèles de réponse.',
   },
 ];
 
 const servicesSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Services SEO — Ujjwal Lage',
-  description: 'Services SEO à Rennes et en Bretagne : audit SEO, SEO local, SEO technique, SEO on-page et accompagnement mensuel.',
+  name: 'Services SEO & GEO — Ujjwal SEO',
+  description: 'Services d\'accompagnement en référencement naturel et optimisation pour les moteurs IA : technique, contenu, local, audit, stratégie et GEO.',
   url: `${SITE_URL}/services/`,
   itemListElement: services.map((s, i) => ({
     '@type': 'ListItem',
@@ -111,455 +73,165 @@ const servicesSchema = {
     item: {
       '@type': 'Service',
       name: s.title,
-      url: `${SITE_URL}${s.href}`,
-      description: s.description,
+      url: `${SITE_URL}/services/${s.slug}/`,
+      description: s.shortDescription,
     },
   })),
 };
 ---
 
 <ServiceLayout
-  title={buildTitle('Services SEO — Audit, SEO local, technique et accompagnement')}
-  description="Services SEO à Rennes et en Bretagne : audit SEO, SEO local, SEO technique, optimisation on-page et accompagnement mensuel. Consultant SEO indépendant."
+  title={buildTitle('Services SEO & GEO — Audit, Technique, Contenu, Local & Search IA')}
+  description="Découvrez l'ensemble des prestations d'accompagnement en référencement naturel (SEO) et optimisation pour moteurs de recherche IA (GEO). Méthode claire et résultats durables."
   canonicalPath="/services/"
   breadcrumbs={breadcrumbs}
   schema={servicesSchema}
 >
   <Header />
-  <main id="main-content">
 
-    <!-- ══ HERO ══ -->
+  <main id="main-content">
     <PageHero
-      bgImage="/assets/hero/digital-network.jpg"
-      bgAlt="Réseau numérique abstrait sur fond bleu sombre"
-      eyebrow="Services SEO"
-      title="Référencement naturel pour les entreprises à Rennes et en Bretagne"
-      description="Le SEO recouvre plusieurs dimensions complémentaires. Chaque service répond à un besoin spécifique — et ils forment ensemble une stratégie cohérente pour améliorer votre visibilité sur Google durablement."
+      eyebrow="Expertises & Prestations"
+      title="Services SEO & GEO"
+      description="Une suite d'interventions ciblées, pensées pour résoudre des blocages concrets et construire une présence numérique robuste, compréhensible et durable."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
+      compact={true}
     />
 
     <Breadcrumbs items={breadcrumbs} />
 
-
-    <!-- ══ POUR QUI ══ -->
-    <section class="section section--surface" aria-labelledby="pourqui-heading">
+    <!-- ══ GRILLE DES 6 SERVICES ══ -->
+    <section class="section" aria-labelledby="hub-services-heading">
       <div class="container">
-        <div class="prose-header">
-          <p class="eyebrow">À qui s'adressent ces services</p>
-          <h2 id="pourqui-heading">Pour les entreprises qui veulent grandir en ligne</h2>
-        </div>
-        <div class="audience-grid">
-          <div class="audience-item">
-            <h3 class="audience-item__title">TPE et PME locales</h3>
-            <p class="audience-item__desc">
-              Artisans, commerçants, prestataires de services — vous dépendez de votre
-              réputation locale et avez besoin d'être trouvé quand vos clients vous cherchent
-              à Rennes ou en Bretagne.
-            </p>
-          </div>
-          <div class="audience-item">
-            <h3 class="audience-item__title">Professions libérales</h3>
-            <p class="audience-item__desc">
-              Médecins, avocats, architectes, consultants — une présence organique forte
-              génère des demandes qualifiées sans dépenser en publicité chaque mois.
-            </p>
-          </div>
-          <div class="audience-item">
-            <h3 class="audience-item__title">E-commerçants et SaaS</h3>
-            <p class="audience-item__desc">
-              Vous avez un produit ou un logiciel à vendre. Le SEO on-page et technique
-              peut transformer vos pages de catégories et de produits en sources de trafic durable.
-            </p>
-          </div>
-          <div class="audience-item">
-            <h3 class="audience-item__title">Startups en croissance</h3>
-            <p class="audience-item__desc">
-              Vous construisez votre autorité dans un secteur. Un audit et un accompagnement
-              stratégique posent les fondations d'une visibilité qui croît avec vous.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══ LES 5 SERVICES ══ -->
-    <section class="section" aria-labelledby="services-heading">
-      <div class="container">
-        <div class="prose-header">
-          <p class="eyebrow">Ce que je propose</p>
-          <h2 id="services-heading">Les cinq services SEO</h2>
-        </div>
-
-        <div class="services-list">
-          {services.map((service) => (
-            <article class="service-full-card">
-              <div class="service-full-card__header">
-                <span class="service-full-card__icon" aria-hidden="true">{service.icon}</span>
-                <div>
-                  <p class="service-full-card__tagline">{service.tagline}</p>
-                  <h3 class="service-full-card__title">
-                    <a href={service.href}>{service.title}</a>
-                  </h3>
-                </div>
-              </div>
-              <p class="service-full-card__desc">{service.description}</p>
-              <p class="service-full-card__ideal">{service.ideal}</p>
-              <a href={service.href} class="service-full-card__link">
-                Découvrir ce service →
-              </a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══ GUIDE DE CHOIX ══ -->
-    <section class="section section--warm" aria-labelledby="guide-heading">
-      <div class="container">
-        <div class="prose-header">
-          <p class="eyebrow">Vous ne savez pas par où commencer ?</p>
-          <h2 id="guide-heading">Trouvez le service adapté à votre situation</h2>
+        <div class="section-header--centered">
+          <p class="eyebrow">Domaines d'intervention</p>
+          <h2 id="hub-services-heading">6 expertises au service de votre visibilité</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Voici un guide rapide pour identifier le service le plus pertinent selon
-            votre situation. Si vous êtes encore incertain, un premier échange suffit
-            pour faire le point ensemble.
+            Chaque prestation correspond à une étape de maturité ou à un défi spécifique de votre présence en ligne.
           </p>
         </div>
 
-        <div class="decision-list">
-          {decisionItems.map((item) => (
-            <a href={item.href} class="decision-item">
-              <div class="decision-item__question">{item.question}</div>
-              <div class="decision-item__right">
-                <span class="decision-item__answer">{item.answer}</span>
-                <span class="decision-item__desc">{item.desc}</span>
-              </div>
-              <span class="decision-item__arrow" aria-hidden="true">→</span>
-            </a>
+        <div class="grid-auto">
+          {services.map((service, i) => (
+            <ServiceCard
+              title={service.title}
+              slug={service.slug}
+              description={service.shortDescription}
+              category={service.category}
+              deliverables={service.deliverables}
+              index={i + 1}
+            />
           ))}
         </div>
-
-        <div style="margin-top: var(--space-10); text-align: center">
-          <p style="font-size: var(--text-base); color: var(--color-text-muted); margin-bottom: var(--space-4)">
-            Vous préférez qu'on fasse le point ensemble ?
-          </p>
-          <a href="/reserver-un-appel/" class="btn btn--primary">
-            Réserver un appel gratuit de 30 min
-          </a>
-        </div>
       </div>
     </section>
 
-
-    <!-- ══ COMMENT ÇA SE PASSE EN PRATIQUE ══ -->
-    <section class="section section--surface" aria-labelledby="pratique-heading">
+    <!-- ══ GUIDE D'AIDE AU CHOIX ══ -->
+    <section class="section section--surface" aria-labelledby="guide-heading">
       <div class="container">
-        <div class="prose-header">
-          <p class="eyebrow">En pratique</p>
-          <h2 id="pratique-heading">Comment se déroule une collaboration</h2>
+        <div class="section-header--centered">
+          <p class="eyebrow">Orientation</p>
+          <h2 id="guide-heading">Quel service correspond à votre situation ?</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Identifiez votre défi principal pour trouver le point de départ le plus pertinent.
+          </p>
         </div>
-        <ol class="collab-steps" role="list">
-          <li class="collab-step">
-            <div class="collab-step__number" aria-hidden="true">01</div>
-            <div>
-              <h3 class="collab-step__title">Premier échange (gratuit)</h3>
-              <p class="collab-step__desc">
-                30 minutes pour comprendre votre situation, vos objectifs et vérifier si
-                je peux vous aider. Sans engagement, sans présentation commerciale.
-              </p>
+
+        <div class="decision-grid">
+          {decisionGuide.map((item) => (
+            <div class="decision-card">
+              <p class="decision-card__situation">« {item.situation} »</p>
+              <div class="decision-card__answer">
+                <span class="decision-card__label">Point d'entrée conseillé :</span>
+                <a href={item.url} class="decision-card__link">
+                  {item.recommendedService} &rarr;
+                </a>
+              </div>
+              <p class="decision-card__rationale">{item.rationale}</p>
             </div>
-          </li>
-          <li class="collab-step">
-            <div class="collab-step__number" aria-hidden="true">02</div>
-            <div>
-              <h3 class="collab-step__title">Proposition et périmètre</h3>
-              <p class="collab-step__desc">
-                Sur la base de votre situation, je vous propose le service ou la combinaison
-                de services adaptés. Le périmètre et les livrables sont définis clairement
-                avant tout démarrage.
-              </p>
-            </div>
-          </li>
-          <li class="collab-step">
-            <div class="collab-step__number" aria-hidden="true">03</div>
-            <div>
-              <h3 class="collab-step__title">Exécution avec transparence</h3>
-              <p class="collab-step__desc">
-                Vous comprenez ce qui est fait et pourquoi. Chaque action est expliquée,
-                chaque décision est justifiée par des données.
-              </p>
-            </div>
-          </li>
-          <li class="collab-step">
-            <div class="collab-step__number" aria-hidden="true">04</div>
-            <div>
-              <h3 class="collab-step__title">Suivi et ajustements</h3>
-              <p class="collab-step__desc">
-                Le SEO évolue avec les données. Les priorités sont ajustées en fonction
-                de ce que montrent Google Search Console et Analytics.
-              </p>
-            </div>
-          </li>
-        </ol>
+          ))}
+        </div>
       </div>
     </section>
 
-
-    <!-- ══ CTA ══ -->
+    <!-- ══ CTA FINAL ══ -->
     <CTA
-      heading="Discutons de votre projet."
-      body="Un premier échange gratuit pour comprendre votre situation et identifier le service le plus adapté. Pas de présentation commerciale, pas d'engagement."
-      primaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
-      secondaryCTA={{ label: 'Demander un audit SEO', href: '/contact/' }}
-      variant="dark"
+      heading="Vous avez un doute sur la prestation adaptée ?"
+      body="Chaque projet est unique. Discutons-en 30 minutes : nous établirons un premier diagnostic sans engagement."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter la méthodologie', href: '/approche/' }}
+      variant="navy"
     />
-
   </main>
+
   <Footer />
 </ServiceLayout>
 
 <style>
-.service-hero {
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-12);
-}
-.service-hero__content {
-  max-width: 44rem;
-}
-.service-hero__h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.875rem, 4vw, 2.75rem);
-  font-weight: var(--weight-bold);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-5);
-}
-.prose-header {
-  max-width: 40rem;
-  margin-bottom: var(--space-10);
-}
-.prose-header h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: var(--weight-bold);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin-top: var(--space-2);
-}
-
-/* ══ AUDIENCE ══ */
-.audience-grid {
+.decision-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
-  gap: var(--space-4);
-}
-.audience-item {
-  padding: var(--space-6);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-bg);
-}
-.audience-item__title {
-  font-size: var(--text-base);
-  font-weight: var(--weight-semibold);
-  margin-bottom: var(--space-2);
-}
-.audience-item__desc {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
 }
 
-/* ══ SERVICES LIST ══ */
-.services-list {
+@media (max-width: 768px) {
+  .decision-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.decision-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
 }
 
-.service-full-card {
-  padding: var(--space-7) var(--space-8);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-bg);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
-}
-
-.service-full-card:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-sm);
-}
-
-.service-full-card__header {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-4);
-  margin-bottom: var(--space-4);
-}
-
-.service-full-card__icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  line-height: 1;
-  padding-top: 0.2rem;
-}
-
-.service-full-card__tagline {
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-accent);
-  font-weight: var(--weight-semibold);
-  margin-bottom: var(--space-1);
-}
-
-.service-full-card__title {
-  font-size: var(--text-xl);
-  font-weight: var(--weight-semibold);
-}
-
-.service-full-card__title a {
-  text-decoration: none;
-  color: var(--color-text);
-  transition: color var(--transition-fast);
-}
-
-.service-full-card__title a:hover {
-  color: var(--color-accent);
-}
-
-.service-full-card__desc {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-3);
-}
-
-.service-full-card__ideal {
-  font-size: var(--text-xs);
-  color: var(--color-text-subtle);
+.decision-card__situation {
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
   font-style: italic;
-  margin-bottom: var(--space-5);
+  color: var(--color-navy);
+  margin-bottom: var(--space-4);
+  line-height: var(--leading-relaxed);
 }
 
-.service-full-card__link {
+.decision-card__answer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.decision-card__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.decision-card__link {
   font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  color: var(--color-accent);
+  font-weight: var(--weight-bold);
+  color: var(--color-atlantic);
   text-decoration: none;
-  text-underline-offset: 3px;
-  transition: opacity var(--transition-fast);
 }
 
-.service-full-card__link:hover {
+.decision-card__link:hover {
   text-decoration: underline;
 }
 
-/* ══ DECISION GUIDE ══ */
-.decision-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  max-width: 52rem;
-}
-
-.decision-item {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: var(--space-4);
-  align-items: center;
-  padding: var(--space-5) var(--space-6);
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  text-decoration: none;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast);
-}
-
-.decision-item:hover {
-  border-color: var(--color-accent);
-  background-color: var(--color-surface);
-}
-
-.decision-item__question {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
-}
-
-.decision-item__right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: var(--space-1);
-  flex-shrink: 0;
-}
-
-.decision-item__answer {
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  color: var(--color-text);
-  white-space: nowrap;
-}
-
-.decision-item__desc {
+.decision-card__rationale {
   font-size: var(--text-xs);
-  color: var(--color-text-subtle);
-  text-align: right;
-}
-
-.decision-item__arrow {
-  color: var(--color-accent);
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-@media (max-width: 640px) {
-  .decision-item {
-    grid-template-columns: 1fr auto;
-  }
-  .decision-item__right {
-    display: none;
-  }
-}
-
-/* ══ COLLABORATION STEPS ══ */
-.collab-steps {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-  max-width: 44rem;
-}
-
-.collab-step {
-  display: flex;
-  gap: var(--space-6);
-  align-items: flex-start;
-  padding: var(--space-5) var(--space-6);
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-}
-
-.collab-step__number {
-  font-family: var(--font-serif);
-  font-size: var(--text-xl);
-  font-weight: var(--weight-bold);
-  color: var(--color-accent);
-  flex-shrink: 0;
-  min-width: 2rem;
-}
-
-.collab-step__title {
-  font-size: var(--text-base);
-  font-weight: var(--weight-semibold);
-  margin-bottom: var(--space-2);
-}
-
-.collab-step__desc {
-  font-size: var(--text-sm);
   color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
+  line-height: var(--leading-normal);
+  margin: 0;
 }
 </style>

@@ -2,24 +2,25 @@
 /**
  * index.astro — Homepage
  * URL: /
- * H1: Consultant SEO à Rennes et en Bretagne (spec §9)
+ * H1: Consultant SEO & GEO
  *
- * Sections (spec §9):
- *  1. Hero
- *  2. Problèmes clients
- *  3. Services
- *  4. Processus
- *  5. Pourquoi Ujjwal SEO
- *  6. Zones géographiques
- *  7. Réalisations (transparent — pas de faux résultats)
- *  8. Blog (récents articles, vide pour l'instant)
- *  9. FAQ
- * 10. CTA final
+ * Information Architecture:
+ *  01. Hero (SearchLandscapeHero)
+ *  02. SEO + GEO : Deux disciplines complémentaires
+ *  03. "Comment votre entreprise est comprise" (EntityDiagram)
+ *  04. Services SEO & GEO (6 expertises claires)
+ *  05. Méthodologie en 5 étapes (ProcessSteps)
+ *  06. Pourquoi travailler avec un consultant indépendant
+ *  07. Zones d'intervention (Bretagne, Pays de la Loire & France à distance)
+ *  08. Blog & Ressources
+ *  09. FAQ
+ *  10. CTA Final
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import HomeHero from '../components/HomeHero.astro';
+import SearchLandscapeHero from '../components/SearchLandscapeHero.astro';
+import EntityDiagram from '../components/EntityDiagram.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import FAQ from '../components/FAQ.astro';
@@ -36,65 +37,64 @@ const latestPosts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-// Process steps per spec §9
+// 5-step methodology per prompt specification §10
 const processSteps = [
   {
     number: 1,
-    title: 'Analyse',
-    description: 'Audit de votre site, de votre positionnement actuel et de vos concurrents pour établir un état des lieux précis.',
+    title: 'Comprendre',
+    description: 'Analyse approfondie de votre modèle économique, de la demande de recherche réelle, des concurrents et des intentions de vos clients.',
   },
   {
     number: 2,
-    title: 'Stratégie',
-    description: 'Définition des priorités, des mots-clés cibles et des axes d\'optimisation en fonction de vos objectifs.',
+    title: 'Structurer',
+    description: 'Organisation de l\'architecture de l\'information, maillage interne, définition des entités et assainissement technique des fondations.',
   },
   {
     number: 3,
-    title: 'Optimisation',
-    description: 'Correction des problèmes techniques, amélioration de l\'architecture et de l\'expérience utilisateur.',
+    title: 'Optimiser',
+    description: 'Résolution des blocages techniques, optimisation sémantique on-page, balisage Schema.org et cohérence locale.',
   },
   {
     number: 4,
-    title: 'Contenu',
-    description: 'Création et optimisation des pages et articles pour répondre aux intentions de recherche de vos clients.',
+    title: 'Développer',
+    description: 'Déploiement de contenus stratégiques à forte valeur ajoutée, renforcement de l\'autorité thématique et pertinence contextuelle.',
   },
   {
     number: 5,
-    title: 'Mesure',
-    description: 'Suivi régulier des positions, du trafic organique et des conversions pour évaluer les progrès.',
-  },
-  {
-    number: 6,
-    title: 'Amélioration',
-    description: 'Ajustement continu de la stratégie selon les données réelles et l\'évolution de votre marché.',
+    title: 'Observer',
+    description: 'Pilotage via Google Search Console, suivi des positions, du trafic qualifié, des conversions et des signaux de visibilité IA émergents.',
   },
 ];
 
-// Homepage-specific FAQ items
-const homeFAQ = faqGeneral;
-
 // Organization + WebSite schema
-const organizationSchema = {
+const professionalServiceSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Ujjwal SEO',
-  description: 'Consultant SEO indépendant à Rennes et en Bretagne. SEO local, SEO technique, audit SEO et accompagnement SEO.',
+  description: 'Consultant SEO & GEO indépendant en France. Accompagnement en référencement naturel, optimisation technique, sémantique et visibilité dans les moteurs de recherche IA.',
   url: SITE_URL,
-  areaServed: [
-    { '@type': 'City', name: 'Rennes' },
-    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
-    { '@type': 'AdministrativeArea', name: 'Bretagne' },
-    { '@type': 'Country', name: 'France' },
-  ],
   founder: {
     '@type': 'Person',
     name: 'Ujjwal Lage',
-    jobTitle: 'Consultant SEO indépendant',
+    jobTitle: 'Consultant SEO & GEO indépendant',
     url: `${SITE_URL}/a-propos/`,
   },
+  areaServed: [
+    { '@type': 'Country', name: 'France' },
+    { '@type': 'AdministrativeArea', name: 'Bretagne' },
+    { '@type': 'AdministrativeArea', name: 'Pays de la Loire' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+  ],
   knowsAbout: [
-    'SEO local', 'Référencement naturel', 'SEO technique', 'Audit SEO',
-    'Optimisation on-page', 'Google Business Profile', 'Core Web Vitals',
+    'SEO',
+    'GEO - Generative Engine Optimization',
+    'Référencement naturel',
+    'SEO technique',
+    'SEO sémantique',
+    'SEO local',
+    'Audit SEO',
+    'Données structurées Schema.org',
+    'Moteurs de réponse IA',
   ],
 };
 
@@ -107,126 +107,103 @@ const websiteSchema = {
 ---
 
 <BaseLayout
-  title={buildTitle('Consultant SEO à Rennes et en Bretagne', true)}
-  description="Ujjwal SEO — Consultant SEO indépendant à Rennes et en Bretagne. Améliorez votre visibilité sur Google grâce à une stratégie SEO claire, technique et adaptée à votre activité."
+  title={buildTitle('Consultant SEO & GEO — Visibilité Moteurs & Recherche IA', false)}
+  description="Consultant SEO & GEO indépendant en France. J'aide les entreprises à devenir plus visibles et compréhensibles dans les moteurs de recherche et les espaces de réponse IA."
   canonicalPath="/"
-  schema={[organizationSchema, websiteSchema]}
+  schema={[professionalServiceSchema, websiteSchema]}
 >
   <Header />
 
   <main id="main-content">
 
     <!-- ══════════════════════════════════════
-         1. HERO
+         01. HERO (Search Landscape System)
     ══════════════════════════════════════ -->
-    <HomeHero
-      eyebrow="Consultant SEO indépendant"
-      heading='Consultant SEO à<br /><em>Rennes</em> et en <em>Bretagne</em>'
-      subheading="Améliorez votre visibilité sur Google grâce à une stratégie SEO claire, technique et adaptée à votre activité. SEO local, SEO technique, optimisation on-page et accompagnement pour les entreprises à Rennes et en Bretagne."
-      primaryCTA={{ label: 'Demander un audit SEO', href: '/contact/' }}
-      secondaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
-      trustItems={['Sans jargon inutile', 'Approche orientée résultats', 'Premier échange gratuit']}
+    <SearchLandscapeHero
+      eyebrow="Consultant SEO & GEO indépendant"
+      heading="Consultant SEO & GEO"
+      subheading="J'aide les entreprises à devenir plus visibles dans les moteurs de recherche et les nouveaux espaces de recherche alimentés par l'IA. De la structure technique aux réseaux d'entités, je construis des fondations durables pour votre présence numérique."
+      primaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
+      secondaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
     />
 
-
     <!-- ══════════════════════════════════════
-         2. PROBLÈMES CLIENTS
+         02. SEO + GEO : DEUX DISCIPLINES COMPLÉMENTAIRES
     ══════════════════════════════════════ -->
-    <section class="problems section section--surface" aria-labelledby="problems-heading">
+    <section class="duo-section section section--surface" aria-labelledby="duo-heading">
       <div class="container">
         <div class="section-header--centered">
-          <p class="eyebrow">Vous vous reconnaissez ?</p>
-          <h2 id="problems-heading">Les problèmes SEO les plus fréquents</h2>
+          <p class="eyebrow">Vision & Positionnement</p>
+          <h2 id="duo-heading">SEO + GEO : Deux disciplines complémentaires</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            La plupart des entreprises locales rencontrent les mêmes obstacles sur Google.
-            Ces problèmes se résolvent avec une stratégie SEO structurée.
+            Le référencement ne s'arrête plus à une liste de liens bleus. Pour construire une visibilité pérenne, il est indispensable de comprendre comment les moteurs traditionnels et les systèmes d'IA indexent et synthétisent vos informations.
           </p>
         </div>
 
-        <ul class="problems__grid" role="list">
-          <li class="problem-card">
-            <span class="problem-card__icon" aria-hidden="true">👁️</span>
-            <div>
-              <h3 class="problem-card__title">Site invisible sur Google</h3>
-              <p class="problem-card__desc">
-                Vos clients cherchent vos services en ligne, mais c'est toujours votre concurrent
-                qui apparaît en premier.
-              </p>
+        <div class="duo-grid">
+          <article class="duo-card duo-card--seo">
+            <div class="duo-card__header">
+              <span class="duo-card__badge">Fondation classique</span>
+              <h3 class="duo-card__title">SEO — Search Engine Optimization</h3>
             </div>
-          </li>
-          <li class="problem-card">
-            <span class="problem-card__icon" aria-hidden="true">📍</span>
-            <div>
-              <h3 class="problem-card__title">Faible visibilité locale</h3>
-              <p class="problem-card__desc">
-                Votre fiche Google Business Profile est incomplète ou mal optimisée,
-                et vous n'apparaissez pas dans les recherches locales.
-              </p>
+            <p class="duo-card__desc">
+              Le SEO traditionnel consiste à positionner votre site sur Google en optimisant son accessibilité technique, sa pertinence sémantique et son autorité. L'objectif est de répondre précisément aux requêtes textuelles des internautes.
+            </p>
+            <ul class="duo-card__list">
+              <li><strong>Crawl & Indexation :</strong> Des pages facilement lues par les robots d'exploration.</li>
+              <li><strong>Intention de recherche :</strong> Des contenus ciblés répondant aux besoins de vos futurs clients.</li>
+              <li><strong>Expérience & Performance :</strong> Temps de chargement rapides, ergonomie mobile et balisage clair.</li>
+            </ul>
+            <div class="duo-card__footer">
+              <span class="duo-card__mechanic">Mécanique : Requête &rarr; Moteur &rarr; Index &rarr; Classement</span>
             </div>
-          </li>
-          <li class="problem-card">
-            <span class="problem-card__icon" aria-hidden="true">⚙️</span>
-            <div>
-              <h3 class="problem-card__title">Problèmes techniques non détectés</h3>
-              <p class="problem-card__desc">
-                Des erreurs d'indexation, une vitesse insuffisante ou une mauvaise
-                architecture pénalisent votre référencement sans que vous le sachiez.
-              </p>
-            </div>
-          </li>
-          <li class="problem-card">
-            <span class="problem-card__icon" aria-hidden="true">🔑</span>
-            <div>
-              <h3 class="problem-card__title">Pas de stratégie de mots-clés</h3>
-              <p class="problem-card__desc">
-                Vos pages ne ciblent pas les bons termes de recherche, ou visent
-                des mots-clés trop compétitifs sans potentiel réaliste.
-              </p>
-            </div>
-          </li>
-          <li class="problem-card">
-            <span class="problem-card__icon" aria-hidden="true">📊</span>
-            <div>
-              <h3 class="problem-card__title">Trafic non qualifié</h3>
-              <p class="problem-card__desc">
-                Vous recevez des visiteurs, mais ils ne correspondent pas à votre
-                clientèle cible et ne génèrent pas de contacts.
-              </p>
-            </div>
-          </li>
-          <li class="problem-card">
-            <span class="problem-card__icon" aria-hidden="true">🗺️</span>
-            <div>
-              <h3 class="problem-card__title">Pas de cap SEO clair</h3>
-              <p class="problem-card__desc">
-                Vous avez essayé différentes actions sans résultats durables, faute
-                d'une stratégie cohérente et d'un suivi régulier.
-              </p>
-            </div>
-          </li>
-        </ul>
+          </article>
 
-        <div class="problems__cta">
-          <p>Ces problèmes ont des solutions concrètes.</p>
-          <a href="/services/audit-seo/" class="btn btn--primary">
-            Diagnostiquer mon site
-          </a>
+          <article class="duo-card duo-card--geo">
+            <div class="duo-card__header">
+              <span class="duo-card__badge duo-card__badge--geo">Espace émergent</span>
+              <h3 class="duo-card__title">GEO — Generative Engine Optimization</h3>
+            </div>
+            <p class="duo-card__desc">
+              Le GEO s'intéresse à la façon dont l'expertise et l'identité de votre entreprise sont comprises, extraites et citées par les moteurs de recherche enrichis d'IA (Google AI Overviews, Perplexity, moteurs de réponse).
+            </p>
+            <ul class="duo-card__list">
+              <li><strong>Clarté des entités :</strong> Rendre explicites vos domaines d'intervention, vos produits et votre singularité.</li>
+              <li><strong>Données structurées :</strong> Alimenter les modèles avec des faits vérifiables et standardisés.</li>
+              <li><strong>Sources de confiance :</strong> Devenir une référence citée lors des synthèses automatiques.</li>
+            </ul>
+            <div class="duo-card__footer">
+              <span class="duo-card__mechanic">Mécanique : Question complexe &rarr; Extraction contextuelle &rarr; Synthèse sourcée</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="duo-summary">
+          <div class="duo-summary__inner">
+            <div class="duo-summary__icon" aria-hidden="true">&bull;&bull;&bull;</div>
+            <p class="duo-summary__text">
+              <strong>Le GEO ne remplace pas le SEO.</strong> Il s'appuie sur les mêmes piliers d'excellence technique, de qualité éditoriale et de cohérence structurelle. Travailler les deux vous assure d'être présent là où vos clients cherchent aujourd'hui et chercheront demain.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ══════════════════════════════════════
+         03. COMMENT VOTRE ENTREPRISE EST COMPRISE
+    ══════════════════════════════════════ -->
+    <EntityDiagram />
 
     <!-- ══════════════════════════════════════
-         3. SERVICES
+         04. SERVICES (6 EXPERTISES)
     ══════════════════════════════════════ -->
-    <section class="home-services section section--navy" aria-labelledby="services-heading">
+    <section class="home-services section" aria-labelledby="services-heading">
       <div class="container">
         <div class="section-header--centered">
-          <p class="eyebrow">Ce que je propose</p>
-          <h2 id="services-heading">Services SEO</h2>
+          <p class="eyebrow">Domaines d'intervention</p>
+          <h2 id="services-heading">Des expertises précises pour chaque enjeu</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Des services complémentaires, conçus pour couvrir les différents aspects
-            du référencement naturel selon vos besoins et votre situation.
+            Que vous ayez besoin de débloquer des freins techniques, d'asseoir une présence locale ou d'anticiper la recherche générative, mes prestations répondent à un besoin concret sans promesse artificielle.
           </p>
         </div>
 
@@ -236,6 +213,8 @@ const websiteSchema = {
               title={service.title}
               slug={service.slug}
               description={service.shortDescription}
+              category={service.category}
+              deliverables={service.deliverables}
               index={i + 1}
             />
           ))}
@@ -243,692 +222,593 @@ const websiteSchema = {
 
         <div class="home-services__footer">
           <a href="/services/" class="btn btn--secondary">
-            Voir tous les services →
+            Explorer le détail de tous les services &rarr;
           </a>
         </div>
       </div>
     </section>
 
-
     <!-- ══════════════════════════════════════
-         4. PROCESSUS
+         05. PROCESSUS (5 ÉTAPES)
     ══════════════════════════════════════ -->
     <ProcessSteps
       steps={processSteps}
-      heading="Une méthode SEO structurée, étape par étape"
-      subheading="Le SEO efficace n'est pas une question de recettes magiques. C'est un processus itératif, basé sur l'analyse des données et l'amélioration continue."
+      heading="Une méthode structurée en 5 étapes"
+      subheading="Le référencement naturel pérenne repose sur une méthodologie rigoureuse, fondée sur l'analyse de données réelles et l'amélioration méthodique des fondations de votre site."
     />
 
-
     <!-- ══════════════════════════════════════
-         5. POURQUOI UJJWAL SEO
+         06. POURQUOI UN CONSULTANT INDÉPENDANT
     ══════════════════════════════════════ -->
-    <section class="about-intro section section--surface" aria-labelledby="about-heading">
+    <section class="consultant-value section section--surface" aria-labelledby="why-heading">
       <div class="container">
-        <div class="about-intro__grid">
-
-          <div class="about-intro__text">
-            <p class="eyebrow">À propos</p>
-            <h2 id="about-heading">Pourquoi travailler avec Ujjwal SEO ?</h2>
-
-            <p class="lead" style="margin-top: var(--space-5); margin-bottom: var(--space-8)">
-              En tant que consultant SEO indépendant, j'interviens directement sur votre projet,
-              sans intermédiaire et avec une vision globale de votre visibilité en ligne.
+        <div class="consultant-value__grid">
+          <div class="consultant-value__text">
+            <p class="eyebrow">Collaboration directe</p>
+            <h2 id="why-heading">Pourquoi faire appel à un consultant indépendant ?</h2>
+            <p class="lead" style="margin-top: var(--space-4); margin-bottom: var(--space-8)">
+              Loin des schémas d'agences aux multiples intermédiaires, travailler avec un consultant indépendant vous garantit un échange direct avec l'expert qui analyse, conseille et intervient sur votre site.
             </p>
 
-            <ul class="about-intro__points">
-              <li class="about-point">
-                <span class="about-point__marker" aria-hidden="true">01</span>
+            <ul class="consultant-points" role="list">
+              <li class="consultant-point">
+                <span class="consultant-point__number">01</span>
                 <div>
-                  <h3 class="about-point__title">Approche orientée business</h3>
-                  <p class="about-point__desc">
-                    Le SEO n'est pas une fin en soi. Chaque décision d'optimisation
-                    est évaluée en fonction de son impact potentiel sur votre activité
-                    et vos objectifs commerciaux.
+                  <h3 class="consultant-point__title">Interlocuteur unique & engagement direct</h3>
+                  <p class="consultant-point__desc">
+                    Aucun compte délégué à un stagiaire. Votre dossier est traité directement avec rigueur, écoute et réactivité.
                   </p>
                 </div>
               </li>
-              <li class="about-point">
-                <span class="about-point__marker" aria-hidden="true">02</span>
+              <li class="consultant-point">
+                <span class="consultant-point__number">02</span>
                 <div>
-                  <h3 class="about-point__title">Méthode claire et transparente</h3>
-                  <p class="about-point__desc">
-                    Vous comprenez ce qui est fait et pourquoi. Chaque recommandation
-                    est expliquée, priorisée et accompagnée d'un plan d'action concret.
+                  <h3 class="consultant-point__title">Double sensibilité technique et commerciale</h3>
+                  <p class="consultant-point__desc">
+                    Issu d'une formation en management et commerce avant ma spécialisation en SEO, je ne perds jamais de vue vos objectifs d'affaires et la rentabilité de vos actions.
                   </p>
                 </div>
               </li>
-              <li class="about-point">
-                <span class="about-point__marker" aria-hidden="true">03</span>
+              <li class="consultant-point">
+                <span class="consultant-point__number">03</span>
                 <div>
-                  <h3 class="about-point__title">Compétences techniques et éditoriales</h3>
-                  <p class="about-point__desc">
-                    Du SEO technique au contenu, en passant par le SEO local,
-                    j'interviens sur l'ensemble des leviers du référencement naturel.
+                  <h3 class="consultant-point__title">Pédagogie et transparence totale</h3>
+                  <p class="consultant-point__desc">
+                    Pas de jargon hermétique ni de faux mystère. Vous comprenez chaque choix technique, chaque priorité et la logique des actions mises en œuvre.
                   </p>
                 </div>
               </li>
-              <li class="about-point">
-                <span class="about-point__marker" aria-hidden="true">04</span>
+              <li class="consultant-point">
+                <span class="consultant-point__number">04</span>
                 <div>
-                  <h3 class="about-point__title">Spécialisé Rennes et Bretagne</h3>
-                  <p class="about-point__desc">
-                    Une connaissance du tissu économique local pour des stratégies
-                    adaptées à la réalité des marchés rennais et breton.
+                  <h3 class="consultant-point__title">Veille continue sur l'IA et le GEO</h3>
+                  <p class="consultant-point__desc">
+                    Les moteurs de recherche évoluent vite. Mon approche intègre en permanence les changements d'algorithmes et l'apparition des nouvelles surfaces de réponse génératives.
                   </p>
                 </div>
               </li>
             </ul>
 
-            <a href="/a-propos/" class="btn btn--secondary" style="margin-top: var(--space-8)">
-              En savoir plus sur mon parcours
-            </a>
-          </div>
-
-          <div class="about-intro__visual">
-            <div class="about-intro__portrait">
-              <img
-                src="/assets/ujjwal-lage-homepage.jpg"
-                alt="Ujjwal Lage — Consultant SEO indépendant en Bretagne"
-                width="682"
-                height="1024"
-                loading="lazy"
-                class="about-intro__portrait-img"
-              />
-            </div>
-            <div class="about-intro__card">
-              <p class="about-intro__card-quote">
-                "Le SEO est un investissement à long terme qui, bien exécuté,
-                génère un flux constant de visiteurs qualifiés."
-              </p>
-              <p class="about-intro__card-author">— Ujjwal Lage</p>
+            <div style="margin-top: var(--space-8);">
+              <a href="/a-propos/" class="btn btn--secondary">
+                En savoir plus sur mon parcours &rarr;
+              </a>
             </div>
           </div>
 
+          <div class="consultant-value__panel">
+            <div class="consultant-card">
+              <div class="consultant-card__badge">Consultant SEO & GEO indépendant</div>
+              <h3 class="consultant-card__name">Ujjwal Lage</h3>
+              <p class="consultant-card__role">Stratégie de visibilité organique & architecture d'entités</p>
+              
+              <div class="consultant-card__principles">
+                <div class="consultant-card__item">
+                  <span class="consultant-card__dot"></span>
+                  <span>Zéro promesse irréaliste de positionnement n°1 garanti</span>
+                </div>
+                <div class="consultant-card__item">
+                  <span class="consultant-card__dot"></span>
+                  <span>Audit basé sur des données tangibles et vérifiables</span>
+                </div>
+                <div class="consultant-card__item">
+                  <span class="consultant-card__dot"></span>
+                  <span>Accompagnement adapté aux TPE, PME et structures ambitieuses</span>
+                </div>
+                <div class="consultant-card__item">
+                  <span class="consultant-card__dot"></span>
+                  <span>Interventions locales dans le Grand Ouest & partout en France à distance</span>
+                </div>
+              </div>
+
+              <div class="consultant-card__cta">
+                <a href="/contact/" class="btn btn--primary btn--full">
+                  Échanger sur vos enjeux
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-
     <!-- ══════════════════════════════════════
-         6. ZONES GÉOGRAPHIQUES
+         07. ZONES D'INTERVENTION PREVIEW
     ══════════════════════════════════════ -->
-    <section class="local-section section" aria-labelledby="local-heading">
+    <section class="home-zones section" aria-labelledby="zones-heading">
       <div class="container">
-        <div class="section-header--centered">
-          <p class="eyebrow">Zones d'intervention</p>
-          <h2 id="local-heading">SEO à Rennes et en Bretagne</h2>
-          <p class="lead" style="margin-top: var(--space-4)">
-            Basé en Bretagne, j'accompagne prioritairement les entreprises rennaises
-            et bretonnes dans leur développement de visibilité organique.
-          </p>
-        </div>
-
-        <div class="local-cards">
-          <article class="local-card">
-            <div class="local-card__media">
-              <img
-                src="/assets/hero/french-town.jpg"
-                alt="Rues commerçantes et architecture du centre-ville de Rennes"
-                width="600"
-                height="338"
-                loading="lazy"
-                class="local-card__img"
-              />
-            </div>
-            <div class="local-card__body">
-              <h3 class="local-card__title">
-                <a href="/seo-rennes/">Consultant SEO Rennes</a>
-              </h3>
-              <p class="local-card__desc">
-                Vous exercez à Rennes ou dans son agglomération ?
-                Une stratégie SEO locale ciblée peut vous aider à apparaître
-                dans les recherches de vos clients potentiels rennais.
-              </p>
-              <ul class="local-card__features">
-                <li>Référencement local Rennes</li>
-                <li>Google Business Profile</li>
-                <li>Contenu local ciblé</li>
-                <li>SEO pour TPE et PME rennaises</li>
-              </ul>
-              <a href="/seo-rennes/" class="btn btn--primary">
-                SEO Rennes →
-              </a>
-            </div>
-          </article>
-
-          <article class="local-card">
-            <div class="local-card__media">
-              <img
-                src="/assets/hero/bretagne-coast.jpg"
-                alt="Falaises et paysage du littoral breton"
-                width="600"
-                height="338"
-                loading="lazy"
-                class="local-card__img"
-              />
-            </div>
-            <div class="local-card__body">
-              <h3 class="local-card__title">
-                <a href="/seo-bretagne/">Consultant SEO Bretagne</a>
-              </h3>
-              <p class="local-card__desc">
-                Vous couvrez plusieurs villes ou tout le territoire breton ?
-                Je vous accompagne dans la construction d'une visibilité
-                organique adaptée aux spécificités du marché régional.
-              </p>
-              <ul class="local-card__features">
-                <li>Référencement régional Bretagne</li>
-                <li>Stratégie multi-villes</li>
-                <li>Contenu régional pertinent</li>
-                <li>Visibilité à l'échelle bretonne</li>
-              </ul>
-              <a href="/seo-bretagne/" class="btn btn--secondary">
-                SEO Bretagne →
-              </a>
-            </div>
-          </article>
-        </div>
-
-        <p class="local-section__note">
-          J'interviens également en <a href="/services/seo-local/">SEO local</a>
-          pour des entreprises basées hors de Bretagne, selon disponibilité.
-        </p>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════
-         7. RÉALISATIONS (transparent)
-    ══════════════════════════════════════ -->
-    <section class="realisations-preview section section--warm" aria-labelledby="realisations-heading">
-      <div class="container">
-        <div class="section-header--centered">
-          <p class="eyebrow">Projets</p>
-          <h2 id="realisations-heading">Réalisations</h2>
-          <p class="lead" style="margin-top: var(--space-4)">
-            Les études de cas détaillées seront publiées au fur et à mesure,
-            avec les autorisations des clients concernés. Chaque cas présentera
-            le contexte réel, les actions menées et les résultats mesurables.
-          </p>
-        </div>
-
-        <div class="realisations-placeholder">
-          <div class="realisations-placeholder__inner">
-            <p class="realisations-placeholder__text">
-              Les études de cas arrivent prochainement.<br />
-              <a href="/contact/">Contactez-moi</a> pour en discuter directement.
+        <div class="home-zones__wrapper">
+          <div class="home-zones__header">
+            <p class="eyebrow">Rayonnement Géographique</p>
+            <h2 id="zones-heading">De la Bretagne aux Pays de la Loire, et partout en France</h2>
+            <p class="lead" style="margin-top: var(--space-4)">
+              <strong>Local quand l'ancrage territorial compte. À distance quand la localisation n'a pas d'importance.</strong> J'accompagne des entreprises locales, des PME régionales et des acteurs à rayonnement national.
             </p>
           </div>
-        </div>
 
-        <div style="text-align: center; margin-top: var(--space-8)">
-          <a href="/realisations/" class="btn btn--secondary">
-            Voir les réalisations →
-          </a>
+          <div class="home-zones__grid">
+            <div class="zone-pill-card">
+              <span class="zone-pill-card__tag">Région Ouest</span>
+              <h3 class="zone-pill-card__title">Bretagne</h3>
+              <p class="zone-pill-card__desc">Rennes, Saint-Malo, Fougères, Vitré, Janzé, Saint-Brieuc, Vannes, Lorient, Brest.</p>
+              <a href="/zones-intervention/bretagne/" class="zone-pill-card__link">Découvrir le réseau Bretagne &rarr;</a>
+            </div>
+
+            <div class="zone-pill-card">
+              <span class="zone-pill-card__tag">Région Ouest</span>
+              <h3 class="zone-pill-card__title">Pays de la Loire</h3>
+              <p class="zone-pill-card__desc">Laval, Mayenne, Château-Gontier, Nantes, Châteaubriant, Angers, Segré.</p>
+              <a href="/zones-intervention/mayenne/" class="zone-pill-card__link">Découvrir le réseau Pays de la Loire &rarr;</a>
+            </div>
+
+            <div class="zone-pill-card zone-pill-card--highlight">
+              <span class="zone-pill-card__tag">National</span>
+              <h3 class="zone-pill-card__title">France entière (à distance)</h3>
+              <p class="zone-pill-card__desc">Accompagnement SEO & GEO via visioconférences régulières, tableaux de bord partagés et collaboration fluide.</p>
+              <a href="/contact/" class="zone-pill-card__link">Prendre contact pour un projet &rarr;</a>
+            </div>
+          </div>
+
+          <div class="home-zones__cta">
+            <a href="/zones-intervention/" class="btn btn--primary">
+              Consulter la carte interactive des zones d'intervention &rarr;
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-
     <!-- ══════════════════════════════════════
-         8. BLOG (récents articles)
+         08. BLOG (ARTICLES & RESSOURCES)
     ══════════════════════════════════════ -->
     <section class="home-blog section section--surface" aria-labelledby="blog-heading">
       <div class="container">
         <div class="section-header">
           <div class="home-blog__header-row">
             <div>
-              <p class="eyebrow">Ressources</p>
-              <h2 id="blog-heading">Articles SEO</h2>
+              <p class="eyebrow">Publications & Analyses</p>
+              <h2 id="blog-heading">Dernières réflexions SEO & GEO</h2>
             </div>
             <a href="/blog/" class="btn btn--secondary home-blog__all-link">
-              Tous les articles →
+              Tous les articles &rarr;
             </a>
           </div>
           <p class="lead" style="margin-top: var(--space-4)">
-            Conseils, méthodes et explications pour comprendre le SEO et améliorer
-            votre visibilité sur Google.
+            Des guides pédagogiques, des analyses techniques et des réflexions concrètes sur l'évolution de la recherche web et des intelligences artificielles.
           </p>
         </div>
 
-        {latestPosts.length > 0
-          ? (
-            <div class="grid-3">
-              {latestPosts.map((post) => {
-                const slug = post.id.replace(/\.mdx?$/, '');
-                return (
-                  <BlogCard
-                    title={post.data.title}
-                    slug={slug}
-                    description={post.data.description}
-                    pubDate={post.data.pubDate}
-                    featuredImage={post.data.featuredImage}
-                    featuredImageAlt={post.data.featuredImageAlt}
-                    categories={post.data.categories}
-                  />
-                );
-              })}
-            </div>
-          )
-          : (
-            <div class="home-blog__empty">
-              <p>
-                Les premiers articles sont en cours de rédaction.
-                <a href="/blog/">Consultez la page blog</a> pour suivre les publications.
-              </p>
-            </div>
-          )
-        }
+        {latestPosts.length > 0 ? (
+          <div class="grid-3">
+            {latestPosts.map((post) => {
+              const slug = post.id.replace(/\.mdx?$/, '');
+              return (
+                <BlogCard
+                  title={post.data.title}
+                  slug={slug}
+                  description={post.data.description}
+                  pubDate={post.data.pubDate}
+                  featuredImage={post.data.featuredImage}
+                  featuredImageAlt={post.data.featuredImageAlt}
+                  categories={post.data.categories}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <div class="home-blog__empty">
+            <p>
+              Les articles d'analyse sont consultables dans l'espace <a href="/blog/">Blog</a>.
+            </p>
+          </div>
+        )}
       </div>
     </section>
 
-
     <!-- ══════════════════════════════════════
-         9. FAQ
+         09. FAQ
     ══════════════════════════════════════ -->
-    <FAQ items={homeFAQ} heading="Questions fréquentes sur le SEO" />
-
+    <FAQ items={faqGeneral} heading="Questions fréquentes sur le SEO & le GEO" />
 
     <!-- ══════════════════════════════════════
          10. CTA FINAL
     ══════════════════════════════════════ -->
     <CTA
-      heading="Parlons de votre visibilité sur Google."
-      body="Un premier échange de 30 minutes pour comprendre votre situation et voir si je peux vous aider. Gratuit, sans engagement."
-      primaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
-      secondaryCTA={{ label: 'Demander un audit SEO', href: '/contact/' }}
+      heading="Construisons une visibilité durable pour votre entreprise."
+      body="Échangeons pendant 30 minutes sur vos enjeux actuels, votre concurrence et les opportunités de positionnement sur Google et les moteurs IA. Échange direct, sans engagement."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
       variant="navy"
-      bgImage="/assets/hero/calm-coast.jpg"
     />
 
   </main>
 
   <Footer />
-
-  <script>
-    // Scroll reveal — subtle section entrance
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-      );
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    } else {
-      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('revealed'));
-    }
-  </script>
-
 </BaseLayout>
 
 <style>
-/* ══ NAVY SERVICE CARD OVERRIDES ══ */
-.section--navy .service-card {
-  background-color: var(--color-navy-light);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-.section--navy .service-card:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-.section--navy .service-card__index {
-  color: var(--color-atlantic-muted);
-}
-.section--navy .service-card__link {
-  color: var(--color-text-inverse);
-}
-.section--navy .service-card__link:hover {
-  color: var(--color-atlantic-muted);
-}
-.section--navy .service-card__description {
-  color: rgba(249, 246, 241, 0.65);
-}
-.section--navy .service-card__arrow {
-  color: var(--color-atlantic-muted);
-}
-.section--navy .service-card::before {
-  background-color: var(--color-atlantic-muted);
-}
-.section--navy .btn--secondary {
-  border-color: rgba(249, 246, 241, 0.25);
-  color: var(--color-text-inverse);
-}
-.section--navy .btn--secondary:hover {
-  border-color: var(--color-text-inverse);
-  background-color: rgba(249, 246, 241, 0.08);
-  color: var(--color-text-inverse);
-}
-
-
-/* ══ PROBLEMS ══ */
-.problems__grid {
+/* ══ DUO SECTION (SEO + GEO) ══ */
+.duo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
-  gap: var(--space-5);
-  margin-bottom: var(--space-12);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-10);
 }
 
-.problem-card {
-  display: flex;
-  gap: var(--space-4);
-  padding: var(--space-6);
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
-}
-
-.problem-card:hover {
-  border-color: var(--color-border);
-  box-shadow: var(--shadow-sm);
-}
-
-.problem-card__icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.problem-card__title {
-  font-size: var(--text-base);
-  font-weight: var(--weight-semibold);
-  margin-bottom: var(--space-2);
-}
-
-.problem-card__desc {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
-}
-
-.problems__cta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-  flex-wrap: wrap;
-}
-
-.problems__cta p {
-  font-size: var(--text-lg);
-  font-weight: var(--weight-medium);
-  color: var(--color-text);
-}
-
-@media (max-width: 640px) {
-  .problems__cta {
-    flex-direction: column;
-    align-items: flex-start;
+@media (max-width: 860px) {
+  .duo-grid {
+    grid-template-columns: 1fr;
   }
 }
 
+.duo-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.duo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.duo-card--seo {
+  border-top: 3px solid var(--color-atlantic);
+}
+
+.duo-card--geo {
+  border-top: 3px solid #6366F1;
+}
+
+.duo-card__header {
+  margin-bottom: var(--space-4);
+}
+
+.duo-card__badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-atlantic);
+  background: rgba(37, 99, 235, 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-3);
+}
+
+.duo-card__badge--geo {
+  color: #4F46E5;
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.duo-card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+}
+
+.duo-card__desc {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.duo-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-normal);
+}
+
+.duo-card__list li {
+  position: relative;
+  padding-left: var(--space-5);
+}
+
+.duo-card__list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-atlantic);
+  font-weight: bold;
+}
+
+.duo-card__footer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.duo-card__mechanic {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  display: block;
+}
+
+.duo-summary {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-navy);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+}
+
+.duo-summary__inner {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.duo-summary__icon {
+  color: var(--color-atlantic);
+  letter-spacing: 0.2em;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.duo-summary__text {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
 
 /* ══ SERVICES FOOTER ══ */
 .home-services__footer {
-  margin-top: var(--space-10);
+  margin-top: var(--space-12);
   text-align: center;
 }
 
-
-/* ══ ABOUT INTRO ══ */
-.about-intro__grid {
+/* ══ CONSULTANT VALUE SECTION ══ */
+.consultant-value__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
-  align-items: start;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
 }
 
 @media (max-width: 900px) {
-  .about-intro__grid {
+  .consultant-value__grid {
     grid-template-columns: 1fr;
-  }
-  .about-intro__visual {
-    display: none; /* Hidden until portrait is supplied */
   }
 }
 
-.about-intro__points {
+.consultant-points {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.about-point {
+.consultant-point {
   display: flex;
   gap: var(--space-5);
   align-items: flex-start;
 }
 
-.about-point__marker {
-  font-family: var(--font-serif);
-  font-size: var(--text-xs);
+.consultant-point__number {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-atlantic);
+  background: rgba(37, 99, 235, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
-  min-width: 2rem;
-  padding-top: 0.2rem;
 }
 
-.about-point__title {
+.consultant-point__title {
   font-size: var(--text-base);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
   margin-bottom: var(--space-1);
 }
 
-.about-point__desc {
+.consultant-point__desc {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
+  margin: 0;
 }
 
-/* Portrait photo */
-.about-intro__visual {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-
-.about-intro__portrait {
-  aspect-ratio: 3 / 4;
-  border: 1px solid var(--color-border-light);
+/* Consultant Card Panel */
+.consultant-card {
+  background: var(--color-navy);
+  color: #FFFFFF;
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  padding: var(--space-8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
-.about-intro__portrait-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.about-intro__card {
-  padding: var(--space-6);
-  background-color: var(--color-surface-dark);
-  border-radius: var(--radius-lg);
-  color: var(--color-text-inverse);
-}
-
-.about-intro__card-quote {
-  font-family: var(--font-serif);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  font-style: italic;
-  color: rgba(249, 246, 241, 0.85);
+.consultant-card__badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #93C5FD;
+  background: rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
   margin-bottom: var(--space-4);
 }
 
-.about-intro__card-author {
-  font-size: var(--text-sm);
-  color: var(--color-accent-light);
-  font-weight: var(--weight-medium);
+.consultant-card__name {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: #FFFFFF;
+  margin-bottom: var(--space-1);
 }
 
-
-/* ══ LOCAL SECTION ══ */
-.local-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
+.consultant-card__role {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.75);
   margin-bottom: var(--space-6);
 }
 
-@media (max-width: 768px) {
-  .local-cards {
+.consultant-card__principles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--space-6);
+}
+
+.consultant-card__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+.consultant-card__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-atlantic);
+  flex-shrink: 0;
+}
+
+.consultant-card__cta {
+  margin-top: var(--space-2);
+}
+
+/* ══ HOME ZONES PREVIEW ══ */
+.home-zones__wrapper {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-12) var(--space-8);
+}
+
+.home-zones__header {
+  text-align: center;
+  max-width: 44rem;
+  margin: 0 auto var(--space-10) auto;
+}
+
+.home-zones__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+@media (max-width: 860px) {
+  .home-zones__grid {
     grid-template-columns: 1fr;
   }
 }
 
-.local-card {
-  background-color: var(--color-surface);
+.zone-pill-card {
+  background: var(--color-surface);
   border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
-}
-
-.local-card__media {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background-color: var(--color-surface-dark);
-}
-
-.local-card__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.local-card:hover .local-card__img {
-  transform: scale(1.04);
-}
-
-.local-card:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-md);
-}
-
-.local-card__body {
-  padding: var(--space-8);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
 }
 
-.local-card__title {
-  font-size: var(--text-xl);
+.zone-pill-card--highlight {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: rgba(37, 99, 235, 0.02);
+}
+
+.zone-pill-card__tag {
+  font-size: 0.7rem;
   font-weight: var(--weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
 }
 
-.local-card__title a {
-  text-decoration: none;
-  color: var(--color-text);
-  transition: color var(--transition-fast);
+.zone-pill-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
 }
 
-.local-card__title a:hover {
-  color: var(--color-accent);
-}
-
-.local-card__desc {
+.zone-pill-card__desc {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
 }
 
-.local-card__features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.local-card__features li {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  padding-left: var(--space-5);
-  position: relative;
-}
-
-.local-card__features li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--color-accent);
+.zone-pill-card__link {
   font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-atlantic);
+  text-decoration: none;
+  margin-top: auto;
 }
 
-.local-section__note {
-  text-align: center;
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
+.zone-pill-card__link:hover {
+  text-decoration: underline;
 }
 
-.local-section__note a {
-  color: var(--color-accent);
-  text-underline-offset: 3px;
-}
-
-
-/* ══ RÉALISATIONS PLACEHOLDER ══ */
-.realisations-placeholder {
-  max-width: 36rem;
-  margin-inline: auto;
-}
-
-.realisations-placeholder__inner {
-  background-color: var(--color-surface);
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-12) var(--space-8);
+.home-zones__cta {
   text-align: center;
 }
 
-.realisations-placeholder__text {
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
-}
-
-.realisations-placeholder__text a {
-  color: var(--color-accent);
-  text-underline-offset: 3px;
-}
-
-
-/* ══ BLOG ══ */
+/* ══ BLOG SECTION ══ */
 .home-blog__header-row {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: var(--space-6);
-  margin-bottom: var(--space-4);
+  gap: var(--space-4);
   flex-wrap: wrap;
 }
 
-.home-blog__all-link {
-  flex-shrink: 0;
-}
-
 .home-blog__empty {
-  background-color: var(--color-surface-warm);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  padding: var(--space-10);
+  padding: var(--space-8);
   text-align: center;
-  font-size: var(--text-base);
+  background: #FFFFFF;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
   color: var(--color-text-muted);
-}
-
-.home-blog__empty a {
-  color: var(--color-accent);
-  text-underline-offset: 3px;
 }
 </style>

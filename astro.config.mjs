@@ -9,6 +9,13 @@ export default defineConfig({
 
   output: 'static',
 
+  redirects: {
+    '/seo-rennes': '/zones-intervention/seo-rennes/',
+    '/seo-bretagne': '/zones-intervention/bretagne/',
+    '/services/seo-on-page': '/services/seo-contenu/',
+    '/services/accompagnement-seo': '/services/strategie-seo/',
+  },
+
   integrations: [
     sitemap({
       // Exclude pages marked noIndex — they carry noindex meta tags and
@@ -20,3 +27,4 @@ export default defineConfig({
     }),
   ],
 });
+

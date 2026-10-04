@@ -1,0 +1,297 @@
+---
+/**
+ * services/seo-contenu.astro — SEO Contenu & Sémantique Service Page
+ * URL: /services/seo-contenu/
+ */
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SearchLandscapeServiceGraphic from '../../components/SearchLandscapeServiceGraphic.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'SEO Contenu & Sémantique', href: '/services/seo-contenu/' },
+];
+
+const faqItems = [
+  {
+    id: 'contenu-intention',
+    question: 'Qu\'est-ce que l\'intention de recherche et pourquoi est-elle cruciale ?',
+    answer: 'L\'intention de recherche correspond au besoin fondamental qui pousse un internaute à effectuer une recherche (acheter un service, comparer des solutions, trouver une adresse locale ou s\'informer). Aligner votre page avec l\'intention exacte est la condition numéro un pour que Google et les moteurs IA sélectionnent votre contenu.',
+  },
+  {
+    id: 'contenu-existant',
+    question: 'Faut-il systématiquement créer de nouvelles pages ou réécrire l\'existant ?',
+    answer: 'La plupart du temps, la valorisation de l\'existant produit les résultats les plus rapides : enrichissement sémantique des pages existantes, clarification des balises de titres (H1, H2, H3), suppression des contenus dupliqués ou obsolètes et restructuration du maillage interne.',
+  },
+  {
+    id: 'contenu-ia',
+    question: 'Utilisez-vous l\'IA pour rédiger du contenu ?',
+    answer: 'L\'IA est un outil précieux pour explorer des champs lexicaux et cartographier des questions fréquentes. En revanche, le contenu publié doit impérativement comporter une valeur ajoutée humaine vérifiable : votre expertise réelle, des exemples concrets et un point de vue singulier. Le contenu généré à la chaîne sans relecture experte est néfaste pour votre crédibilité et votre référencement.',
+  },
+  {
+    id: 'contenu-maillage',
+    question: 'Pourquoi le maillage interne est-il si important ?',
+    answer: 'Le maillage interne distribue l\'autorité entre vos pages et permet aux moteurs de recherche de comprendre les liens logiques entre vos expertises. C\'est l\'infrastructure qui transforme des articles isolés en un réseau de connaissances puissant.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'SEO Contenu & Sémantique',
+  description: 'Stratégie éditoriale SEO, analyse des intentions de recherche, architecture documentaire et optimisation sémantique on-page pour générer un trafic qualifié.',
+  url: `${SITE_URL}/services/seo-contenu/`,
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'France',
+  },
+};
+---
+
+<ServiceLayout
+  title={buildTitle('SEO Contenu & Sémantique — Référencement éditorial et intention de recherche')}
+  description="Optimisation sémantique, architecture de contenu, intentions de recherche et maillage interne. Faites de votre site une référence d'autorité pour vos clients et Google."
+  canonicalPath="/services/seo-contenu/"
+  breadcrumbs={breadcrumbs}
+  schema={serviceSchema}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Expertise Éditoriale & Sémantique"
+      title="SEO Contenu & Sémantique"
+      description="Le contenu n'est pas un simple texte pour remplir des pages. C'est l'expression structurée de votre expertise, conçue pour répondre avec précision à ce que cherchent vos clients et ce que valorisent les moteurs de recherche."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- ══ PROBLÈME & APPROCHE ══ -->
+    <section class="section section--surface" aria-labelledby="approach-heading">
+      <div class="container">
+        <div class="grid-2-asym">
+          <div>
+            <div class="prose-header">
+              <p class="eyebrow">Le constat</p>
+              <h2 id="approach-heading">Publier du contenu ne suffit plus</h2>
+            </div>
+            <p class="lead" style="margin-top: var(--space-4)">
+              De nombreux sites publient des articles sans stratégie définie, ciblant des mots-clés trop génériques ou produisant des textes interchangeables. Résultat : peu de trafic et aucune conversion.
+            </p>
+            <p>
+              Mon approche s'articule autour de l'<strong>ingénierie sémantique</strong> : identifier les véritables questions de vos acheteurs, structurer l'information de manière hiérarchisée et relier vos contenus dans un maillage thématique cohérent.
+            </p>
+          </div>
+
+          <div class="service-visual-box">
+            <SearchLandscapeServiceGraphic type="contenu" />
+            <p class="service-visual-box__caption">Réseau documentaire interconnecté & clarté sémantique</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ DOMAINES D'INTERVENTION ══ -->
+    <section class="section" aria-labelledby="domains-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Prestations incluses</p>
+          <h2 id="domains-heading">Les axes d'optimisation du contenu</h2>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3 class="feature-card__title">Recherche d'intentions & mots-clés</h3>
+            <p class="feature-card__desc">Cartographie exhaustive des requêtes informationnelles, navigationnelles et transactionnelles recherchées par votre audience.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3 class="feature-card__title">Architecture documentaire (Hn)</h3>
+            <p class="feature-card__desc">Organisation méthodique des titres, sous-titres et paragraphes pour faciliter la lecture humaine et l'extraction par les robots.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3 class="feature-card__title">Optimisation sémantique on-page</h3>
+            <p class="feature-card__desc">Enrichissement du champ lexical, réponses concrètes aux interrogations courantes et suppression des formulations creuses.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3 class="feature-card__title">Stratégie de maillage interne</h3>
+            <p class="feature-card__desc">Création de ponts sémantiques entre vos articles de blog et vos pages de vente pour guider les visiteurs et transmettre le jus SEO.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ LIVRABLES ══ -->
+    <section class="section section--surface" aria-labelledby="deliverables-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Livrables</p>
+          <h2 id="deliverables-heading">Ce que vous recevez concrètement</h2>
+        </div>
+
+        <div class="deliverables-list">
+          <div class="deliverable-row">
+            <span class="deliverable-row__badge">Audit</span>
+            <div>
+              <h4>Audit de l'existant éditorial</h4>
+              <p>Analyse de la performance de vos pages actuelles (cannibalisation, contenu mince, opportunités de rafraîchissement).</p>
+            </div>
+          </div>
+          <div class="deliverable-row">
+            <span class="deliverable-row__badge">Plan</span>
+            <div>
+              <h4>Calendrier éditorial & briefs de contenu</h4>
+              <p>Fiches détaillées pour chaque sujet : titre cible, structure H2/H3 recommandée, intentions à traiter et liens internes à poser.</p>
+            </div>
+          </div>
+          <div class="deliverable-row">
+            <span class="deliverable-row__badge">Action</span>
+            <div>
+              <h4>Optimisation directe des pages piliers</h4>
+              <p>Réécriture ou ajustement chirurgical des balises Title, Meta Description et corps de texte de vos pages stratégiques.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ ══ -->
+    <FAQ items={faqItems} heading="Questions fréquentes sur le SEO de contenu" />
+
+    <!-- ══ CTA ══ -->
+    <CTA
+      heading="Transformez votre contenu en un levier d'acquisition durable."
+      body="Parlons de vos thématiques et construisons une architecture de contenu qui attire vos futurs clients."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir la méthodologie', href: '/approche/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</ServiceLayout>
+
+<style>
+.grid-2-asym {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .grid-2-asym {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-visual-box {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.service-visual-box__caption {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-3);
+  margin-bottom: 0;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.feature-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.feature-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.deliverables-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 48rem;
+  margin: var(--space-8) auto 0 auto;
+}
+
+.deliverable-row {
+  display: flex;
+  gap: var(--space-5);
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+  align-items: flex-start;
+}
+
+.deliverable-row__badge {
+  font-size: 0.72rem;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-atlantic);
+  background: rgba(37, 99, 235, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.deliverable-row h4 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-1);
+}
+
+.deliverable-row p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+</style>

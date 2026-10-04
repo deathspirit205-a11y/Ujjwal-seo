@@ -1,0 +1,236 @@
+---
+/**
+ * zones-intervention/bretagne.astro — Regional landing page for Brittany
+ * URL: /zones-intervention/bretagne/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTA from '../../components/CTA.astro';
+import FAQ from '../../components/FAQ.astro';
+import PageHero from '../../components/PageHero.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'Bretagne', href: '/zones-intervention/bretagne/' },
+];
+
+const faqBretagne = [
+  {
+    id: 'bretagne-zone',
+    question: 'Intervenez-vous dans les quatre départements bretons ?',
+    answer: 'Oui. J\'accompagne des entreprises en Ille-et-Vilaine (35), Finistère (29), Morbihan (56) et Côtes-d\'Armor (22), aussi bien dans les grandes agglomérations que dans les villes moyennes et les zones côtières.',
+  },
+  {
+    id: 'bretagne-saisonnalite',
+    question: 'Comment gérer la forte saisonnalité des recherches en Bretagne ?',
+    answer: 'Pour les secteurs du tourisme, de l\'hôtellerie, du nautisme et des loisirs, la demande sur Google connaît des pics prévisibles. Une stratégie SEO efficace anticipe ces flux 3 à 4 mois en amont afin que les pages soient parfaitement indexées et positionnées dès le début des recherches.',
+  },
+  {
+    id: 'bretagne-distance',
+    question: 'Comment s\'organise la collaboration pour les entreprises éloignées de Rennes ?',
+    answer: 'La totalité des audits, points stratégiques et livrables s\'effectue à distance en toute fluidité (visioconférences, partages d\'écran, espace de travail partagé). Des déplacements sur site à Brest, Vannes ou Saint-Malo restent possibles pour des comités stratégiques.',
+  },
+];
+
+const bretagneSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Ujjwal SEO — Consultant SEO & GEO Bretagne',
+  description: 'Consultant SEO & GEO indépendant en région Bretagne. Référencement naturel, visibilité locale et optimisation pour moteurs de recherche IA.',
+  url: `${SITE_URL}/zones-intervention/bretagne/`,
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Bretagne' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+    { '@type': 'AdministrativeArea', name: 'Finistère' },
+    { '@type': 'AdministrativeArea', name: 'Morbihan' },
+    { '@type': 'AdministrativeArea', name: "Côtes-d'Armor" },
+  ],
+};
+
+const citiesList = [
+  { name: 'Rennes', href: '/zones-intervention/seo-rennes/', status: 'Page détaillée' },
+  { name: 'Vitré', href: '/zones-intervention/seo-vitre/', status: 'Page détaillée' },
+  { name: 'Fougères', href: '/zones-intervention/seo-fougeres/', status: 'Page détaillée' },
+  { name: 'Janzé', href: '/zones-intervention/seo-janze/', status: 'Page détaillée' },
+  { name: 'Redon', href: '/zones-intervention/seo-redon/', status: 'Page détaillée' },
+  { name: 'Saint-Malo', href: null, status: 'Bassin d\'intervention' },
+  { name: 'Dinan', href: null, status: 'Bassin d\'intervention' },
+  { name: 'Saint-Brieuc', href: null, status: 'Bassin d\'intervention' },
+  { name: 'Vannes', href: null, status: 'Bassin d\'intervention' },
+  { name: 'Lorient', href: null, status: 'Bassin d\'intervention' },
+  { name: 'Brest', href: null, status: 'Bassin d\'intervention' },
+  { name: 'Quimper', href: null, status: 'Bassin d\'intervention' },
+];
+
+const sectorsList = [
+  { title: 'Agroalimentaire & Terroir', desc: 'Producteurs, coopératives et transformateurs valorisant leur savoir-faire et leur traçabilité.' },
+  { title: 'Nautisme & Économie maritime', desc: 'Chantiers, équipementiers, loueurs et services portuaires à rayonnement régional et national.' },
+  { title: 'Tourisme, Hôtellerie & Patrimoine', desc: 'Hôtels, hébergements d\'exception et sites d\'accueil captant la clientèle touristique.' },
+  { title: 'BTP, Énergie & Artisanat', desc: 'Entreprises du bâtiment et artisans cherchant à dominer leur zone de chalandise.' },
+  { title: 'Services aux entreprises & Conseil', desc: 'Cabinets, éditeurs de logiciels et prestataires B2B renforçant leur autorité thématique.' },
+];
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO en Bretagne — Visibilité Web Régionale')}
+  description="Consultant SEO & GEO indépendant en Bretagne : développez votre visibilité sur Google et les moteurs IA. Stratégie régionale pour les entreprises bretonnes."
+  canonicalPath="/zones-intervention/bretagne/"
+  schema={[bretagneSchema]}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Région Bretagne"
+      title="Consultant SEO & GEO en Bretagne"
+      description="De la métropole rennaise aux façades maritimes du Finistère et du Morbihan, j'accompagne les entreprises bretonnes dans la structuration d'une visibilité numérique pérenne, technique et humaine."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Voir la carte complète', href: '/zones-intervention/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- ══ VILLES ET BASSINS ══ -->
+    <section class="section section--surface" aria-labelledby="cities-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Maillage Territorial</p>
+          <h2 id="cities-heading">Villes & bassins d'activité en Bretagne</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Une approche adaptée aux réalités locales : chaque pôle urbain et département breton possède ses dynamiques propres.
+          </p>
+        </div>
+
+        <div class="cities-grid">
+          {citiesList.map((city) => (
+            <div class="city-badge-card">
+              <span class="city-badge-card__status">{city.status}</span>
+              <h3 class="city-badge-card__name">
+                {city.href ? (
+                  <a href={city.href}>{city.name} &rarr;</a>
+                ) : (
+                  <span>{city.name}</span>
+                )}
+              </h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTEURS CLÉS ══ -->
+    <section class="section" aria-labelledby="sectors-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Spécificités Sectorielles</p>
+          <h2 id="sectors-heading">Les filières bretonnes et leurs enjeux SEO</h2>
+        </div>
+
+        <div class="sectors-grid">
+          {sectorsList.map((sector) => (
+            <div class="sector-card">
+              <h3 class="sector-card__title">{sector.title}</h3>
+              <p class="sector-card__desc">{sector.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ BRETAGNE ══ -->
+    <FAQ items={faqBretagne} heading="Questions fréquentes sur le SEO en Bretagne" />
+
+    <!-- ══ CTA FINAL ══ -->
+    <CTA
+      heading="Développons la visibilité de votre entreprise en Bretagne."
+      body="Prenons un premier contact de 30 minutes pour étudier votre marché et construire un plan d'action adapté à votre échelle."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter les services', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.city-badge-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+}
+
+.city-badge-card__status {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.city-badge-card__name {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.city-badge-card__name a {
+  color: var(--color-atlantic);
+  text-decoration: none;
+}
+
+.city-badge-card__name a:hover {
+  text-decoration: underline;
+}
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 860px) {
+  .sectors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sector-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-atlantic);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+}
+
+.sector-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.sector-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+</style>

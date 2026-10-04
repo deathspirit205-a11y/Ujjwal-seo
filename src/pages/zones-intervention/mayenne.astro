@@ -1,0 +1,130 @@
+---
+/**
+ * zones-intervention/mayenne.astro — Département Mayenne (53)
+ * URL: /zones-intervention/mayenne/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'Mayenne (53)', href: '/zones-intervention/mayenne/' },
+];
+
+const citiesIn53 = [
+  { name: 'Laval', href: '/zones-intervention/seo-laval/', desc: 'Préfecture, pôle européen de la réalité virtuelle, logistique, agroalimentaire et services B2B.' },
+  { name: 'Mayenne', href: null, desc: 'Sous-préfecture au nord du département, pôle pharmaceutique et mécanique de précision.' },
+  { name: 'Château-Gontier-sur-Mayenne', href: null, desc: 'Pôle agroalimentaire majeur et commerce de proximité dynamique dans le sud-Mayenne.' },
+  { name: 'Évron', href: null, desc: 'Bassin agro-industriel au centre-est du département.' },
+];
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO en Mayenne (53) — Laval, Mayenne, Château-Gontier')}
+  description="Accompagnement SEO & GEO en Mayenne (53) : référencement local, SEO technique et visibilité moteurs IA pour les PME et commerces mayennais."
+  canonicalPath="/zones-intervention/mayenne/"
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Département 53 — Pays de la Loire"
+      title="Consultant SEO & GEO en Mayenne"
+      description="Connecté à la Mayenne et au bassin lavallois : un accompagnement expert pour renforcer la visibilité numérique des entreprises industrielles, agroalimentaires et de services."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Voir la carte complète', href: '/zones-intervention/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="section section--surface">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Bassin Économique 53</p>
+          <h2>Le dynamisme mayennais au cœur du Grand Ouest</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Située sur l'axe stratégique Paris-Rennes, la Mayenne abrite des leaders industriels, un écosystème pionnier dans les technologies immersives à Laval et un tissu de PME florissantes.
+          </p>
+        </div>
+
+        <div class="cities-cards-grid">
+          {citiesIn53.map((c) => (
+            <div class="city-card">
+              <h3 class="city-card__title">
+                {c.href ? <a href={c.href}>{c.name} &rarr;</a> : <span>{c.name}</span>}
+              </h3>
+              <p class="city-card__desc">{c.desc}</p>
+              {c.href && <a href={c.href} class="city-card__action">Consulter la page dédiée &rarr;</a>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      heading="Vous souhaitez développer vos positions en Mayenne ?"
+      body="Que vous visiez une clientèle locale sur Laval ou un marché national, établissons une feuille de route SEO adaptée."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir la méthode', href: '/approche/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.cities-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.city-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.city-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.city-card__title a {
+  color: var(--color-atlantic);
+  text-decoration: none;
+}
+
+.city-card__title a:hover {
+  text-decoration: underline;
+}
+
+.city-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.city-card__action {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-atlantic);
+  text-decoration: none;
+  margin-top: auto;
+}
+</style>

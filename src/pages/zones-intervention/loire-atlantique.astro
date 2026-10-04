@@ -1,0 +1,130 @@
+---
+/**
+ * zones-intervention/loire-atlantique.astro — Département Loire-Atlantique (44)
+ * URL: /zones-intervention/loire-atlantique/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'Loire-Atlantique (44)', href: '/zones-intervention/loire-atlantique/' },
+];
+
+const citiesIn44 = [
+  { name: 'Nantes', href: null, desc: 'Métropole régionale majeure, pôle tertiaire, numérique, créatif et industriel.' },
+  { name: 'Châteaubriant', href: '/zones-intervention/seo-chateaubriant/', desc: 'Carrefour stratégique entre Nantes, Rennes et Angers, riche bassin d\'entreprises industrielles et artisanales.' },
+  { name: 'Saint-Nazaire', href: null, desc: 'Pôle naval, aéronautique et industriel maritime d\'envergure internationale.' },
+  { name: 'Ancenis-Saint-Géréon', href: null, desc: 'Bassin dynamique en bord de Loire, agroalimentaire et fabrication de matériel.' },
+];
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO en Loire-Atlantique (44) — Nantes, Châteaubriant')}
+  description="Accompagnement SEO & GEO en Loire-Atlantique (44) : visibilité organique, optimisation technique et sémantique pour les entreprises nantaises et castelbriantaises."
+  canonicalPath="/zones-intervention/loire-atlantique/"
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Département 44 — Pays de la Loire"
+      title="Consultant SEO & GEO en Loire-Atlantique"
+      description="Une expertise pointue en référencement naturel et en moteurs de réponse IA pour les entreprises de Loire-Atlantique, de la métropole nantaise aux territoires du Pays de Châteaubriant."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Voir la carte complète', href: '/zones-intervention/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="section section--surface">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Bassin Économique 44</p>
+          <h2>Loire-Atlantique : un territoire attractif et connecté</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Premier pôle économique de l'Ouest, la Loire-Atlantique concentre une forte intensité concurrentielle sur les requêtes commerciales à forte valeur ajoutée.
+          </p>
+        </div>
+
+        <div class="cities-cards-grid">
+          {citiesIn44.map((c) => (
+            <div class="city-card">
+              <h3 class="city-card__title">
+                {c.href ? <a href={c.href}>{c.name} &rarr;</a> : <span>{c.name}</span>}
+              </h3>
+              <p class="city-card__desc">{c.desc}</p>
+              {c.href && <a href={c.href} class="city-card__action">Consulter la page dédiée &rarr;</a>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      heading="Vous souhaitez conquérir des positions en Loire-Atlantique ?"
+      body="Échangeons sur vos enjeux de visibilité et bâtissons des fondations techniques et sémantiques robustes."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Explorer nos prestations', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.cities-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.city-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.city-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.city-card__title a {
+  color: var(--color-atlantic);
+  text-decoration: none;
+}
+
+.city-card__title a:hover {
+  text-decoration: underline;
+}
+
+.city-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.city-card__action {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-atlantic);
+  text-decoration: none;
+  margin-top: auto;
+}
+</style>

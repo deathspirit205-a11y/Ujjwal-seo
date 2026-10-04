@@ -1,0 +1,112 @@
+---
+/**
+ * zones-intervention/maine-et-loire.astro — Département Maine-et-Loire (49)
+ * URL: /zones-intervention/maine-et-loire/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'Maine-et-Loire (49)', href: '/zones-intervention/maine-et-loire/' },
+];
+
+const citiesIn49 = [
+  { name: 'Angers', href: null, desc: 'Capitale du végétal, métropole universitaire, tech (IoT) et services B2B.' },
+  { name: 'Segré-en-Anjou Bleu', href: null, desc: 'Pôle industriel et agroalimentaire liant le Maine-et-Loire, la Mayenne et l\'Ille-et-Vilaine.' },
+  { name: 'Cholet', href: null, desc: 'Bassin manufacturier réputé, textile, plasturgie et commerce.' },
+  { name: 'Saumur', href: null, desc: 'Pôle équestre, viticulture de renom et tourisme ligérien.' },
+];
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO en Maine-et-Loire (49) — Angers, Segré')}
+  description="Accompagnement SEO & GEO en Maine-et-Loire (49) : référencement naturel local, stratégie sémantique et visibilité dans les moteurs IA."
+  canonicalPath="/zones-intervention/maine-et-loire/"
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Département 49 — Pays de la Loire"
+      title="Consultant SEO & GEO en Maine-et-Loire"
+      description="De la métropole angevine aux territoires de l'Anjou bleu, j'accompagne les entreprises dans l'acquisition de visibilité organique qualifiée et durable."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Voir la carte complète', href: '/zones-intervention/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="section section--surface">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Bassin Économique 49</p>
+          <h2>L'Anjou : excellence végétale, industrielle et tertiaire</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Caractérisé par une forte diversification économique, le Maine-et-Loire abrite des acteurs de premier plan nécessitant une stratégie de contenu et d'entités précise.
+          </p>
+        </div>
+
+        <div class="cities-cards-grid">
+          {citiesIn49.map((c) => (
+            <div class="city-card">
+              <h3 class="city-card__title">
+                {c.href ? <a href={c.href}>{c.name} &rarr;</a> : <span>{c.name}</span>}
+              </h3>
+              <p class="city-card__desc">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      heading="Vous souhaitez dynamiser votre référencement en Maine-et-Loire ?"
+      body="Échangeons 30 minutes sur vos marchés et construisons une stratégie de conquête adaptée."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter l\'approche', href: '/approche/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.cities-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.city-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.city-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.city-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+</style>

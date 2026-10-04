@@ -1,0 +1,218 @@
+---
+/**
+ * zones-intervention/seo-vitre.astro — Local landing page for Vitré
+ * URL: /zones-intervention/seo-vitre/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'SEO Vitré', href: '/zones-intervention/seo-vitre/' },
+];
+
+const faqVitre = [
+  {
+    id: 'vitre-concurrence',
+    question: 'Le marché SEO à Vitré est-il très concurrentiel ?',
+    answer: 'La concurrence numérique à Vitré est modérée comparée à Rennes. La majorité des acteurs locaux n\'ont pas encore structuré de stratégie SEO approfondie. C\'est une excellente opportunité : un travail méthodique sur le SEO local et la pertinence on-page permet souvent de s\'installer en tête des résultats en 2 à 4 mois.',
+  },
+  {
+    id: 'vitre-zone',
+    question: 'Travaillez-vous également sur les communes environnantes ?',
+    answer: 'Oui. Le bassin de Vitré Communauté inclut des communes actives comme Châteaubourg, Étrelles, Argentré-du-Plessis, La Guerche-de-Bretagne et Val-d\'Izé. Nous structurons votre référencement pour couvrir l\'ensemble de cette zone de chalandise.',
+  },
+  {
+    id: 'vitre-deplacement',
+    question: 'Pouvons-nous organiser des réunions de travail à Vitré ?',
+    answer: 'Tout à fait. Étant basé en Ille-et-Vilaine, je me déplace régulièrement à Vitré pour des points d\'étape physiques, des ateliers de cadrage ou des audits dans vos locaux.',
+  },
+];
+
+const schemaVitre = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Ujjwal SEO — Consultant SEO & GEO à Vitré',
+  description: 'Consultant SEO & GEO intervenant à Vitré et en Ille-et-Vilaine : référencement naturel local, audit technique et stratégie digitale pour les entreprises du Pays de Vitré.',
+  url: `${SITE_URL}/zones-intervention/seo-vitre/`,
+  areaServed: [
+    { '@type': 'City', name: 'Vitré', sameAs: 'https://www.wikidata.org/wiki/Q212629' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+  ],
+};
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO à Vitré — Référencement naturel & Local')}
+  description="Consultant SEO & GEO à Vitré : boostez votre visibilité sur Google et les moteurs IA. SEO local, pack Google Maps et accompagnement pour les entreprises vitréennes."
+  canonicalPath="/zones-intervention/seo-vitre/"
+  schema={[schemaVitre]}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Pays de Vitré & Portes de Bretagne"
+      title="Consultant SEO & GEO à Vitré"
+      description="Faites de votre site web un moteur de croissance locale : améliorez votre positionnement sur Google et faites reconnaître votre entreprise vitréenne par les moteurs de recherche IA."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir l\'audit SEO', href: '/services/audit-seo/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- ══ CONTEXTE DU MARCHÉ DE VITRÉ ══ -->
+    <section class="section section--surface" aria-labelledby="vitre-context-heading">
+      <div class="container">
+        <div class="grid-2-asym">
+          <div>
+            <div class="prose-header">
+              <p class="eyebrow">Tissu économique local</p>
+              <h2 id="vitre-context-heading">Vitré : un écosystème d'entreprises robuste et pragmatique</h2>
+            </div>
+            <p class="lead" style="margin-top: var(--space-4)">
+              Célèbre pour son dynamisme industriel et son taux de chômage parmi les plus faibles de France, le bassin de Vitré regorge d'acteurs de premier plan dans l'agroalimentaire, la mécanique, la logistique et l'artisanat du bâtiment.
+            </p>
+            <p>
+              Pourtant, de nombreuses entreprises locales sous-exploitent encore leur présence sur Google. En structurant votre fiche Google Business Profile, vos pages de services et vos données d'entreprise, vous captez directement les demandes issues du Pays de Vitré et de l'axe Rennes-Laval.
+            </p>
+          </div>
+
+          <div class="local-fact-card">
+            <h3>Spécificités SEO Vitré</h3>
+            <ul>
+              <li><strong>Position charnière :</strong> À mi-chemin entre Rennes (35) et Laval (53), sur l'axe LGV et routier majeur.</li>
+              <li><strong>Profil des entreprises :</strong> PME industrielles, artisans du second œuvre, commerces du centre historique, services de proximité.</li>
+              <li><strong>Opportunité majeure :</strong> Concurrence modérée permettant un retour sur investissement rapide sur les requêtes ciblées.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CE QUE NOUS DÉPLOYONS À VITRÉ ══ -->
+    <section class="section" aria-labelledby="vitre-actions-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Solutions Concrètes</p>
+          <h2 id="vitre-actions-heading">Nos leviers d'action pour votre entreprise vitréenne</h2>
+        </div>
+
+        <div class="actions-grid">
+          <div class="action-card">
+            <h4>Domination du pack local Google Maps</h4>
+            <p>Positionnement prioritaire sur les requêtes "votre métier + Vitré" ou "autour de moi" dans la zone de chalandise de Vitré Communauté.</p>
+          </div>
+          <div class="action-card">
+            <h4>Pages de services orientées conversion</h4>
+            <p>Clarification de votre offre pour transformer les internautes locaux en contacts téléphoniques ou demandes de devis réelles.</p>
+          </div>
+          <div class="action-card">
+            <h4>Balisage Schema.org & entités locales</h4>
+            <p>Déclaration de votre adresse, horaires, secteur d'intervention et avis pour une reconnaissance immédiate par Google et les IA génératives.</p>
+          </div>
+          <div class="action-card">
+            <h4>Rayonnement interdépartemental</h4>
+            <p>Pour les entreprises capables d'intervenir vers Châteaubourg ou Laval, extension méthodique du périmètre sémantique.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqVitre} heading="Questions fréquentes sur le SEO à Vitré" />
+
+    <CTA
+      heading="Prêt à faire décoller votre visibilité à Vitré ?"
+      body="Échangeons 30 minutes sur votre activité et analysons le potentiel de vos mots-clés sur le bassin vitréen."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter tous les services', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.grid-2-asym {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .grid-2-asym {
+    grid-template-columns: 1fr;
+  }
+}
+
+.local-fact-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-atlantic);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.local-fact-card h3 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.local-fact-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+@media (max-width: 768px) {
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.action-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.action-card h4 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.action-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+</style>

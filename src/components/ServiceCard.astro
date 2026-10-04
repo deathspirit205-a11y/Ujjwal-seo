@@ -1,41 +1,70 @@
 ---
 /**
  * ServiceCard.astro
- * Used in the homepage services grid and /services/ hub.
+ * Service card featuring the SEARCH LANDSCAPE architectural graphics,
+ * clean typography, deliverable bullets, and clear CTA.
  */
+import SearchLandscapeServiceGraphic from './SearchLandscapeServiceGraphic.astro';
+
 export interface Props {
+  id?: 'seo-technique' | 'seo-contenu' | 'seo-local' | 'audit-seo' | 'strategie-seo' | 'geo';
   title: string;
   slug: string;
   description: string;
-  icon?: string;
-  /** Optional visual accent number (1–5) */
+  category?: string;
+  deliverables?: string[];
   index?: number;
 }
 
-const { title, slug, description, index } = Astro.props;
+const { id, title, slug, description, category, deliverables = [], index } = Astro.props;
+
+// Infer graphic ID if not provided explicitly
+const resolvedId = id || (
+  slug.includes('technique') ? 'seo-technique' :
+  slug.includes('contenu') || slug.includes('on-page') ? 'seo-contenu' :
+  slug.includes('local') ? 'seo-local' :
+  slug.includes('audit') ? 'audit-seo' :
+  slug.includes('geo') ? 'geo' : 'strategie-seo'
+);
 ---
 
 <article class="service-card">
-  {index !== undefined && (
-    <span class="service-card__index" aria-hidden="true">
-      {String(index).padStart(2, '0')}
-    </span>
-  )}
+  <div class="service-card__header">
+    <SearchLandscapeServiceGraphic serviceId={resolvedId} size={48} />
+    {index !== undefined && (
+      <span class="service-card__index" aria-hidden="true">
+        {String(index).padStart(2, '0')}
+      </span>
+    )}
+  </div>
+
   <div class="service-card__body">
+    {category && <span class="service-card__category">{category}</span>}
     <h3 class="service-card__title">
       <a href={slug} class="service-card__link">{title}</a>
     </h3>
     <p class="service-card__description">{description}</p>
+
+    {deliverables.length > 0 && (
+      <ul class="service-card__deliverables" role="list">
+        {deliverables.map((d) => (
+          <li>
+            <span class="deliverable-check" aria-hidden="true">✓</span>
+            <span>{d}</span>
+          </li>
+        ))}
+      </ul>
+    )}
   </div>
-  <a
-    href={slug}
-    class="service-card__arrow"
-    aria-label={`En savoir plus sur ${title}`}
-    tabindex="-1"
-    aria-hidden="true"
-  >
-    →
-  </a>
+
+  <div class="service-card__footer">
+    <a href={slug} class="service-card__action">
+      <span>Découvrir l'offre</span>
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
 </article>
 
 <style>
@@ -43,76 +72,60 @@ const { title, slug, description, index } = Astro.props;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  padding: var(--space-8);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  transition:
-    border-color var(--transition-base),
-    box-shadow var(--transition-base),
-    transform var(--transition-base);
+  justify-content: space-between;
+  padding: var(--space-6);
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04);
+  transition: all var(--transition-base);
   overflow: hidden;
 }
 
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background-color: var(--color-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--transition-base);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
-
 .service-card:hover {
-  border-color: var(--color-border);
-  box-shadow: var(--shadow-md);
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
   transform: translateY(-2px);
 }
 
-.service-card:hover::before {
-  transform: scaleX(1);
-}
-
-.service-card:has(.service-card__link:focus-visible) {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
+.service-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-5);
 }
 
 .service-card__index {
   font-family: var(--font-serif);
-  font-size: var(--text-xs);
-  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  font-weight: 700;
   color: var(--color-text-subtle);
-  letter-spacing: var(--tracking-wide);
+  letter-spacing: 0.05em;
 }
 
-.service-card__body {
-  flex: 1;
+.service-card__category {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
 }
 
 .service-card__title {
-  font-size: var(--text-lg);
-  font-weight: var(--weight-semibold);
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text);
   margin-bottom: var(--space-3);
 }
 
 .service-card__link {
   text-decoration: none;
-  color: var(--color-text);
+  color: inherit;
   transition: color var(--transition-fast);
-}
-
-/* Extend link hit area to the whole card */
-.service-card__link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
 }
 
 .service-card__link:hover {
@@ -120,21 +133,62 @@ const { title, slug, description, index } = Astro.props;
 }
 
 .service-card__description {
-  font-size: var(--text-sm);
+  font-size: 0.875rem;
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-5);
 }
 
-.service-card__arrow {
-  display: block;
-  font-size: var(--text-lg);
+.service-card__deliverables {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.service-card__deliverables li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: 0.8125rem;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.deliverable-check {
   color: var(--color-accent);
-  text-decoration: none;
-  transition: transform var(--transition-fast);
-  width: fit-content;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
 }
 
-.service-card:hover .service-card__arrow {
+.service-card__footer {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.service-card__action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.service-card:hover .service-card__action {
+  color: var(--color-accent);
+}
+
+.service-card:hover .service-card__action svg {
   transform: translateX(4px);
+}
+
+.service-card__action svg {
+  transition: transform var(--transition-fast);
 }
 </style>

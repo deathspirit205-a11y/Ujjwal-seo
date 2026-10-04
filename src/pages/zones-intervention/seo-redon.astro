@@ -1,0 +1,151 @@
+---
+/**
+ * zones-intervention/seo-redon.astro — Local landing page for Redon
+ * URL: /zones-intervention/seo-redon/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'SEO Redon', href: '/zones-intervention/seo-redon/' },
+];
+
+const faqRedon = [
+  {
+    id: 'redon-3-depts',
+    question: 'Comment référencer une entreprise située au confluent de trois départements ?',
+    answer: 'C\'est la force singulière de Redon : nous configurons votre présence Google Business Profile et vos pages de zones pour cibler à la fois le sud de l\'Ille-et-Vilaine (35), l\'est du Morbihan (56, Allaire, La Gacilly) et le nord-ouest de la Loire-Atlantique (44, Guémené-Penfao, Saint-Nicolas-de-Redon).',
+  },
+  {
+    id: 'redon-nautisme-industrie',
+    question: 'Accompagnez-vous les entreprises du nautisme et de l\'industrie à Redon ?',
+    answer: 'Oui. Le Pays de Redon possède une tradition fluviale, maritime et industrielle reconnue. Nous concevons des stratégies SEO ciblant les acheteurs B2B et les passionnés de nautisme à l\'échelle régionale et nationale.',
+  },
+];
+
+const schemaRedon = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Ujjwal SEO — Consultant SEO & GEO à Redon',
+  description: 'Consultant SEO & GEO intervenant à Redon, en Ille-et-Vilaine, Morbihan et Loire-Atlantique : référencement naturel local, audit et stratégie web.',
+  url: `${SITE_URL}/zones-intervention/seo-redon/`,
+  areaServed: [
+    { '@type': 'City', name: 'Redon', sameAs: 'https://www.wikidata.org/wiki/Q193740' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+    { '@type': 'AdministrativeArea', name: 'Morbihan' },
+    { '@type': 'AdministrativeArea', name: 'Loire-Atlantique' },
+  ],
+};
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO à Redon — Référencement naturel & Local')}
+  description="Consultant SEO & GEO à Redon : développez votre visibilité sur Google et les moteurs IA. SEO local au carrefour de l'Ille-et-Vilaine, du Morbihan et de la Loire-Atlantique."
+  canonicalPath="/zones-intervention/seo-redon/"
+  schema={[schemaRedon]}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Pays de Redon & Carrefour des 3 Départements"
+      title="Consultant SEO & GEO à Redon"
+      description="Rayonnez au confluent de l'Ille-et-Vilaine, du Morbihan et de la Loire-Atlantique : une stratégie de référencement local et sémantique pour capter vos clients sur l'ensemble du bassin redonnais."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir l\'audit SEO', href: '/services/audit-seo/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="section section--surface" aria-labelledby="redon-context-heading">
+      <div class="container">
+        <div class="grid-2-asym">
+          <div>
+            <div class="prose-header">
+              <p class="eyebrow">Carrefour des Voies Navigables</p>
+              <h2 id="redon-context-heading">Redon : au confluent de trois départements de l'Ouest</h2>
+            </div>
+            <p class="lead" style="margin-top: var(--space-4)">
+              À la croisée de la Vilaine et du canal de Nantes à Brest, Redon occupe une situation géographique unique reliant l'Ille-et-Vilaine (35), le Morbihan (56) et la Loire-Atlantique (44).
+            </p>
+            <p>
+              Avec une agglomération de plus de 66 000 habitants, le territoire abrite des entreprises dynamiques dans l'industrie mécanique, les composants électroniques, la logistique et l'artisanat. Le SEO vous permet de capitaliser sur ce positionnement tri-départemental pour élargir considérablement votre zone de chalandise.
+            </p>
+          </div>
+
+          <div class="local-fact-card">
+            <h3>Bassin de Redon</h3>
+            <ul>
+              <li><strong>Position tri-départementale :</strong> 35 (Ille-et-Vilaine), 56 (Morbihan), 44 (Loire-Atlantique).</li>
+              <li><strong>Communes clés :</strong> Redon, Saint-Nicolas-de-Redon, Allaire, Bains-sur-Oust, Guémené-Penfao, La Gacilly.</li>
+              <li><strong>Spécificité SEO :</strong> Stratégie multicommunale pour capter les requêtes locales des 3 départements.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqRedon} heading="Questions fréquentes sur le SEO à Redon" />
+
+    <CTA
+      heading="Faisons rayonner votre entreprise sur le bassin de Redon."
+      body="Prenons 30 minutes pour analyser votre visibilité locale sur les 3 départements et définir un plan d'action adapté."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter tous les services', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.grid-2-asym {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .grid-2-asym {
+    grid-template-columns: 1fr;
+  }
+}
+
+.local-fact-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-atlantic);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.local-fact-card h3 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.local-fact-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+}
+</style>

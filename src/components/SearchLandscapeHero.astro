@@ -1,0 +1,482 @@
+---
+/**
+ * SearchLandscapeHero.astro
+ * Core hero component for Ujjwal SEO.
+ * Brand positioning: Consultant SEO & GEO.
+ * Visual: SEARCH LANDSCAPE (SVG + CSS, nodes, pathways, entity relations).
+ * Fully responsive, WCAG-compliant, respects prefers-reduced-motion.
+ */
+
+export interface Props {
+  eyebrow?: string;
+  heading?: string;
+  subheading?: string;
+  primaryCTA?: { label: string; href: string };
+  secondaryCTA?: { label: string; href: string };
+}
+
+const {
+  eyebrow = 'Consultant SEO & GEO indépendant',
+  heading = 'Consultant SEO & GEO',
+  subheading = "J'aide les entreprises à devenir plus visibles dans les moteurs de recherche et les nouveaux espaces de recherche alimentés par l'IA.",
+  primaryCTA = { label: 'Découvrir mon approche', href: '/approche/' },
+  secondaryCTA = { label: 'Parler de votre projet', href: '/contact/' },
+} = Astro.props;
+---
+
+<section class="hero-landscape" aria-labelledby="hero-title">
+  <!-- Subtle background matrix lines -->
+  <div class="hero-landscape__bg-grid" aria-hidden="true"></div>
+
+  <div class="container hero-landscape__container">
+    <!-- Left: Content & Positioning -->
+    <div class="hero-landscape__content">
+      <div class="hero-badge">
+        <span class="hero-badge__dot"></span>
+        <span class="hero-badge__text">{eyebrow}</span>
+      </div>
+
+      <h1 id="hero-title" class="hero-landscape__title">
+        Consultant <span class="text-gradient">SEO &amp; GEO</span>
+      </h1>
+
+      <p class="hero-landscape__lead">
+        {subheading}
+      </p>
+
+      <div class="hero-landscape__actions">
+        <a href={primaryCTA.href} class="btn btn--primary btn--lg">
+          {primaryCTA.label}
+          <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href={secondaryCTA.href} class="btn btn--secondary btn--lg">
+          {secondaryCTA.label}
+        </a>
+      </div>
+
+      <!-- Search Landscape Highlights -->
+      <div class="hero-landscape__signals">
+        <div class="signal-item">
+          <span class="signal-item__indicator"></span>
+          <div>
+            <strong>SEO Fondamental</strong>
+            <p>Technique, contenu &amp; autorité</p>
+          </div>
+        </div>
+        <div class="signal-item">
+          <span class="signal-item__indicator signal-item__indicator--geo"></span>
+          <div>
+            <strong>GEO Émergent</strong>
+            <p>Clarté entités &amp; visibilité IA</p>
+          </div>
+        </div>
+        <div class="signal-item">
+          <span class="signal-item__indicator signal-item__indicator--france"></span>
+          <div>
+            <strong>France &amp; Grand Ouest</strong>
+            <p>Sur site ou à distance</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Search Landscape Visual System -->
+    <div class="hero-landscape__visual" aria-hidden="true">
+      <div class="landscape-canvas">
+        <svg
+          class="landscape-svg"
+          viewBox="0 0 640 520"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Visualisation Search Landscape : cartographie des entités, du maillage sémantique et des moteurs de recherche"
+        >
+          <defs>
+            <!-- Gradients -->
+            <linearGradient id="grid-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E2E8F0" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.1"/>
+            </linearGradient>
+
+            <linearGradient id="line-active" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2563EB" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.3"/>
+            </linearGradient>
+
+            <linearGradient id="node-center-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1D4ED8"/>
+              <stop offset="100%" stop-color="#0F172A"/>
+            </linearGradient>
+
+            <radialGradient id="halo-center" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#2563EB" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Topographic / contour pathways (restrained) -->
+          <g class="landscape-topography" opacity="0.4">
+            <path d="M40 440C140 420 220 460 320 450C420 440 520 470 600 440" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" />
+            <path d="M40 370C160 350 250 390 340 370C430 350 510 390 600 360" stroke="#CBD5E1" stroke-width="1" />
+            <path d="M60 290C180 270 270 310 370 290C470 270 540 300 620 280" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" />
+            <path d="M40 210C160 190 260 230 360 210C460 190 530 220 600 200" stroke="#E2E8F0" stroke-width="1" />
+            <path d="M80 130C190 110 290 140 390 120C490 100 550 130 620 110" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="3 3" />
+          </g>
+
+          <!-- Search Architecture Network Grid -->
+          <g class="landscape-network">
+            <!-- Connecting pathways -->
+            <line x1="320" y1="260" x2="160" y2="150" stroke="url(#line-active)" stroke-width="1.5" class="path-pulse" />
+            <line x1="320" y1="260" x2="480" y2="150" stroke="url(#line-active)" stroke-width="1.5" class="path-pulse" />
+            <line x1="320" y1="260" x2="140" y2="380" stroke="#CBD5E1" stroke-width="1.2" />
+            <line x1="320" y1="260" x2="490" y2="380" stroke="#CBD5E1" stroke-width="1.2" />
+            <line x1="160" y1="150" x2="320" y2="80" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3 3" />
+            <line x1="480" y1="150" x2="320" y2="80" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3 3" />
+            <line x1="160" y1="150" x2="140" y2="380" stroke="#E2E8F0" stroke-width="1" />
+            <line x1="480" y1="150" x2="490" y2="380" stroke="#E2E8F0" stroke-width="1" />
+
+            <!-- Core Hub: Entity / Business Foundation -->
+            <circle cx="320" cy="260" r="70" fill="url(#halo-center)" />
+            <circle cx="320" cy="260" r="34" fill="url(#node-center-glow)" stroke="#38BDF8" stroke-width="2" />
+            <circle cx="320" cy="260" r="6" fill="#FFFFFF" />
+
+            <!-- Surrounding Nodes -->
+            <!-- Node 1: Technical & Crawlability (Top Left) -->
+            <g class="node-group" transform="translate(160, 150)">
+              <circle cx="0" cy="0" r="24" fill="#FFFFFF" stroke="#2563EB" stroke-width="2" />
+              <circle cx="0" cy="0" r="5" fill="#2563EB" />
+              <rect x="-60" y="32" width="120" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+              <text x="0" y="48" font-size="10" font-weight="600" fill="#0F172A" text-anchor="middle" font-family="Inter, sans-serif">SEO Technique</text>
+            </g>
+
+            <!-- Node 2: Content & Entities (Top Right) -->
+            <g class="node-group" transform="translate(480, 150)">
+              <circle cx="0" cy="0" r="24" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+              <circle cx="0" cy="0" r="5" fill="#0284C7" />
+              <rect x="-65" y="32" width="130" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+              <text x="0" y="48" font-size="10" font-weight="600" fill="#0F172A" text-anchor="middle" font-family="Inter, sans-serif">Entités &amp; Contenu</text>
+            </g>
+
+            <!-- Node 3: AI Retrieval / GEO (Bottom Right) -->
+            <g class="node-group" transform="translate(490, 380)">
+              <circle cx="0" cy="0" r="22" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2" />
+              <circle cx="0" cy="0" r="5" fill="#8B5CF6" />
+              <rect x="-70" y="30" width="140" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+              <text x="0" y="46" font-size="10" font-weight="600" fill="#0F172A" text-anchor="middle" font-family="Inter, sans-serif">Moteurs IA &amp; GEO</text>
+            </g>
+
+            <!-- Node 4: Local Search Network (Bottom Left) -->
+            <g class="node-group" transform="translate(140, 380)">
+              <circle cx="0" cy="0" r="22" fill="#FFFFFF" stroke="#10B981" stroke-width="2" />
+              <circle cx="0" cy="0" r="5" fill="#10B981" />
+              <rect x="-60" y="30" width="120" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+              <text x="0" y="46" font-size="10" font-weight="600" fill="#0F172A" text-anchor="middle" font-family="Inter, sans-serif">Maillage Local</text>
+            </g>
+
+            <!-- Top Apex: User Search Intent -->
+            <g class="node-group" transform="translate(320, 80)">
+              <circle cx="0" cy="0" r="16" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5" />
+              <circle cx="0" cy="0" r="4" fill="#475569" />
+              <rect x="-55" y="-30" width="110" height="20" rx="3" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+              <text x="0" y="-16" font-size="9" font-weight="600" fill="#475569" text-anchor="middle" font-family="Inter, sans-serif">Intention Utilisateur</text>
+            </g>
+          </g>
+
+          <!-- Core label -->
+          <text x="320" y="320" font-size="11" font-weight="700" fill="#0F172A" text-anchor="middle" font-family="Inter, sans-serif" letter-spacing="0.05em">VOTRE ENTREPRISE</text>
+          <text x="320" y="334" font-size="9" fill="#64748B" text-anchor="middle" font-family="Inter, sans-serif">Entité référente</text>
+        </svg>
+
+        <!-- Floating contextual cards (Search Landscape data points) -->
+        <div class="floating-chip chip-1">
+          <span class="chip-dot"></span>
+          <span>Indexation &amp; Crawl</span>
+        </div>
+        <div class="floating-chip chip-2">
+          <span class="chip-dot chip-dot--geo"></span>
+          <span>Graphe de Connaissances</span>
+        </div>
+        <div class="floating-chip chip-3">
+          <span class="chip-dot chip-dot--ai"></span>
+          <span>Génération &amp; RAG</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ══ HERO SHELL ══ */
+.hero-landscape {
+  position: relative;
+  background-color: var(--color-bg);
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-20);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* Subtle background architectural grid */
+.hero-landscape__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.4) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 60% 50%, black 30%, transparent 75%);
+  pointer-events: none;
+}
+
+.hero-landscape__container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-12);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ══ LEFT CONTENT ══ */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.35rem 0.875rem;
+  background-color: var(--color-accent-light);
+  border: 1px solid rgba(29, 78, 216, 0.15);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-6);
+}
+
+.hero-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accent);
+}
+
+.hero-badge__text {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.hero-landscape__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-navy) 20%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-landscape__lead {
+  font-size: clamp(var(--text-lg), 1.6vw, var(--text-xl));
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  max-width: 36rem;
+  margin-bottom: var(--space-8);
+}
+
+.hero-landscape__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.btn__arrow {
+  margin-left: 0.25rem;
+  transition: transform var(--transition-fast);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(3px);
+}
+
+/* ══ SIGNAL CARDS ══ */
+.hero-landscape__signals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.signal-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.signal-item__indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.signal-item__indicator--geo {
+  background-color: #8B5CF6;
+}
+
+.signal-item__indicator--france {
+  background-color: #10B981;
+}
+
+.signal-item strong {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.signal-item p {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ══ RIGHT VISUAL: SEARCH LANDSCAPE CANVAS ══ */
+.hero-landscape__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landscape-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  padding: var(--space-4);
+  overflow: hidden;
+}
+
+.landscape-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Restrained motion on SVG network lines */
+@media (prefers-reduced-motion: no-preference) {
+  .path-pulse {
+    stroke-dasharray: 6 4;
+    animation: dashPulse 20s linear infinite;
+  }
+
+  @keyframes dashPulse {
+    to {
+      stroke-dashoffset: -100;
+    }
+  }
+}
+
+/* Floating contextual chips */
+.floating-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+  pointer-events: none;
+}
+
+.chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.chip-dot--geo {
+  background: #0284C7;
+}
+
+.chip-dot--ai {
+  background: #8B5CF6;
+}
+
+.chip-1 {
+  top: 14%;
+  left: 6%;
+}
+
+.chip-2 {
+  top: 14%;
+  right: 6%;
+}
+
+.chip-3 {
+  bottom: 8%;
+  right: 10%;
+}
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 1024px) {
+  .hero-landscape__container {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .hero-landscape__content {
+    max-width: 100%;
+  }
+
+  .hero-landscape__signals {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-landscape {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-14);
+  }
+
+  .hero-landscape__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-landscape__actions .btn {
+    width: 100%;
+  }
+
+  .floating-chip {
+    display: none;
+  }
+}
+</style>

@@ -1,0 +1,133 @@
+---
+/**
+ * zones-intervention/ille-et-vilaine.astro — Département Ille-et-Vilaine (35)
+ * URL: /zones-intervention/ille-et-vilaine/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'Ille-et-Vilaine (35)', href: '/zones-intervention/ille-et-vilaine/' },
+];
+
+const citiesIn35 = [
+  { name: 'Rennes', href: '/zones-intervention/seo-rennes/', desc: 'Capitale régionale, pôle de services, santé et tech.' },
+  { name: 'Vitré', href: '/zones-intervention/seo-vitre/', desc: 'Bassin industriel d\'excellence, agroalimentaire et artisanat dynamique.' },
+  { name: 'Fougères', href: '/zones-intervention/seo-fougeres/', desc: 'Pôle industriel historique, maroquinerie, mécanique et commerces.' },
+  { name: 'Janzé', href: '/zones-intervention/seo-janze/', desc: 'Agroalimentaire réputé, artisanat et tissu économique de la Roche-aux-Fées.' },
+  { name: 'Redon', href: '/zones-intervention/seo-redon/', desc: 'Carrefour fluvial et ferroviaire au confluent de l\'Ille-et-Vilaine, de la Loire-Atlantique et du Morbihan.' },
+  { name: 'Saint-Malo', href: null, desc: 'Pôle maritime, tourisme d\'affaires, hôtellerie et services côtiers.' },
+  { name: 'Bruz & Cesson-Sévigné', href: null, desc: 'Technopoles rennaises, entreprises innovantes et campus tertiaires.' },
+];
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO en Ille-et-Vilaine (35) — Rennes, Vitré, Fougères')}
+  description="Accompagnement SEO & GEO en Ille-et-Vilaine (35) : stratégie de visibilité locale, référencement naturel et optimisation sémantique pour les entreprises du département."
+  canonicalPath="/zones-intervention/ille-et-vilaine/"
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Département 35"
+      title="Consultant SEO & GEO en Ille-et-Vilaine"
+      description="Un ancrage de terrain au service des entreprises d'Ille-et-Vilaine : de la métropole rennaise aux pôles industriels et artisanaux de Vitré, Fougères, Janzé et Redon."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Voir la carte du Grand Ouest', href: '/zones-intervention/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="section section--surface">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Pôles Économiques</p>
+          <h2>Les principaux bassins d'activité d'Ille-et-Vilaine</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            L'Ille-et-Vilaine se caractérise par une forte vitalité économique répartie entre la métropole de Rennes et des villes moyennes particulièrement dynamiques avec un taux d'emploi remarquable.
+          </p>
+        </div>
+
+        <div class="cities-cards-grid">
+          {citiesIn35.map((c) => (
+            <div class="city-card">
+              <h3 class="city-card__title">
+                {c.href ? <a href={c.href}>{c.name} &rarr;</a> : <span>{c.name}</span>}
+              </h3>
+              <p class="city-card__desc">{c.desc}</p>
+              {c.href && <a href={c.href} class="city-card__action">Consulter la page dédiée &rarr;</a>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      heading="Vous développez votre activité en Ille-et-Vilaine ?"
+      body="Échangeons sur votre positionnement territorial et construisons votre autorité sur vos requêtes clés."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir les services', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.cities-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.city-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.city-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.city-card__title a {
+  color: var(--color-atlantic);
+  text-decoration: none;
+}
+
+.city-card__title a:hover {
+  text-decoration: underline;
+}
+
+.city-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.city-card__action {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-atlantic);
+  text-decoration: none;
+  margin-top: auto;
+}
+</style>

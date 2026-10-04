@@ -1,0 +1,292 @@
+---
+/**
+ * services/strategie-seo.astro — Stratégie SEO Service Page
+ * URL: /services/strategie-seo/
+ */
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SearchLandscapeServiceGraphic from '../../components/SearchLandscapeServiceGraphic.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Stratégie SEO', href: '/services/strategie-seo/' },
+];
+
+const faqItems = [
+  {
+    id: 'strat-difference',
+    question: 'Quelle est la différence entre un audit et une stratégie SEO ?',
+    answer: 'L\'audit est un état des lieux (le diagnostic médical). La stratégie est la feuille de route opérationnelle (le plan de traitement priorisé). Elle définit exactement quelles actions entreprendre, dans quel ordre, avec quelles ressources et quels indicateurs suivre pour atteindre vos objectifs d\'affaires.',
+  },
+  {
+    id: 'strat-duree',
+    question: 'Sur quelle durée s\'étale une stratégie SEO ?',
+    answer: 'Une feuille de route stratégique se conçoit généralement sur 6 à 12 mois, articulée en cycles trimestriels pour s\'adapter aux réactions de la concurrence, aux évolutions d\'algorithmes et aux priorités de votre entreprise.',
+  },
+  {
+    id: 'strat-kpi',
+    question: 'Quels indicateurs (KPIs) sont suivis dans la stratégie ?',
+    answer: 'Nous évitons les métriques de vanité. Les KPIs essentiels sont : l\'évolution du trafic organique qualifié, la progression sur les requêtes à forte valeur commerciale, le taux de conversion des visiteurs en contacts ou ventes, et l\'exposition dans les réponses enrichies.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Stratégie SEO & Pilotage',
+  description: 'Élaboration de feuille de route SEO, analyse de la demande de recherche et de la concurrence, priorisation par impact business et accompagnement dans la durée.',
+  url: `${SITE_URL}/services/strategie-seo/`,
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'France',
+  },
+};
+---
+
+<ServiceLayout
+  title={buildTitle('Stratégie SEO — Feuille de route & Vision à long terme')}
+  description="Construisez une stratégie SEO claire, réaliste et mesurable. Analyse de la demande, cartographie concurrentielle, feuille de route trimestrielle et suivi des KPIs."
+  canonicalPath="/services/strategie-seo/"
+  breadcrumbs={breadcrumbs}
+  schema={serviceSchema}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Vision & Pilotage"
+      title="Stratégie SEO & Feuille de route"
+      description="Le SEO n'est pas une succession de bricolages opportunistes. C'est un plan d'action structuré, aligné sur vos priorités commerciales et conçu pour construire un avantage compétitif durable."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- ══ PROBLÈME & APPROCHE ══ -->
+    <section class="section section--surface" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="grid-2-asym">
+          <div>
+            <div class="prose-header">
+              <p class="eyebrow">Le problème</p>
+              <h2 id="why-heading">Agir sans plan disperse vos efforts</h2>
+            </div>
+            <p class="lead" style="margin-top: var(--space-4)">
+              Sans vision d'ensemble, il est facile de consacrer des semaines à des actions à faible impact (changer des balises secondaires, rédiger des articles sans demande) tout en passant à côté des véritables leviers de croissance.
+            </p>
+            <p>
+              Une stratégie SEO commence par une question simple : <em>quel est le chemin le plus direct et rentable pour connecter votre offre aux requêtes de vos clients idéaux ?</em>
+            </p>
+          </div>
+
+          <div class="service-visual-box">
+            <SearchLandscapeServiceGraphic type="strategie" />
+            <p class="service-visual-box__caption">Feuille de route stratégique & pilotage par étapes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ LES PILIERS DE LA STRATÉGIE ══ -->
+    <section class="section" aria-labelledby="pillars-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Composantes clés</p>
+          <h2 id="pillars-heading">Les étapes de la construction stratégique</h2>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3 class="feature-card__title">1. Analyse de la demande de recherche</h3>
+            <p class="feature-card__desc">Quantification du volume réel de requêtes, saisonnalité et identification des intentions sous-exploitées dans votre secteur.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3 class="feature-card__title">2. Benchmark concurrentiel réaliste</h3>
+            <p class="feature-card__desc">Étude des forces et faiblesses des concurrents directs. Nous choisissons les combats gagnables plutôt que d'attaquer frontalement des géants hors d'atteinte.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3 class="feature-card__title">3. Matrice de priorisation ROI / Effort</h3>
+            <p class="feature-card__desc">Classement méthodique des actions : gains rapides (quick wins), chantiers de fond et initiatives à moyen terme pour maximiser le retour sur investissement.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3 class="feature-card__title">4. Tableau de bord & KPIs d'affaires</h3>
+            <p class="feature-card__desc">Mise en place d'un suivi clair axé sur le trafic qualifié et les conversions concrètes plutôt que sur des métriques de vanité.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ LIVRABLES STRATÉGIQUES ══ -->
+    <section class="section section--surface" aria-labelledby="deliverables-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Ce qui vous est remis</p>
+          <h2 id="deliverables-heading">Des livrables exploitables dès le premier jour</h2>
+        </div>
+
+        <div class="deliverables-list">
+          <div class="deliverable-row">
+            <span class="deliverable-row__badge">Document</span>
+            <div>
+              <h4>Feuille de route trimestrielle détaillée</h4>
+              <p>Planning d'actions opérationnelles jalonné semaine par semaine, attribuant clairement les responsabilités (technique, contenu, autorité).</p>
+            </div>
+          </div>
+          <div class="deliverable-row">
+            <span class="deliverable-row__badge">Matrice</span>
+            <div>
+              <h4>Arborescence cible & opportunités sémantiques</h4>
+              <p>Recommandations structurelles sur les nouvelles pages à déployer et les pages existantes à consolider.</p>
+            </div>
+          </div>
+          <div class="deliverable-row">
+            <span class="deliverable-row__badge">Pilotage</span>
+            <div>
+              <h4>Points d'étape réguliers & ajustements</h4>
+              <p>Réunions d'alignement pour mesurer les progrès, interpréter les données de Google Search Console et adapter la trajectoire.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ ══ -->
+    <FAQ items={faqItems} heading="Questions fréquentes sur la stratégie SEO" />
+
+    <!-- ══ CTA ══ -->
+    <CTA
+      heading="Donnez une direction claire à votre visibilité organique."
+      body="Échangeons sur vos ambitions et définissons ensemble une stratégie réaliste et mesurable."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir la méthode', href: '/approche/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</ServiceLayout>
+
+<style>
+.grid-2-asym {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .grid-2-asym {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-visual-box {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.service-visual-box__caption {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-3);
+  margin-bottom: 0;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.feature-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.feature-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.deliverables-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 48rem;
+  margin: var(--space-8) auto 0 auto;
+}
+
+.deliverable-row {
+  display: flex;
+  gap: var(--space-5);
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+  align-items: flex-start;
+}
+
+.deliverable-row__badge {
+  font-size: 0.72rem;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-atlantic);
+  background: rgba(37, 99, 235, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.deliverable-row h4 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-1);
+}
+
+.deliverable-row p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+</style>

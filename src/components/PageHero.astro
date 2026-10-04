@@ -1,14 +1,13 @@
 ---
 /**
  * PageHero.astro
- * Reusable photographic hero for all pages except homepage.
- * Supports: background image, overlay, eyebrow, title, description, CTA.
- * Accessibility: decorative bg image via CSS, meaningful alt handled separately.
+ * Search Landscape hero for inner pages.
+ * Supports: optional background image OR Search Landscape architectural SVG matrix, eyebrow, title, description, CTA.
  */
 export interface Props {
-  /** Background image path (relative to /public) */
-  bgImage: string;
-  /** Alt text for screen readers — empty string for decorative */
+  /** Background image path (optional) */
+  bgImage?: string;
+  /** Alt text for screen readers */
   bgAlt?: string;
   eyebrow?: string;
   title: string;
@@ -37,21 +36,57 @@ const {
 } = Astro.props;
 ---
 
-<section class:list={['page-hero', `page-hero--${overlay}`, { 'page-hero--compact': compact }]}>
-  <div class="page-hero__bg">
-    <img
-      src={bgImage}
-      alt={bgAlt}
-      width="1600"
-      height="900"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-      class="page-hero__img"
-      style={`object-position: ${focalPosition}`}
-    />
-  </div>
+<section class:list={['page-hero', `page-hero--${overlay}`, { 'page-hero--compact': compact, 'page-hero--landscape': !bgImage }]}>
+  {bgImage ? (
+    <div class="page-hero__bg">
+      <img
+        src={bgImage}
+        alt={bgAlt}
+        width="1600"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="page-hero__img"
+        style={`object-position: ${focalPosition}`}
+      />
+    </div>
+  ) : (
+    <div class="page-hero__landscape-bg" aria-hidden="true">
+      <svg class="page-hero__svg-mesh" viewBox="0 0 1440 400" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0B132B" />
+            <stop offset="60%" stop-color="#111C44" />
+            <stop offset="100%" stop-color="#0B132B" />
+          </linearGradient>
+          <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2563EB" stop-opacity="0.3" />
+            <stop offset="50%" stop-color="#60A5FA" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#2563EB" stop-opacity="0.1" />
+          </linearGradient>
+        </defs>
+        
+        <rect width="100%" height="100%" fill="url(#heroGradient)" />
+        
+        <!-- Search Landscape contour lines -->
+        <path d="M-100 120 C 300 60, 600 220, 1100 140 C 1300 110, 1500 180, 1600 160" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+        <path d="M-100 200 C 240 160, 700 290, 1200 200 C 1400 160, 1540 240, 1600 220" stroke="rgba(255,255,255,0.05)" stroke-width="1.2" />
+        <path d="M-100 280 C 400 220, 850 360, 1300 260 C 1450 230, 1560 300, 1600 290" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+        
+        <!-- Search pathway glowing line -->
+        <path d="M100 350 C 400 200, 750 320, 1150 180 C 1300 130, 1400 150, 1500 120" stroke="url(#accentGlow)" stroke-width="2" stroke-dasharray="6 4" />
+        
+        <!-- Graph nodes -->
+        <circle cx="400" cy="200" r="4" fill="#60A5FA" />
+        <circle cx="750" cy="320" r="3.5" fill="#38BDF8" />
+        <circle cx="1150" cy="180" r="5" fill="#93C5FD" />
+        <circle cx="1150" cy="180" r="10" stroke="#60A5FA" stroke-width="1" stroke-opacity="0.4" />
+      </svg>
+    </div>
+  )}
   <div class="page-hero__overlay"></div>
+
   <div class="container page-hero__content">
     {eyebrow && <p class="page-hero__eyebrow">{eyebrow}</p>}
     <h1 class="page-hero__title">{title}</h1>
@@ -94,6 +129,19 @@ const {
   position: absolute;
   inset: 0;
   z-index: 0;
+}
+
+.page-hero__landscape-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-navy);
+}
+
+.page-hero__svg-mesh {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .page-hero__img {

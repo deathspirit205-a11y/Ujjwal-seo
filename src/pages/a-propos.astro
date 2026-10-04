@@ -2,14 +2,17 @@
 /**
  * a-propos.astro — About page
  * URL: /a-propos/
- * H1: Ujjwal Lage — Consultant SEO indépendant à Rennes
+ *
+ * Positioning: Consultant SEO & GEO indépendant
+ * Transparent background: commerce, management, international experience,
+ * transition to digital marketing, SEO practical craft, and active exploration of GEO.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import CTA from '../components/CTA.astro';
 import PageHero from '../components/PageHero.astro';
+import CTA from '../components/CTA.astro';
 import { buildTitle, SITE_URL } from '../utils/seo';
 
 const breadcrumbs = [
@@ -21,508 +24,339 @@ const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Ujjwal Lage',
-  jobTitle: 'Consultant SEO indépendant',
+  jobTitle: 'Consultant SEO & GEO indépendant',
   url: `${SITE_URL}/a-propos/`,
   worksFor: {
-    '@type': 'Organization',
+    '@type': 'ProfessionalService',
     name: 'Ujjwal SEO',
     url: SITE_URL,
   },
   knowsAbout: [
-    'SEO', 'Référencement naturel', 'SEO local', 'SEO technique',
-    'Audit SEO', 'Google Business Profile', 'Core Web Vitals',
-    'Stratégie de contenu', 'Maillage interne',
+    'SEO',
+    'GEO - Generative Engine Optimization',
+    'Référencement naturel',
+    'SEO local',
+    'SEO technique',
+    'Audit SEO',
+    'Données structurées Schema.org',
+    'Stratégie de contenu',
+    'Architecture de l\'information',
   ],
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Rennes',
-    addressRegion: 'Ille-et-Vilaine',
-    addressCountry: 'FR',
-  },
 };
 
-const valeurs = [
+const workingPrinciples = [
   {
-    icon: '🎯',
-    title: 'Résultats avant tout',
-    description: 'Le SEO n\'a de valeur que s\'il génère du trafic qualifié et des clients. Je mesure mes actions à l\'aune de ce critère, pas de métriques vanité.',
+    num: '01',
+    title: 'Compréhension métier avant la technique',
+    description: 'Comprendre votre offre, vos marges et votre cible commerciale est le préalable indispensable. La technique et le code ne sont que des leviers au service de votre rentabilité.',
   },
   {
-    icon: '🔍',
-    title: 'Transparence totale',
-    description: 'Vous savez exactement ce que je fais, pourquoi, et comment mesurer l\'impact. Pas de jargon inutile, pas de mystère autour de ma méthode.',
+    num: '02',
+    title: 'Pédagogie et transparence intégrale',
+    description: 'Chaque recommandation est expliquée simplement, sans jargon opaque. Vous gardez la pleine maîtrise de votre outil et comprenez la raison d\'être de chaque action.',
   },
   {
-    icon: '⚡',
-    title: 'SEO durable, pas de raccourcis',
-    description: 'Je n\'utilise que des pratiques approuvées par Google. Les résultats prennent du temps mais ils durent — sans risque de pénalités.',
+    num: '03',
+    title: 'Fondations durables, zéro artifice',
+    description: 'Aucune technique de manipulation à court terme. Nous construisons une autorité saine et pérenne, conforme aux recommandations des moteurs de recherche.',
   },
   {
-    icon: '🤝',
-    title: 'Partenariat, pas prestation',
-    description: 'Je m\'implique dans votre réussite comme si c\'était mon propre projet. Votre croissance est ma satisfaction.',
+    num: '04',
+    title: 'Veille active sur les moteurs IA',
+    description: 'Le paysage de la recherche évolue rapidement. Mon approche intègre continuellement les mutations liées aux moteurs de réponse génératifs et à la sémantique d\'entités.',
   },
 ];
 
-const competences = [
-  { name: 'SEO local & Google Business Profile', level: 95 },
-  { name: 'SEO technique & Core Web Vitals', level: 90 },
-  { name: 'Stratégie de contenu & optimisation on-page', level: 88 },
-  { name: 'Audit SEO complet', level: 92 },
-  { name: 'Analyse de données & reporting', level: 85 },
-  { name: 'Netlinking & autorité de domaine', level: 80 },
-];
-
-const outils = [
-  'Google Search Console', 'Google Analytics 4', 'Screaming Frog',
-  'Ahrefs / SEMrush', 'Google Business Profile', 'PageSpeed Insights',
-  'Looker Studio', 'Notion', 'Slack',
+const toolsEnvironment = [
+  { name: 'Google Search Console', role: 'Données réelles de performance, de requêtes et de santé d\'exploration' },
+  { name: 'Screaming Frog SEO Spider', role: 'Audit technique en profondeur, codes HTTP, balisage et arborescence' },
+  { name: 'Ahrefs & Outils sémantiques', role: 'Étude concurrentielle, volumes de recherche et autorité de domaine' },
+  { name: 'Schema.org & W3C Validators', role: 'Conception et validation de graphes de données structurées JSON-LD' },
+  { name: 'PageSpeed Insights & Lighthouse', role: 'Optimisation des performances web et des Core Web Vitals' },
+  { name: 'Environnements de test LLM', role: 'Analyse d\'extraction et de citation dans les moteurs génératifs' },
 ];
 ---
 
 <BaseLayout
-  title={buildTitle('À propos — Ujjwal Lage, Consultant SEO à Rennes')}
-  description="Découvrez Ujjwal Lage, consultant SEO indépendant à Rennes. Parcours, valeurs, méthode de travail et approche SEO orientée résultats pour les entreprises bretonnes."
+  title={buildTitle('À propos — Ujjwal Lage, Consultant SEO & GEO')}
+  description="Découvrez mon parcours et ma vision du SEO et du GEO : double compétence commerce et technique, pragmatisme, transparence et accompagnement personnalisé."
   canonicalPath="/a-propos/"
-  schema={personSchema}
+  schema={[personSchema]}
 >
   <Header />
+
   <main id="main-content">
     <PageHero
-      bgImage="/assets/hero/countryside-path.jpg"
-      bgAlt="Sentier de campagne bretonne au crépuscule"
-      eyebrow="À propos"
-      title="Ujjwal Lage — Consultant SEO indépendant en Bretagne"
-      description="Un regard humain et une approche concrète du web. J'aide les TPE, PME, artisans, commerçants et indépendants à développer leur visibilité en ligne."
-      primaryCTA={{ label: 'Réserver un appel découverte', href: '/reserver-un-appel/' }}
-      secondaryCTA={{ label: 'Me contacter', href: '/contact/' }}
+      eyebrow="Parcours & Philosophie"
+      title="Ujjwal Lage — Consultant SEO & GEO indépendant"
+      description="Une approche fondée sur la clarté stratégique, l'ingénierie du search et la compréhension des enjeux d'affaires réels des entreprises."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
+      compact={true}
     />
 
     <Breadcrumbs items={breadcrumbs} />
 
-    <!-- Mon parcours -->
-    <section class="section section--alt">
+    <!-- ══ MON HISTOIRE & MON PARCOURS ══ -->
+    <section class="section section--surface" aria-labelledby="story-heading">
       <div class="container">
         <div class="story-grid">
-          <div class="story-content">
-            <h2>Mon parcours</h2>
-            <p>
-              Mon parcours est assez différent de celui d'un consultant SEO traditionnel.
-              Avant de me consacrer au web, j'ai travaillé plusieurs années dans le
-              <strong>tourisme, l'hôtellerie, la gestion de projets et l'accompagnement de clients</strong>.
-              Ces expériences m'ont appris une chose essentielle : derrière chaque recherche Google,
-              chaque visite sur un site et chaque demande de contact, il y a avant tout une personne.
-            </p>
-            <p>
-              Aujourd'hui, j'utilise cette expérience pour aider les TPE, PME, artisans,
-              commerçants, indépendants et professions libérales à développer leur visibilité en ligne.
+          <div class="story-text">
+            <div class="prose-header">
+              <p class="eyebrow">Origine & Trajectoire</p>
+              <h2 id="story-heading">Du commerce et du management à l'ingénierie du search</h2>
+            </div>
+            
+            <p class="lead" style="margin-top: var(--space-4)">
+              Mon parcours n'est pas celui d'un technicien enfermé dans des lignes de code sans vision commerciale. Il s'est construit au carrefour de la gestion d'entreprise, de l'expérience internationale et de la passion pour les mécanismes de visibilité numérique.
             </p>
 
-            <h2>Je privilégie le concret</h2>
             <p>
-              Un site internet ne doit pas seulement être esthétique. Il doit être compréhensible,
-              rapide, accessible et pensé pour les personnes qui vont réellement l'utiliser.
-            </p>
-            <p>Mon travail associe :</p>
-            <ul>
-              <li>Création ou amélioration de sites web</li>
-              <li>Référencement naturel (SEO)</li>
-              <li>SEO local</li>
-              <li>Optimisation technique et des contenus</li>
-              <li>Structure et expérience utilisateur</li>
-              <li>Accompagnement personnalisé</li>
-            </ul>
-            <p>
-              Je prends le temps de comprendre votre activité, vos clients et vos objectifs
-              avant de proposer des solutions. L'objectif n'est pas de multiplier les fonctionnalités
-              ou de promettre des résultats irréalistes, mais de construire une présence en ligne
-              utile, crédible et durable.
+              Formé au management et au commerce, j'ai exercé dans des environnements internationaux où la rigueur organisationnelle, le sens du service client et la compréhension rapide de modèles économiques variés étaient quotidiens. Cette expérience sur le terrain m'a forgé une conviction : <strong>un site web n'a d'utilité que s'il sert directement les objectifs économiques de l'entreprise</strong>.
             </p>
 
-            <h2>Une collaboration simple et transparente</h2>
             <p>
-              Je travaille directement avec mes clients, sans multiplier les intermédiaires.
-              Vous savez ce qui est réalisé, pourquoi c'est réalisé et quelles sont les prochaines étapes.
-              Lorsque quelque chose n'est pas nécessaire, je préfère le dire plutôt que de vous le vendre.
+              Ma transition vers le référencement naturel s'est opérée naturellement par passion pour la façon dont l'information est classée, indexée et restituée sur Internet. J'ai développé mes compétences techniques de manière approfondie et pratique : architecture de sites, analyse de logs, performance web (Core Web Vitals), stratégie sémantique et balisage structuré.
             </p>
+
             <p>
-              Votre site doit travailler pour votre activité, pas simplement exister sur internet.
+              Aujourd'hui, l'arrivée de l'intelligence artificielle générative dans les moteurs de recherche ouvre un nouveau chapitre passionnant : le <strong>GEO (Generative Engine Optimization)</strong>. J'y consacre une veille active quotidienne pour permettre aux entreprises que j'accompagne de ne pas seulement réagir aux évolutions des algorithmes, mais d'avoir une longueur d'avance.
             </p>
           </div>
-          <div class="story-aside">
-            <div class="info-card">
-              <div class="info-card__item">
-                <span class="info-card__label">Localisation</span>
-                <span class="info-card__value">Bretagne (Ille-et-Vilaine)</span>
-              </div>
-              <div class="info-card__item">
-                <span class="info-card__label">Statut</span>
-                <span class="info-card__value">Micro-entreprise</span>
-              </div>
-              <div class="info-card__item">
-                <span class="info-card__label">Zones d'intervention</span>
-                <span class="info-card__value">Rennes · Vitré · La Guerche-de-Bretagne · Bretagne</span>
-              </div>
-              <div class="info-card__item">
-                <span class="info-card__label">Spécialités</span>
-                <span class="info-card__value">SEO local · SEO technique · Audit SEO</span>
-              </div>
-              <div class="info-card__item">
-                <span class="info-card__label">Langues</span>
-                <span class="info-card__value">Français · Anglais</span>
-              </div>
+
+          <div class="story-sidebar">
+            <div class="story-card">
+              <h3 class="story-card__title">Profil professionnel</h3>
+              <ul class="story-card__list">
+                <li><strong>Statut :</strong> Consultant indépendant</li>
+                <li><strong>Spécialités :</strong> SEO Technique, SEO Contenu, SEO Local, GEO (Search IA)</li>
+                <li><strong>Localisation :</strong> Ille-et-Vilaine (35), Grand Ouest & accompagnement France à distance</li>
+                <li><strong>Clients types :</strong> TPE, PME, commerçants, artisans, professions libérales et entreprises en croissance</li>
+              </ul>
+            </div>
+
+            <div class="story-quote">
+              <blockquote>
+                « Être visible sur Google ne signifie pas tromper un algorithme. Cela signifie devenir la réponse la plus évidente, la plus fiable et la plus facile à comprendre pour votre client et pour les moteurs. »
+              </blockquote>
+              <cite>— Ujjwal Lage</cite>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Valeurs -->
-    <section class="section">
+    <!-- ══ PRINCIPES DE TRAVAIL ══ -->
+    <section class="section" aria-labelledby="principles-heading">
       <div class="container">
-        <h2 class="section-title">Ce en quoi je crois</h2>
-        <p class="section-subtitle">
-          Quatre principes qui guident chaque mission, chaque recommandation, chaque rapport.
-        </p>
-        <div class="valeurs-grid">
-          {valeurs.map((v) => (
-            <article class="valeur-card">
-              <span class="valeur-card__icon" aria-hidden="true">{v.icon}</span>
-              <h3 class="valeur-card__title">{v.title}</h3>
-              <p class="valeur-card__desc">{v.description}</p>
-            </article>
-          ))}
+        <div class="section-header--centered">
+          <p class="eyebrow">Éthique & Méthode</p>
+          <h2 id="principles-heading">Les principes qui guident chaque collaboration</h2>
         </div>
-      </div>
-    </section>
 
-    <!-- Compétences -->
-    <section class="section section--alt">
-      <div class="container">
-        <h2 class="section-title">Mes compétences SEO</h2>
-        <div class="competences-grid">
-          {competences.map((c) => (
-            <div class="competence-item">
-              <div class="competence-item__header">
-                <span class="competence-item__name">{c.name}</span>
-                <span class="competence-item__level">{c.level} %</span>
-              </div>
-              <div class="competence-item__bar" role="progressbar" aria-valuenow={c.level} aria-valuemin={0} aria-valuemax={100} aria-label={c.name}>
-                <div class="competence-item__fill" style={`width: ${c.level}%`}></div>
-              </div>
+        <div class="principles-grid">
+          {workingPrinciples.map((p) => (
+            <div class="principle-card">
+              <span class="principle-card__num">{p.num}</span>
+              <h3 class="principle-card__title">{p.title}</h3>
+              <p class="principle-card__desc">{p.description}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Outils -->
-    <section class="section">
+    <!-- ══ ENVIRONNEMENT TECHNIQUE & OUTILS ══ -->
+    <section class="section section--surface" aria-labelledby="tools-heading">
       <div class="container">
-        <h2 class="section-title">Outils & technologies</h2>
-        <p class="section-subtitle">Les outils que j'utilise au quotidien pour analyser, optimiser et mesurer.</p>
-        <div class="outils-grid">
-          {outils.map((outil) => (
-            <span class="outil-tag">{outil}</span>
+        <div class="section-header--centered">
+          <p class="eyebrow">Pratique Technique</p>
+          <h2 id="tools-heading">Des outils rigoureux et vérifiables</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Pas d'outils magiques auto-proclamés. Mes analyses s'appuient sur les standards de l'industrie et les données de première main fournies par les moteurs de recherche.
+          </p>
+        </div>
+
+        <div class="tools-list-grid">
+          {toolsEnvironment.map((t) => (
+            <div class="tool-card">
+              <h4 class="tool-card__name">{t.name}</h4>
+              <p class="tool-card__role">{t.role}</p>
+            </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Ma méthode -->
-    <section class="methode section section--alt">
-      <div class="container">
-        <h2 class="section-title">Ma méthode de travail</h2>
-        <div class="methode-grid">
-          <article class="methode-step">
-            <span class="methode-step__num">1</span>
-            <h3>Je comprends votre business</h3>
-            <p>Avant toute optimisation, je prends le temps de comprendre votre activité, vos clients cibles, votre zone géographique et vos objectifs commerciaux. Le SEO doit servir votre stratégie, pas l'inverse.</p>
-          </article>
-          <article class="methode-step">
-            <span class="methode-step__num">2</span>
-            <h3>J'analyse avant d'agir</h3>
-            <p>Un audit complet du site, des mots-clés et de la concurrence. Pas de recommandation sans données. Je priorise les actions à fort impact pour éviter de disperser les efforts.</p>
-          </article>
-          <article class="methode-step">
-            <span class="methode-step__num">3</span>
-            <h3>J'optimise avec rigueur</h3>
-            <p>Corrections techniques, optimisation des pages, stratégie de contenu. Chaque action est documentée et justifiée. Vous savez toujours ce qui a été fait sur votre site.</p>
-          </article>
-          <article class="methode-step">
-            <span class="methode-step__num">4</span>
-            <h3>Je mesure et j'ajuste</h3>
-            <p>Reporting mensuel avec les positions, le trafic organique et les conversions. Si quelque chose ne fonctionne pas comme prévu, j'adapte la stratégie. La transparence est non-négociable.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
+    <!-- ══ CTA FINAL ══ -->
     <CTA
-      title="Travaillons ensemble"
-      description="Prêt à améliorer votre visibilité sur Google ? Parlons de votre projet lors d'un premier appel gratuit de 30 minutes."
-      primaryLabel="Réserver un appel découverte"
-      primaryHref="/reserver-un-appel/"
-      secondaryLabel="Voir mes réalisations"
-      secondaryHref="/realisations/"
+      heading="Envie d'échanger directement sur votre projet ?"
+      body="Je réponds personnellement à vos questions et étudie la situation de votre site web lors d'un premier échange de 30 minutes sans engagement."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir la méthode', href: '/approche/' }}
+      variant="navy"
     />
   </main>
+
   <Footer />
 </BaseLayout>
 
 <style>
-  /* Hero */
-  .about-hero {
-    padding-top: var(--space-12);
-  }
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: var(--space-12);
+  align-items: start;
+}
 
-  .about-hero__grid {
-    max-width: 720px;
-  }
-
-  .about-hero__eyebrow {
-    display: block;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: var(--space-3);
-  }
-
-  .about-hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.15;
-    margin-bottom: var(--space-6);
-    color: var(--color-text);
-  }
-
-  .about-hero h1 .accent {
-    color: var(--color-accent);
-    font-size: 0.75em;
-    display: block;
-    margin-top: var(--space-1);
-  }
-
-  .about-hero__lead {
-    font-size: var(--text-lg);
-    color: var(--color-text-muted);
-    line-height: 1.7;
-    margin-bottom: var(--space-8);
-    max-width: 560px;
-  }
-
-  .about-hero__actions {
-    display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-  }
-
-
-
-  /* Story */
+@media (max-width: 900px) {
   .story-grid {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: var(--space-12);
-    align-items: start;
+    grid-template-columns: 1fr;
   }
+}
 
-  .story-content h2 {
-    font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    margin-bottom: var(--space-5);
-    color: var(--color-text);
+.story-text p {
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-5);
+}
+
+.story-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.story-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.story-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.story-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-normal);
+}
+
+.story-quote {
+  background: var(--color-navy);
+  color: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.story-quote blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.story-quote cite {
+  font-style: normal;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: #93C5FD;
+  display: block;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 768px) {
+  .principles-grid {
+    grid-template-columns: 1fr;
   }
+}
 
-  .story-content p {
-    color: var(--color-text-muted);
-    line-height: 1.85;
-    margin-bottom: var(--space-4);
+.principle-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.principle-card__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-atlantic);
+  margin-bottom: var(--space-3);
+}
+
+.principle-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.principle-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.tools-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 900px) {
+  .tools-list-grid {
+    grid-template-columns: 1fr;
   }
+}
 
-  .info-card {
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-  }
+.tool-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-atlantic);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+}
 
-  .info-card__item {
-    padding: var(--space-4) var(--space-5);
-    border-bottom: 1px solid var(--color-border);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
+.tool-card__name {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
 
-  .info-card__item:last-child {
-    border-bottom: none;
-  }
-
-  .info-card__label {
-    font-size: var(--text-xs);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text-muted);
-  }
-
-  .info-card__value {
-    font-size: var(--text-sm);
-    color: var(--color-text);
-    font-weight: 500;
-  }
-
-  /* Valeurs */
-  .valeurs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: var(--space-6);
-    margin-top: var(--space-10);
-  }
-
-  .valeur-card {
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .valeur-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .valeur-card__icon {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: var(--space-3);
-  }
-
-  .valeur-card__title {
-    font-size: var(--text-base);
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: var(--space-2);
-  }
-
-  .valeur-card__desc {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    line-height: 1.7;
-  }
-
-  /* Compétences */
-  .competences-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-    max-width: 680px;
-  }
-
-  .competence-item__header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--space-2);
-  }
-
-  .competence-item__name {
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--color-text);
-  }
-
-  .competence-item__level {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-accent);
-  }
-
-  .competence-item__bar {
-    height: 6px;
-    background: var(--color-border);
-    border-radius: 100px;
-    overflow: hidden;
-  }
-
-  .competence-item__fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--color-accent), #6ec98f);
-    border-radius: 100px;
-    transition: width 1s ease;
-  }
-
-  /* Outils */
-  .outils-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin-top: var(--space-8);
-  }
-
-  .outil-tag {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-md);
-    font-size: var(--text-sm);
-    color: var(--color-text);
-    font-weight: 500;
-  }
-
-  /* Méthode */
-  .methode-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: var(--space-6);
-    margin-top: var(--space-10);
-  }
-
-  .methode-step {
-    position: relative;
-    padding: var(--space-6);
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-  }
-
-  .methode-step__num {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    background: var(--color-accent);
-    color: white;
-    border-radius: 50%;
-    font-weight: 700;
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-4);
-  }
-
-  .methode-step h3 {
-    font-size: var(--text-base);
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: var(--space-3);
-  }
-
-  .methode-step p {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    line-height: 1.7;
-  }
-
-  @media (max-width: 900px) {
-    .about-hero__grid {
-      max-width: 100%;
-    }
-
-    .story-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+.tool-card__role {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
 </style>

@@ -1,0 +1,376 @@
+---
+/**
+ * EntityDiagram.astro
+ * Search Landscape diagram: "How your business is understood".
+ * Visualizes the 7-step semantic discovery chain:
+ * Entreprise → Site Web → Contenu → Entités → Moteurs & Index → Systèmes d'IA → Utilisateurs
+ * Clean SVG + CSS geometry, responsive horizontal/vertical flow.
+ */
+---
+
+<div class="entity-diagram-wrap" aria-labelledby="entity-diagram-heading">
+  <div class="entity-diagram-header">
+    <span class="eyebrow">Architecture de la compréhension</span>
+    <h3 id="entity-diagram-heading" class="entity-diagram-title">
+      De l'activité réelle à la recommandation finale
+    </h3>
+    <p class="entity-diagram-sub">
+      La visibilité moderne dépasse le simple classement par mot-clé. Elle repose sur la clarté avec laquelle chaque intermédiaire extrait, valide et transmet votre expertise.
+    </p>
+  </div>
+
+  <!-- Flow Visual -->
+  <div class="entity-flow" role="list">
+    <!-- Step 1: Entreprise -->
+    <div class="entity-step" role="listitem">
+      <div class="entity-step__node">
+        <span class="entity-step__num">01</span>
+        <div class="entity-step__icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M3 9h18M9 21V9" />
+          </svg>
+        </div>
+      </div>
+      <div class="entity-step__body">
+        <h4 class="entity-step__name">Entreprise</h4>
+        <p class="entity-step__role">Activité &amp; Réalité</p>
+        <span class="entity-step__tag">Votre offre réelle</span>
+      </div>
+      <div class="entity-step__connector" aria-hidden="true">
+        <span class="connector-line"></span>
+        <span class="connector-dot"></span>
+      </div>
+    </div>
+
+    <!-- Step 2: Site Web -->
+    <div class="entity-step" role="listitem">
+      <div class="entity-step__node">
+        <span class="entity-step__num">02</span>
+        <div class="entity-step__icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 0 0 0 18M12.5 3a17 17 0 0 1 0 18" />
+          </svg>
+        </div>
+      </div>
+      <div class="entity-step__body">
+        <h4 class="entity-step__name">Site Web</h4>
+        <p class="entity-step__role">Socle Technique</p>
+        <span class="entity-step__tag">Crawl &amp; Vitesse</span>
+      </div>
+      <div class="entity-step__connector" aria-hidden="true">
+        <span class="connector-line"></span>
+        <span class="connector-dot"></span>
+      </div>
+    </div>
+
+    <!-- Step 3: Contenu -->
+    <div class="entity-step" role="listitem">
+      <div class="entity-step__node">
+        <span class="entity-step__num">03</span>
+        <div class="entity-step__icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+          </svg>
+        </div>
+      </div>
+      <div class="entity-step__body">
+        <h4 class="entity-step__name">Contenu</h4>
+        <p class="entity-step__role">Corpus Sémantique</p>
+        <span class="entity-step__tag">Réponse à l'intention</span>
+      </div>
+      <div class="entity-step__connector" aria-hidden="true">
+        <span class="connector-line"></span>
+        <span class="connector-dot"></span>
+      </div>
+    </div>
+
+    <!-- Step 4: Entités (Pivot) -->
+    <div class="entity-step entity-step--highlight" role="listitem">
+      <div class="entity-step__node">
+        <span class="entity-step__num">04</span>
+        <div class="entity-step__icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <circle cx="18" cy="5" r="3" />
+            <circle cx="6" cy="12" r="3" />
+            <circle cx="18" cy="19" r="3" />
+            <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" />
+          </svg>
+        </div>
+      </div>
+      <div class="entity-step__body">
+        <h4 class="entity-step__name">Entités Clés</h4>
+        <p class="entity-step__role">Graphe Sémantique</p>
+        <span class="entity-step__tag entity-step__tag--accent">Données structurées</span>
+      </div>
+      <div class="entity-step__connector" aria-hidden="true">
+        <span class="connector-line"></span>
+        <span class="connector-dot"></span>
+      </div>
+    </div>
+
+    <!-- Step 5: Moteurs classiques -->
+    <div class="entity-step" role="listitem">
+      <div class="entity-step__node">
+        <span class="entity-step__num">05</span>
+        <div class="entity-step__icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35" />
+          </svg>
+        </div>
+      </div>
+      <div class="entity-step__body">
+        <h4 class="entity-step__name">Moteurs (SEO)</h4>
+        <p class="entity-step__role">Index &amp; Algorithmes</p>
+        <span class="entity-step__tag">Google / Bing SERP</span>
+      </div>
+      <div class="entity-step__connector" aria-hidden="true">
+        <span class="connector-line"></span>
+        <span class="connector-dot"></span>
+      </div>
+    </div>
+
+    <!-- Step 6: Systèmes d'IA (GEO) -->
+    <div class="entity-step entity-step--highlight-geo" role="listitem">
+      <div class="entity-step__node">
+        <span class="entity-step__num">06</span>
+        <div class="entity-step__icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+          </svg>
+        </div>
+      </div>
+      <div class="entity-step__body">
+        <h4 class="entity-step__name">IA &amp; Synthèses (GEO)</h4>
+        <p class="entity-step__role">RAG &amp; Citations LLM</p>
+        <span class="entity-step__tag entity-step__tag--geo">Perplexity / AI Overviews</span>
+      </div>
+      <div class="entity-step__connector" aria-hidden="true">
+        <span class="connector-line"></span>
+        <span class="connector-dot"></span>
+      </div>
+    </div>
+
+    <!-- Step 7: Utilisateurs -->
+    <div class="entity-step" role="listitem">
+      <div class="entity-step__node">
+        <span class="entity-step__num">07</span>
+        <div class="entity-step__icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </div>
+      </div>
+      <div class="entity-step__body">
+        <h4 class="entity-step__name">Utilisateurs</h4>
+        <p class="entity-step__role">Confiance &amp; Conversion</p>
+        <span class="entity-step__tag">Clients qualifiés</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.entity-diagram-wrap {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.05);
+}
+
+.entity-diagram-header {
+  text-align: center;
+  max-width: 44rem;
+  margin-inline: auto;
+  margin-bottom: var(--space-10);
+}
+
+.entity-diagram-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.entity-diagram-sub {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ══ HORIZONTAL FLOW ON DESKTOP ══ */
+.entity-flow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+  position: relative;
+  align-items: flex-start;
+}
+
+.entity-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.entity-step__node {
+  position: relative;
+  margin-bottom: var(--space-3);
+}
+
+.entity-step__num {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--color-bg-subtle, #F1F5F9);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.entity-step__icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-warm, #F8FAFC);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.entity-step:hover .entity-step__icon-box {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Pivots (Entities & AI) */
+.entity-step--highlight .entity-step__icon-box {
+  background: var(--color-accent-light);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.entity-step--highlight-geo .entity-step__icon-box {
+  background: #F3E8FF;
+  border-color: #8B5CF6;
+  color: #7C3AED;
+}
+
+.entity-step__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.entity-step__name {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2px;
+  line-height: 1.25;
+}
+
+.entity-step__role {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+  line-height: 1.3;
+}
+
+.entity-step__tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: #F1F5F9;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+  line-height: 1.2;
+}
+
+.entity-step__tag--accent {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+  border-color: rgba(29, 78, 216, 0.2);
+}
+
+.entity-step__tag--geo {
+  background-color: #F5F3FF;
+  color: #7C3AED;
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+/* Connectors */
+.entity-step__connector {
+  position: absolute;
+  top: 26px;
+  left: 65%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.connector-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #CBD5E1, #94A3B8);
+}
+
+.connector-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #94A3B8;
+}
+
+/* ══ RESPONSIVE: VERTICAL CASCADE ON TABLET & MOBILE ══ */
+@media (max-width: 900px) {
+  .entity-flow {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .entity-step {
+    flex-direction: row;
+    text-align: left;
+    gap: var(--space-4);
+    background-color: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .entity-step__body {
+    align-items: flex-start;
+  }
+
+  .entity-step__connector {
+    display: none;
+  }
+}
+</style>

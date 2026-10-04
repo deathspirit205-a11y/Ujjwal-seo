@@ -48,40 +48,35 @@ const contactSchema = {
 
 const infos = [
   {
-    icon: '📍',
-    label: 'Localisation',
-    value: 'Bretagne (Ille-et-Vilaine)',
-    note: 'Rennes, Vitré, La Guerche-de-Bretagne et toute la Bretagne',
+    label: 'Rayonnement & Ancrage',
+    value: 'Grand Ouest & France à distance',
+    note: 'Interventions physiques en Bretagne & Pays de la Loire (Rennes, Vitré, Laval, Nantes)',
   },
   {
-    icon: '⏱️',
     label: 'Délai de réponse',
-    value: 'Sous 24–48 h',
-    note: 'Du lundi au vendredi',
+    value: 'Sous 24 h ouvrées',
+    note: 'Du lundi au vendredi, réponse personnalisée',
   },
   {
-    icon: '📞',
-    label: 'Appel découverte',
-    value: '30 min, gratuit',
-    note: 'Sans engagement — réservez directement en ligne',
+    label: 'Premier échange',
+    value: '30 min de cadrage gratuit',
+    note: 'Échange direct sur vos enjeux et votre marché, sans engagement',
   },
 ];
 ---
 
 <BaseLayout
-  title={buildTitle('Contact — Parlez de votre projet SEO')}
-  description="Contactez Ujjwal Lage, consultant SEO à Rennes. Posez vos questions, décrivez votre projet ou demandez un audit SEO. Réponse sous 48h."
+  title={buildTitle('Contact — Parlez de votre projet SEO & GEO')}
+  description="Contactez Ujjwal Lage, consultant SEO & GEO indépendant en France. Échangeons sur votre projet, vos blocages techniques ou demandez un audit."
   canonicalPath="/contact/"
   schema={contactSchema}
 >
   <Header />
   <main id="main-content">
     <PageHero
-      bgImage="/assets/hero/calm-coast.jpg"
-      bgAlt="Littoral breton calme au lever du jour"
-      eyebrow="Contact"
-      title="Parlons de votre projet SEO"
-      description="Vous avez un projet, une question ou vous voulez simplement savoir ce que le SEO peut apporter à votre entreprise ?"
+      eyebrow="Échange Direct & Devis"
+      title="Parlons de votre visibilité SEO & GEO"
+      description="Vous souhaitez améliorer le positionnement de votre entreprise, corriger des anomalies techniques ou anticiper les moteurs de recherche IA ? Échangeons directement."
       compact={true}
     />
 
@@ -93,15 +88,12 @@ const infos = [
           <!-- Left: info -->
           <div class="contact-info">
             <p class="contact-info__lead">
-              Vous avez un projet, une question ou vous voulez simplement savoir ce que le SEO
-              peut apporter à votre entreprise ? Écrivez-moi — je réponds personnellement
-              à chaque message.
+              Remplissez le formulaire ci-contre en décrivant votre activité et l'adresse de votre site web. Je vous réponds personnellement sous 24 heures pour convenir d'un échange ou vous transmettre de premières pistes.
             </p>
 
             <ul class="contact-details">
               {infos.map((info) => (
                 <li class="contact-detail">
-                  <span class="contact-detail__icon" aria-hidden="true">{info.icon}</span>
                   <div class="contact-detail__text">
                     <span class="contact-detail__label">{info.label}</span>
                     <span class="contact-detail__value">{info.value}</span>
@@ -112,9 +104,14 @@ const infos = [
             </ul>
 
             <div class="contact-booking-nudge">
-              <p>Préférez-vous un échange direct ?</p>
-              <a href="/reserver-un-appel/" class="btn btn--outline">
-                Réserver un appel de 30 min →
+              <p>Vous préférez échanger immédiatement sur WhatsApp ?</p>
+              <a
+                href="https://wa.me/33757579666"
+                class="btn btn--secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Discuter sur WhatsApp &rarr;
               </a>
             </div>
           </div>

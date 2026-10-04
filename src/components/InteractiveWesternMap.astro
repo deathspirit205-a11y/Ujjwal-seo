@@ -1,0 +1,488 @@
+---
+/**
+ * InteractiveWesternMap.astro
+ * Custom SVG-based stylized map for "Zones d'intervention".
+ * Covers Western France: Bretagne & Pays de la Loire (Ille-et-Vilaine, Mayenne, Loire-Atlantique, etc.)
+ * Features:
+ * - High-precision stylized geographic contours and network pathways
+ * - Connected city nodes (Rennes, Vitré, Fougères, Janzé, Laval, Châteaubriant, Redon, etc.)
+ * - Keyboard accessible, visible focus, ARIA attributes
+ * - Accessible HTML list of departments and cities alongside/underneath
+ * - "France entière à distance" reassurance
+ */
+
+export interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+// Regional city data with priority linking
+const regionsData = [
+  {
+    name: 'Ille-et-Vilaine (35)',
+    href: '/zones-intervention/ille-et-vilaine/',
+    cities: [
+      { name: 'Rennes', href: '/zones-intervention/seo-rennes/', priority: true, note: 'Bassin rennais & métropole' },
+      { name: 'Vitré', href: '/zones-intervention/seo-vitre/', priority: true, note: 'Pays de Vitré & Portes de Bretagne' },
+      { name: 'Fougères', href: '/zones-intervention/seo-fougeres/', priority: true, note: 'Haute-Bretagne' },
+      { name: 'Janzé', href: '/zones-intervention/seo-janze/', priority: true, note: 'Pays de la Roche aux Fées' },
+      { name: 'Saint-Malo', href: '/zones-intervention/bretagne/', priority: false, note: 'Côte d’Émeraude' },
+      { name: 'Cesson-Sévigné', href: '/zones-intervention/seo-rennes/', priority: false, note: 'Pôle technologique' },
+      { name: 'Bruz', href: '/zones-intervention/seo-rennes/', priority: false, note: 'Sud Métropole' },
+      { name: 'Châteaugiron', href: '/zones-intervention/ille-et-vilaine/', priority: false, note: 'Pays de Châteaugiron' },
+      { name: 'Redon', href: '/zones-intervention/seo-redon/', priority: true, note: 'Carrefour 35 / 56 / 44' },
+      { name: 'Bain-de-Bretagne', href: '/zones-intervention/ille-et-vilaine/', priority: false, note: 'Sud Ille-et-Vilaine' },
+    ],
+  },
+  {
+    name: 'Bretagne (22, 29, 56)',
+    href: '/zones-intervention/bretagne/',
+    cities: [
+      { name: 'Saint-Brieuc', href: '/zones-intervention/bretagne/', priority: false, note: 'Côtes-d’Armor (22)' },
+      { name: 'Dinan', href: '/zones-intervention/bretagne/', priority: false, note: 'Vallée de la Rance (22)' },
+      { name: 'Vannes', href: '/zones-intervention/bretagne/', priority: false, note: 'Golfe du Morbihan (56)' },
+      { name: 'Lorient', href: '/zones-intervention/bretagne/', priority: false, note: 'Morbihan littoral (56)' },
+      { name: 'Brest', href: '/zones-intervention/bretagne/', priority: false, note: 'Finistère Nord (29)' },
+      { name: 'Quimper', href: '/zones-intervention/bretagne/', priority: false, note: 'Cornouaille (29)' },
+    ],
+  },
+  {
+    name: 'Mayenne (53)',
+    href: '/zones-intervention/mayenne/',
+    cities: [
+      { name: 'Laval', href: '/zones-intervention/seo-laval/', priority: true, note: 'Agglomération lavalloise' },
+      { name: 'Château-Gontier', href: '/zones-intervention/mayenne/', priority: false, note: 'Sud Mayenne' },
+      { name: 'Mayenne', href: '/zones-intervention/mayenne/', priority: false, note: 'Nord Mayenne' },
+    ],
+  },
+  {
+    name: 'Loire-Atlantique & Maine-et-Loire (44, 49)',
+    href: '/zones-intervention/loire-atlantique/',
+    cities: [
+      { name: 'Châteaubriant', href: '/zones-intervention/seo-chateaubriant/', priority: true, note: 'Pays de Châteaubriant (44)' },
+      { name: 'Nantes', href: '/zones-intervention/loire-atlantique/', priority: false, note: 'Métropole nantaise (44)' },
+      { name: 'Ancenis', href: '/zones-intervention/loire-atlantique/', priority: false, note: 'Bassin d’Ancenis (44)' },
+      { name: 'Angers', href: '/zones-intervention/maine-et-loire/', priority: false, note: 'Maine-et-Loire (49)' },
+      { name: 'Segré', href: '/zones-intervention/maine-et-loire/', priority: false, note: 'Anjou Bleu (49)' },
+    ],
+  },
+];
+---
+
+<div class:list={['map-card', { 'map-card--compact': compact }]} aria-labelledby="map-heading">
+  <div class="map-card__header">
+    <span class="eyebrow">Réseau Géographique</span>
+    <h3 id="map-heading" class="map-card__title">
+      De la Bretagne aux Pays de la Loire
+    </h3>
+    <p class="map-card__lead">
+      Une présence de proximité pour les acteurs locaux du Grand Ouest, complétée par un accompagnement digital et stratégique disponible partout en France à distance.
+    </p>
+  </div>
+
+  <div class="map-layout">
+    <!-- Stylized SVG Map -->
+    <div class="map-canvas" aria-label="Carte vectorielle stylisée du Grand Ouest avec les principaux nœuds d'intervention">
+      <svg
+        viewBox="0 0 760 520"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="western-svg"
+      >
+        <defs>
+          <!-- Regional boundary outline gradient -->
+          <linearGradient id="coast-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2563EB" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#0F172A" stop-opacity="0.2"/>
+          </linearGradient>
+
+          <!-- Active link gradient -->
+          <linearGradient id="net-vector" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2563EB" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.3"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Stylized geographic contours: Bretagne & Pays de la Loire coastlines & borders -->
+        <g class="geo-contours" opacity="0.35">
+          <!-- North Brittany Coast: Brest to Saint-Malo -->
+          <path d="M 60 170 Q 110 130, 180 135 T 260 140 T 340 135 T 390 105" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4 3" fill="none" />
+          <!-- Normandy / Mont-Saint-Michel border -->
+          <path d="M 390 105 Q 430 110, 470 100" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="2 3" fill="none" />
+          <!-- South Brittany Coast: Finistère to Loire Estuary -->
+          <path d="M 60 170 Q 80 230, 100 260 T 190 320 T 260 345 T 330 365 T 380 430 T 420 440" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4 3" fill="none" />
+          <!-- Regional Eastern boundary (Mayenne / Sarthe / Maine-et-Loire) -->
+          <path d="M 470 100 Q 560 110, 580 160 T 570 270 T 630 360 T 590 440" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3 3" fill="none" />
+          <!-- Loire River Path -->
+          <path d="M 600 390 Q 550 395, 480 405 T 410 425 T 370 435" stroke="#BFDBFE" stroke-width="2" opacity="0.7" fill="none" />
+        </g>
+
+        <!-- Network pathways radiating from Central Hub (Rennes) -->
+        <g class="network-lines">
+          <!-- Hub connections -->
+          <line x1="390" y1="230" x2="480" y2="230" stroke="url(#net-vector)" stroke-width="1.75" class="map-path-pulse" /> <!-- To Vitré -->
+          <line x1="390" y1="230" x2="455" y2="155" stroke="url(#net-vector)" stroke-width="1.75" class="map-path-pulse" /> <!-- To Fougères -->
+          <line x1="390" y1="230" x2="430" y2="280" stroke="url(#net-vector)" stroke-width="1.5" /> <!-- To Janzé -->
+          <line x1="390" y1="230" x2="330" y2="360" stroke="url(#net-vector)" stroke-width="1.5" /> <!-- To Redon -->
+          <line x1="390" y1="230" x2="545" y2="225" stroke="url(#net-vector)" stroke-width="1.5" /> <!-- To Laval -->
+          <line x1="390" y1="230" x2="440" y2="330" stroke="url(#net-vector)" stroke-width="1.5" /> <!-- To Châteaubriant -->
+          <line x1="390" y1="230" x2="390" y2="120" stroke="url(#net-vector)" stroke-width="1.2" stroke-dasharray="3 3" /> <!-- To Saint-Malo -->
+          <line x1="390" y1="230" x2="270" y2="350" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="3 3" /> <!-- To Vannes -->
+          <line x1="390" y1="230" x2="420" y2="420" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="3 3" /> <!-- To Nantes -->
+          <line x1="480" y1="230" x2="545" y2="225" stroke="#CBD5E1" stroke-width="1" /> <!-- Vitré to Laval -->
+          <line x1="440" y1="330" x2="420" y2="420" stroke="#E2E8F0" stroke-width="1" /> <!-- Châteaubriant to Nantes -->
+          <line x1="545" y1="225" x2="590" y2="380" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3 3" /> <!-- Laval to Angers -->
+        </g>
+
+        <!-- Secondary Nodes -->
+        <!-- Saint-Malo -->
+        <g class="city-node" transform="translate(390, 120)">
+          <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5" />
+          <text x="0" y="-8" text-anchor="middle" font-size="10" font-weight="600" fill="#475569" font-family="Inter, sans-serif">Saint-Malo</text>
+        </g>
+
+        <!-- Fougères -->
+        <g class="city-node" transform="translate(455, 155)">
+          <circle cx="0" cy="0" r="5.5" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="2" />
+          <text x="10" y="4" font-size="11" font-weight="600" fill="#0F172A" font-family="Inter, sans-serif">Fougères</text>
+        </g>
+
+        <!-- Vitré -->
+        <g class="city-node" transform="translate(480, 230)">
+          <circle cx="0" cy="0" r="6" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="2" />
+          <text x="12" y="4" font-size="11" font-weight="700" fill="#0F172A" font-family="Inter, sans-serif">Vitré</text>
+        </g>
+
+        <!-- Janzé -->
+        <g class="city-node" transform="translate(430, 280)">
+          <circle cx="0" cy="0" r="5" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="2" />
+          <text x="10" y="4" font-size="10.5" font-weight="600" fill="#0F172A" font-family="Inter, sans-serif">Janzé</text>
+        </g>
+
+        <!-- Laval -->
+        <g class="city-node" transform="translate(545, 225)">
+          <circle cx="0" cy="0" r="6" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="2" />
+          <text x="12" y="4" font-size="11" font-weight="700" fill="#0F172A" font-family="Inter, sans-serif">Laval</text>
+        </g>
+
+        <!-- Châteaubriant -->
+        <g class="city-node" transform="translate(440, 330)">
+          <circle cx="0" cy="0" r="5.5" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="2" />
+          <text x="10" y="4" font-size="10.5" font-weight="600" fill="#0F172A" font-family="Inter, sans-serif">Châteaubriant</text>
+        </g>
+
+        <!-- Redon -->
+        <g class="city-node" transform="translate(330, 360)">
+          <circle cx="0" cy="0" r="5.5" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="2" />
+          <text x="-10" y="4" text-anchor="end" font-size="10.5" font-weight="600" fill="#0F172A" font-family="Inter, sans-serif">Redon</text>
+        </g>
+
+        <!-- Vannes -->
+        <g class="city-node" transform="translate(270, 350)">
+          <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5" />
+          <text x="-8" y="4" text-anchor="end" font-size="10" fill="#475569" font-family="Inter, sans-serif">Vannes</text>
+        </g>
+
+        <!-- Saint-Brieuc -->
+        <g class="city-node" transform="translate(270, 150)">
+          <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5" />
+          <text x="-8" y="4" text-anchor="end" font-size="10" fill="#475569" font-family="Inter, sans-serif">Saint-Brieuc</text>
+        </g>
+
+        <!-- Brest -->
+        <g class="city-node" transform="translate(80, 170)">
+          <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5" />
+          <text x="0" y="-8" text-anchor="middle" font-size="10" fill="#475569" font-family="Inter, sans-serif">Brest</text>
+        </g>
+
+        <!-- Quimper -->
+        <g class="city-node" transform="translate(100, 260)">
+          <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5" />
+          <text x="0" y="14" text-anchor="middle" font-size="10" fill="#475569" font-family="Inter, sans-serif">Quimper</text>
+        </g>
+
+        <!-- Lorient -->
+        <g class="city-node" transform="translate(200, 320)">
+          <circle cx="0" cy="0" r="4" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5" />
+          <text x="-8" y="4" text-anchor="end" font-size="9.5" fill="#64748B" font-family="Inter, sans-serif">Lorient</text>
+        </g>
+
+        <!-- Nantes -->
+        <g class="city-node" transform="translate(420, 420)">
+          <circle cx="0" cy="0" r="5" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5" />
+          <text x="10" y="4" font-size="10.5" font-weight="600" fill="#334155" font-family="Inter, sans-serif">Nantes</text>
+        </g>
+
+        <!-- Angers -->
+        <g class="city-node" transform="translate(590, 380)">
+          <circle cx="0" cy="0" r="5" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5" />
+          <text x="10" y="4" font-size="10.5" font-weight="600" fill="#334155" font-family="Inter, sans-serif">Angers</text>
+        </g>
+
+        <!-- CENTRAL HUB: RENNES -->
+        <g class="central-hub" transform="translate(390, 230)">
+          <circle cx="0" cy="0" r="32" fill="#2563EB" fill-opacity="0.1" />
+          <circle cx="0" cy="0" r="14" fill="#1D4ED8" stroke="#FFFFFF" stroke-width="2.5" />
+          <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" />
+          <!-- Hub Card label -->
+          <rect x="-55" y="-36" width="110" height="24" rx="4" fill="#0F172A" />
+          <text x="0" y="-20" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="Inter, sans-serif" letter-spacing="0.04em">RENNES / 35</text>
+          <text x="0" y="28" text-anchor="middle" font-size="9.5" font-weight="600" fill="#1E40AF" font-family="Inter, sans-serif">Pôle Métropolitain</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Accessible HTML Navigation Alongside -->
+    <div class="map-sidebar">
+      <div class="map-sidebar__header">
+        <h4>Villes &amp; Territoires Couverts</h4>
+        <p class="map-sidebar__sub">Sélectionnez une zone pour explorer notre stratégie locale.</p>
+      </div>
+
+      <div class="regions-accordion" role="list">
+        {regionsData.map((reg) => (
+          <div class="region-block" role="listitem">
+            <h5 class="region-name">
+              <a href={reg.href} class="region-link">
+                {reg.name} →
+              </a>
+            </h5>
+            <ul class="cities-list" role="list">
+              {reg.cities.map((city) => (
+                <li class="city-item">
+                  <a
+                    href={city.href}
+                    class:list={['city-link', { 'city-link--priority': city.priority }]}
+                  >
+                    <span class="city-bullet" aria-hidden="true">•</span>
+                    <span class="city-name">{city.name}</span>
+                    {city.priority && <span class="city-badge">Page dédiée</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <!-- France-wide Remote Callout -->
+      <div class="remote-callout">
+        <div class="remote-callout__icon" aria-hidden="true">🌐</div>
+        <div class="remote-callout__text">
+          <strong>France entière &amp; Projets Distants</strong>
+          <p>La proximité physique est un atout pour le SEO local. Pour les stratégies globales, le SEO technique et le GEO, l'accompagnement se fait à distance sur toute la France.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.map-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.05);
+}
+
+.map-card--compact {
+  padding: var(--space-6);
+}
+
+.map-card__header {
+  margin-bottom: var(--space-8);
+  max-width: 44rem;
+}
+
+.map-card__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.map-card__lead {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ══ MAP LAYOUT (SVG + SIDEBAR) ══ */
+.map-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.map-canvas {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+.western-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Map animation */
+@media (prefers-reduced-motion: no-preference) {
+  .map-path-pulse {
+    stroke-dasharray: 4 3;
+    animation: mapPulse 15s linear infinite;
+  }
+
+  @keyframes mapPulse {
+    to {
+      stroke-dashoffset: -70;
+    }
+  }
+}
+
+/* ══ SIDEBAR ACCESSIBLE NAVIGATION ══ */
+.map-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.map-sidebar__header h4 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.map-sidebar__sub {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.regions-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.region-block {
+  background-color: #F8FAFC;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.region-name {
+  margin-bottom: var(--space-3);
+}
+
+.region-link {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.region-link:hover {
+  color: var(--color-accent);
+}
+
+.cities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.city-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.25rem 0.6rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.city-link:hover,
+.city-link:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: var(--color-accent-light);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.city-link--priority {
+  border-color: rgba(37, 99, 235, 0.3);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.city-bullet {
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  line-height: 0;
+}
+
+.city-badge {
+  font-size: 0.6rem;
+  padding: 1px 4px;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+/* ══ REMOTE REASSURANCE BOX ══ */
+.remote-callout {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.04) 0%, rgba(2, 132, 199, 0.08) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: var(--radius-md);
+  align-items: flex-start;
+}
+
+.remote-callout__icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.remote-callout__text strong {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.remote-callout__text p {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 960px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

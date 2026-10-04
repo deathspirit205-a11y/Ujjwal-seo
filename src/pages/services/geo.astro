@@ -1,0 +1,418 @@
+---
+/**
+ * services/geo.astro — GEO (Generative Engine Optimization) Service Page
+ * URL: /services/geo/
+ *
+ * Details the emerging discipline of Generative Engine Optimization:
+ * entity relationships, structured data, knowledge graphs, and LLM retrieval.
+ */
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SearchLandscapeServiceGraphic from '../../components/SearchLandscapeServiceGraphic.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'GEO (Search IA)', href: '/services/geo/' },
+];
+
+const geoFAQ = [
+  {
+    id: 'geo-definition',
+    question: 'Qu\'est-ce que le GEO (Generative Engine Optimization) exactement ?',
+    answer: 'Le GEO désigne l\'ensemble des méthodes visant à rendre une entreprise, ses produits et son expertise clairement compréhensibles et extractibles par les moteurs de recherche alimentés par des modèles d\'IA (comme Google AI Overviews, Perplexity ou d\'autres systèmes de recherche conversationnelle).',
+  },
+  {
+    id: 'geo-vs-seo',
+    question: 'Le GEO remplace-t-il le SEO traditionnel ?',
+    answer: 'Non. Le GEO ne remplace pas le SEO, il s\'y superpose et le prolonge. Les modèles d\'IA générative s\'appuient sur les pages indexées et vérifiées par les moteurs classiques. Si un site souffre de graves lacunes techniques ou d\'un manque d\'autorité sur Google, il ne sera pas retenu comme source de confiance par les systèmes génératifs.',
+  },
+  {
+    id: 'geo-garantie',
+    question: 'Peut-on garantir que ChatGPT ou Google AI recommandera systématiquement mon entreprise ?',
+    answer: 'Non, et méfiez-vous de quiconque vous promettrait cela. Les réponses génératives sont probabilistes et se régénèrent en fonction du contexte de la question. En revanche, nous pouvons structurer vos données de manière irréprochable pour que vos compétences soient identifiées comme l\'une des références fiables du secteur.',
+  },
+  {
+    id: 'geo-entite',
+    question: 'Qu\'entend-on par "entité" en SEO et GEO ?',
+    answer: 'Une entité est un concept singulier, identifiable et vérifiable (une personne, une entreprise, un produit, un lieu, un savoir-faire). Plutôt que de simplement chercher des chaînes de caractères, les moteurs relient des entités entre elles à l\'aide de graphes de connaissances (Knowledge Graphs).',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'GEO — Generative Engine Optimization',
+  description: 'Optimisation de la visibilité de votre entreprise pour les moteurs de réponse alimentés par l\'IA : clarté des entités, données structurées Schema.org, autorité thématique et architecture d\'information.',
+  url: `${SITE_URL}/services/geo/`,
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'France',
+  },
+};
+---
+
+<ServiceLayout
+  title={buildTitle('GEO — Generative Engine Optimization | Visibilité IA')}
+  description="Optimisez votre présence pour les moteurs de recherche alimentés par l'IA (Google AI Overviews, Perplexity). Clarté des entités, données structurées et autorité thématique."
+  canonicalPath="/services/geo/"
+  breadcrumbs={breadcrumbs}
+  schema={serviceSchema}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Nouvelle frontière du Search"
+      title="GEO — Generative Engine Optimization"
+      description="Comment positionner votre entreprise dans les nouveaux espaces de recherche et de réponse alimentés par l'intelligence artificielle sans céder aux promesses trompeuses."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- ══ COMPARAISON MÉCANIQUE SEARCH ══ -->
+    <section class="section section--surface" aria-labelledby="mechanics-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Changement de paradigme</p>
+          <h2 id="mechanics-heading">De la liste de résultats à la réponse synthétisée</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Comprendre le passage de la recherche par mots-clés à la recherche par entités sémantiques.
+          </p>
+        </div>
+
+        <div class="mechanics-grid">
+          <div class="mechanic-card">
+            <div class="mechanic-card__tag">Recherche classique (SEO)</div>
+            <h3 class="mechanic-card__title">Requête &rarr; Moteur &rarr; Liste de liens</h3>
+            <p class="mechanic-card__text">
+              L'internaute saisit des mots-clés ("consultant seo rennes"). L'algorithme analyse son index textuel, classe les pages selon leur pertinence et renvoie dix liens bleus. L'utilisateur clique et parcourt chaque site.
+            </p>
+            <div class="mechanic-card__flow">
+              <span>Mots-clés</span> &bull; <span>Crawl HTTP</span> &bull; <span>Balises Hn / Meta</span> &bull; <span>Backlinks</span>
+            </div>
+          </div>
+
+          <div class="mechanic-card mechanic-card--ai">
+            <div class="mechanic-card__tag mechanic-card__tag--ai">Recherche générative (GEO)</div>
+            <h3 class="mechanic-card__title">Question complexe &rarr; Extraction contextuelle &rarr; Réponse sourcée</h3>
+            <p class="mechanic-card__text">
+              L'utilisateur formule un problème complet ("quel consultant choisir pour optimiser mon site e-commerce et m'adapter au search IA ?"). Le modèle consulte ses sources, synthétise une réponse directe et cite les entités reconnues comme légitimes.
+            </p>
+            <div class="mechanic-card__flow">
+              <span>Entités d'affaires</span> &bull; <span>Schema.org JSON-LD</span> &bull; <span>Corpus thématique</span> &bull; <span>Citations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CONTENU DÉTAILLÉ DE LA PRESTATION ══ -->
+    <section class="section" aria-labelledby="pillars-heading">
+      <div class="container">
+        <div class="pillars-layout">
+          <div class="pillars-content">
+            <div class="prose-header">
+              <p class="eyebrow">Champs d'intervention</p>
+              <h2 id="pillars-heading">Comment nous travaillons votre visibilité GEO</h2>
+              <p class="lead" style="margin-top: var(--space-3)">
+                Le travail de GEO ne repose pas sur de mystérieux hacks, mais sur la consolidation méthodique de votre identité sémantique numérique.
+              </p>
+            </div>
+
+            <div class="geo-actions-list">
+              <div class="geo-action">
+                <h3 class="geo-action__title">1. Cartographie et clarté des entités</h3>
+                <p class="geo-action__desc">
+                  Nous définissons clairement qui vous êtes, quels services précis vous proposez, dans quelles zones géographiques vous intervenez et quelles sont vos expertises uniques. Cela évite toute ambiguïté pour les moteurs d'indexation sémantique.
+                </p>
+              </div>
+
+              <div class="geo-action">
+                <h3 class="geo-action__title">2. Architecture de données structurées avancée</h3>
+                <p class="geo-action__desc">
+                  Déploiement de graphes Schema.org interconnectés (Organization, Person, Service, AboutPage, BreadcrumbList) permettant aux systèmes de comprendre vos relations sans avoir à deviner.
+                </p>
+              </div>
+
+              <div class="geo-action">
+                <h3 class="geo-action__title">3. Densité informationnelle et valeur de source</h3>
+                <p class="geo-action__desc">
+                  Les réponses génératives privilégient les contenus structurés contenant des réponses factuelles, des chiffres réels, des méthodologies détaillées et des explications limpides plutôt que du remplissage textuel.
+                </p>
+              </div>
+
+              <div class="geo-action">
+                <h3 class="geo-action__title">4. Maillage interne contextuel et profondeur</h3>
+                <p class="geo-action__desc">
+                  Organisation de vos pages en silos thématiques cohérents pour que chaque concept soutienne l'autorité globale de votre domaine.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pillars-visual">
+            <div class="pillars-visual__card">
+              <div class="pillars-visual__graphic">
+                <SearchLandscapeServiceGraphic type="geo" />
+              </div>
+              <div class="pillars-visual__legend">
+                <h4>Réseau d'entités & graphe de connaissances</h4>
+                <p>Représentation conceptuelle des liens entre vos pages, vos services déclarés et les espaces de réponse IA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CE QUI EST LIVRÉ ══ -->
+    <section class="section section--surface" aria-labelledby="deliverables-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Livrables concrets</p>
+          <h2 id="deliverables-heading">Ce que comprend la prestation GEO</h2>
+        </div>
+
+        <div class="deliverables-grid">
+          <div class="deliverable-item">
+            <span class="deliverable-item__check">&check;</span>
+            <div>
+              <h4 class="deliverable-item__title">Audit de visibilité sémantique & IA</h4>
+              <p class="deliverable-item__desc">Analyse de la façon dont votre marque et vos expertises sont actuellement extraites par les moteurs génératifs.</p>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="deliverable-item__check">&check;</span>
+            <div>
+              <h4 class="deliverable-item__title">Spécifications Schema.org prêtes à l'emploi</h4>
+              <p class="deliverable-item__desc">Code JSON-LD sur-mesure décrivant précisément votre entreprise, vos services, zones d'intervention et fondateurs.</p>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="deliverable-item__check">&check;</span>
+            <div>
+              <h4 class="deliverable-item__title">Plan d'optimisation d'architecture de contenu</h4>
+              <p class="deliverable-item__desc">Recommandations de refonte des pages clés pour maximiser leur potentiel de citation comme source d'autorité.</p>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="deliverable-item__check">&check;</span>
+            <div>
+              <h4 class="deliverable-item__title">Veille et suivi des évolutions algorithmiques</h4>
+              <p class="deliverable-item__desc">Points réguliers sur les mises à jour des Google AI Overviews et ajustements de trajectoire.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ GEO ══ -->
+    <FAQ items={geoFAQ} heading="Questions fréquentes sur le GEO" />
+
+    <!-- ══ CTA FINAL ══ -->
+    <CTA
+      heading="Préparez votre entreprise aux moteurs de recherche de demain."
+      body="Prenons 30 minutes pour analyser ensemble l'état de votre visibilité actuelle et identifier les opportunités d'optimisation sémantique et IA."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter l\'approche', href: '/approche/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</ServiceLayout>
+
+<style>
+/* ══ MECHANICS GRID ══ */
+.mechanics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 860px) {
+  .mechanics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mechanic-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+}
+
+.mechanic-card--ai {
+  border-top: 3px solid #6366F1;
+}
+
+.mechanic-card__tag {
+  font-size: 0.72rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-atlantic);
+  margin-bottom: var(--space-3);
+}
+
+.mechanic-card__tag--ai {
+  color: #4F46E5;
+}
+
+.mechanic-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-4);
+  line-height: var(--leading-snug);
+}
+
+.mechanic-card__text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.mechanic-card__flow {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* ══ PILLARS LAYOUT ══ */
+.pillars-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .pillars-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.geo-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.geo-action__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-1);
+}
+
+.geo-action__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.pillars-visual__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.pillars-visual__graphic {
+  background: #FFFFFF;
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-light);
+}
+
+.pillars-visual__legend h4 {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-1);
+}
+
+.pillars-visual__legend p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+/* ══ DELIVERABLES GRID ══ */
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 768px) {
+  .deliverables-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.deliverable-item {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.deliverable-item__check {
+  color: var(--color-atlantic);
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.deliverable-item__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-1);
+}
+
+.deliverable-item__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+</style>

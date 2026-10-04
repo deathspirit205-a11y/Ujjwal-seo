@@ -1,0 +1,152 @@
+---
+/**
+ * SearchLandscapeServiceGraphic.astro
+ * Specialized vector graphics for each service in the SEARCH LANDSCAPE system.
+ * Replaces generic icons with architectural schemas:
+ * - seo-technique: Crawl tree & technical architecture grid
+ * - seo-contenu: Semantic document lattice & content hierarchy
+ * - seo-local: Regional node mesh & radius vectors
+ * - audit-seo: Diagnostic matrix & structural inspection radar
+ * - strategie-seo: Strategic vectors & multi-phase roadmap
+ * - geo: Knowledge graph, entity relations & neural retrieval mesh
+ */
+
+export interface Props {
+  serviceId: 'seo-technique' | 'seo-contenu' | 'seo-local' | 'audit-seo' | 'strategie-seo' | 'geo';
+  size?: number;
+}
+
+const { serviceId, size = 56 } = Astro.props;
+---
+
+<div class={`service-graphic service-graphic--${serviceId}`} style={`width: ${size}px; height: ${size}px;`} aria-hidden="true">
+  {serviceId === 'seo-technique' && (
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="graphic-svg">
+      <!-- Technical Crawl & Server Architecture Tree -->
+      <rect x="6" y="8" width="52" height="14" rx="3" stroke="#2563EB" stroke-width="2" fill="#EFF6FF" />
+      <circle cx="14" cy="15" r="2.5" fill="#2563EB" />
+      <circle cx="22" cy="15" r="2.5" fill="#38BDF8" />
+      <line x1="32" y1="22" x2="32" y2="34" stroke="#94A3B8" stroke-width="2" />
+      <path d="M18 34 H46" stroke="#94A3B8" stroke-width="2" />
+      <line x1="18" y1="34" x2="18" y2="42" stroke="#94A3B8" stroke-width="2" />
+      <line x1="46" y1="34" x2="46" y2="42" stroke="#94A3B8" stroke-width="2" />
+      <rect x="8" y="42" width="20" height="14" rx="2" stroke="#0F172A" stroke-width="1.75" fill="#FFFFFF" />
+      <rect x="36" y="42" width="20" height="14" rx="2" stroke="#0F172A" stroke-width="1.75" fill="#FFFFFF" />
+      <line x1="12" y1="49" x2="24" y2="49" stroke="#2563EB" stroke-width="1.5" />
+      <line x1="40" y1="49" x2="52" y2="49" stroke="#0284C7" stroke-width="1.5" />
+    </svg>
+  )}
+
+  {serviceId === 'seo-contenu' && (
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="graphic-svg">
+      <!-- Semantic Document Hierarchy & Topic Cluster Lattice -->
+      <rect x="12" y="6" width="40" height="52" rx="4" stroke="#0F172A" stroke-width="2" fill="#FFFFFF" />
+      <!-- Document header bar -->
+      <rect x="18" y="14" width="28" height="4" rx="1" fill="#2563EB" />
+      <!-- Content cluster lines -->
+      <rect x="18" y="24" width="24" height="2.5" rx="1" fill="#64748B" />
+      <rect x="18" y="30" width="28" height="2.5" rx="1" fill="#94A3B8" />
+      <rect x="18" y="36" width="16" height="2.5" rx="1" fill="#94A3B8" />
+      <!-- Connected sub-entity chip -->
+      <circle cx="44" cy="46" r="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.75" />
+      <path d="M41 46L43.5 48.5L47 43.5" stroke="#2563EB" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  )}
+
+  {serviceId === 'seo-local' && (
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="graphic-svg">
+      <!-- Regional Node Mesh & Radii Vectors -->
+      <circle cx="32" cy="32" r="26" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="3 3" />
+      <circle cx="32" cy="32" r="18" stroke="#BFDBFE" stroke-width="1.5" />
+      <!-- Interconnecting territory lines -->
+      <line x1="32" y1="32" x2="16" y2="20" stroke="#94A3B8" stroke-width="1.5" />
+      <line x1="32" y1="32" x2="48" y2="22" stroke="#94A3B8" stroke-width="1.5" />
+      <line x1="32" y1="32" x2="38" y2="48" stroke="#94A3B8" stroke-width="1.5" />
+      <!-- Central Local Epicenter -->
+      <circle cx="32" cy="32" r="7" fill="#1D4ED8" stroke="#FFFFFF" stroke-width="2" />
+      <circle cx="16" cy="20" r="4.5" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.75" />
+      <circle cx="48" cy="22" r="4" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.75" />
+      <circle cx="38" cy="48" r="4" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.75" />
+    </svg>
+  )}
+
+  {serviceId === 'audit-seo' && (
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="graphic-svg">
+      <!-- Diagnostic Matrix & Structural Inspection Radar -->
+      <circle cx="32" cy="32" r="26" stroke="#0F172A" stroke-width="1.75" fill="#FFFFFF" />
+      <circle cx="32" cy="32" r="18" stroke="#E2E8F0" stroke-width="1.2" stroke-dasharray="2 2" />
+      <circle cx="32" cy="32" r="10" stroke="#E2E8F0" stroke-width="1.2" />
+      <line x1="32" y1="6" x2="32" y2="58" stroke="#CBD5E1" stroke-width="1" />
+      <line x1="6" y1="32" x2="58" y2="32" stroke="#CBD5E1" stroke-width="1" />
+      <!-- Active radar sweep vector -->
+      <path d="M32 32L50 18" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="50" cy="18" r="3.5" fill="#38BDF8" />
+      <circle cx="32" cy="32" r="3" fill="#0F172A" />
+    </svg>
+  )}
+
+  {serviceId === 'strategie-seo' && (
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="graphic-svg">
+      <!-- Strategic Trajectory Vectors & Growth Stepped Milestones -->
+      <line x1="10" y1="54" x2="54" y2="54" stroke="#CBD5E1" stroke-width="1.5" />
+      <line x1="10" y1="10" x2="10" y2="54" stroke="#CBD5E1" stroke-width="1.5" />
+      <!-- Roadmap stepped line -->
+      <path d="M12 46L24 38H34L44 22H54" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Milestones -->
+      <circle cx="24" cy="38" r="3.5" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" />
+      <circle cx="44" cy="22" r="3.5" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" />
+      <circle cx="54" cy="22" r="4.5" fill="#1D4ED8" stroke="#38BDF8" stroke-width="1.5" />
+    </svg>
+  )}
+
+  {serviceId === 'geo' && (
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="graphic-svg">
+      <!-- Entity Graph, Knowledge Triples & AI Neural Retrieval Mesh -->
+      <circle cx="32" cy="32" r="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2" />
+      <circle cx="32" cy="32" r="3" fill="#7C3AED" />
+      <!-- Outer interconnected entity nodes -->
+      <circle cx="16" cy="18" r="5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.75" />
+      <circle cx="48" cy="18" r="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.75" />
+      <circle cx="50" cy="46" r="5" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="1.75" />
+      <circle cx="14" cy="44" r="5" fill="#FFFFFF" stroke="#10B981" stroke-width="1.75" />
+      <!-- Triple relation vectors -->
+      <line x1="20" y1="21" x2="25" y2="26" stroke="#94A3B8" stroke-width="1.5" />
+      <line x1="44" y1="21" x2="39" y2="26" stroke="#94A3B8" stroke-width="1.5" />
+      <line x1="44" y1="43" x2="39" y2="38" stroke="#94A3B8" stroke-width="1.5" />
+      <line x1="18" y1="41" x2="24" y2="36" stroke="#94A3B8" stroke-width="1.5" />
+      <!-- Cross-mesh connection -->
+      <line x1="21" y1="18" x2="43" y2="18" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="2 2" />
+    </svg>
+  )}
+</div>
+
+<style>
+.service-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background-color: #F8FAFC;
+  border: 1px solid var(--color-border);
+  padding: 6px;
+  transition: all var(--transition-fast);
+}
+
+.graphic-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+:global(.service-card:hover) .service-graphic {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-light);
+  transform: translateY(-2px);
+}
+
+:global(.service-card:hover) .service-graphic--geo {
+  border-color: #8B5CF6;
+  background-color: #F5F3FF;
+}
+</style>

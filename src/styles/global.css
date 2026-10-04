@@ -16,26 +16,36 @@
 
 :root {
   /* ── Color: Background / Surface ── */
-  --color-bg:           #F9F6F1;  /* warm cream — page background */
-  --color-surface:      #FFFFFF;  /* pure white — cards, modals */
-  --color-surface-warm: #F3EFE8;  /* slightly warmer — alternate sections */
-  --color-surface-dark: #1B1B19;  /* deep charcoal — dark sections */
+  --color-bg:           #FFFFFF;  /* crisp white page background */
+  --color-surface:      #FFFFFF;  /* pure white cards */
+  --color-surface-warm: #F8FAFC;  /* cool slate for subtle alternating sections */
+  --color-surface-subtle:#F1F5F9; /* subtle component background */
+  --color-surface-dark: #0B132B;  /* midnight deep navy */
 
   /* ── Color: Text ── */
-  --color-text:         #1B1B19;  /* deep charcoal */
-  --color-text-muted:   #5C5B57;  /* secondary text */
-  --color-text-subtle:  #8E8D88;  /* placeholders, captions */
-  --color-text-inverse: #F9F6F1;  /* text on dark backgrounds */
+  --color-text:         #0F172A;  /* slate 900 */
+  --color-text-muted:   #475569;  /* slate 600 secondary */
+  --color-text-subtle:  #94A3B8;  /* slate 400 captions */
+  --color-text-inverse: #FFFFFF;  /* white on dark backgrounds */
 
-  /* ── Color: Accent (restrained SEO green) ── */
-  --color-accent:       #2B6B4E;
-  --color-accent-hover: #235A41;
-  --color-accent-light: #EAF4EE;
-  --color-accent-dim:   rgba(43, 107, 78, 0.12);
+  /* ── Color: Accent (Royal / Atlantic Blue) ── */
+  --color-accent:       #1D4ED8;  /* vibrant Atlantic / royal blue */
+  --color-accent-hover: #1E40AF;  /* darker blue on hover */
+  --color-accent-light: #EFF6FF;  /* light blue tint */
+  --color-accent-dim:   rgba(29, 78, 216, 0.08);
+
+  /* ── Color: Navy / Atlantic ── */
+  --color-navy:          #0B132B;  /* midnight navy */
+  --color-navy-light:    #1C2541;  /* lighter navy */
+  --color-atlantic:      #2563EB;  /* electric Atlantic blue */
+  --color-atlantic-muted:#60A5FA;  /* soft cyan blue */
+  --color-overlay-dark:  rgba(11, 19, 43, 0.85);
+  --color-overlay-darker:rgba(11, 19, 43, 0.95);
+  --color-overlay-light: rgba(11, 19, 43, 0.4);
 
   /* ── Color: Borders ── */
-  --color-border:       #E0DBD3;
-  --color-border-light: #EDE9E2;
+  --color-border:       #E2E8F0;  /* clean light border */
+  --color-border-light: #F1F5F9;  /* hairline border */
 
   /* ── Typography: Font Families ── */
   --font-serif: 'Playfair Display', Georgia, serif;   /* editorial / brand */
@@ -116,14 +126,6 @@
   --z-overlay: 200;
   --z-modal:   300;
 
-  /* ── Color: Navy / Atlantic (visual redesign) ── */
-  --color-navy:          #1a2744;
-  --color-navy-light:    #243557;
-  --color-atlantic:      #3d5a80;
-  --color-atlantic-muted:#6b8bae;
-  --color-overlay-dark:  rgba(26, 39, 68, 0.6);
-  --color-overlay-darker:rgba(26, 39, 68, 0.78);
-  --color-overlay-light: rgba(26, 39, 68, 0.35);
 }
 
 

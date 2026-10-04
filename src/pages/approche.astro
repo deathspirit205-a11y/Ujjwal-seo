@@ -1,0 +1,290 @@
+---
+/**
+ * approche.astro — Méthode et déroulement des projets
+ * URL: /approche/
+ *
+ * Details the collaborative methodology, diagnostic phases, strategy formulation,
+ * execution, monitoring, and communication principles.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import EntityDiagram from '../components/EntityDiagram.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Approche', href: '/approche/' },
+];
+
+const approachSteps = [
+  {
+    number: 1,
+    title: 'Comprendre',
+    description: 'Immersion dans votre modèle économique, vos offres phares, la typologie de vos clients idéaux et l\'environnement concurrentiel sur vos requêtes cibles.',
+  },
+  {
+    number: 2,
+    title: 'Structurer',
+    description: 'Cartographie des entités sémantiques, arborescence du site, maillage interne et résolution des anomalies d\'exploration ou d\'indexation.',
+  },
+  {
+    number: 3,
+    title: 'Optimiser',
+    description: 'Intervention sur les leviers on-page, balisage Schema.org rigoureux, temps de chargement, intention de recherche et cohérence géographique.',
+  },
+  {
+    number: 4,
+    title: 'Développer',
+    description: 'Création d\'actifs de contenu à haute valeur ajoutée, renforcement de l\'autorité thématique et diffusion d\'informations fiables pour l\'écosystème web et IA.',
+  },
+  {
+    number: 5,
+    title: 'Observer',
+    description: 'Analyse méthodique des données de Search Console, positions organiques, conversions générées et citations dans les réponses génératives.',
+  },
+];
+
+const faqApproach = [
+  {
+    id: 'approche-duree',
+    question: 'Combien de temps faut-il pour constater des résultats concrets ?',
+    answer: 'En SEO comme en GEO, il n\'y a pas d\'interrupteur magique. Les corrections techniques et l\'indexation de pages fraîches portent leurs premiers fruits entre 6 à 12 semaines. Le renforcement durable de l\'autorité et le positionnement sur des requêtes concurrentielles s\'inscrivent généralement dans un cycle de 4 à 6 mois de travail régulier.',
+  },
+  {
+    id: 'approche-technique',
+    question: 'Faut-il savoir coder pour mettre en œuvre vos recommandations ?',
+    answer: 'Non. Je rédige des spécifications claires et pédagogiques. Si vous disposez d\'un développeur ou d\'une agence web, je leur transmets des consignes techniques précises. Pour les aspects de contenu, de balisage ou de CMS (WordPress, Webflow, Shopify, etc.), nous pouvons intervenir directement selon vos préférences.',
+  },
+  {
+    id: 'approche-distance',
+    question: 'Comment s\'organise le travail si nous ne sommes pas dans la même ville ?',
+    answer: 'La très grande majorité des missions s\'effectuent à distance dans toute la France avec une excellente efficacité : points réguliers par visioconférence, tableau de bord partagé, échanges par email et messagerie instantanée réactive. Pour les entreprises basées en Bretagne et Pays de la Loire, des rencontres physiques sont tout à fait envisageables.',
+  },
+  {
+    id: 'approche-garantie',
+    question: 'Proposez-vous une garantie de première place sur Google ou ChatGPT ?',
+    answer: 'Non, et aucun professionnel honnête ne le fera. Les algorithmes de Google et les modèles génératifs évoluent constamment et dépendent de critères extérieurs. Ce que je garantis en revanche, c\'est une rigueur méthodologique absolue, un travail sans raccourci pénalisant et des fondations conformes aux meilleures pratiques de l\'industrie.',
+  },
+];
+
+const schemaWebPage = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Approche & Méthodologie — Ujjwal SEO',
+  description: 'Découvrez la méthodologie de travail d\'Ujjwal SEO : compréhension des enjeux, structuration technique, optimisation sémantique, et veille active sur le GEO.',
+  url: `${SITE_URL}/approche/`,
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Ujjwal SEO',
+    url: SITE_URL,
+  },
+};
+---
+
+<BaseLayout
+  title={buildTitle('Mon approche SEO & GEO — Méthodologie & Collaboration')}
+  description="Découvrez comment se déroule un accompagnement SEO & GEO : diagnostic approfondi, stratégie sur-mesure, exécution transparente et pilotage par la donnée."
+  canonicalPath="/approche/"
+  schema={[schemaWebPage]}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Méthode & Vision"
+      title="Une approche rigoureuse, transparente et orientée business"
+      description="Le référencement naturel et l'optimisation pour les moteurs IA ne relèvent pas de l'alchimie. C'est une discipline d'ingénierie de l'information qui associe structure technique, pertinence éditoriale et compréhension d'entités."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter les services', href: '/services/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- ══ PHILOSOPHIE DE TRAVAIL ══ -->
+    <section class="section section--surface" aria-labelledby="philosophy-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Principes directeurs</p>
+          <h2 id="philosophy-heading">Pas de boîte noire, pas de recettes toutes faites</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Chaque site web possède son historique, ses contraintes techniques et un écosystème commercial qui lui est propre. Voici les piliers immuables de mes accompagnements.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <span class="pillar-card__num">01</span>
+            <h3 class="pillar-card__title">La technique au service de l'utilisateur</h3>
+            <p class="pillar-card__desc">
+              Un site rapide, proprement codé et logiquement structuré n'est pas seulement apprécié des robots de Google : il convertit mieux les visiteurs humains qui le consultent.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <span class="pillar-card__num">02</span>
+            <h3 class="pillar-card__title">La sémantique et la clarté d'entités</h3>
+            <p class="pillar-card__desc">
+              Nous n'empilons pas des mots-clés au hasard. Nous explicitons la valeur de votre entreprise à travers des relations thématiques nettes et des données structurées vérifiables.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <span class="pillar-card__num">03</span>
+            <h3 class="pillar-card__title">La rentabilité avant le volume d'affichage</h3>
+            <p class="pillar-card__desc">
+              Attirer 500 visiteurs qualifiés prêts à vous contacter pour une prestation à forte marge vaut infiniment mieux que 10 000 clics sans intention d'achat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SYSTÈME SEARCH LANDSCAPE & COMPRÉHENSION ══ -->
+    <EntityDiagram />
+
+    <!-- ══ CYCLE DE VIE D'UN PROJET ══ -->
+    <ProcessSteps
+      steps={approachSteps}
+      heading="Le déroulement concret d'un projet"
+      subheading="De la prise de contact initiale à l'observation continue des retombées, chaque étape est documentée et validée ensemble."
+    />
+
+    <!-- ══ OUTILS & EXIGENCES TECHNIQUES ══ -->
+    <section class="section section--surface" aria-labelledby="tools-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Environnement de travail</p>
+          <h2 id="tools-heading">Des outils reconnus et des standards ouverts</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Les analyses reposent sur les standards officiels du W3C, de Google et de Schema.org, combinés aux outils professionnels de référence de l'industrie du search.
+          </p>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-item">
+            <h4 class="tool-item__title">Google Search Console & Analytics</h4>
+            <p class="tool-item__desc">Les données de première main fournies directement par Google pour mesurer les impressions, le CTR, les requêtes exactes et la santé technique.</p>
+          </div>
+          <div class="tool-item">
+            <h4 class="tool-item__title">Crawl & Exploration (Screaming Frog)</h4>
+            <p class="tool-item__desc">Audit systématique de l'arborescence, des codes HTTP, du budget de crawl, des balises canoniques et de la profondeur de clic.</p>
+          </div>
+          <div class="tool-item">
+            <h4 class="tool-item__title">Balisage Schema.org & JSON-LD</h4>
+            <p class="tool-item__desc">Structuration sémantique normalisée pour expliciter vos services, votre organisation, vos auteurs et vos zones géographiques.</p>
+          </div>
+          <div class="tool-item">
+            <h4 class="tool-item__title">Veille & Moteurs de réponse IA</h4>
+            <p class="tool-item__desc">Surveillance des extractions contextuelles dans les Google AI Overviews et moteurs de réponse de nouvelle génération.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ APPROCHE ══ -->
+    <FAQ items={faqApproach} heading="Questions fréquentes sur le déroulement" />
+
+    <!-- ══ CTA FINAL ══ -->
+    <CTA
+      heading="Envie d'échanger sur la méthode adaptée à votre activité ?"
+      body="Chaque projet démarre par une discussion ouverte sur vos enjeux commerciaux et votre situation actuelle. Sans engagement."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Explorer les services', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ══ PILLARS GRID ══ */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 860px) {
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pillar-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-card__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-atlantic);
+  margin-bottom: var(--space-4);
+  display: inline-block;
+}
+
+.pillar-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-snug);
+}
+
+.pillar-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ══ TOOLS GRID ══ */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tool-item {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-atlantic);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+}
+
+.tool-item__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.tool-item__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+</style>

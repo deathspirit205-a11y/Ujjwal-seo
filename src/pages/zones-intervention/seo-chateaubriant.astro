@@ -1,0 +1,149 @@
+---
+/**
+ * zones-intervention/seo-chateaubriant.astro — Local landing page for Châteaubriant
+ * URL: /zones-intervention/seo-chateaubriant/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'SEO Châteaubriant', href: '/zones-intervention/seo-chateaubriant/' },
+];
+
+const faqChateaubriant = [
+  {
+    id: 'chateaubriant-potentiel',
+    question: 'Quel est le potentiel SEO pour une entreprise à Châteaubriant ?',
+    answer: 'Le potentiel est élevé en raison de la situation géographique de carrefour : Châteaubriant est au centre d\'un quadrilatère reliant Nantes, Rennes, Angers et Laval. Une entreprise locale qui structure bien son SEO local et son rayonnement multicommunal capte des prospects sur un rayon de 40 km.',
+  },
+  {
+    id: 'chateaubriant-secteurs',
+    question: 'Quels secteurs bénéficient le plus du SEO à Châteaubriant ?',
+    answer: 'Les artisans du bâtiment, les entreprises industrielles (métallurgie, mécanique), les services aux particuliers (santé, droit, comptabilité) et les commerces spécialisés du Pays de Châteaubriant.',
+  },
+];
+
+const schemaChateaubriant = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Ujjwal SEO — Consultant SEO & GEO à Châteaubriant',
+  description: 'Consultant SEO & GEO intervenant à Châteaubriant et en Loire-Atlantique : référencement naturel local, pack Google Maps et stratégie numérique.',
+  url: `${SITE_URL}/zones-intervention/seo-chateaubriant/`,
+  areaServed: [
+    { '@type': 'City', name: 'Châteaubriant', sameAs: 'https://www.wikidata.org/wiki/Q383321' },
+    { '@type': 'AdministrativeArea', name: 'Loire-Atlantique' },
+  ],
+};
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO à Châteaubriant — Référencement naturel & Local')}
+  description="Consultant SEO & GEO à Châteaubriant : positionnez votre entreprise sur Google et les moteurs IA. SEO local, pack Google Maps et accompagnement dans le Pays de Châteaubriant."
+  canonicalPath="/zones-intervention/seo-chateaubriant/"
+  schema={[schemaChateaubriant]}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Pays de Châteaubriant & Carrefour de l'Ouest"
+      title="Consultant SEO & GEO à Châteaubriant"
+      description="Développez votre acquisition locale et régionale à Châteaubriant : un référencement naturel ciblé pour dominer les recherches de vos clients sur Google et les espaces IA."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir l\'audit SEO', href: '/services/audit-seo/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <section class="section section--surface" aria-labelledby="chateaubriant-context-heading">
+      <div class="container">
+        <div class="grid-2-asym">
+          <div>
+            <div class="prose-header">
+              <p class="eyebrow">Carrefour Territorial</p>
+              <h2 id="chateaubriant-context-heading">Châteaubriant : au carrefour de quatre départements</h2>
+            </div>
+            <p class="lead" style="margin-top: var(--space-4)">
+              Idéalement située au centre du triangle Nantes-Rennes-Angers, Châteaubriant est le centre névralgique d'un bassin de vie de plus de 45 000 habitants.
+            </p>
+            <p>
+              Caractérisée par une solide tradition industrielle dans la métallurgie, la fonderie, le machinisme agricole et la logistique, la ville abrite de nombreuses PME dont l'offre mérite une meilleure résonance sur le web. Le SEO vous permet de capter la demande des professionnels et des particuliers sur l'ensemble du nord de la Loire-Atlantique.
+            </p>
+          </div>
+
+          <div class="local-fact-card">
+            <h3>Bassin Castelbriantais</h3>
+            <ul>
+              <li><strong>Localisation :</strong> À équidistance de Nantes, Rennes, Angers et Laval (environ 1h de route).</li>
+              <li><strong>Tissu d'entreprises :</strong> Métallurgie, usinage, fonderie, artisans du bâtiment, commerces de centre-ville.</li>
+              <li><strong>Opportunité SEO :</strong> Faible concurrence technique locale, facilitant l'accès aux premières places sur Google.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqChateaubriant} heading="Questions fréquentes sur le SEO à Châteaubriant" />
+
+    <CTA
+      heading="Faisons progresser votre visibilité à Châteaubriant."
+      body="Échangeons lors d'un appel de 30 minutes sur vos objectifs d'acquisition et votre potentiel de mots-clés."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter les services', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.grid-2-asym {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .grid-2-asym {
+    grid-template-columns: 1fr;
+  }
+}
+
+.local-fact-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-atlantic);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.local-fact-card h3 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.local-fact-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+}
+</style>

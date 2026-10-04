@@ -1,0 +1,273 @@
+---
+/**
+ * zones-intervention/seo-rennes.astro — Local landing page for Rennes
+ * URL: /zones-intervention/seo-rennes/
+ * H1: Consultant SEO & GEO à Rennes
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTA from '../../components/CTA.astro';
+import FAQ from '../../components/FAQ.astro';
+import PageHero from '../../components/PageHero.astro';
+import { buildTitle, SITE_URL } from '../../utils/seo';
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Zones d\'intervention', href: '/zones-intervention/' },
+  { label: 'SEO Rennes', href: '/zones-intervention/seo-rennes/' },
+];
+
+const faqRennes = [
+  {
+    id: 'rennes-zone',
+    question: 'Travaillez-vous uniquement avec des entreprises à Rennes ?',
+    answer: 'Rennes et la métropole rennaise constituent un ancrage de proximité privilégié pour des rencontres physiques (Cesson-Sévigné, Bruz, Saint-Grégoire, Chantepie, Pacé). J\'accompagne également des entreprises sur tout le territoire breton et national.',
+  },
+  {
+    id: 'rennes-delais',
+    question: 'Combien de temps faut-il pour progresser sur les requêtes rennaises ?',
+    answer: 'La concurrence à Rennes est plus dense que dans les villes secondaires. Pour le pack local Google Maps (ex: "architecte Rennes", "plombier Rennes"), des gains significatifs s\'observent en 2 à 3 mois. Pour des positions organiques sur des requêtes génériques, comptez 4 à 6 mois de structuration continue.',
+  },
+  {
+    id: 'rennes-consultant-vs-agence',
+    question: 'Quelle est la différence entre un consultant indépendant et une agence rennaise ?',
+    answer: 'Un consultant indépendant suit personnellement chaque aspect de votre dossier : vous échangez directement avec la personne qui audite, rédige les recommandations techniques et mesure les résultats, avec une réactivité et une flexibilité maximales.',
+  },
+  {
+    id: 'rennes-geo',
+    question: 'Comment travaillez-vous le GEO (Search IA) pour une entreprise rennaise ?',
+    answer: 'Nous déclarons précisément votre ancrage géographique rennais, vos zones de service exactes et vos qualifications au travers de balises Schema.org pour que les intelligences artificielles (Google AI Overviews, Perplexity) vous identifient comme un acteur légitime de la métropole.',
+  },
+];
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Ujjwal SEO — Consultant SEO & GEO à Rennes',
+  description: 'Consultant SEO & GEO indépendant à Rennes. Référencement naturel local, SEO technique, audit et visibilité dans les moteurs de recherche IA pour les entreprises rennaises.',
+  url: `${SITE_URL}/zones-intervention/seo-rennes/`,
+  areaServed: [
+    { '@type': 'City', name: 'Rennes', sameAs: 'https://www.wikidata.org/wiki/Q47703' },
+    { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+    { '@type': 'AdministrativeArea', name: 'Bretagne' },
+  ],
+  founder: {
+    '@type': 'Person',
+    name: 'Ujjwal Lage',
+    jobTitle: 'Consultant SEO & GEO',
+    url: `${SITE_URL}/a-propos/`,
+  },
+  knowsAbout: ['SEO local Rennes', 'Référencement naturel', 'SEO technique', 'Audit SEO', 'GEO', 'Google Business Profile'],
+};
+---
+
+<BaseLayout
+  title={buildTitle('Consultant SEO & GEO à Rennes — Référencement naturel & Local')}
+  description="Consultant SEO & GEO indépendant à Rennes : améliorez durablement votre visibilité sur Google et les moteurs IA. SEO local, technique, audit et stratégie pour TPE/PME rennaises."
+  canonicalPath="/zones-intervention/seo-rennes/"
+  schema={[localBusinessSchema]}
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Bassin Rennais & Métropole"
+      title="Consultant SEO & GEO à Rennes"
+      description="Vous développez une activité à Rennes ou dans sa métropole et votre site peine à se démarquer ? J'accompagne les entreprises locales dans la conquête de positions durables sur Google et les espaces de recherche IA."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Découvrir l\'audit SEO', href: '/services/audit-seo/' }}
+      compact={true}
+    />
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- ══ CONTEXTE DU MARCHÉ RENNAIS ══ -->
+    <section class="section section--surface" aria-labelledby="rennes-context-heading">
+      <div class="container">
+        <div class="grid-2-asym">
+          <div>
+            <div class="prose-header">
+              <p class="eyebrow">Dynamique économique</p>
+              <h2 id="rennes-context-heading">Le SEO à Rennes : un marché dense et stimulant</h2>
+            </div>
+            <p class="lead" style="margin-top: var(--space-4)">
+              Capitale régionale de Bretagne et métropole de plus de 450 000 habitants, Rennes concentre une concurrence numérique forte dans le conseil, la santé, le bâtiment, l'immobilier et la tech.
+            </p>
+            <p>
+              Pour émerger face à des concurrents établis, un simple site vitrine ne suffit pas : il faut aligner une vitesse de chargement exemplaire, une pertinence sémantique irréprochable et des signaux d'autorité locale (citations géographiques, avis vérifiés et maillage régional).
+            </p>
+          </div>
+
+          <div class="rennes-stats-card">
+            <h3 class="rennes-stats-card__title">Écosystème Rennais</h3>
+            <ul class="rennes-stats-list">
+              <li><strong>Périmètre :</strong> Rennes Centre, Atalante Beaulieu, La Courrouze, Villejean, Cesson-Sévigné, Bruz, Saint-Grégoire, Chantepie.</li>
+              <li><strong>Typologie clients :</strong> TPE, PME, commerçants, professions réglementées, cabinets d'expertise et acteurs de l'innovation.</li>
+              <li><strong>Priorités :</strong> Pack local Google Maps, géociblage 35, autorité thématique régionale.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PRESTATIONS POUR LES ENTREPRISES RENNAISES ══ -->
+    <section class="section" aria-labelledby="rennes-services-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Accompagnement ciblé</p>
+          <h2 id="rennes-services-heading">Comment j'aide votre entreprise à Rennes</h2>
+        </div>
+
+        <div class="rennes-services-grid">
+          <div class="rennes-service-item">
+            <h4>SEO Local & Google Maps</h4>
+            <p>Optimisation complète de votre fiche Google Business Profile, avis clients, catégories professionnelles et ancrage dans le pack local rennais.</p>
+            <a href="/services/seo-local/">En savoir plus &rarr;</a>
+          </div>
+
+          <div class="rennes-service-item">
+            <h4>Audit SEO de votre site</h4>
+            <p>Analyse des blocages techniques, de la vitesse sur mobile et de la structure de vos pages pour débloquer votre progression sur Google.</p>
+            <a href="/services/audit-seo/">En savoir plus &rarr;</a>
+          </div>
+
+          <div class="rennes-service-item">
+            <h4>SEO Contenu & Pages Locales</h4>
+            <p>Création de contenus qualifiés répondant précisément aux requêtes des acheteurs du bassin rennais sans tomber dans le duplicate content.</p>
+            <a href="/services/seo-contenu/">En savoir plus &rarr;</a>
+          </div>
+
+          <div class="rennes-service-item">
+            <h4>GEO & Visibilité dans l'IA</h4>
+            <p>Structuration de votre identité d'entreprise dans les graphes de connaissances pour être cité dans les réponses de Google AI et Perplexity.</p>
+            <a href="/services/geo/">En savoir plus &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ COMMUNES ALENTOURS ══ -->
+    <section class="section section--surface" aria-labelledby="neighboring-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Bassin d'intervention</p>
+          <h2 id="neighboring-heading">Intervention sur toute la métropole rennaise</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Rennes, Cesson-Sévigné, Bruz, Saint-Grégoire, Chantepie, Pacé, Betton, Saint-Jacques-de-la-Lande, Thorigné-Fouillard, Chartres-de-Bretagne.
+          </p>
+          <div style="margin-top: var(--space-6);">
+            <a href="/zones-intervention/" class="btn btn--secondary">
+              Voir toute la carte des zones d'intervention &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ RENNES ══ -->
+    <FAQ items={faqRennes} heading="Questions fréquentes sur le SEO à Rennes" />
+
+    <!-- ══ CTA FINAL ══ -->
+    <CTA
+      heading="Faisons progresser votre entreprise sur le marché rennais."
+      body="Échangeons lors d'un appel découverte de 30 minutes sur votre visibilité actuelle et vos objectifs à Rennes et en Ille-et-Vilaine."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Consulter tous les services', href: '/services/' }}
+      variant="navy"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.grid-2-asym {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .grid-2-asym {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rennes-stats-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-atlantic);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+}
+
+.rennes-stats-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-4);
+}
+
+.rennes-stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+}
+
+.rennes-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 768px) {
+  .rennes-services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rennes-service-item {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.rennes-service-item h4 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.rennes-service-item p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.rennes-service-item a {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-atlantic);
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.rennes-service-item a:hover {
+  text-decoration: underline;
+}
+</style>
