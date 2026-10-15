@@ -1,16 +1,16 @@
 ---
-title: "Core Web Vitals en 2025 : comprendre et améliorer vos scores"
+title: "Core Web Vitals en 2026 : comprendre et améliorer vos scores"
 description: "Les Core Web Vitals sont des facteurs de classement Google depuis 2021. Découvrez ce que sont le LCP, l'INP et le CLS, comment les mesurer et comment les améliorer."
 featuredImage: "/assets/blog/core-web-vitals.jpg"
 featuredImageAlt: "Illustration des Core Web Vitals LCP, INP et CLS pour l'optimisation SEO"
-pubDate: 2025-04-22
+pubDate: 2026-10-02
 author: "Ujjwal Lage"
 categories: ["SEO Technique"]
 tags: ["Core Web Vitals", "LCP", "INP", "CLS", "performance web", "SEO technique"]
 relatedServices: ["seo-technique", "audit-seo"]
 ---
 
-Depuis mai 2021, les Core Web Vitals (CWV) font partie des critères de classement de Google. En 2025, leur importance dans l'algorithme n'a fait que croître. Pourtant, beaucoup d'entreprises ignorent encore ces métriques — et laissent ainsi de la visibilité sur la table.
+Depuis mai 2021, les Core Web Vitals (CWV) font partie des critères de classement de Google. En 2026, leur importance dans l'algorithme n'a fait que croître. Pourtant, beaucoup d'entreprises ignorent encore ces métriques — et laissent ainsi de la visibilité sur la table.
 
 Ce guide pratique vous explique ce que sont les Core Web Vitals, comment les mesurer et, surtout, comment les améliorer.
 
