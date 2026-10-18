@@ -128,8 +128,8 @@ const {
           <!-- Search Architecture Network Grid -->
           <g class="landscape-network">
             <!-- Connecting pathways -->
-            <line x1="320" y1="260" x2="160" y2="150" stroke="url(#line-active)" stroke-width="1.5" class="path-pulse" />
-            <line x1="320" y1="260" x2="480" y2="150" stroke="url(#line-active)" stroke-width="1.5" class="path-pulse" />
+            <line x1="320" y1="260" x2="160" y2="150" stroke="url(#line-active)" stroke-width="1.5" />
+            <line x1="320" y1="260" x2="480" y2="150" stroke="url(#line-active)" stroke-width="1.5" />
             <line x1="320" y1="260" x2="140" y2="380" stroke="#CBD5E1" stroke-width="1.2" />
             <line x1="320" y1="260" x2="490" y2="380" stroke="#CBD5E1" stroke-width="1.2" />
             <line x1="160" y1="150" x2="320" y2="80" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3 3" />
@@ -207,7 +207,7 @@ const {
   </div>
 </section>
 
-<style>
+<style is:inline>
 /* ══ HERO SHELL ══ */
 .hero-landscape {
   position: relative;
@@ -379,20 +379,6 @@ const {
   width: 100%;
   height: auto;
   display: block;
-}
-
-/* Restrained motion on SVG network lines */
-@media (prefers-reduced-motion: no-preference) {
-  .path-pulse {
-    stroke-dasharray: 6 4;
-    animation: dashPulse 20s linear infinite;
-  }
-
-  @keyframes dashPulse {
-    to {
-      stroke-dashoffset: -100;
-    }
-  }
 }
 
 /* Floating contextual chips */

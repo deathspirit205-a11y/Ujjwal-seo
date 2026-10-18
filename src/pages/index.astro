@@ -446,7 +446,7 @@ const websiteSchema = {
   <Footer />
 </BaseLayout>
 
-<style>
+<style is:inline>
 /* ══ DUO SECTION (SEO + GEO) ══ */
 .duo-grid {
   display: grid;
@@ -792,6 +792,12 @@ const websiteSchema = {
 
 .home-zones__cta {
   text-align: center;
+}
+
+.home-zones__cta .btn {
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.4;
 }
 
 /* ══ BLOG SECTION ══ */

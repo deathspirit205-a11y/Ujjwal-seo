@@ -25,7 +25,7 @@
   /* ── Color: Text ── */
   --color-text:         #0F172A;  /* slate 900 */
   --color-text-muted:   #475569;  /* slate 600 secondary */
-  --color-text-subtle:  #94A3B8;  /* slate 400 captions */
+  --color-text-subtle:  #64748B;  /* slate 500 captions */
   --color-text-inverse: #FFFFFF;  /* white on dark backgrounds */
 
   /* ── Color: Accent (Royal / Atlantic Blue) ── */
@@ -703,4 +703,3 @@ p + p {
     transition: none;
   }
 }
-
