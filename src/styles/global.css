@@ -24,15 +24,9 @@
   --color-surface-dark: #17324D;  /* primary deep Atlantic navy */
 
   /* ── Color: Text ── */
-<<<<<<< HEAD
   --color-text:         #263746;  /* deep slate-navy primary text */
   --color-text-muted:   #4A6070;  /* balanced muted coastal slate */
   --color-text-subtle:  #6E8494;  /* accessible captions & metadata */
-=======
-  --color-text:         #0F172A;  /* slate 900 */
-  --color-text-muted:   #475569;  /* slate 600 secondary */
-  --color-text-subtle:  #64748B;  /* slate 500 captions */
->>>>>>> d00bda8ac982b284a564c9174fe12a597ed741d6
   --color-text-inverse: #FFFFFF;  /* white on dark backgrounds */
 
   /* ── Color: Accent (Atlantic Blue & Soft Accent) ── */
