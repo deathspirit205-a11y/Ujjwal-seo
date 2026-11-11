@@ -1,8 +1,12 @@
 ---
 /**
  * ServiceCard.astro
- * Service card featuring the SEARCH LANDSCAPE architectural graphics,
- * clean typography, deliverable bullets, and clear CTA.
+ * Concise service overview card for the Homepage (Phase 4):
+ * - Service name
+ * - Short explanation
+ * - Main business benefit
+ * - Relevant architectural visual/icon
+ * - Link to its dedicated service page or section
  */
 import SearchLandscapeServiceGraphic from './SearchLandscapeServiceGraphic.astro';
 
@@ -11,14 +15,23 @@ export interface Props {
   title: string;
   slug: string;
   description: string;
+  businessBenefit?: string;
   category?: string;
   deliverables?: string[];
   index?: number;
 }
 
-const { id, title, slug, description, category, deliverables = [], index } = Astro.props;
+const {
+  id,
+  title,
+  slug,
+  description,
+  businessBenefit,
+  category,
+  deliverables = [],
+  index,
+} = Astro.props;
 
-// Infer graphic ID if not provided explicitly
 const resolvedId = id || (
   slug.includes('technique') ? 'seo-technique' :
   slug.includes('contenu') || slug.includes('on-page') ? 'seo-contenu' :
@@ -45,7 +58,14 @@ const resolvedId = id || (
     </h3>
     <p class="service-card__description">{description}</p>
 
-    {deliverables.length > 0 && (
+    {businessBenefit && (
+      <div class="service-card__benefit">
+        <span class="service-card__benefit-label">Bénéfice métier :</span>
+        <p class="service-card__benefit-text">{businessBenefit}</p>
+      </div>
+    )}
+
+    {!businessBenefit && deliverables.length > 0 && (
       <ul class="service-card__deliverables" role="list">
         {deliverables.map((d) => (
           <li>
@@ -59,7 +79,7 @@ const resolvedId = id || (
 
   <div class="service-card__footer">
     <a href={slug} class="service-card__action">
-      <span>Découvrir l'offre</span>
+      <span>Explorer {title.toLowerCase()}</span>
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -76,15 +96,15 @@ const resolvedId = id || (
   padding: var(--space-6);
   background-color: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
   transition: all var(--transition-base);
   overflow: hidden;
 }
 
 .service-card:hover {
-  border-color: var(--color-accent);
-  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
+  border-color: var(--color-atlantic);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
@@ -92,7 +112,7 @@ const resolvedId = id || (
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 .service-card__index {
@@ -109,7 +129,7 @@ const resolvedId = id || (
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-atlantic);
   margin-bottom: var(--space-2);
 }
 
@@ -118,7 +138,7 @@ const resolvedId = id || (
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.25;
-  color: var(--color-text);
+  color: var(--color-navy);
   margin-bottom: var(--space-3);
 }
 
@@ -129,14 +149,39 @@ const resolvedId = id || (
 }
 
 .service-card__link:hover {
-  color: var(--color-accent);
+  color: var(--color-atlantic);
 }
 
 .service-card__description {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  color: var(--color-text);
   line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.service-card__benefit {
+  background-color: var(--color-surface-warm); /* #EDF3F4 */
+  border-left: 3px solid var(--color-atlantic);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
   margin-bottom: var(--space-5);
+}
+
+.service-card__benefit-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-navy);
+  margin-bottom: 2px;
+}
+
+.service-card__benefit-text {
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  line-height: 1.45;
+  margin: 0;
 }
 
 .service-card__deliverables {
@@ -153,12 +198,12 @@ const resolvedId = id || (
   align-items: baseline;
   gap: var(--space-2);
   font-size: 0.8125rem;
-  color: #334155;
+  color: var(--color-text);
   line-height: 1.4;
 }
 
 .deliverable-check {
-  color: var(--color-accent);
+  color: var(--color-atlantic);
   font-weight: 700;
   font-size: 0.875rem;
   flex-shrink: 0;
@@ -175,13 +220,13 @@ const resolvedId = id || (
   gap: var(--space-2);
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-navy);
   text-decoration: none;
   transition: all var(--transition-fast);
 }
 
 .service-card:hover .service-card__action {
-  color: var(--color-accent);
+  color: var(--color-atlantic);
 }
 
 .service-card:hover .service-card__action svg {

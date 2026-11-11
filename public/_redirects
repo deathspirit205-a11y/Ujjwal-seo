@@ -1,10 +1,15 @@
-# 301 Permanent Redirects for legacy routes (Netlify)
-/seo-rennes                /zones-intervention/seo-rennes/   301!
-/seo-rennes/               /zones-intervention/seo-rennes/   301!
-/seo-bretagne              /zones-intervention/bretagne/     301!
-/seo-bretagne/             /zones-intervention/bretagne/     301!
-/services/seo-on-page      /services/seo-contenu/            301!
-/services/seo-on-page/     /services/seo-contenu/            301!
-/services/accompagnement-seo  /services/strategie-seo/       301!
-/services/accompagnement-seo/ /services/strategie-seo/       301!
-
+# 301 Permanent Redirects for legacy & alias routes (Netlify)
+/seo-rennes                        /zones-intervention/seo-rennes/   301!
+/seo-rennes/                       /zones-intervention/seo-rennes/   301!
+/seo-bretagne                      /zones-intervention/bretagne/     301!
+/seo-bretagne/                     /zones-intervention/bretagne/     301!
+/services/seo-on-page              /services/seo-contenu/            301!
+/services/seo-on-page/             /services/seo-contenu/            301!
+/services/strategie-contenu        /services/seo-contenu/            301!
+/services/strategie-contenu/       /services/seo-contenu/            301!
+/services/accompagnement-seo       /services/strategie-seo/          301!
+/services/accompagnement-seo/      /services/strategie-seo/          301!
+/methode                           /approche/                        301!
+/methode/                          /approche/                        301!
+/politique-de-confidentialite      /politique-confidentialite/       301!
+/politique-de-confidentialite/     /politique-confidentialite/       301!

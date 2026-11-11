@@ -1,10 +1,12 @@
 ---
-import HeroVisual, { type HeroVisualVariant } from "./HeroVisual.astro";
 /**
  * PageHero.astro
- * Search Landscape hero for inner pages.
- * Supports: optional background image OR Search Landscape architectural SVG matrix, eyebrow, title, description, CTA.
+ * Light, natural, editorial hero for inner pages (Phase 3 visual direction).
+ * Uses soft natural photography or subtle coastal mist tones (#F7F8F5 / #EDF3F4)
+ * with high-contrast #17324D / #263746 typography and optional HeroVisual diagram.
  */
+import HeroVisual, { type HeroVisualVariant } from './HeroVisual.astro';
+
 export interface Props {
   /** Background image path (optional) */
   bgImage?: string;
@@ -21,12 +23,12 @@ export interface Props {
   overlay?: 'default' | 'dark' | 'light';
   /** Compact variant for inner pages */
   compact?: boolean;
-  /** Animated data illustration (used when no bgImage) */
+  /** Animated data illustration */
   visual?: HeroVisualVariant;
 }
 
 const {
-  bgImage,
+  bgImage = '/assets/hero/calm-coast.jpg',
   bgAlt = '',
   eyebrow,
   title,
@@ -34,77 +36,48 @@ const {
   primaryCTA,
   secondaryCTA,
   focalPosition = 'center',
-  overlay = 'default',
+  overlay = 'light',
   compact = false,
   visual,
 } = Astro.props;
 ---
 
-<section class:list={['page-hero', `page-hero--${overlay}`, { 'page-hero--compact': compact, 'page-hero--landscape': !bgImage, 'page-hero--visual': !bgImage && Boolean(visual) }]}>
-  {bgImage ? (
-    <div class="page-hero__bg">
-      <img
-        src={bgImage}
-        alt={bgAlt}
-        width="1600"
-        height="900"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        class="page-hero__img"
-        style={`object-position: ${focalPosition}`}
-      />
-    </div>
-  ) : (
-    <div class="page-hero__landscape-bg" aria-hidden="true">
-      <svg class="page-hero__svg-mesh" viewBox="0 0 1440 400" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0B132B" />
-            <stop offset="60%" stop-color="#111C44" />
-            <stop offset="100%" stop-color="#0B132B" />
-          </linearGradient>
-          <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#2563EB" stop-opacity="0.3" />
-            <stop offset="50%" stop-color="#60A5FA" stop-opacity="0.6" />
-            <stop offset="100%" stop-color="#2563EB" stop-opacity="0.1" />
-          </linearGradient>
-        </defs>
-        
-        <rect width="100%" height="100%" fill="url(#heroGradient)" />
-        
-        <!-- Search Landscape contour lines -->
-        <path d="M-100 120 C 300 60, 600 220, 1100 140 C 1300 110, 1500 180, 1600 160" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
-        <path d="M-100 200 C 240 160, 700 290, 1200 200 C 1400 160, 1540 240, 1600 220" stroke="rgba(255,255,255,0.05)" stroke-width="1.2" />
-        <path d="M-100 280 C 400 220, 850 360, 1300 260 C 1450 230, 1560 300, 1600 290" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
-        
-        <!-- Search pathway glowing line -->
-        <path d="M100 350 C 400 200, 750 320, 1150 180 C 1300 130, 1400 150, 1500 120" stroke="url(#accentGlow)" stroke-width="2" stroke-dasharray="6 4" />
-        
-        <!-- Graph nodes -->
-        <circle cx="400" cy="200" r="4" fill="#60A5FA" />
-        <circle cx="750" cy="320" r="3.5" fill="#38BDF8" />
-        <circle cx="1150" cy="180" r="5" fill="#93C5FD" />
-        <circle cx="1150" cy="180" r="10" stroke="#60A5FA" stroke-width="1" stroke-opacity="0.4" />
-      </svg>
-    </div>
-  )}
-  {!bgImage && visual && <HeroVisual variant={visual} />}
-  <div class="page-hero__overlay"></div>
+<section class:list={['page-hero', `page-hero--${overlay}`, { 'page-hero--compact': compact, 'page-hero--visual': Boolean(visual) }]}>
+  <div class="page-hero__bg" aria-hidden="true">
+    <img
+      src={bgImage}
+      alt={bgAlt}
+      width="1600"
+      height="900"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      class="page-hero__img"
+      style={`object-position: ${focalPosition}`}
+    />
+    <div class="page-hero__veil"></div>
+  </div>
+
+  {visual && <HeroVisual variant={visual} />}
 
   <div class="container page-hero__content">
-    {eyebrow && <p class="page-hero__eyebrow">{eyebrow}</p>}
+    {eyebrow && (
+      <p class="page-hero__eyebrow">
+        <span class="page-hero__dot" aria-hidden="true"></span>
+        <span>{eyebrow}</span>
+      </p>
+    )}
     <h1 class="page-hero__title">{title}</h1>
     {description && <p class="page-hero__desc">{description}</p>}
     {(primaryCTA || secondaryCTA) && (
       <div class="page-hero__actions">
         {primaryCTA && (
-          <a href={primaryCTA.href} class="btn btn--lg btn--cta-dark-primary">
+          <a href={primaryCTA.href} class="btn btn--lg btn--primary">
             {primaryCTA.label}
           </a>
         )}
         {secondaryCTA && (
-          <a href={secondaryCTA.href} class="btn btn--lg btn--secondary page-hero__btn-secondary">
+          <a href={secondaryCTA.href} class="btn btn--lg btn--secondary">
             {secondaryCTA.label}
           </a>
         )}
@@ -117,36 +90,25 @@ const {
 <style>
 .page-hero {
   position: relative;
-  min-height: 50vh;
+  min-height: 40vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   overflow: hidden;
-  padding-block: var(--space-32) var(--space-16);
+  padding-block: var(--space-16) var(--space-14);
+  background-color: var(--color-surface-warm); /* #EDF3F4 */
+  border-bottom: 1px solid var(--color-border);
 }
 
 .page-hero--compact {
-  min-height: 36vh;
-  padding-block: var(--space-24) var(--space-12);
+  min-height: 30vh;
+  padding-block: var(--space-14) var(--space-12);
 }
 
-/* Background image */
 .page-hero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.page-hero__landscape-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: var(--color-navy);
-}
-
-.page-hero__svg-mesh {
-  width: 100%;
-  height: 100%;
-  display: block;
+  pointer-events: none;
 }
 
 .page-hero__img {
@@ -154,77 +116,68 @@ const {
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0.22;
+  filter: saturate(0.85) contrast(0.95);
 }
 
-/* Gradient overlay */
-.page-hero__overlay {
+.page-hero__veil {
   position: absolute;
   inset: 0;
-  z-index: 1;
-}
-
-.page-hero--default .page-hero__overlay {
   background: linear-gradient(
-    to top,
-    rgba(26, 39, 68, 0.85) 0%,
-    rgba(26, 39, 68, 0.5) 50%,
-    rgba(26, 39, 68, 0.25) 100%
+    105deg,
+    rgba(247, 248, 245, 0.96) 0%,
+    rgba(247, 248, 245, 0.90) 52%,
+    rgba(237, 243, 244, 0.80) 100%
   );
 }
 
-.page-hero--dark .page-hero__overlay {
-  background: linear-gradient(
-    to top,
-    rgba(26, 39, 68, 0.92) 0%,
-    rgba(26, 39, 68, 0.65) 50%,
-    rgba(26, 39, 68, 0.4) 100%
-  );
-}
-
-.page-hero--light .page-hero__overlay {
-  background: linear-gradient(
-    to top,
-    rgba(26, 39, 68, 0.7) 0%,
-    rgba(26, 39, 68, 0.3) 50%,
-    rgba(26, 39, 68, 0.12) 100%
-  );
-}
-
-/* Content */
 .page-hero__content {
-  /* keep text clear of the visual */
   position: relative;
   z-index: 2;
   max-width: var(--max-width-content);
 }
 
 .page-hero__eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.35rem 0.85rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-accent-soft);
+  border-radius: var(--radius-full);
   font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-wider);
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-atlantic-muted);
+  color: var(--color-navy);
   margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-xs);
+}
+
+.page-hero__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-atlantic);
 }
 
 .page-hero__title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4.4vw, 3.15rem);
   font-weight: var(--weight-bold);
-  line-height: 1.12;
+  line-height: 1.14;
   letter-spacing: -0.025em;
-  color: var(--color-text-inverse);
-  margin-bottom: var(--space-5);
+  color: var(--color-navy); /* #17324D */
+  margin-bottom: var(--space-4);
   max-width: 44rem;
 }
 
 .page-hero__desc {
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
-  color: rgba(249, 246, 241, 0.8);
-  max-width: 38rem;
-  margin-bottom: var(--space-8);
+  color: var(--color-text); /* #263746 */
+  max-width: 40rem;
+  margin-bottom: var(--space-7);
 }
 
 .page-hero__actions {
@@ -233,38 +186,27 @@ const {
   gap: var(--space-3);
 }
 
-.page-hero__btn-secondary {
-  border-color: rgba(249, 246, 241, 0.4);
-  color: var(--color-text-inverse);
-}
-
-.page-hero__btn-secondary:hover {
-  border-color: var(--color-text-inverse);
-  background-color: rgba(249, 246, 241, 0.12);
-  color: var(--color-text-inverse);
-}
-
 @media (min-width: 1025px) {
-  .page-hero--visual .page-hero__content { margin-left: max(1.5rem, calc((100vw - 1200px) / 2)); margin-right: auto; max-width: 52%; padding-inline: 0; }
+  .page-hero--visual .page-hero__content {
+    margin-left: max(1.5rem, calc((100vw - 1216px) / 2));
+    margin-right: auto;
+    max-width: 54%;
+    padding-inline: 0;
+  }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .page-hero {
-    min-height: 40vh;
-    padding-block: var(--space-24) var(--space-10);
+    min-height: 32vh;
+    padding-block: var(--space-12) var(--space-10);
   }
   .page-hero--compact {
-    min-height: 30vh;
-    padding-block: var(--space-20) var(--space-8);
+    min-height: 26vh;
+    padding-block: var(--space-10) var(--space-8);
   }
 }
 
 @media (max-width: 480px) {
-  .page-hero {
-    min-height: 36vh;
-    padding-block: var(--space-20) var(--space-8);
-  }
   .page-hero__actions {
     flex-direction: column;
   }

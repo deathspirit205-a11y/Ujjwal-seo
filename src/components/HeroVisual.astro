@@ -1,9 +1,9 @@
 ---
 /**
  * HeroVisual.astro
- * Decorative, lightweight animated SVG "data" illustrations for inner page heroes.
- * Pure SVG + CSS (no JS, no images). Respects prefers-reduced-motion.
- * Illustrative only — no real client figures are implied.
+ * Light editorial SVG diagrams for inner page heroes (Phase 3 palette).
+ * Uses #FFFFFF card, #17324D primary navy, #397B9B Atlantic blue, #B8D1D6 soft accent.
+ * Respects prefers-reduced-motion. Zero fabricated client stats.
  */
 export type HeroVisualVariant =
   | 'traffic' | 'network' | 'serp' | 'map' | 'ai' | 'audit' | 'content' | 'speed';
@@ -13,72 +13,72 @@ const { variant = 'traffic' } = Astro.props;
 ---
 
 <div class={`hv hv--${variant}`} aria-hidden="true">
-  <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" fill="none">
     <defs>
-      <linearGradient id="hvArea" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.45" />
-        <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
+      <linearGradient id="hvAreaLight" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#397B9B" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="#397B9B" stop-opacity="0.02" />
       </linearGradient>
-      <linearGradient id="hvLine" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#60A5FA" />
-        <stop offset="100%" stop-color="#F59E0B" />
+      <linearGradient id="hvLineLight" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#397B9B" />
+        <stop offset="100%" stop-color="#17324D" />
       </linearGradient>
     </defs>
 
-    {/* Shared card frame */}
-    <rect x="10" y="10" width="500" height="320" rx="18" class="hv-card" />
-    <circle cx="34" cy="32" r="4" fill="#F87171" opacity=".7" />
-    <circle cx="48" cy="32" r="4" fill="#FBBF24" opacity=".7" />
-    <circle cx="62" cy="32" r="4" fill="#34D399" opacity=".7" />
+    {/* Light editorial card frame */}
+    <rect x="10" y="10" width="480" height="300" rx="16" class="hv-card" />
+    <circle cx="32" cy="30" r="3.5" fill="#B8D1D6" />
+    <circle cx="44" cy="30" r="3.5" fill="#397B9B" />
+    <circle cx="56" cy="30" r="3.5" fill="#17324D" />
 
     {variant === 'traffic' && (
       <g>
-        <text x="40" y="74" class="hv-label">Clics organiques · illustration</text>
-        <text x="40" y="104" class="hv-big">↗ tendance</text>
-        {[0,1,2,3].map((i) => <line x1="40" x2="480" y1={150 + i*45} y2={150 + i*45} class="hv-grid" />)}
-        <path d="M40 300 L95 290 L150 284 L205 270 L260 262 L315 236 L370 214 L425 180 L480 140 L480 300 Z" fill="url(#hvArea)" class="hv-fade" />
-        <path d="M40 300 L95 290 L150 284 L205 270 L260 262 L315 236 L370 214 L425 180 L480 140" stroke="url(#hvLine)" stroke-width="3.5" stroke-linecap="round" class="hv-draw" />
-        <circle cx="480" cy="140" r="6" fill="#F59E0B" class="hv-pulse" />
+        <text x="36" y="68" class="hv-label">Structure &amp; Visibilité Organique</text>
+        <text x="36" y="94" class="hv-big">Progression durable</text>
+        {[0,1,2,3].map((i) => <line x1="36" x2="464" y1={138 + i*42} y2={138 + i*42} class="hv-grid" />)}
+        <path d="M36 280 L90 272 L145 264 L200 248 L255 236 L310 212 L365 188 L420 160 L464 134 L464 280 Z" fill="url(#hvAreaLight)" />
+        <path d="M36 280 L90 272 L145 264 L200 248 L255 236 L310 212 L365 188 L420 160 L464 134" stroke="url(#hvLineLight)" stroke-width="3" stroke-linecap="round" class="hv-draw" />
+        <circle cx="464" cy="134" r="5.5" fill="#17324D" />
       </g>
     )}
 
     {variant === 'speed' && (
       <g>
-        <text x="40" y="74" class="hv-label">Core Web Vitals</text>
-        {[['LCP', 120, '#34D399'], ['INP', 260, '#60A5FA'], ['CLS', 400, '#F59E0B']].map(([l, x, c]) => (
+        <text x="36" y="68" class="hv-label">Signaux Core Web Vitals</text>
+        {[['LCP', 115, '#17324D'], ['INP', 250, '#397B9B'], ['CLS', 385, '#2E7D5B']].map(([l, x, c]) => (
           <g>
-            <circle cx={x} cy="190" r="52" class="hv-ring-bg" />
-            <circle cx={x} cy="190" r="52" stroke={c as string} class="hv-ring" transform={`rotate(-90 ${x} 190)`} />
-            <text x={x} y="197" text-anchor="middle" class="hv-ring-txt">{l}</text>
+            <circle cx={x} cy="178" r="46" class="hv-ring-bg" />
+            <circle cx={x} cy="178" r="46" stroke={c as string} class="hv-ring" transform={`rotate(-90 ${x} 178)`} />
+            <text x={x} y="184" text-anchor="middle" class="hv-ring-txt">{l}</text>
           </g>
         ))}
-        <rect x="40" y="276" width="440" height="8" rx="4" class="hv-bar-bg" />
-        <rect x="40" y="276" width="440" height="8" rx="4" fill="url(#hvLine)" class="hv-grow-x" />
+        <rect x="36" y="258" width="428" height="8" rx="4" class="hv-bar-bg" />
+        <rect x="36" y="258" width="380" height="8" rx="4" fill="url(#hvLineLight)" />
       </g>
     )}
 
     {variant === 'network' && (
       <g>
-        <text x="40" y="74" class="hv-label">Graphe d'entités</text>
-        {[[260,190,130,120],[260,190,400,110],[260,190,110,260],[260,190,410,265],[260,190,260,295],[130,120,400,110]].map(([a,b,c,d]) => (
+        <text x="36" y="68" class="hv-label">Graphe d'entités &amp; Maillage</text>
+        {[[250,180,125,115],[250,180,385,110],[250,180,110,250],[250,180,395,250],[250,180,250,278],[125,115,385,110]].map(([a,b,c,d]) => (
           <line x1={a} y1={b} x2={c} y2={d} class="hv-edge" />
         ))}
-        {[[130,120],[400,110],[110,260],[410,265],[260,295]].map(([x,y], i) => (
-          <circle cx={x} cy={y} r="11" class="hv-node" style={`animation-delay:${i*0.4}s`} />
+        {[[125,115],[385,110],[110,250],[395,250],[250,278]].map(([x,y]) => (
+          <circle cx={x} cy={y} r="10" class="hv-node" />
         ))}
-        <circle cx="260" cy="190" r="22" fill="#F59E0B" class="hv-pulse" />
+        <circle cx="250" cy="180" r="20" fill="#17324D" />
       </g>
     )}
 
     {variant === 'serp' && (
       <g>
-        <rect x="40" y="58" width="440" height="36" rx="18" class="hv-input" />
-        <rect x="60" y="72" width="0" height="8" rx="4" fill="#93C5FD" class="hv-type" />
+        <rect x="36" y="54" width="428" height="34" rx="17" class="hv-input" />
+        <rect x="56" y="67" width="210" height="8" rx="4" fill="#397B9B" opacity="0.65" />
         {[0,1,2].map((i) => (
-          <g class="hv-rise" style={`animation-delay:${0.6 + i*0.35}s`}>
-            <rect x="40" y={116 + i*68} width="440" height="56" rx="10" class={i === 0 ? 'hv-result hv-result--top' : 'hv-result'} />
-            <rect x="58" y={130 + i*68} width={i === 0 ? 220 : 180} height="9" rx="4" fill={i === 0 ? '#F59E0B' : '#60A5FA'} />
-            <rect x="58" y={148 + i*68} width="320" height="7" rx="3" class="hv-line" />
+          <g>
+            <rect x="36" y={108 + i*62} width="428" height="50" rx="10" class={i === 0 ? 'hv-result hv-result--top' : 'hv-result'} />
+            <rect x="54" y={122 + i*62} width={i === 0 ? 210 : 170} height="8" rx="4" fill={i === 0 ? '#17324D' : '#397B9B'} />
+            <rect x="54" y={138 + i*62} width="300" height="6" rx="3" class="hv-line" />
           </g>
         ))}
       </g>
@@ -86,14 +86,14 @@ const { variant = 'traffic' } = Astro.props;
 
     {variant === 'map' && (
       <g>
-        <text x="40" y="74" class="hv-label">Visibilité locale</text>
-        {[0,1,2,3,4,5,6,7,8].map((i) => <line x1={40 + i*55} x2={40 + i*55} y1="90" y2="310" class="hv-grid" />)}
-        {[0,1,2,3,4].map((i) => <line x1="40" x2="480" y1={90 + i*55} y2={90 + i*55} class="hv-grid" />)}
-        <path d="M60 280 C 160 200, 240 260, 300 170 S 440 120, 470 100" class="hv-road" />
-        {[[150,230],[300,170],[400,130],[220,140],[360,250]].map(([x,y], i) => (
-          <g style={`animation-delay:${i*0.5}s`} class="hv-pin">
-            <circle cx={x} cy={y} r="16" fill={i === 1 ? '#F59E0B' : '#3B82F6'} opacity=".2" />
-            <circle cx={x} cy={y} r="6" fill={i === 1 ? '#F59E0B' : '#60A5FA'} />
+        <text x="36" y="68" class="hv-label">Ancrage Territorial &amp; Proximité</text>
+        {[0,1,2,3,4,5,6,7].map((i) => <line x1={36 + i*60} x2={36 + i*60} y1="86" y2="290" class="hv-grid" />)}
+        {[0,1,2,3].map((i) => <line x1="36" x2="464" y1={86 + i*60} y2={86 + i*60} class="hv-grid" />)}
+        <path d="M56 266 C 150 192, 230 245, 290 164 S 420 118, 452 98" class="hv-road" />
+        {[[145,218],[290,164],[385,126],[210,136],[345,236]].map(([x,y], i) => (
+          <g>
+            <circle cx={x} cy={y} r="14" fill={i === 1 ? '#17324D' : '#397B9B'} opacity=".16" />
+            <circle cx={x} cy={y} r="5.5" fill={i === 1 ? '#17324D' : '#397B9B'} />
           </g>
         ))}
       </g>
@@ -101,42 +101,41 @@ const { variant = 'traffic' } = Astro.props;
 
     {variant === 'ai' && (
       <g>
-        <g class="hv-rise"><rect x="200" y="58" width="280" height="40" rx="14" class="hv-bubble-q" /><rect x="220" y="74" width="200" height="8" rx="4" fill="#E2E8F0" /></g>
-        <g class="hv-rise" style="animation-delay:.6s">
-          <rect x="40" y="114" width="360" height="120" rx="14" class="hv-bubble-a" />
-          <rect x="60" y="134" width="300" height="8" rx="4" class="hv-line" />
-          <rect x="60" y="154" width="260" height="8" rx="4" class="hv-line" />
-          <rect x="60" y="174" width="280" height="8" rx="4" class="hv-line" />
-          <rect x="60" y="202" width="96" height="18" rx="9" fill="#F59E0B" opacity=".9" />
-        </g>
-        <g class="hv-rise" style="animation-delay:1.2s">
-          {[0,1,2].map((i) => <rect x={40 + i*120} y="252" width="108" height="50" rx="10" class={i === 0 ? 'hv-result hv-result--top' : 'hv-result'} />)}
-        </g>
+        <text x="36" y="68" class="hv-label">Compréhension &amp; Citation IA (GEO)</text>
+        <rect x="180" y="84" width="284" height="34" rx="12" fill="#17324D" />
+        <rect x="200" y="98" width="190" height="7" rx="3.5" fill="#EDF3F4" />
+        <rect x="36" y="132" width="350" height="98" rx="12" class="hv-result hv-result--top" />
+        <rect x="54" y="150" width="290" height="7" rx="3.5" class="hv-line" />
+        <rect x="54" y="168" width="250" height="7" rx="3.5" class="hv-line" />
+        <rect x="54" y="186" width="270" height="7" rx="3.5" class="hv-line" />
+        <rect x="54" y="204" width="98" height="16" rx="8" fill="#397B9B" />
+        {[0,1,2].map((i) => <rect x={36 + i*116} y="244" width="104" height="42" rx="8" class={i === 0 ? 'hv-result hv-result--top' : 'hv-result'} />)}
       </g>
     )}
 
     {variant === 'audit' && (
       <g>
-        <text x="40" y="74" class="hv-label">Diagnostic</text>
+        <text x="36" y="68" class="hv-label">Diagnostic Technique &amp; Sémantique</text>
         {[0,1,2,3,4].map((i) => (
           <g>
-            <rect x="40" y={96 + i*42} width="300" height="12" rx="6" class="hv-bar-bg" />
-            <rect x="40" y={96 + i*42} width={[260,190,230,140,210][i]} height="12" rx="6" fill={['#34D399','#F59E0B','#60A5FA','#F87171','#34D399'][i]} class="hv-grow-x" style={`animation-delay:${i*0.2}s`} />
+            <rect x="36" y={92 + i*38} width="280" height="10" rx="5" class="hv-bar-bg" />
+            <rect x="36" y={92 + i*38} width={[245,180,220,150,205][i]} height="10" rx="5" fill={['#17324D','#397B9B','#2E7D5B','#397B9B','#17324D'][i]} />
           </g>
         ))}
-        <circle cx="420" cy="190" r="56" class="hv-ring-bg" />
-        <circle cx="420" cy="190" r="56" stroke="#F59E0B" class="hv-ring" transform="rotate(-90 420 190)" />
-        <rect x="30" y="90" width="460" height="2" fill="#60A5FA" class="hv-scan" />
+        <circle cx="400" cy="180" r="50" class="hv-ring-bg" />
+        <circle cx="400" cy="180" r="50" stroke="#17324D" class="hv-ring" transform="rotate(-90 400 180)" />
+        <text x="400" y="186" text-anchor="middle" class="hv-ring-txt">Audit</text>
       </g>
     )}
 
     {variant === 'content' && (
       <g>
-        <rect x="40" y="58" width="250" height="250" rx="12" class="hv-result" />
-        <rect x="60" y="80" width="170" height="12" rx="5" fill="#F59E0B" />
-        {[0,1,2,3,4,5,6].map((i) => <rect x="60" y={110 + i*24} width={[200,180,210,150,190,170,120][i]} height="7" rx="3" class="hv-line hv-rise" style={`animation-delay:${i*0.15}s`} />)}
+        <text x="36" y="68" class="hv-label">Architecture Éditoriale</text>
+        <rect x="36" y="84" width="236" height="202" rx="10" class="hv-result" />
+        <rect x="54" y="104" width="160" height="10" rx="5" fill="#17324D" />
+        {[0,1,2,3,4,5].map((i) => <rect x="54" y={130 + i*22} width={[188,168,195,140,178,150][i]} height="6" rx="3" class="hv-line" />)}
         {[0,1,2,3,4].map((i) => (
-          <rect x={320 + i*34} y={300 - (40 + i*45)} width="22" height={40 + i*45} rx="4" fill={i === 4 ? '#F59E0B' : '#3B82F6'} class="hv-grow-y" style={`animation-delay:${i*0.2}s`} />
+          <rect x={304 + i*32} y={286 - (38 + i*38)} width="20" height={38 + i*38} rx="4" fill={i === 4 ? '#17324D' : '#397B9B'} opacity={0.55 + i*0.1} />
         ))}
       </g>
     )}
@@ -146,61 +145,34 @@ const { variant = 'traffic' } = Astro.props;
 <style>
 .hv {
   position: absolute;
-  right: max(2rem, calc((100vw - 1200px) / 2));
+  right: max(1.5rem, calc((100vw - 1216px) / 2));
   top: 50%;
-  transform: translateY(-42%);
-  width: min(40vw, 520px);
+  transform: translateY(-50%);
+  width: min(38vw, 460px);
   z-index: 1;
-  opacity: .95;
   pointer-events: none;
 }
-.hv svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 24px 48px rgba(0,0,0,.35)); }
-.hv-card { fill: rgba(255,255,255,.05); stroke: rgba(255,255,255,.12); }
-.hv-label { fill: #93C5FD; font: 600 12px Inter, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
-.hv-big { fill: #fff; font: 700 26px Inter, sans-serif; }
-.hv-grid { stroke: rgba(255,255,255,.07); }
-.hv-line { fill: rgba(255,255,255,.18); }
-.hv-input { fill: rgba(255,255,255,.08); stroke: rgba(255,255,255,.2); }
-.hv-result { fill: rgba(255,255,255,.06); stroke: rgba(255,255,255,.12); }
-.hv-result--top { stroke: #F59E0B; fill: rgba(245,158,11,.08); }
-.hv-bubble-q { fill: #1D4ED8; }
-.hv-bubble-a { fill: rgba(255,255,255,.08); stroke: rgba(255,255,255,.15); }
-.hv-edge { stroke: rgba(147,197,253,.35); stroke-width: 1.5; stroke-dasharray: 5 5; animation: hv-dash 6s linear infinite; }
-.hv-node { fill: #0B132B; stroke: #60A5FA; stroke-width: 3; animation: hv-blink 3s ease-in-out infinite; }
-.hv-road { stroke: rgba(96,165,250,.5); stroke-width: 3; stroke-dasharray: 8 6; animation: hv-dash 8s linear infinite; }
-.hv-ring-bg { stroke: rgba(255,255,255,.1); stroke-width: 9; }
-.hv-ring { stroke-width: 9; stroke-linecap: round; stroke-dasharray: 327; stroke-dashoffset: 327; animation: hv-ring 1.8s ease-out .3s forwards; }
-.hv-ring-txt { fill: #fff; font: 700 18px Inter, sans-serif; }
-.hv-bar-bg { fill: rgba(255,255,255,.08); }
-
-.hv-draw { stroke-dasharray: 700; stroke-dashoffset: 700; animation: hv-draw 2.4s ease-out .2s forwards; }
-.hv-fade { opacity: 0; animation: hv-in 1s ease-out 1.6s forwards; }
-.hv-pulse { transform-box: fill-box; transform-origin: center; animation: hv-pulse 2.2s ease-in-out infinite; }
-.hv-pin { transform-box: fill-box; transform-origin: center bottom; opacity: 0; animation: hv-drop .6s ease-out forwards; }
-.hv-rise { opacity: 0; animation: hv-rise .7s ease-out forwards; }
-.hv-type { animation: hv-type 1.4s steps(18) .2s forwards; }
-.hv-grow-x { transform-box: fill-box; transform-origin: left; transform: scaleX(0); animation: hv-gx 1.4s ease-out forwards; }
-.hv-grow-y { transform-box: fill-box; transform-origin: bottom; transform: scaleY(0); animation: hv-gy 1.2s ease-out forwards; }
-.hv-scan { animation: hv-scan 3.5s ease-in-out infinite; opacity: .6; }
-
-@keyframes hv-draw { to { stroke-dashoffset: 0; } }
-@keyframes hv-in { to { opacity: 1; } }
-@keyframes hv-pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: .7; } }
-@keyframes hv-drop { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
-@keyframes hv-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-@keyframes hv-type { to { width: 260px; } }
-@keyframes hv-gx { to { transform: scaleX(1); } }
-@keyframes hv-gy { to { transform: scaleY(1); } }
-@keyframes hv-ring { to { stroke-dashoffset: 70; } }
-@keyframes hv-dash { to { stroke-dashoffset: -100; } }
-@keyframes hv-blink { 0%,100% { stroke: #60A5FA; } 50% { stroke: #F59E0B; } }
-@keyframes hv-scan { 0%,100% { transform: translateY(0); } 50% { transform: translateY(210px); } }
-
-@media (max-width: 1024px) { .hv { opacity: .22; width: 70vw; right: -10vw; } }
-@media (max-width: 640px) { .hv { display: none; } }
-@media (prefers-reduced-motion: reduce) {
-  .hv * { animation: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important; }
-  .hv-type { width: 260px; }
+.hv svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 14px 32px rgba(23, 50, 77, 0.08));
 }
-</style>
+.hv-card { fill: rgba(255, 255, 255, 0.92); stroke: #B8D1D6; stroke-width: 1.25; }
+.hv-label { fill: #397B9B; font: 600 11px Inter, sans-serif; letter-spacing: .07em; text-transform: uppercase; }
+.hv-big { fill: #17324D; font: 700 21px 'Playfair Display', Georgia, serif; }
+.hv-grid { stroke: #E6EFF1; }
+.hv-line { fill: #D5E2E6; }
+.hv-input { fill: #F7F8F5; stroke: #B8D1D6; }
+.hv-result { fill: #F7F8F5; stroke: #D5E2E6; }
+.hv-result--top { stroke: #397B9B; fill: #EDF3F4; }
+.hv-edge { stroke: #B8D1D6; stroke-width: 1.5; stroke-dasharray: 4 4; }
+.hv-node { fill: #FFFFFF; stroke: #397B9B; stroke-width: 2.5; }
+.hv-road { stroke: #397B9B; stroke-width: 2.5; stroke-dasharray: 6 5; }
+.hv-ring-bg { stroke: #EDF3F4; stroke-width: 8; }
+.hv-ring { stroke-width: 8; stroke-linecap: round; stroke-dasharray: 290; stroke-dashoffset: 65; }
+.hv-ring-txt { fill: #17324D; font: 700 15px Inter, sans-serif; }
+.hv-bar-bg { fill: #EDF3F4; }
 
+@media (max-width: 1024px) { .hv { display: none; } }
+</style>

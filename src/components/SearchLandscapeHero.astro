@@ -1,10 +1,15 @@
 ---
 /**
  * SearchLandscapeHero.astro
- * Premium Hero component for Ujjwal SEO.
- * Brand positioning: Consultant SEO & GEO.
- * Visual: Deep search & generative AI performance cockpit with animated organic traffic growth graph.
- * Fully responsive, WCAG-compliant, respects prefers-reduced-motion.
+ * Light, natural, editorial homepage hero for Ujjwal SEO.
+ *
+ * Visual direction (Phase 3):
+ * - Natural photographic background (/assets/hero/calm-coast.jpg) with a soft, luminous
+ *   editorial veil (#F7F8F5 / #EDF3F4) for effortless readability and WCAG AAA contrast.
+ * - Palette: #F7F8F5 main bg, #EDF3F4 secondary bg, #17324D primary navy,
+ *   #397B9B Atlantic blue, #B8D1D6 soft accent, #263746 body text, #FFFFFF cards.
+ * - Clear H1, realistic value proposition, 1 primary CTA + 1 secondary CTA,
+ *   and an editorial Search & GEO architecture card (zero fabricated metrics).
  */
 
 export interface Props {
@@ -16,461 +21,244 @@ export interface Props {
 }
 
 const {
-  eyebrow = 'Consultant SEO & GEO indépendant',
-  heading = 'Consultant SEO & GEO',
-  subheading = "J'aide les entreprises à devenir plus visibles dans Google, les moteurs de recherche traditionnels et les nouveaux moteurs alimentés par l'IA.",
-  primaryCTA = { label: 'Découvrir mon approche', href: '/approche/' },
-  secondaryCTA = { label: 'Parler de votre projet', href: '/contact/' },
+  eyebrow = 'Consultant SEO & GEO indépendant — Bretagne, Grand Ouest & France',
+  heading = 'Consultant SEO & GEO — Développez votre visibilité sur Google et les moteurs de recherche IA.',
+  subheading = "J'accompagne les PME, ETI et acteurs locaux pour attirer un trafic qualifié, structurer durablement leur présence sur Google et rendre leur expertise clairement identifiable par les moteurs génératifs (ChatGPT, Perplexity, Google AI).",
+  primaryCTA = { label: 'Discuter de votre projet', href: '/contact/' },
+  secondaryCTA = { label: 'Découvrir mes services', href: '/services/' },
 } = Astro.props;
 ---
 
-<section class="hero-landscape" aria-labelledby="hero-title">
-  <!-- Dynamic Digital Background: grid + glowing traffic pathways -->
-  <div class="hero-landscape__bg" aria-hidden="true">
-    <div class="hero-landscape__glow hero-landscape__glow--blue"></div>
-    <div class="hero-landscape__glow hero-landscape__glow--amber"></div>
-    <div class="hero-landscape__grid"></div>
-
-    <!-- Flowing ambient traffic curve waves in background -->
-    <svg class="hero-landscape__waves" viewBox="0 0 1440 600" preserveAspectRatio="none" fill="none">
-      <defs>
-        <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#2563EB" stop-opacity="0.03" />
-          <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.18" />
-          <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.25" />
-        </linearGradient>
-        <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#1D4ED8" stop-opacity="0.08" />
-          <stop offset="70%" stop-color="#60A5FA" stop-opacity="0.15" />
-          <stop offset="100%" stop-color="#10B981" stop-opacity="0.12" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M-40 480 C 260 490, 480 380, 780 320 C 1040 270, 1260 170, 1480 110"
-        stroke="url(#waveGrad1)"
-        stroke-width="2.5"
-        stroke-dasharray="6 6"
-        class="ambient-wave"
-      />
-      <path
-        d="M-40 540 C 300 520, 520 440, 840 370 C 1100 310, 1280 230, 1480 180"
-        stroke="url(#waveGrad2)"
-        stroke-width="1.5"
-      />
-    </svg>
+<section class="hero-editorial" aria-labelledby="hero-title">
+  <!-- Natural photographic background with soft light treatment -->
+  <div class="hero-editorial__media" aria-hidden="true">
+    <img
+      src="/assets/hero/calm-coast.jpg"
+      alt=""
+      width="1600"
+      height="900"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      class="hero-editorial__photo"
+    />
+    <div class="hero-editorial__veil"></div>
   </div>
 
-  <div class="container hero-landscape__container">
-    <!-- Left: Content & Value Proposition -->
-    <div class="hero-landscape__content">
-      <div class="hero-badge">
-        <span class="hero-badge__dot"></span>
-        <span class="hero-badge__text">{eyebrow}</span>
+  <div class="container hero-editorial__container">
+    <!-- Left Column: H1, Value Proposition & CTAs -->
+    <div class="hero-editorial__content">
+      <div class="hero-editorial__eyebrow">
+        <span class="hero-editorial__dot" aria-hidden="true"></span>
+        <span>{eyebrow}</span>
       </div>
 
-      <h1 id="hero-title" class="hero-landscape__title">
-        Consultant <span class="text-gradient">SEO &amp; GEO</span>
+      <h1 id="hero-title" class="hero-editorial__title">
+        Consultant SEO &amp; GEO — <span class="hero-editorial__title-accent">Développez votre visibilité sur Google et les moteurs de recherche IA.</span>
       </h1>
 
-      <p class="hero-landscape__lead">
+      <p class="hero-editorial__lead">
         {subheading}
       </p>
 
-      <div class="hero-landscape__actions">
-        <a href={primaryCTA.href} class="btn btn--accent btn--lg">
+      <div class="hero-editorial__actions">
+        <a href={primaryCTA.href} class="btn btn--primary btn--lg">
           {primaryCTA.label}
           <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <a href={secondaryCTA.href} class="btn btn--outline-light btn--lg">
+        <a href={secondaryCTA.href} class="btn btn--secondary btn--lg">
           {secondaryCTA.label}
         </a>
       </div>
 
-      <!-- Human trust chip -->
-      <div class="hero-person">
+      <!-- Consultant identity & direct contact assurance -->
+      <div class="hero-consultant">
         <img
           src="/assets/ujjwal-lage-portrait.jpg"
-          alt="Ujjwal Lage"
-          width="44"
-          height="44"
-          class="hero-person__avatar"
+          alt="Ujjwal Lage, consultant SEO et GEO indépendant"
+          width="52"
+          height="52"
+          class="hero-consultant__avatar"
           loading="eager"
           decoding="async"
         />
-        <p class="hero-person__text">
-          <strong>Ujjwal Lage</strong>
-          <span class="hero-person__role">Consultant direct · Pas d'intermédiaire</span>
-          <span class="hero-person__status">
-            <span class="hero-person__pulse" aria-hidden="true"></span>
-            Réponse sous 24 h ouvrées
-          </span>
+        <div class="hero-consultant__info">
+          <p class="hero-consultant__name">
+            <strong>Ujjwal Lage</strong> · Interlocuteur unique du diagnostic à l'exécution
+          </p>
+          <p class="hero-consultant__meta">
+            <span class="hero-consultant__status-dot" aria-hidden="true"></span>
+            Basé dans le Grand Ouest (Rennes / Vitré) · Réponse sous 24 h ouvrées
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Editorial Search & GEO Architecture Panel -->
+    <aside class="hero-editorial__panel" aria-label="Architecture de visibilité SEO et GEO">
+      <div class="editorial-card">
+        <div class="editorial-card__header">
+          <span class="editorial-card__tag">Approche complémentaire</span>
+          <span class="editorial-card__caption">SEO Classique + Search IA (GEO)</span>
+        </div>
+
+        <p class="editorial-card__intro">
+          Une même fondation technique et éditoriale nourrit aujourd'hui deux canaux d'acquisition complémentaires :
         </p>
-      </div>
 
-      <!-- Search Landscape Signals -->
-      <div class="hero-landscape__signals">
-        <div class="signal-item">
-          <span class="signal-item__indicator"></span>
-          <div>
-            <strong>SEO Fondamental</strong>
-            <p>Technique, contenu &amp; autorité</p>
-          </div>
-        </div>
-        <div class="signal-item">
-          <span class="signal-item__indicator signal-item__indicator--geo"></span>
-          <div>
-            <strong>GEO Émergent</strong>
-            <p>Clarté entités &amp; visibilité IA</p>
-          </div>
-        </div>
-        <div class="signal-item">
-          <span class="signal-item__indicator signal-item__indicator--france"></span>
-          <div>
-            <strong>France &amp; Grand Ouest</strong>
-            <p>Rennes, Nantes &amp; à distance</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: High-Tech SEO & GEO Performance Cockpit -->
-    <div class="hero-landscape__visual" aria-hidden="true">
-      <div class="cockpit-card">
-        <!-- Cockpit Header: Status Bar -->
-        <div class="cockpit-header">
-          <div class="cockpit-dots">
-            <span class="dot dot--red"></span>
-            <span class="dot dot--yellow"></span>
-            <span class="dot dot--green"></span>
-          </div>
-          <div class="cockpit-title">
-            <span class="cockpit-pulse"></span>
-            Search Console &amp; Moteurs IA · Cockpit de Visibilité
-          </div>
-          <div class="cockpit-badge">Index 100%</div>
-        </div>
-
-        <!-- Upper Visual: Entity & Search Architecture Graph -->
-        <div class="cockpit-section cockpit-section--graph">
-          <svg class="cockpit-svg" viewBox="0 0 540 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="wireGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.8" />
-                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.8" />
-              </linearGradient>
-              <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.4" />
-                <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
-              </radialGradient>
-            </defs>
-
-            <!-- Connecting Wireframe Traces -->
-            <line x1="270" y1="100" x2="100" y2="50" stroke="rgba(96, 165, 250, 0.4)" stroke-width="1.5" stroke-dasharray="4 4" class="tracer-line" />
-            <line x1="270" y1="100" x2="440" y2="50" stroke="rgba(96, 165, 250, 0.4)" stroke-width="1.5" stroke-dasharray="4 4" class="tracer-line" />
-            <line x1="270" y1="100" x2="90" y2="160" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" />
-            <line x1="270" y1="100" x2="450" y2="160" stroke="rgba(245, 158, 11, 0.4)" stroke-width="1.5" />
-            <line x1="100" y1="50" x2="440" y2="50" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
-
-            <!-- Core Hub: Brand Entity -->
-            <circle cx="270" cy="100" r="42" fill="url(#centerGlow)" />
-            <circle cx="270" cy="100" r="24" fill="#0B132B" stroke="#60A5FA" stroke-width="2.5" class="core-hub" />
-            <circle cx="270" cy="100" r="5" fill="#F59E0B" />
-            <text x="270" y="140" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle" font-family="Inter, sans-serif">VOTRE MARQUE</text>
-            <text x="270" y="153" font-size="9" fill="#93C5FD" text-anchor="middle" font-family="Inter, sans-serif">Entité référente Schema.org</text>
-
-            <!-- Node 1: Google Crawl & Index -->
-            <g class="graph-node" transform="translate(100, 50)">
-              <circle cx="0" cy="0" r="16" fill="#0B132B" stroke="#3B82F6" stroke-width="2" />
-              <circle cx="0" cy="0" r="4" fill="#60A5FA" />
-              <text x="0" y="26" font-size="9" font-weight="600" fill="#E2E8F0" text-anchor="middle" font-family="Inter, sans-serif">SEO Technique</text>
-            </g>
-
-            <!-- Node 2: Generative Engines (GEO) -->
-            <g class="graph-node" transform="translate(440, 50)">
-              <circle cx="0" cy="0" r="16" fill="#0B132B" stroke="#8B5CF6" stroke-width="2" />
-              <circle cx="0" cy="0" r="4" fill="#C084FC" />
-              <text x="0" y="26" font-size="9" font-weight="600" fill="#E2E8F0" text-anchor="middle" font-family="Inter, sans-serif">Citations IA (GEO)</text>
-            </g>
-
-            <!-- Node 3: Local Pack & Proximity -->
-            <g class="graph-node" transform="translate(90, 160)">
-              <circle cx="0" cy="0" r="14" fill="#0B132B" stroke="#10B981" stroke-width="2" />
-              <circle cx="0" cy="0" r="3.5" fill="#34D399" />
-              <text x="0" y="-18" font-size="9" font-weight="600" fill="#A7F3D0" text-anchor="middle" font-family="Inter, sans-serif">Visibilité Locale</text>
-            </g>
-
-            <!-- Node 4: Knowledge Graph & Autorité -->
-            <g class="graph-node" transform="translate(450, 160)">
-              <circle cx="0" cy="0" r="14" fill="#0B132B" stroke="#F59E0B" stroke-width="2" />
-              <circle cx="0" cy="0" r="3.5" fill="#FBBF24" />
-              <text x="0" y="-18" font-size="9" font-weight="600" fill="#FDE68A" text-anchor="middle" font-family="Inter, sans-serif">Autorité Sémantique</text>
-            </g>
-          </svg>
-        </div>
-
-        <!-- Lower Visual: Animated Traffic Increasing Graph -->
-        <div class="cockpit-section cockpit-section--traffic">
-          <div class="traffic-header">
-            <div class="traffic-title">
-              <span class="traffic-icon">↗</span>
-              <div>
-                <strong>Trafic Organique Qualifié</strong>
-                <span class="traffic-subtitle">Progression après structuration SEO &amp; GEO</span>
-              </div>
+        <!-- Dual channel visual diagram -->
+        <div class="editorial-channels">
+          <div class="channel-box">
+            <div class="channel-box__head">
+              <span class="channel-box__badge channel-box__badge--seo">01 · SEO Google &amp; Maps</span>
+              <span class="channel-box__goal">Capter la demande active</span>
             </div>
-            <div class="traffic-pill">
-              <span class="traffic-pill__arrow">↑</span>
-              <span class="traffic-pill__val">+184%</span>
-              <span class="traffic-pill__tag">croissance</span>
-            </div>
+            <p class="channel-box__desc">
+              Positionner vos pages de services et votre fiche Google Business Profile face aux décideurs et clients qui recherchent vos prestations.
+            </p>
+            <ul class="channel-box__list">
+              <li>Indexation propre &amp; Core Web Vitals</li>
+              <li>Pages ciblées par intention de recherche</li>
+              <li>Ancrage local (Rennes, Vitré, Laval, Grand Ouest)</li>
+            </ul>
           </div>
 
-          <!-- Dynamic SVG Traffic Chart -->
-          <div class="traffic-chart">
-            <svg class="traffic-svg" viewBox="0 0 500 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="trafficArea" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.5" />
-                  <stop offset="70%" stop-color="#1D4ED8" stop-opacity="0.15" />
-                  <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0" />
-                </linearGradient>
-                <linearGradient id="trafficStroke" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#60A5FA" />
-                  <stop offset="65%" stop-color="#38BDF8" />
-                  <stop offset="100%" stop-color="#F59E0B" />
-                </linearGradient>
-              </defs>
-
-              <!-- Horizontal Grid Lines -->
-              <line x1="30" y1="30" x2="480" y2="30" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3 3" />
-              <line x1="30" y1="70" x2="480" y2="70" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3 3" />
-              <line x1="30" y1="110" x2="480" y2="110" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3 3" />
-              <line x1="30" y1="140" x2="480" y2="140" stroke="rgba(255,255,255,0.15)" />
-
-              <!-- Area Fill -->
-              <path
-                d="M 30 135 L 85 130 L 140 126 L 195 118 L 250 110 L 305 92 L 360 76 L 415 54 L 475 28 L 475 140 L 30 140 Z"
-                fill="url(#trafficArea)"
-                class="traffic-area"
-              />
-
-              <!-- The Growth Curve Line -->
-              <path
-                d="M 30 135 L 85 130 L 140 126 L 195 118 L 250 110 L 305 92 L 360 76 L 415 54 L 475 28"
-                stroke="url(#trafficStroke)"
-                stroke-width="3.5"
-                stroke-linecap="round"
-                class="traffic-line"
-              />
-
-              <!-- Milestones Data Points -->
-              <g class="chart-point" transform="translate(140, 126)">
-                <circle cx="0" cy="0" r="4" fill="#60A5FA" />
-              </g>
-              <g class="chart-point" transform="translate(250, 110)">
-                <circle cx="0" cy="0" r="4.5" fill="#38BDF8" />
-              </g>
-              <g class="chart-point" transform="translate(360, 76)">
-                <circle cx="0" cy="0" r="5" fill="#FBBF24" />
-              </g>
-              <!-- Final Top Point (Pulsing) -->
-              <g class="chart-point chart-point--final" transform="translate(475, 28)">
-                <circle cx="0" cy="0" r="12" fill="#F59E0B" fill-opacity="0.25" class="point-halo" />
-                <circle cx="0" cy="0" r="6" fill="#F59E0B" stroke="#FFFFFF" stroke-width="2" />
-              </g>
-
-              <!-- X-Axis Labels -->
-              <text x="30" y="154" font-size="9" fill="#64748B" font-family="Inter, sans-serif">Mois 1 (Audit)</text>
-              <text x="170" y="154" font-size="9" fill="#64748B" font-family="Inter, sans-serif">Mois 2 (Technique)</text>
-              <text x="310" y="154" font-size="9" fill="#64748B" font-family="Inter, sans-serif">Mois 4 (Entités)</text>
-              <text x="440" y="154" font-size="9" font-weight="600" fill="#F59E0B" font-family="Inter, sans-serif">Mois 6 (Autorité)</text>
-            </svg>
+          <div class="channel-box channel-box--geo">
+            <div class="channel-box__head">
+              <span class="channel-box__badge channel-box__badge--geo">02 · GEO &amp; Moteurs IA</span>
+              <span class="channel-box__goal">Être compris &amp; cité</span>
+            </div>
+            <p class="channel-box__desc">
+              Structurer vos contenus, vos preuves et vos données Schema.org pour que ChatGPT, Perplexity et Google AI identifient votre entreprise sans ambiguïté.
+            </p>
+            <ul class="channel-box__list">
+              <li>Graphe d'entités JSON-LD relié (<code>@id</code>)</li>
+              <li>Réponses factuelles directement extractibles</li>
+              <li>Cohérence des sources et citations externes</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Floating Live Badges -->
-        <div class="cockpit-chips">
-          <div class="cockpit-chip chip-1">
-            <span class="chip-dot chip-dot--green"></span>
-            <span>Google Search Console : Clics ↗</span>
+        <!-- Bottom synthesis bar -->
+        <div class="editorial-card__footer">
+          <div class="editorial-card__outcome">
+            <strong>Objectif :</strong> transformer votre site en un actif durable qui attire un trafic qualifié et génère des opportunités commerciales mesurables.
           </div>
-          <div class="cockpit-chip chip-2">
-            <span class="chip-dot chip-dot--ai"></span>
-            <span>IA Générative : Référence citée</span>
-          </div>
-          <div class="cockpit-chip chip-3">
-            <span class="chip-dot chip-dot--amber"></span>
-            <span>Core Web Vitals : 100/100</span>
-          </div>
+          <a href="/approche/" class="editorial-card__link">
+            Voir la méthodologie en 8 étapes &rarr;
+          </a>
         </div>
       </div>
-    </div>
+    </aside>
   </div>
 </section>
 
 <style>
-/* ══ HERO SHELL ══ */
-.hero-landscape {
+.hero-editorial {
   position: relative;
-  background-color: #070D1E;
-  color: #FFFFFF;
-  padding-top: var(--space-20);
-  padding-bottom: var(--space-24);
+  background-color: var(--color-bg); /* #F7F8F5 */
+  color: var(--color-text);          /* #263746 */
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-20);
+  border-bottom: 1px solid var(--color-border);
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Dynamic Digital Background */
-.hero-landscape__bg {
+/* Photographic background with natural light veil */
+.hero-editorial__media {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
 }
 
-.hero-landscape__glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.45;
-  pointer-events: none;
-}
-
-.hero-landscape__glow--blue {
-  top: -10%;
-  right: 5%;
-  width: 55vw;
-  height: 55vw;
-  max-width: 650px;
-  max-height: 650px;
-  background: radial-gradient(circle, #1D4ED8 0%, rgba(29, 78, 216, 0) 70%);
-}
-
-.hero-landscape__glow--amber {
-  bottom: -15%;
-  left: 2%;
-  width: 40vw;
-  height: 40vw;
-  max-width: 500px;
-  max-height: 500px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(245, 158, 11, 0) 70%);
-}
-
-.hero-landscape__grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(circle at 60% 40%, black 40%, transparent 85%);
-}
-
-.hero-landscape__waves {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.hero-editorial__photo {
   width: 100%;
   height: 100%;
-  opacity: 0.8;
+  object-fit: cover;
+  object-position: center 40%;
+  opacity: 0.28;
+  filter: saturate(0.85) contrast(0.95);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .ambient-wave {
-    animation: waveShift 18s ease-in-out infinite alternate;
-  }
-  @keyframes waveShift {
-    from { stroke-dashoffset: 0; }
-    to { stroke-dashoffset: 80; }
-  }
+.hero-editorial__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      105deg,
+      rgba(247, 248, 245, 0.96) 0%,
+      rgba(247, 248, 245, 0.90) 48%,
+      rgba(237, 243, 244, 0.78) 100%
+    );
 }
 
-.hero-landscape__container {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-12);
-  align-items: center;
+.hero-editorial__container {
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: var(--space-12);
+  align-items: center;
 }
 
-/* ══ LEFT CONTENT ══ */
-.hero-badge {
+/* Left content */
+.hero-editorial__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 0.35rem 0.9rem;
-  background-color: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(96, 165, 250, 0.3);
+  padding: 0.4rem 0.9rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-accent-soft); /* #B8D1D6 */
   border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-navy); /* #17324D */
   margin-bottom: var(--space-6);
-  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-xs);
 }
 
-.hero-badge__dot {
+.hero-editorial__dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: #38BDF8;
-  box-shadow: 0 0 8px #38BDF8;
+  background-color: var(--color-atlantic); /* #397B9B */
+  flex-shrink: 0;
 }
 
-.hero-badge__text {
-  font-size: var(--text-xs);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: #93C5FD;
-}
-
-.hero-landscape__title {
+.hero-editorial__title {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5vw, 4.1rem);
+  font-size: clamp(2.15rem, 4.1vw, 3.35rem);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: var(--tracking-tight);
-  color: #FFFFFF;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-navy); /* #17324D */
   margin-bottom: var(--space-6);
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, #93C5FD 0%, #38BDF8 35%, #F59E0B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.hero-editorial__title-accent {
+  color: var(--color-atlantic); /* #397B9B */
+  font-weight: 600;
 }
 
-.hero-landscape__lead {
-  font-size: clamp(var(--text-lg), 1.5vw, var(--text-xl));
-  color: rgba(226, 232, 240, 0.88);
-  line-height: var(--leading-relaxed);
-  max-width: 36rem;
+.hero-editorial__lead {
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--color-text); /* #263746 */
+  max-width: 39rem;
   margin-bottom: var(--space-8);
 }
 
-.hero-landscape__actions {
+.hero-editorial__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-4);
   margin-bottom: var(--space-8);
-}
-
-.btn--outline-light {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #FFFFFF;
-  backdrop-filter: blur(8px);
-  transition: all var(--transition-base);
-}
-
-.btn--outline-light:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #FFFFFF;
-  color: #FFFFFF;
-  transform: translateY(-2px);
 }
 
 .btn__arrow {
@@ -482,425 +270,241 @@ const {
   transform: translateX(3px);
 }
 
-/* ══ HUMAN TRUST CHIP ══ */
-.hero-person {
+/* Consultant trust badge */
+.hero-consultant {
   display: inline-flex;
   align-items: center;
   gap: var(--space-4);
-  padding: 0.5rem 1.25rem 0.5rem 0.5rem;
-  margin-bottom: var(--space-8);
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius-full);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(12px);
+  padding: 0.65rem 1.25rem 0.65rem 0.65rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 }
 
-.hero-person__avatar {
-  width: 48px;
-  height: 48px;
+.hero-consultant__avatar {
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center 18%;
-  border: 2px solid #F59E0B;
+  border: 2px solid var(--color-accent-soft);
+  flex-shrink: 0;
 }
 
-.hero-person__text {
+.hero-consultant__info {
   display: flex;
   flex-direction: column;
+  gap: 2px;
+}
+
+.hero-consultant__name {
   font-size: var(--text-sm);
-  color: #FFFFFF;
-  line-height: 1.35;
+  color: var(--color-navy);
   margin: 0;
 }
 
-.hero-person__role {
-  font-size: 0.75rem;
-  color: #94A3B8;
-}
-
-.hero-person__status {
+.hero-consultant__meta {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.72rem;
-  color: #34D399;
-  font-weight: var(--weight-medium);
-  margin-top: 2px;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin: 0;
 }
 
-.hero-person__pulse {
+.hero-consultant__status-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero-person__pulse { animation: personPulse 2.4s ease-out infinite; }
-  @keyframes personPulse {
-    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
-    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-  }
-}
-
-/* ══ SIGNAL CARDS ══ */
-.hero-landscape__signals {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  padding-top: var(--space-6);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.signal-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-}
-
-.signal-item__indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #38BDF8;
-  box-shadow: 0 0 8px #38BDF8;
-  margin-top: 5px;
+  background-color: #2E7D5B;
   flex-shrink: 0;
 }
 
-.signal-item__indicator--geo {
-  background-color: #A78BFA;
-  box-shadow: 0 0 8px #A78BFA;
-}
-
-.signal-item__indicator--france {
-  background-color: #34D399;
-  box-shadow: 0 0 8px #34D399;
-}
-
-.signal-item strong {
-  display: block;
-  font-size: var(--text-xs);
-  font-weight: var(--weight-semibold);
-  color: #FFFFFF;
-  margin-bottom: 2px;
-}
-
-.signal-item p {
-  font-size: 0.75rem;
-  color: #94A3B8;
-  line-height: 1.4;
-  margin: 0;
-}
-
-/* ══ RIGHT VISUAL: PERFORMANCE COCKPIT CARD ══ */
-.hero-landscape__visual {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cockpit-card {
-  position: relative;
-  width: 100%;
-  max-width: 580px;
-  background: rgba(11, 19, 43, 0.85);
-  border: 1px solid rgba(96, 165, 250, 0.25);
+/* Right Column: Editorial Card */
+.editorial-card {
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-accent-soft);
   border-radius: var(--radius-xl);
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.5),
-    0 0 50px rgba(37, 99, 235, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(16px);
-  overflow: visible;
-  padding: var(--space-4);
+  padding: var(--space-6);
+  box-shadow: 0 16px 40px -12px rgba(23, 50, 77, 0.10);
 }
 
-/* Header bar */
-.cockpit-header {
+.editorial-card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem var(--space-4);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-md);
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
   margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
-.cockpit-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-}
-.dot--red { background: #EF4444; opacity: 0.7; }
-.dot--yellow { background: #F59E0B; opacity: 0.7; }
-.dot--green { background: #10B981; opacity: 0.7; }
-
-.cockpit-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: var(--weight-medium);
-  color: #94A3B8;
-  font-family: var(--font-sans);
-}
-
-.cockpit-pulse {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 6px #10B981;
-}
-
-.cockpit-badge {
-  font-size: 0.7rem;
+.editorial-card__tag {
+  font-size: 0.72rem;
   font-weight: var(--weight-semibold);
-  color: #38BDF8;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  padding: 2px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-navy);
+  background-color: var(--color-surface-warm); /* #EDF3F4 */
+  border: 1px solid var(--color-accent-soft);
+  padding: 0.25rem 0.65rem;
   border-radius: var(--radius-full);
 }
 
-/* Section graph */
-.cockpit-section--graph {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-md);
-  padding: var(--space-2);
+.editorial-card__caption {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+}
+
+.editorial-card__intro {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.55;
   margin-bottom: var(--space-4);
 }
 
-.cockpit-svg {
-  width: 100%;
-  height: auto;
-  display: block;
+.editorial-channels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
-/* Animated core hub */
-@media (prefers-reduced-motion: no-preference) {
-  .core-hub {
-    animation: hubPulse 3.5s ease-in-out infinite;
-    transform-box: fill-box;
-    transform-origin: center;
-  }
-  @keyframes hubPulse {
-    0%, 100% { transform: scale(1); stroke-opacity: 0.7; }
-    50% { transform: scale(1.08); stroke-opacity: 1; stroke-width: 3px; }
-  }
-
-  .tracer-line {
-    animation: tracerMove 12s linear infinite;
-  }
-  @keyframes tracerMove {
-    to { stroke-dashoffset: -80; }
-  }
-}
-
-/* Section traffic */
-.cockpit-section--traffic {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.channel-box {
+  background-color: var(--color-bg); /* #F7F8F5 */
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-navy);
   border-radius: var(--radius-md);
   padding: var(--space-4);
 }
 
-.traffic-header {
+.channel-box--geo {
+  background-color: var(--color-surface-warm); /* #EDF3F4 */
+  border-left-color: var(--color-atlantic);
+}
+
+.channel-box__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.channel-box__badge {
+  font-size: 0.75rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+}
+
+.channel-box__badge--geo {
+  color: var(--color-atlantic);
+}
+
+.channel-box__goal {
+  font-size: 0.72rem;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  background: #FFFFFF;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.channel-box__desc {
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  line-height: 1.5;
   margin-bottom: var(--space-3);
 }
 
-.traffic-title {
+.channel-box__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.traffic-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-md);
-  background: rgba(37, 99, 235, 0.2);
-  color: #60A5FA;
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.traffic-title strong {
-  display: block;
-  font-size: 0.85rem;
-  color: #FFFFFF;
-}
-
-.traffic-subtitle {
-  font-size: 0.72rem;
-  color: #94A3B8;
-}
-
-.traffic-pill {
-  display: inline-flex;
-  align-items: center;
+  flex-direction: column;
   gap: 4px;
-  padding: 0.25rem 0.65rem;
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  border-radius: var(--radius-full);
 }
 
-.traffic-pill__arrow {
-  color: #F59E0B;
-  font-weight: 800;
-  font-size: 0.8rem;
-}
-
-.traffic-pill__val {
-  color: #F59E0B;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-.traffic-pill__tag {
-  color: #FDE68A;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.traffic-chart {
-  width: 100%;
-}
-
-.traffic-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Line & point animations */
-@media (prefers-reduced-motion: no-preference) {
-  .traffic-line {
-    stroke-dasharray: 600;
-    stroke-dashoffset: 600;
-    animation: drawTraffic 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  }
-  @keyframes drawTraffic {
-    to { stroke-dashoffset: 0; }
-  }
-
-  .traffic-area {
-    opacity: 0;
-    animation: fadeInArea 1.2s ease-out 1.4s forwards;
-  }
-  @keyframes fadeInArea {
-    to { opacity: 1; }
-  }
-
-  .point-halo {
-    animation: haloPulse 2s ease-in-out infinite;
-    transform-box: fill-box;
-    transform-origin: center;
-  }
-  @keyframes haloPulse {
-    0%, 100% { transform: scale(1); opacity: 0.3; }
-    50% { transform: scale(1.6); opacity: 0.7; }
-  }
-}
-
-/* Floating chips */
-.cockpit-chips {
+.channel-box__list li {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  padding-left: 1rem;
   position: relative;
-  margin-top: var(--space-3);
+}
+
+.channel-box__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-atlantic);
+  font-weight: 700;
+}
+
+.channel-box__list code {
+  font-size: 0.74rem;
+  background: #FFFFFF;
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+}
+
+.editorial-card__footer {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--space-2);
 }
 
-.cockpit-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-full);
-  padding: 0.35rem 0.75rem;
-  font-size: 0.75rem;
-  color: #E2E8F0;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.editorial-card__outcome {
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  line-height: 1.5;
 }
 
-.chip-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.chip-dot--green { background: #10B981; box-shadow: 0 0 6px #10B981; }
-.chip-dot--ai { background: #A78BFA; box-shadow: 0 0 6px #A78BFA; }
-.chip-dot--amber { background: #F59E0B; box-shadow: 0 0 6px #F59E0B; }
-
-@media (prefers-reduced-motion: no-preference) {
-  .chip-1 { animation: chipFloat 5s ease-in-out infinite; }
-  .chip-2 { animation: chipFloat 5s ease-in-out infinite -2s; }
-  .chip-3 { animation: chipFloat 5s ease-in-out infinite -3.5s; }
-
-  @keyframes chipFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-  }
+.editorial-card__link {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-atlantic);
+  text-decoration: none;
+  align-self: flex-start;
 }
 
-/* ══ RESPONSIVE ══ */
+.editorial-card__link:hover {
+  color: var(--color-navy);
+  text-decoration: underline;
+}
+
 @media (max-width: 1024px) {
-  .hero-landscape__container {
+  .hero-editorial__container {
     grid-template-columns: 1fr;
     gap: var(--space-10);
-  }
-
-  .hero-landscape__content {
-    max-width: 100%;
-  }
-
-  .hero-landscape__signals {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
   }
 }
 
 @media (max-width: 640px) {
-  .hero-landscape {
-    padding-top: var(--space-16);
-    padding-bottom: var(--space-16);
+  .hero-editorial {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-12);
   }
 
-  .hero-landscape__actions {
+  .hero-editorial__actions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .hero-landscape__actions .btn {
+  .hero-editorial__actions .btn {
     width: 100%;
   }
 
-  .cockpit-chips {
-    flex-direction: column;
+  .hero-consultant {
+    flex-direction: row;
+    width: 100%;
   }
 }
 </style>

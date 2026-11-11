@@ -1,10 +1,17 @@
 ---
 /**
- * approche.astro — Méthode et déroulement des projets
+ * approche.astro — Méthode et déroulement complet des projets SEO & GEO
  * URL: /approche/
  *
- * Details the collaborative methodology, diagnostic phases, strategy formulation,
- * execution, monitoring, and communication principles.
+ * Phase 8 Mandatory 8-Step SEO Project Methodology:
+ *  01. Échange initial & cadrage métier
+ *  02. Audit du site & analyse de la concurrence
+ *  03. Recherche de mots-clés & cartographie des intentions
+ *  04. Plan d'action priorisé (Matrice Impact × Effort)
+ *  05. Optimisation technique & éditoriale
+ *  06. Maillage interne, signaux locaux & développement de l'autorité
+ *  07. Suivi des performances (Search Console & citations IA)
+ *  08. Amélioration continue & itérations
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
@@ -12,41 +19,119 @@ import Footer from '../components/Footer.astro';
 import PageHero from '../components/PageHero.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import EntityDiagram from '../components/EntityDiagram.astro';
-import MethodTimeline from '../components/MethodTimeline.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import { buildTitle, SITE_URL } from '../utils/seo';
 
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
-  { label: 'Approche', href: '/approche/' },
+  { label: 'Approche & Méthode', href: '/approche/' },
 ];
 
-const approachSteps = [
+const eightSteps = [
   {
-    title: 'Comprendre',
-    when: 'Semaine 1',
-    description: 'Immersion dans votre modèle économique, vos offres à forte marge et la demande réelle sur votre marché.',
+    step: '01',
+    when: 'Jour 1 · Appel de 30 min',
+    title: 'Échange initial & cadrage métier',
+    summary: 'Avant d\'ouvrir le moindre outil technique, nous clarifions votre modèle économique, vos offres à plus forte marge et votre zone de chalandise réelle.',
+    actions: [
+      'Identification des services ou produits prioritaires qui génèrent votre rentabilité',
+      'Définition de la cible géographique (Rennes, Grand Ouest ou France entière) et du profil client (B2B, B2C)',
+      'Vérification des accès existants (Google Search Console, CMS, Google Business Profile)',
+    ],
+    deliverable: 'Compte-rendu de cadrage commercial et définition des objectifs mesurables.',
+    relatedLink: { label: 'Réserver votre échange initial de 30 min', href: '/reserver-un-appel/' },
   },
   {
-    title: 'Structurer',
-    when: 'Semaines 2–3',
-    description: 'Cartographie des entités, arborescence en silos, maillage interne et levée des blocages d\'indexation.',
+    step: '02',
+    when: 'Semaines 1–2',
+    title: 'Audit du site & analyse de la concurrence',
+    summary: 'Inspection intégrale de votre site web et des concurrents qui occupent aujourd\'hui les 5 premières places sur Google et dans les réponses IA.',
+    actions: [
+      'Crawl technique complet (codes HTTP, indexation, canoniques, profondeur de clic, Core Web Vitals)',
+      'Analyse de l\'historique réel dans Google Search Console (requêtes, pages zombies, taux de clic)',
+      'Benchmark des concurrents directs : structure de leurs pages, profondeur éditoriale et profil d\'autorité',
+    ],
+    deliverable: 'Diagnostic technique, sémantique et concurrentiel documenté preuves à l\'appui.',
+    relatedLink: { label: 'Découvrir le service Audit SEO', href: '/services/audit-seo/' },
   },
   {
-    title: 'Optimiser',
+    step: '03',
+    when: 'Semaine 2',
+    title: 'Recherche de mots-clés & cartographie des intentions',
+    summary: 'Nous ne cherchons pas du trafic abstrait : nous isolons les requêtes exactes tapées par vos futurs acheteurs selon leur maturité de décision.',
+    actions: [
+      'Distinction stricte entre intentions transactionnelles (devis, tarif, prestataire), locales et informationnelles',
+      'Regroupement par grappes sémantiques (clusters) pour attribuer une intention unique par URL et éviter la cannibalisation',
+      'Recensement des questions conversationnelles posées aux moteurs IA (ChatGPT, Perplexity, AI Overviews)',
+    ],
+    deliverable: 'Matrice Mots-Clés × Intentions × URLs cibles (pages existantes à optimiser et pages à créer).',
+    relatedLink: { label: 'Voir le service SEO Contenu & Sémantique', href: '/services/seo-contenu/' },
+  },
+  {
+    step: '04',
+    when: 'Semaine 3',
+    title: 'Plan d\'action priorisé (Impact × Effort)',
+    summary: 'Transformation du diagnostic en une feuille de route opérationnelle classée par retour sur investissement et faisabilité technique.',
+    actions: [
+      'Hiérarchisation en 3 niveaux : P1 (Quick Wins & blocages critiques), P2 (Structuration & pages d\'offres), P3 (Autorité & éditorial)',
+      'Chiffrage de la charge technique (pour votre développeur ou directement dans votre CMS)',
+      'Calendrier éditorial et technique séquencé mois par mois sans zone grise',
+    ],
+    deliverable: 'Feuille de route priorisée + réunion de restitution en visioconférence.',
+    relatedLink: { label: 'Découvrir la Stratégie SEO', href: '/services/strategie-seo/' },
+  },
+  {
+    step: '05',
     when: 'Semaines 3–6',
-    description: 'Réécriture des pages clés, balisage Schema.org (JSON-LD), Core Web Vitals et signaux locaux.',
+    title: 'Optimisation technique & éditoriale',
+    summary: 'Levée des freins techniques, réécriture des pages commerciales et déploiement des données structurées Schema.org.',
+    actions: [
+      'Correction des erreurs d\'indexation, redirections 301, optimisation LCP/INP/CLS et nettoyage du sitemap XML',
+      'Structuration H1-H3, enrichissement sémantique et insertion de blocs de réponse directe (40–60 mots) pour le GEO',
+      'Intégration et validation du graphe JSON-LD (ProfessionalService, LocalBusiness, Service, FAQPage, Person)',
+    ],
+    deliverable: 'Pages stratégiques optimisées, code JSON-LD validé et contrôle qualité post-mise en ligne.',
+    relatedLink: { label: 'Explorer le SEO Technique', href: '/services/seo-technique/' },
   },
   {
-    title: 'Développer',
-    when: 'Mois 2–6',
-    description: 'Création de contenus d\'autorité et réponses synthétiques citables par Google et les IA génératives.',
+    step: '06',
+    when: 'Mois 2–4',
+    title: 'Maillage interne & développement de l\'autorité',
+    summary: 'Organisation de la circulation du jus SEO entre vos pages et consolidation de vos signaux de confiance locaux et thématiques.',
+    actions: [
+      'Création de cocons sémantiques reliant articles de fond, pages de services et pages géographiques avec des ancres descriptives',
+      'Élimination totale des pages orphelines et réduction de la profondeur de clic à moins de 3 niveaux',
+      'Harmonisation de votre fiche Google Business Profile, citations NAP locales et mentions externes légitimes',
+    ],
+    deliverable: 'Architecture en silos maillée, protocole /llms.txt actif et présence locale consolidée.',
+    relatedLink: { label: 'Voir le SEO Local & Google Maps', href: '/services/seo-local/' },
   },
   {
-    title: 'Mesurer',
+    step: '07',
     when: 'Chaque mois',
-    description: 'Suivi dans Google Search Console : positions, clics qualifiés, prises de contact et citations IA.',
+    title: 'Suivi des performances (Search Console & IA)',
+    summary: 'Mesure objective des retombées réelles : pas de métriques de vanité, uniquement ce qui fait progresser votre visibilité et vos contacts.',
+    actions: [
+      'Suivi des impressions, des clics organiques et des positions par groupe de pages dans Google Search Console',
+      'Suivi des appels, demandes d\'itinéraire et formulaires générés par le canal organique et le Pack Local',
+      'Tests réguliers de citation et de recommandation de votre marque sur ChatGPT, Perplexity et Google AI Overviews',
+    ],
+    deliverable: 'Tableau de bord mensuel lisible et synthèse commentée des gains obtenus.',
+    relatedLink: { label: 'Découvrir l\'optimisation GEO / IA', href: '/services/geo/' },
+  },
+  {
+    step: '08',
+    when: 'En continu',
+    title: 'Amélioration continue & itérations',
+    summary: 'Le référencement naturel est un actif vivant : nous exploitons les données acquises pour capter de nouvelles opportunités commerciales.',
+    actions: [
+      'Détection des requêtes émergentes (pages classées entre la 5e et la 15e position) pour les propulser dans le Top 3',
+      'Mise à jour des contenus stratégiques face aux évolutions de votre marché ou des algorithmes Google',
+      'Extension progressive vers de nouvelles offres ou de nouvelles villes d\'intervention (ex. Vitré, Laval, Fougères, Redon)',
+    ],
+    deliverable: 'Croissance organique capitalisable et avantage concurrentiel durable.',
+    relatedLink: { label: 'Inspecter nos preuves & livrables', href: '/realisations/' },
   },
 ];
 
@@ -54,55 +139,71 @@ const faqApproach = [
   {
     id: 'approche-duree',
     question: 'Combien de temps faut-il pour constater des résultats concrets ?',
-    answer: 'En SEO comme en GEO, il n\'y a pas d\'interrupteur magique. Les corrections techniques et l\'indexation de pages fraîches portent leurs premiers fruits entre 6 à 12 semaines. Le renforcement durable de l\'autorité et le positionnement sur des requêtes concurrentielles s\'inscrivent généralement dans un cycle de 4 à 6 mois de travail régulier.',
+    answer: 'En SEO comme en GEO, il n\'y a pas d\'interrupteur magique. Les corrections techniques, le maillage interne et la réécriture de pages existantes portent généralement leurs premiers fruits entre 6 et 12 semaines. La conquête de requêtes très concurrentielles et la construction d\'une autorité durable s\'inscrivent dans un cycle de 4 à 6 mois.',
   },
   {
     id: 'approche-technique',
-    question: 'Faut-il savoir coder pour mettre en œuvre vos recommandations ?',
-    answer: 'Non. Je rédige des spécifications claires et pédagogiques. Si vous disposez d\'un développeur ou d\'une agence web, je leur transmets des consignes techniques précises. Pour les aspects de contenu, de balisage ou de CMS (WordPress, Webflow, Shopify, etc.), nous pouvons intervenir directement selon vos préférences.',
+    question: 'Faut-il savoir coder pour appliquer cette méthodologie en 8 étapes ?',
+    answer: 'Non. Chaque recommandation est accompagnée d\'explications claires et de blocs prêts à copier-coller. Si vous avez une équipe technique ou une agence web, je leur fournis des tickets précis. Si vous gérez votre site vous-même (WordPress, Webflow, Shopify, Astro), je peux intervenir directement ou vous guider pas à pas.',
   },
   {
     id: 'approche-distance',
-    question: 'Comment s\'organise le travail si nous ne sommes pas dans la même ville ?',
-    answer: 'La très grande majorité des missions s\'effectuent à distance dans toute la France avec une excellente efficacité : points réguliers par visioconférence, tableau de bord partagé, échanges par email et messagerie instantanée réactive. Pour les entreprises basées en Bretagne et Pays de la Loire, des rencontres physiques sont tout à fait envisageables.',
+    question: 'Comment se passe la collaboration à Rennes, en Bretagne ou à distance ?',
+    answer: 'Basé en Ille-et-Vilaine (35), je peux me déplacer pour des réunions clés à Rennes, Vitré, Fougères, Janzé ou Laval, et j\'accompagne avec la même réactivité des entreprises dans toute la France en visioconférence avec partage d\'écran et espaces de travail partagés.',
   },
   {
     id: 'approche-garantie',
-    question: 'Proposez-vous une garantie de première place sur Google ou ChatGPT ?',
-    answer: 'Non, et aucun professionnel honnête ne le fera. Les algorithmes de Google et les modèles génératifs évoluent constamment et dépendent de critères extérieurs. Ce que je garantis en revanche, c\'est une rigueur méthodologique absolue, un travail sans raccourci pénalisant et des fondations conformes aux meilleures pratiques de l\'industrie.',
+    question: 'Pourquoi ne promettez-vous jamais la 1re position garantie sur Google ?',
+    answer: 'Parce que Google rappelle lui-même dans sa documentation officielle qu\'aucun prestataire ne peut garantir un classement n°1. Ce que je garantis en revanche, c\'est l\'application stricte des meilleures pratiques d\'ingénierie du search, zéro technique pénalisante et une transparence totale sur les actions menées.',
   },
 ];
 
-const schemaWebPage = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: 'Approche & Méthodologie — Ujjwal SEO',
-  description: 'Découvrez la méthodologie de travail d\'Ujjwal SEO : compréhension des enjeux, structuration technique, optimisation sémantique, et veille active sur le GEO.',
-  url: `${SITE_URL}/approche/`,
-  provider: {
-    '@type': 'ProfessionalService',
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
+const schemaWebPage = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Approche & Méthodologie SEO/GEO en 8 étapes — Ujjwal SEO',
+    description: 'Découvrez la méthodologie complète en 8 étapes d\'Ujjwal SEO : cadrage métier, audit technique et concurrentiel, intentions de recherche, plan priorisé, optimisation, maillage, suivi et amélioration continue.',
+    url: `${SITE_URL}/approche/`,
+    provider: {
+      '@type': 'ProfessionalService',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Ujjwal SEO',
+      url: SITE_URL,
+    },
   },
-};
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Méthodologie de projet SEO & GEO en 8 étapes',
+    description: 'Déroulement structuré d\'un accompagnement en référencement naturel (SEO) et optimisation pour moteurs IA (GEO) avec Ujjwal Lage.',
+    step: eightSteps.map((s, idx) => ({
+      '@type': 'HowToStep',
+      position: idx + 1,
+      name: `${s.step}. ${s.title}`,
+      text: `${s.summary} Livrable : ${s.deliverable}`,
+      url: `${SITE_URL}/approche/#etape-${s.step}`,
+    })),
+  },
+];
 ---
 
 <BaseLayout
-  title={buildTitle('Mon approche SEO & GEO — Méthodologie & Collaboration')}
-  description="Découvrez comment se déroule un accompagnement SEO & GEO : diagnostic approfondi, stratégie sur-mesure, exécution transparente et pilotage par la donnée."
+  title={buildTitle('Méthodologie SEO & GEO en 8 étapes — Approche & Livrables')}
+  description="Découvrez le déroulement concret d'un projet SEO & GEO en 8 étapes : échange initial, audit, recherche d'intentions, plan d'action priorisé, optimisation, maillage, suivi et amélioration continue."
   canonicalPath="/approche/"
-  schema={[schemaWebPage]}
+  schema={schemaWebPage}
 >
   <Header />
 
   <main id="main-content">
     <PageHero
       visual="traffic"
-      eyebrow="Méthode & Vision"
-      title="Une approche rigoureuse, transparente et orientée business"
-      description="Le référencement naturel et l'optimisation pour les moteurs IA ne relèvent pas de l'alchimie. C'est une discipline d'ingénierie de l'information qui associe structure technique, pertinence éditoriale et compréhension d'entités."
+      eyebrow="Méthode en 8 étapes & Cadre A.R.C."
+      title="Une méthodologie SEO & GEO transparente, structurée en 8 étapes"
+      description="Le référencement naturel et l'optimisation pour les moteurs de recherche IA ne reposent pas sur des recettes secrètes. Découvrez exactement comment chaque mission est cadrée, exécutée et mesurée, de notre premier échange jusqu'au suivi mensuel."
       primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
-      secondaryCTA={{ label: 'Consulter les services', href: '/services/' }}
+      secondaryCTA={{ label: 'Explorer les 6 services', href: '/services/' }}
       compact={true}
     />
 
@@ -112,19 +213,19 @@ const schemaWebPage = {
     <section class="section section--surface" aria-labelledby="philosophy-heading">
       <div class="container">
         <div class="section-header--centered reveal">
-          <p class="eyebrow">Cadre de travail propriétaire</p>
-          <h2 id="philosophy-heading">La Méthode <span class="mark">A.R.C.</span> : trois couches indissociables</h2>
+          <p class="eyebrow">Principes directeurs</p>
+          <h2 id="philosophy-heading">Le cadre <span class="mark">A.R.C.</span> : trois fondations indissociables</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Pour qu'une entreprise soit classée par Google et citée par les moteurs IA, elle doit valider trois niveaux successifs : <strong>Accessibilité</strong>, <strong>Relevance (Pertinence)</strong> et <strong>Citations</strong>.
+            Pour qu'une entreprise soit durablement classée sur Google et citée par les moteurs IA (ChatGPT, Perplexity, AI Overviews), son écosystème digital doit valider trois couches successives : <strong>Accessibilité</strong>, <strong>Relevance (Pertinence)</strong> et <strong>Citations</strong>.
           </p>
         </div>
 
         <div class="pillars-grid">
           <div class="pillar-card reveal">
-            <span class="pillar-card__num">A · Accessibilité</span>
-            <h3 class="pillar-card__title">Être lu et indexé sans friction</h3>
+            <span class="pillar-card__num">A · Accessibilité Technique</span>
+            <h3 class="pillar-card__title">Être exploré et indexé sans friction</h3>
             <p class="pillar-card__desc">
-              Un robot qui bute sur des erreurs d'exploration, des pages lentes ou une arborescence confuse n'indexera jamais correctement vos offres. On assainit d'abord le socle technique et les Core Web Vitals.
+              Un robot qui bute sur des erreurs HTTP, des pages lentes ou une arborescence confuse n'indexera jamais correctement vos offres. Nous assainissons d'abord le socle via le <a href="/services/seo-technique/">SEO technique</a> et les Core Web Vitals.
             </p>
           </div>
 
@@ -132,17 +233,73 @@ const schemaWebPage = {
             <span class="pillar-card__num">R · Relevance &amp; Entités</span>
             <h3 class="pillar-card__title">Répondre exactement à l'intention</h3>
             <p class="pillar-card__desc">
-              Chaque page cible une intention précise et déclare explicitement vos entités (qui vous êtes, ce que vous faites, où vous intervenez) via un maillage logique et un graphe Schema.org complet.
+              Chaque URL cible une intention précise et déclare explicitement vos entités (qui vous êtes, ce que vous faites, où vous intervenez) grâce au <a href="/services/seo-contenu/">SEO sémantique</a> et à un graphe Schema.org complet.
             </p>
           </div>
 
           <div class="pillar-card reveal reveal-delay-2">
             <span class="pillar-card__num">C · Citations &amp; Autorité</span>
-            <h3 class="pillar-card__title">Devenir la source que l'on cite</h3>
+            <h3 class="pillar-card__title">Devenir la source que l'on recommande</h3>
             <p class="pillar-card__desc">
-              Qu'il s'agisse du Pack Local Google Maps ou d'une réponse générée par ChatGPT / Perplexity, les moteurs retiennent les entreprises dont les faits, avis et preuves sont cohérents partout sur le web.
+              Qu'il s'agisse du Pack Local Google Maps (<a href="/services/seo-local/">SEO local</a>) ou d'une synthèse générative (<a href="/services/geo/">GEO</a>), les moteurs retiennent les entreprises dont les preuves, avis et informations sont cohérents partout sur le web.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ LES 8 ÉTAPES D'UN PROJET SEO & GEO ══ -->
+    <section class="section" aria-labelledby="eight-steps-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Cycle de vie complet d'une mission</p>
+          <h2 id="eight-steps-heading">Les 8 étapes concrètes d'un accompagnement SEO &amp; GEO</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Pas d'effet boîte noire : voici l'ordre exact dans lequel nous travaillons, les actions réalisées à chaque phase et le livrable que vous recevez.
+          </p>
+        </div>
+
+        <nav class="steps-jump" aria-label="Accès rapide aux 8 étapes">
+          {eightSteps.map((s) => (
+            <a href={`#etape-${s.step}`} class="steps-jump__pill">
+              <span>{s.step}.</span> {s.title}
+            </a>
+          ))}
+        </nav>
+
+        <div class="steps-stack">
+          {eightSteps.map((s) => (
+            <article id={`etape-${s.step}`} class="step-card">
+              <div class="step-card__aside">
+                <span class="step-card__num">Étape {s.step}</span>
+                <span class="step-card__when">{s.when}</span>
+              </div>
+
+              <div class="step-card__body">
+                <h3 class="step-card__title">{s.title}</h3>
+                <p class="step-card__summary">{s.summary}</p>
+
+                <div class="step-card__details">
+                  <div class="step-card__actions">
+                    <span class="step-card__label">Actions réalisées</span>
+                    <ul>
+                      {s.actions.map((act) => (
+                        <li>{act}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div class="step-card__deliverable">
+                    <span class="step-card__label">Livrable concret</span>
+                    <p>{s.deliverable}</p>
+                    <a href={s.relatedLink.href} class="step-card__link">
+                      {s.relatedLink.label} &rarr;
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -150,54 +307,55 @@ const schemaWebPage = {
     <!-- ══ SYSTÈME SEARCH LANDSCAPE & COMPRÉHENSION ══ -->
     <EntityDiagram />
 
-    <!-- ══ CYCLE DE VIE D'UN PROJET ══ -->
-    <MethodTimeline
-      steps={approachSteps}
-      heading="Le déroulement concret d'un projet"
-      subheading="De la prise de contact initiale au suivi mensuel des retombées, chaque étape est documentée et validée ensemble."
-    />
-
-    <!-- ══ OUTILS & EXIGENCES TECHNIQUES ══ -->
+    <!-- ══ OUTILS & RÉFÉRENCES OFFICIELLES ══ -->
     <section class="section section--surface" aria-labelledby="tools-heading">
       <div class="container">
         <div class="section-header--centered">
-          <p class="eyebrow">Environnement de travail</p>
-          <h2 id="tools-heading">Des outils reconnus et des standards ouverts</h2>
+          <p class="eyebrow">Environnement de travail &amp; Standards</p>
+          <h2 id="tools-heading">Des outils reconnus et des standards officiels</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Les analyses reposent sur les standards officiels du W3C, de Google et de Schema.org, combinés aux outils professionnels de référence de l'industrie du search.
+            Chaque recommandation s'appuie sur la documentation officielle des moteurs de recherche et sur des données vérifiables — jamais sur des suppositions.
           </p>
         </div>
 
         <div class="tools-grid">
           <div class="tool-item">
-            <h4 class="tool-item__title">Google Search Console & Analytics</h4>
-            <p class="tool-item__desc">Les données de première main fournies directement par Google pour mesurer les impressions, le CTR, les requêtes exactes et la santé technique.</p>
+            <h3 class="tool-item__title">Google Search Console &amp; Search Central</h3>
+            <p class="tool-item__desc">
+              Exploitation directe des données de première main (impressions, clics, rapport d'indexation) en stricte conformité avec les <a href="https://developers.google.com/search/docs" target="_blank" rel="noopener noreferrer">consignes Google Search Central</a> et <a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer">Google Search Console</a>.
+            </p>
           </div>
           <div class="tool-item">
-            <h4 class="tool-item__title">Crawl & Exploration (Screaming Frog)</h4>
-            <p class="tool-item__desc">Audit systématique de l'arborescence, des codes HTTP, du budget de crawl, des balises canoniques et de la profondeur de clic.</p>
+            <h3 class="tool-item__title">Crawl technique &amp; Core Web Vitals</h3>
+            <p class="tool-item__desc">
+              Audit exhaustif de l'arborescence via Screaming Frog SEO Spider et mesure des performances réelles selon les seuils <a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals (web.dev)</a> (LCP, INP, CLS).
+            </p>
           </div>
           <div class="tool-item">
-            <h4 class="tool-item__title">Balisage Schema.org & JSON-LD</h4>
-            <p class="tool-item__desc">Structuration sémantique normalisée pour expliciter vos services, votre organisation, vos auteurs et vos zones géographiques.</p>
+            <h3 class="tool-item__title">Graphe d'entités Schema.org &amp; Wikidata</h3>
+            <p class="tool-item__desc">
+              Structuration sémantique normalisée en JSON-LD selon le vocabulaire <a href="https://schema.org/" target="_blank" rel="noopener noreferrer">Schema.org</a> pour relier votre organisation, vos services et vos zones géographiques.
+            </p>
           </div>
           <div class="tool-item">
-            <h4 class="tool-item__title">Veille & Moteurs de réponse IA</h4>
-            <p class="tool-item__desc">Surveillance des extractions contextuelles dans les Google AI Overviews et moteurs de réponse de nouvelle génération.</p>
+            <h3 class="tool-item__title">Protocoles GEO &amp; Tests sur moteurs IA</h3>
+            <p class="tool-item__desc">
+              Implémentation du standard <code>/llms.txt</code> et vérification des citations de marque sur ChatGPT, Perplexity et Google AI Overviews. Consultez nos <a href="/realisations/">exemples de livrables réels</a>.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ══ FAQ APPROCHE ══ -->
-    <FAQ items={faqApproach} heading="Questions fréquentes sur le déroulement" />
+    <FAQ items={faqApproach} heading="Questions fréquentes sur la méthodologie et la collaboration" />
 
     <!-- ══ CTA FINAL ══ -->
     <CTA
-      heading="Envie d'échanger sur la méthode adaptée à votre activité ?"
-      body="Chaque projet démarre par une discussion ouverte sur vos enjeux commerciaux et votre situation actuelle. Sans engagement."
+      heading="Prêt à démarrer par l'étape 1 (échange initial sans engagement) ?"
+      body="Discutons pendant 30 minutes de votre activité, de votre site actuel et des opportunités de croissance sur Google et les moteurs IA."
       primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
-      secondaryCTA={{ label: 'Explorer les services', href: '/services/' }}
+      secondaryCTA={{ label: 'Réserver un appel de 30 min', href: '/reserver-un-appel/' }}
       variant="navy"
     />
   </main>
@@ -223,7 +381,7 @@ const schemaWebPage = {
 .pillar-card {
   background: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   padding: var(--space-8);
   display: flex;
   flex-direction: column;
@@ -231,10 +389,12 @@ const schemaWebPage = {
 
 .pillar-card__num {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--color-atlantic);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   display: inline-block;
 }
 
@@ -251,6 +411,193 @@ const schemaWebPage = {
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
   margin: 0;
+}
+
+/* ══ 8 STEPS JUMP NAV & STACK ══ */
+.steps-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  margin: var(--space-8) 0 var(--space-10);
+}
+
+.steps-jump__pill {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-navy);
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 0.85rem;
+  text-decoration: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.steps-jump__pill span {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-bold);
+  color: var(--color-atlantic);
+  margin-right: 3px;
+}
+
+.steps-jump__pill:hover {
+  border-color: var(--color-atlantic);
+  background: var(--color-surface);
+}
+
+.steps-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.step-card {
+  scroll-margin-top: 6.5rem;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-8);
+  box-shadow: var(--shadow-xs);
+}
+
+@media (max-width: 820px) {
+  .step-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-6);
+  }
+}
+
+.step-card__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-right: 1px solid var(--color-border-light);
+  padding-right: var(--space-4);
+}
+
+@media (max-width: 820px) {
+  .step-card__aside {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-light);
+    padding-right: 0;
+    padding-bottom: var(--space-3);
+  }
+}
+
+.step-card__num {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+}
+
+.step-card__when {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: var(--weight-semibold);
+  color: var(--color-atlantic);
+  background: var(--color-surface);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  align-self: flex-start;
+}
+
+.step-card__title {
+  font-size: var(--text-xl);
+  color: var(--color-navy);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.step-card__summary {
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--space-6) 0;
+}
+
+.step-card__details {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .step-card__details {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step-card__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-atlantic);
+  margin-bottom: var(--space-2);
+}
+
+.step-card__actions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.step-card__actions li {
+  position: relative;
+  padding-left: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
+
+.step-card__actions li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-atlantic);
+  font-weight: var(--weight-bold);
+}
+
+.step-card__deliverable {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-left: 3px solid var(--color-atlantic);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.step-card__deliverable p {
+  font-size: var(--text-sm);
+  color: var(--color-navy);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+.step-card__link {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-atlantic);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-top: var(--space-1);
 }
 
 /* ══ TOOLS GRID ══ */
@@ -271,7 +618,7 @@ const schemaWebPage = {
   background: #FFFFFF;
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-atlantic);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   padding: var(--space-6);
 }
 

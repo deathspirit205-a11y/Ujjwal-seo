@@ -1,17 +1,19 @@
 ---
 /**
- * services/index.astro — Services Hub
+ * services/index.astro — Comprehensive Services Hub (Phase 4)
  * URL: /services/
  *
- * Comprehensive overview of the 6 core SEO & GEO services:
- * Technique, Contenu, Local, Audit, Stratégie, GEO.
+ * Distinct from the Homepage overview: provides a complete, 12-part resource
+ * for each of the 6 core SEO & GEO services (meaning, business problems solved,
+ * target audience, scope, methodology, tools, deliverables, KPIs, common mistakes,
+ * service-specific FAQs, contextual internal/external links, and dedicated CTA).
  */
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import ServiceCard from '../../components/ServiceCard.astro';
+import SearchLandscapeServiceGraphic from '../../components/SearchLandscapeServiceGraphic.astro';
 import FAQ from '../../components/FAQ.astro';
 import CTA from '../../components/CTA.astro';
 import { buildTitle, SITE_URL } from '../../utils/seo';
@@ -19,70 +21,109 @@ import { services } from '../../data/services';
 
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
-  { label: 'Services', href: '/services/' },
+  { label: 'Services SEO & GEO', href: '/services/' },
 ];
 
 const decisionGuide = [
   {
-    situation: 'Je ne comprends pas pourquoi mon site n\'apparaît pas sur Google.',
-    recommendedService: 'Audit SEO',
+    situation: "Mon site existe, mais il génère peu de visites ou de demandes et je ne sais pas ce qui bloque.",
+    recommendedService: 'Audit SEO Complet',
+    anchor: '#audit-seo',
     url: '/services/audit-seo/',
-    rationale: 'Un diagnostic complet de vos fondations techniques, sémantiques et concurrentielles pour isoler les blocages.',
+    rationale: "Poser un diagnostic complet (technique, sémantique, concurrence) avant d'investir dans la bonne direction.",
   },
   {
-    situation: 'Mon site a des erreurs d\'exploration, des lenteurs ou un balisage incomplet.',
+    situation: 'Certaines de mes pages ne sont pas indexées, mon site est lent ou je prépare une refonte web.',
     recommendedService: 'SEO Technique',
+    anchor: '#seo-technique',
     url: '/services/seo-technique/',
-    rationale: 'Assainissement du crawl, accélération des Core Web Vitals, architecture propre et code Schema.org.',
+    rationale: "Lever les freins d'exploration, sécuriser vos redirections 301, optimiser les Core Web Vitals et le JSON-LD.",
   },
   {
-    situation: 'Mes contenus manquent de visibilité ou ne ciblent pas les bonnes intentions.',
+    situation: 'Mes pages de services ou articles attirent peu de prospects qualifiés face à mes concurrents.',
     recommendedService: 'SEO Contenu & Sémantique',
+    anchor: '#seo-contenu',
     url: '/services/seo-contenu/',
-    rationale: 'Cartographie des intentions de recherche, optimisation on-page et maillage interne thématique.',
+    rationale: "Aligner votre arborescence, vos titres et vos textes sur les intentions de recherche réelles de vos acheteurs.",
   },
   {
-    situation: 'Je veux être trouvé par des clients dans ma ville ou ma région.',
-    recommendedService: 'SEO Local',
+    situation: 'Je veux capter des clients à Rennes, Vitré, Laval, Fougères ou dans ma zone de chalandise.',
+    recommendedService: 'SEO Local & Territoire',
+    anchor: '#seo-local',
     url: '/services/seo-local/',
-    rationale: 'Optimisation Google Business Profile, signaux de proximité et pages locales à forte pertinence.',
+    rationale: 'Renforcer votre présence dans le Pack Local Google Maps, votre fiche Google Business Profile et vos pages locales.',
   },
   {
-    situation: 'J\'ai besoin d\'une feuille de route claire pour guider mes investissements sur l\'année.',
-    recommendedService: 'Stratégie SEO',
+    situation: "J'ai besoin d'un consultant impliqué mois après mois pour piloter et exécuter ma croissance organique.",
+    recommendedService: 'Stratégie & Accompagnement SEO',
+    anchor: '#strategie-seo',
     url: '/services/strategie-seo/',
-    rationale: 'Étude de marché, benchmark de concurrence, priorisation ROI/effort et pilotage des KPIs.',
+    rationale: 'Déployer une feuille de route trimestrielle priorisée avec suivi mensuel des positions et des conversions.',
   },
   {
-    situation: 'Je souhaite anticiper l\'impact de l\'IA et apparaître dans les synthèses génératives.',
-    recommendedService: 'GEO (Search IA)',
+    situation: 'Je veux que mon entreprise soit comprise et citée par ChatGPT, Perplexity et Google AI.',
+    recommendedService: 'GEO — Visibilité Moteurs IA',
+    anchor: '#geo',
     url: '/services/geo/',
-    rationale: 'Déclaration explicite des entités d\'affaires, graphes de données et optimisation pour les modèles de réponse.',
+    rationale: "Structurer votre graphe d'entités Schema.org, votre fichier /llms.txt et la clarté factuelle de vos pages.",
   },
 ];
 
-const servicesSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'Services SEO & GEO — Ujjwal SEO',
-  description: 'Services d\'accompagnement en référencement naturel et optimisation pour les moteurs IA : technique, contenu, local, audit, stratégie et GEO.',
-  url: `${SITE_URL}/services/`,
-  itemListElement: services.map((s, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    item: {
-      '@type': 'Service',
-      name: s.title,
-      url: `${SITE_URL}${s.slug}`,
-      description: s.shortDescription,
-    },
-  })),
-};
+const generalServicesFaq = [
+  {
+    question: 'Quels facteurs déterminent le budget d\'une prestation SEO ou GEO ?',
+    answer: "Le tarif dépend de quatre critères objectifs : la taille et la complexité technique de votre site (un site vitrine de 15 pages ne demande pas le même travail qu'un catalogue de 2 000 URLs), l'intensité concurrentielle de votre secteur, votre point de départ actuel et le mode de répartition du travail (conseil seul ou intégration directe par mes soins). Chaque mission fait l'objet d'un devis détaillé et forfaitaire après un premier échange gratuit de 30 minutes.",
+  },
+  {
+    question: 'Peut-on commencer par une mission ponctuelle avant un accompagnement régulier ?',
+    answer: "Oui, c'est même la démarche que je recommande le plus souvent. Démarrer par un audit SEO & GEO complet vous donne une feuille de route claire et vous permet de juger concrètement de la rigueur de mon travail avant d'envisager un accompagnement mensuel.",
+  },
+  {
+    question: 'Intervenez-vous uniquement en Bretagne et Pays de la Loire ?',
+    answer: "Je suis ancré dans le Grand Ouest (Rennes, Vitré, Fougères, Janzé, Châteaubriant, Redon, Laval) où je peux me déplacer dans vos locaux, et j'accompagne également des entreprises partout en France en visioconférence avec la même réactivité.",
+  },
+];
+
+const servicesSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Prestations et Services SEO & GEO — Ujjwal SEO',
+    description: "Catalogue détaillé des prestations de conseil en référencement naturel (SEO) et optimisation pour moteurs de recherche IA (GEO) par Ujjwal Lage.",
+    url: `${SITE_URL}/services/`,
+    itemListElement: services.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Service',
+        '@id': `${SITE_URL}${s.slug}#service`,
+        name: s.title,
+        url: `${SITE_URL}${s.slug}`,
+        description: s.detail.meaning,
+        provider: {
+          '@id': `${SITE_URL}/#organization`,
+        },
+      },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: generalServicesFaq.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.answer,
+      },
+    })),
+  },
+];
 ---
 
 <ServiceLayout
-  title={buildTitle('Services SEO & GEO — Audit, Technique, Contenu, Local & Search IA')}
-  description="Découvrez l'ensemble des prestations d'accompagnement en référencement naturel (SEO) et optimisation pour moteurs de recherche IA (GEO). Méthode claire et résultats durables."
+  title={buildTitle('Services SEO & GEO — Audit, Technique, Contenu, Local & Moteurs IA')}
+  description="Guide complet de mes prestations SEO & GEO : audit SEO, optimisation technique, stratégie éditoriale, référencement local (Rennes & Grand Ouest) et visibilité IA. Livrables, méthodes et KPIs."
   canonicalPath="/services/"
   breadcrumbs={breadcrumbs}
   schema={servicesSchema}
@@ -92,50 +133,42 @@ const servicesSchema = {
   <main id="main-content">
     <PageHero
       visual="serp"
-      eyebrow="Expertises & Prestations"
-      title="Services SEO & GEO"
-      description="Une suite d'interventions ciblées, pensées pour résoudre des blocages concrets et construire une présence numérique robuste, compréhensible et durable."
-      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
-      secondaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
-      compact={true}
+      eyebrow="Catalogue complet des expertises"
+      title="Prestations SEO & GEO : méthodes, livrables et résultats mesurables"
+      description="Découvrez en détail comment chaque intervention résout un problème précis de visibilité sur Google et dans les moteurs de réponse IA, avec une transparence totale sur les méthodes, les outils et les livrables."
+      primaryCTA={{ label: 'Demander un premier échange (30 min)', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Consulter la méthodologie', href: '/approche/' }}
     />
 
     <Breadcrumbs items={breadcrumbs} />
 
-    <!-- ══ GRILLE DES 6 SERVICES ══ -->
-    <section class="section" aria-labelledby="hub-services-heading">
+    <!-- ══ SOMMAIRE RAPIDE D'ACCÈS AUX 6 SERVICES ══ -->
+    <nav class="services-jumpnav" aria-label="Accès direct aux 6 prestations">
       <div class="container">
-        <div class="section-header--centered">
-          <p class="eyebrow">Domaines d'intervention</p>
-          <h2 id="hub-services-heading">6 expertises au service de votre visibilité</h2>
-          <p class="lead" style="margin-top: var(--space-4)">
-            Chaque prestation correspond à une étape de maturité ou à un défi spécifique de votre présence en ligne.
-          </p>
-        </div>
-
-        <div class="grid-auto">
-          {services.map((service, i) => (
-            <ServiceCard
-              title={service.title}
-              slug={service.slug}
-              description={service.shortDescription}
-              category={service.category}
-              deliverables={service.deliverables}
-              index={i + 1}
-            />
-          ))}
+        <div class="services-jumpnav__inner">
+          <span class="services-jumpnav__label">Accès direct :</span>
+          <ul class="services-jumpnav__list" role="list">
+            {services.map((s, idx) => (
+              <li>
+                <a href={`#${s.id}`} class="services-jumpnav__pill">
+                  <span class="services-jumpnav__num">0{idx + 1}</span>
+                  <span>{s.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </section>
+    </nav>
 
-    <!-- ══ GUIDE D'AIDE AU CHOIX ══ -->
-    <section class="section section--surface" aria-labelledby="guide-heading">
+    <!-- ══ GUIDE D'ORIENTATION SELON VOTRE SITUATION ══ -->
+    <section class="section section--warm" aria-labelledby="guide-heading">
       <div class="container">
         <div class="section-header--centered">
-          <p class="eyebrow">Orientation</p>
-          <h2 id="guide-heading">Quel service correspond à votre situation ?</h2>
+          <p class="eyebrow">Diagnostic d'orientation</p>
+          <h2 id="guide-heading">Par quelle prestation commencer selon votre besoin ?</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Identifiez votre défi principal pour trouver le point de départ le plus pertinent.
+            Une entreprise qui refait son site n'a pas les mêmes priorités qu'un cabinet local qui cherche des appels sur Google Maps. Voici comment identifier le levier adapté à votre situation actuelle :
           </p>
         </div>
 
@@ -144,9 +177,9 @@ const servicesSchema = {
             <div class="decision-card">
               <p class="decision-card__situation">« {item.situation} »</p>
               <div class="decision-card__answer">
-                <span class="decision-card__label">Point d'entrée conseillé :</span>
-                <a href={item.url} class="decision-card__link">
-                  {item.recommendedService} &rarr;
+                <span class="decision-card__label">Prestation recommandée :</span>
+                <a href={item.anchor} class="decision-card__link">
+                  {item.recommendedService} &darr;
                 </a>
               </div>
               <p class="decision-card__rationale">{item.rationale}</p>
@@ -156,12 +189,235 @@ const servicesSchema = {
       </div>
     </section>
 
+    <!-- ══ DOSSIERS DÉTAILLÉS DES 6 SERVICES (12 DIMENSIONS CHACUN) ══ -->
+    <section class="section" aria-labelledby="detailed-services-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Fiches prestations détaillées</p>
+          <h2 id="detailed-services-heading">Ce que comprend concrètement chaque intervention</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Contrairement aux offres boîtes noires, chaque service ci-dessous détaille les problèmes traités, le périmètre exact, les outils utilisés, les livrables remis et les indicateurs de succès.
+          </p>
+        </div>
+
+        <div class="service-dossiers">
+          {services.map((service, idx) => (
+            <article id={service.id} class="dossier" aria-labelledby={`heading-${service.id}`}>
+              <!-- Dossier Header -->
+              <header class="dossier__header">
+                <div class="dossier__title-group">
+                  <div class="dossier__meta">
+                    <span class="dossier__index">Prestation 0{idx + 1}</span>
+                    <span class="dossier__category">{service.category}</span>
+                  </div>
+                  <h3 id={`heading-${service.id}`} class="dossier__title">
+                    <a href={service.slug}>{service.title}</a>
+                  </h3>
+                </div>
+                <SearchLandscapeServiceGraphic serviceId={service.id} size={56} />
+              </header>
+
+              <!-- 1. Meaning & 3. Who needs it -->
+              <div class="dossier__intro-grid">
+                <div class="dossier__block">
+                  <h4>1. En quoi consiste cette prestation ?</h4>
+                  <p>{service.detail.meaning}</p>
+                </div>
+                <div class="dossier__block dossier__block--audience">
+                  <h4>2. À qui s'adresse-t-elle ?</h4>
+                  <p>{service.detail.whoNeedsIt}</p>
+                  <p class="dossier__benefit-highlight">
+                    <strong>Objectif métier :</strong> {service.businessBenefit}
+                  </p>
+                </div>
+              </div>
+
+              <!-- 2. Business problems solved & 4. What is included -->
+              <div class="dossier__two-col">
+                <div class="dossier__panel">
+                  <h4>3. Quels problèmes business résout-elle ?</h4>
+                  <ul class="dossier__list dossier__list--problems" role="list">
+                    {service.detail.problemsSolved.map((prob) => (
+                      <li>{prob}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="dossier__panel dossier__panel--included">
+                  <h4>4. Ce qui est inclus dans l'intervention</h4>
+                  <ul class="dossier__list dossier__list--check" role="list">
+                    {service.detail.included.map((inc) => (
+                      <li>{inc}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 5. How work is performed & 6. Tools and methods -->
+              <div class="dossier__two-col">
+                <div class="dossier__panel">
+                  <h4>5. Comment le travail est réalisé</h4>
+                  <p>{service.detail.howPerformed}</p>
+                  {service.detail.externalRef && (
+                    <p class="dossier__ext-ref">
+                      Référence méthodologique :{' '}
+                      <a href={service.detail.externalRef.url} target="_blank" rel="noopener noreferrer">
+                        {service.detail.externalRef.label} &nearr;
+                      </a>
+                    </p>
+                  )}
+                </div>
+
+                <div class="dossier__panel">
+                  <h4>6. Outils &amp; méthodes mobilisés</h4>
+                  <ul class="dossier__list dossier__list--tools" role="list">
+                    {service.detail.toolsAndMethods.map((tool) => (
+                      <li>{tool}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 7. Deliverables, 8. Success metrics, 9. Common mistakes -->
+              <div class="dossier__three-col">
+                <div class="dossier__subcard">
+                  <h4>7. Livrables remis</h4>
+                  <ul class="dossier__list dossier__list--check" role="list">
+                    {service.detail.expectedDeliverables.map((del) => (
+                      <li>{del}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="dossier__subcard">
+                  <h4>8. Comment le succès est mesuré</h4>
+                  <ul class="dossier__list dossier__list--metrics" role="list">
+                    {service.detail.successMetrics.map((metric) => (
+                      <li>{metric}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="dossier__subcard dossier__subcard--warn">
+                  <h4>9. Erreurs fréquentes à éviter</h4>
+                  <ul class="dossier__list dossier__list--warn" role="list">
+                    {service.detail.commonMistakes.map((mistake) => (
+                      <li>{mistake}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 10. Specific FAQs -->
+              <div class="dossier__faqs">
+                <h4>10. Questions fréquentes sur {service.title.toLowerCase()}</h4>
+                <div class="dossier__faq-grid">
+                  {service.detail.faqs.map((f) => (
+                    <div class="dossier__faq-item">
+                      <h5>{f.question}</h5>
+                      <p>{f.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- 11. Contextual internal links & 12. Clear CTA -->
+              <footer class="dossier__footer">
+                <div class="dossier__related">
+                  <span class="dossier__related-label">Ressources &amp; pages associées :</span>
+                  <div class="dossier__related-links">
+                    {service.detail.relatedLinks.map((link) => (
+                      <a href={link.href} class="dossier__related-chip">
+                        {link.label} &rarr;
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="dossier__actions">
+                  <a href={service.slug} class="btn btn--secondary btn--sm">
+                    Consulter la page dédiée {service.title}
+                  </a>
+                  <a href="/contact/" class="btn btn--primary btn--sm">
+                    Demander un devis pour ce besoin
+                  </a>
+                </div>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TRANSPARENCE TARIFAIRE & MODALITÉS DE COLLABORATION ══ -->
+    <section class="section section--warm" aria-labelledby="pricing-transparency-heading">
+      <div class="container">
+        <div class="section-header--centered">
+          <p class="eyebrow">Transparence &amp; Modalités</p>
+          <h2 id="pricing-transparency-heading">Trois formats d'intervention adaptés à votre maturité</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Un devis SEO pertinent ne se calcule pas au nombre de mots-clés mais à la charge réelle de travail. Voici comment s'articulent mes interventions :
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="format-card">
+            <span class="format-card__tag">Format 01 · Ponctuel</span>
+            <h3>Diagnostic &amp; Audit Complet</h3>
+            <p>
+              Idéal pour faire un état des lieux complet avant une refonte ou comprendre pourquoi votre trafic stagne. Vous repartez avec une feuille de route priorisée que vous pouvez appliquer en interne ou me confier.
+            </p>
+            <ul class="format-card__points">
+              <li>Périmètre et tarif forfaitaire fixés à l'avance</li>
+              <li>Livraison sous 10 à 14 jours ouvrés</li>
+              <li>Séance de restitution en visioconférence ou sur site</li>
+            </ul>
+            <a href="/services/audit-seo/" class="format-card__link">Voir le détail de l'Audit SEO &rarr;</a>
+          </div>
+
+          <div class="format-card format-card--featured">
+            <span class="format-card__tag">Format 02 · Trimestriel / Mensuel</span>
+            <h3>Accompagnement SEO &amp; GEO</h3>
+            <p>
+              Conçu pour les PME qui veulent inscrire leur acquisition organique dans la durée. Je pilote votre feuille de route, optimise vos pages et suis vos conversions mois après mois.
+            </p>
+            <ul class="format-card__points">
+              <li>Nombre de jours dédiés adapté à vos objectifs</li>
+              <li>Exécution technique, éditoriale et balisage Schema.org</li>
+              <li>Point mensuel sur les résultats Search Console</li>
+            </ul>
+            <a href="/services/strategie-seo/" class="format-card__link">Voir l'accompagnement stratégique &rarr;</a>
+          </div>
+
+          <div class="format-card">
+            <span class="format-card__tag">Format 03 · Ciblé</span>
+            <h3>Mission Spécifique (Local, Refonte, GEO)</h3>
+            <p>
+              Une intervention chirurgicale sur un besoin précis : sécurisation d'une migration de site, déploiement local en Bretagne / Pays de la Loire ou structuration d'entités pour les IA.
+            </p>
+            <ul class="format-card__points">
+              <li>Objectif et livrables clairement délimités</li>
+              <li>Collaboration fluide avec votre équipe ou agence web</li>
+              <li>Contrôle post-mise en production inclus</li>
+            </ul>
+            <a href="/contact/" class="format-card__link">Exposer votre besoin spécifique &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ GÉNÉRALE SERVICES ══ -->
+    <FAQ
+      title="Questions fréquentes sur le fonctionnement des prestations"
+      items={generalServicesFaq}
+    />
+
     <!-- ══ CTA FINAL ══ -->
     <CTA
-      heading="Vous avez un doute sur la prestation adaptée ?"
-      body="Chaque projet est unique. Discutons-en 30 minutes : nous établirons un premier diagnostic sans engagement."
-      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
-      secondaryCTA={{ label: 'Consulter la méthodologie', href: '/approche/' }}
+      heading="Vous hésitez entre un audit ponctuel et un accompagnement ?"
+      body="Échangeons 30 minutes sur votre site et votre marché : je vous indiquerai honnêtement le levier le plus rentable pour votre situation actuelle."
+      primaryCTA={{ label: 'Réserver un appel découverte (30 min)', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Écrire via le formulaire de contact', href: '/contact/' }}
       variant="navy"
     />
   </main>
@@ -170,35 +426,104 @@ const servicesSchema = {
 </ServiceLayout>
 
 <style>
+/* Jump nav */
+.services-jumpnav {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-4);
+  position: sticky;
+  top: 4.25rem;
+  z-index: 20;
+}
+
+.services-jumpnav__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.services-jumpnav__label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.services-jumpnav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.services-jumpnav__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-navy);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.services-jumpnav__pill:hover {
+  background-color: var(--color-navy);
+  border-color: var(--color-navy);
+  color: #FFFFFF;
+}
+
+.services-jumpnav__num {
+  font-weight: var(--weight-bold);
+  color: var(--color-atlantic);
+}
+
+.services-jumpnav__pill:hover .services-jumpnav__num {
+  color: var(--color-accent-soft);
+}
+
+/* Orientation grid */
 .decision-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
-  margin-top: var(--space-10);
+  margin-top: var(--space-8);
 }
 
 @media (max-width: 768px) {
   .decision-grid {
     grid-template-columns: 1fr;
   }
+  .services-jumpnav {
+    position: static;
+  }
 }
 
 .decision-card {
   background: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-xs);
 }
 
 .decision-card__situation {
   font-family: var(--font-serif);
-  font-size: var(--text-base);
+  font-size: 1.05rem;
   font-style: italic;
   color: var(--color-navy);
   margin-bottom: var(--space-4);
-  line-height: var(--leading-relaxed);
+  line-height: 1.55;
 }
 
 .decision-card__answer {
@@ -209,10 +534,11 @@ const servicesSchema = {
   margin-bottom: var(--space-2);
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--color-border-light);
+  flex-wrap: wrap;
 }
 
 .decision-card__label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-muted);
@@ -226,13 +552,398 @@ const servicesSchema = {
 }
 
 .decision-card__link:hover {
+  color: var(--color-navy);
   text-decoration: underline;
 }
 
 .decision-card__rationale {
-  font-size: var(--text-xs);
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
-  line-height: var(--leading-normal);
+  line-height: 1.55;
   margin: 0;
+}
+
+/* Service Dossiers */
+.service-dossiers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+}
+
+.dossier {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  scroll-margin-top: 7.5rem;
+}
+
+.dossier__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-6);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dossier__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.dossier__index {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-navy);
+  background-color: var(--color-surface-warm);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.dossier__category {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-atlantic);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dossier__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.dossier__title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dossier__title a:hover {
+  color: var(--color-atlantic);
+}
+
+.dossier__intro-grid,
+.dossier__two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.dossier__three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 960px) {
+  .dossier__intro-grid,
+  .dossier__two-col,
+  .dossier__three-col {
+    grid-template-columns: 1fr;
+  }
+  .dossier {
+    padding: var(--space-5);
+  }
+}
+
+.dossier h4 {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.dossier p {
+  font-size: 0.925rem;
+  color: var(--color-text);
+  line-height: 1.65;
+}
+
+.dossier__block--audience {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.dossier__benefit-highlight {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem !important;
+  color: var(--color-navy) !important;
+}
+
+.dossier__panel {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+.dossier__panel--included {
+  background-color: var(--color-surface-warm);
+  border-color: var(--color-border);
+}
+
+.dossier__subcard {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.dossier__subcard--warn {
+  background-color: #FCF9F7;
+  border-color: #E8D7CE;
+}
+
+.dossier__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.dossier__list li {
+  font-size: 0.86rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.dossier__list--problems li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-atlantic);
+  font-weight: 700;
+}
+
+.dossier__list--check li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-atlantic);
+  font-weight: 700;
+}
+
+.dossier__list--tools li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  font-size: 0.65rem;
+  top: 0.25rem;
+  color: var(--color-navy);
+}
+
+.dossier__list--metrics li::before {
+  content: '↗';
+  position: absolute;
+  left: 0;
+  color: #2E7D5B;
+  font-weight: 700;
+}
+
+.dossier__list--warn li::before {
+  content: '!';
+  position: absolute;
+  left: 0.2rem;
+  color: #B45309;
+  font-weight: 800;
+}
+
+.dossier__ext-ref {
+  margin-top: var(--space-3);
+  font-size: 0.8125rem !important;
+  color: var(--color-text-muted) !important;
+}
+
+.dossier__ext-ref a {
+  color: var(--color-atlantic);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dossier__faqs {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.dossier__faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+@media (max-width: 768px) {
+  .dossier__faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dossier__faq-item h5 {
+  font-size: 0.9rem;
+  font-weight: var(--weight-semibold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.dossier__faq-item p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.dossier__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.dossier__related {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.dossier__related-label {
+  font-size: 0.72rem;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.dossier__related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.dossier__related-chip {
+  font-size: 0.78rem;
+  font-weight: var(--weight-medium);
+  color: var(--color-navy);
+  background-color: var(--color-surface-warm);
+  border: 1px solid var(--color-border);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.dossier__related-chip:hover {
+  background-color: var(--color-navy);
+  color: #FFFFFF;
+}
+
+.dossier__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Format Cards */
+.format-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xs);
+}
+
+.format-card--featured {
+  border-color: var(--color-atlantic);
+  border-width: 2px;
+  box-shadow: var(--shadow-sm);
+}
+
+.format-card__tag {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-atlantic);
+  background-color: var(--color-surface-warm);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-3);
+}
+
+.format-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.format-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.format-card__points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-5) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.format-card__points li {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  padding-left: 1.15rem;
+  position: relative;
+}
+
+.format-card__points li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-atlantic);
+  font-weight: 700;
+}
+
+.format-card__link {
+  margin-top: auto;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+.format-card__link:hover {
+  color: var(--color-atlantic);
+  text-decoration: underline;
 }
 </style>

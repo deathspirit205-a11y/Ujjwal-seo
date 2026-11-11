@@ -15,44 +15,45 @@
 ───────────────────────────────────────── */
 
 :root {
-  /* ── Color: Background / Surface ── */
-  --color-bg:           #FFFFFF;  /* crisp white page background */
-  --color-surface:      #FFFFFF;  /* pure white cards */
-  --color-surface-warm: #F8FAFC;  /* cool slate for subtle alternating sections */
-  --color-surface-subtle:#F1F5F9; /* subtle component background */
-  --color-bg-subtle:    #F1F5F9;  /* alias for subtle component background */
-  --color-surface-dark: #0B132B;  /* midnight deep navy */
+  /* ── Color: Background / Surface (Phase 3 Light & Natural Palette) ── */
+  --color-bg:           #F7F8F5;  /* warm natural stone / alabaster main background */
+  --color-surface:      #FFFFFF;  /* pure white cards & elevated surfaces */
+  --color-surface-warm: #EDF3F4;  /* soft coastal mist secondary background */
+  --color-surface-subtle:#EDF3F4; /* subtle component background */
+  --color-bg-subtle:    #EDF3F4;  /* alias for subtle component background */
+  --color-surface-dark: #17324D;  /* primary deep Atlantic navy */
 
   /* ── Color: Text ── */
-  --color-text:         #0F172A;  /* slate 900 */
-  --color-text-muted:   #475569;  /* slate 600 secondary */
-  --color-text-subtle:  #94A3B8;  /* slate 400 captions */
+  --color-text:         #263746;  /* deep slate-navy primary text */
+  --color-text-muted:   #4A6070;  /* balanced muted coastal slate */
+  --color-text-subtle:  #6E8494;  /* accessible captions & metadata */
   --color-text-inverse: #FFFFFF;  /* white on dark backgrounds */
 
-  /* ── Color: Accent (Royal / Atlantic Blue) ── */
-  --color-accent:       #1D4ED8;  /* vibrant Atlantic / royal blue */
-  --color-accent-hover: #1E40AF;  /* darker blue on hover */
-  --color-accent-light: #EFF6FF;  /* light blue tint */
-  --color-accent-dim:   rgba(29, 78, 216, 0.08);
+  /* ── Color: Accent (Atlantic Blue & Soft Accent) ── */
+  --color-accent:       #397B9B;  /* Atlantic blue */
+  --color-accent-hover: #17324D;  /* primary navy on hover */
+  --color-accent-light: #EDF3F4;  /* soft blue-grey tint */
+  --color-accent-soft:  #B8D1D6;  /* soft coastal accent */
+  --color-accent-dim:   rgba(57, 123, 155, 0.12);
 
-  /* ── Color: Warm highlight (Amber) — use sparingly: key numbers, primary CTA, highlights ── */
-  --color-highlight:       #F59E0B;
-  --color-highlight-hover: #D97706;
-  --color-highlight-soft:  #FEF3C7;
-  --color-highlight-ink:   #451A03;  /* text on amber */
+  /* ── Color: Warm highlight — restrained editorial accent ── */
+  --color-highlight:       #17324D;
+  --color-highlight-hover: #397B9B;
+  --color-highlight-soft:  #E3EEF1;
+  --color-highlight-ink:   #FFFFFF;
 
   /* ── Color: Navy / Atlantic ── */
-  --color-navy:          #0B132B;  /* midnight navy */
-  --color-navy-light:    #1C2541;  /* lighter navy */
-  --color-atlantic:      #2563EB;  /* electric Atlantic blue */
-  --color-atlantic-muted:#60A5FA;  /* soft cyan blue */
-  --color-overlay-dark:  rgba(11, 19, 43, 0.85);
-  --color-overlay-darker:rgba(11, 19, 43, 0.95);
-  --color-overlay-light: rgba(11, 19, 43, 0.4);
+  --color-navy:          #17324D;  /* primary navy */
+  --color-navy-light:    #264766;  /* lighter navy */
+  --color-atlantic:      #397B9B;  /* Atlantic blue */
+  --color-atlantic-muted:#B8D1D6;  /* soft accent */
+  --color-overlay-dark:  rgba(23, 50, 77, 0.82);
+  --color-overlay-darker:rgba(23, 50, 77, 0.92);
+  --color-overlay-light: rgba(247, 248, 245, 0.86);
 
   /* ── Color: Borders ── */
-  --color-border:       #E2E8F0;  /* clean light border */
-  --color-border-light: #F1F5F9;  /* hairline border */
+  --color-border:       #D5E2E6;  /* soft natural border derived from #B8D1D6 */
+  --color-border-light: #E6EFF1;  /* hairline border */
 
   /* ── Typography: Font Families ── */
   --font-serif: 'Playfair Display', Georgia, serif;   /* editorial / brand */
@@ -501,11 +502,11 @@ p + p {
   transform: translateY(0);
 }
 
-/* Primary: charcoal — signals authority */
+/* Primary: deep navy #17324D — signals authority */
 .btn--primary,
 .btn-primary {
-  background-color: var(--color-text);
-  border-color: var(--color-text);
+  background-color: var(--color-navy);
+  border-color: var(--color-navy);
   color: var(--color-text-inverse);
 }
 
@@ -513,7 +514,7 @@ p + p {
 .btn-primary:hover {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  box-shadow: 0 4px 12px var(--color-accent-dim);
+  box-shadow: 0 4px 14px var(--color-accent-dim);
 }
 
 /* Secondary / Outline: outlined */
@@ -521,17 +522,17 @@ p + p {
 .btn-secondary,
 .btn--outline,
 .btn-outline {
-  background-color: transparent;
-  border-color: var(--color-border);
-  color: var(--color-text);
+  background-color: #FFFFFF;
+  border-color: var(--color-accent-soft);
+  color: var(--color-navy);
 }
 
 .btn--secondary:hover,
 .btn-secondary:hover,
 .btn--outline:hover,
 .btn-outline:hover {
-  border-color: var(--color-text);
-  background-color: var(--color-text);
+  border-color: var(--color-navy);
+  background-color: var(--color-navy);
   color: var(--color-text-inverse);
 }
 
@@ -739,32 +740,32 @@ p + p {
    VITALITY LAYER — accent CTA, highlights, navy band, scroll reveal
 ───────────────────────────────────────── */
 
-/* Amber CTA — reserve for the single most important action per view */
+/* Primary accent CTA — Atlantic & Navy harmony */
 .btn--accent {
-  background-color: var(--color-highlight);
-  border-color: var(--color-highlight);
-  color: var(--color-highlight-ink);
-  font-weight: var(--weight-bold);
+  background-color: var(--color-navy);
+  border-color: var(--color-navy);
+  color: #FFFFFF;
+  font-weight: var(--weight-semibold);
 }
 
 .btn--accent:hover {
-  background-color: var(--color-highlight-hover);
-  border-color: var(--color-highlight-hover);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+  box-shadow: 0 6px 18px rgba(23, 50, 77, 0.22);
 }
 
 /* Marker-style highlight for one key phrase per section */
 .mark {
-  background: linear-gradient(transparent 60%, var(--color-highlight-soft) 60%);
-  padding-inline: 0.1em;
+  background: linear-gradient(transparent 58%, rgba(184, 209, 214, 0.55) 58%);
+  padding-inline: 0.15em;
 }
 
-/* Dark navy band to break the white rhythm */
+/* Deep Atlantic Navy band to contrast gently with light sections */
 .section--navy {
   background:
-    radial-gradient(circle at 85% 15%, rgba(37, 99, 235, 0.25), transparent 45%),
-    radial-gradient(circle at 10% 90%, rgba(245, 158, 11, 0.12), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(57, 123, 155, 0.28), transparent 48%),
+    radial-gradient(circle at 10% 90%, rgba(184, 209, 214, 0.14), transparent 42%),
     var(--color-navy);
   color: var(--color-text-inverse);
 }
@@ -775,11 +776,11 @@ p + p {
 }
 
 .section--navy .eyebrow {
-  color: var(--color-highlight);
+  color: var(--color-atlantic-muted);
 }
 
 .section--navy .lead {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.82);
 }
 
 /* Scroll reveal (progressive enhancement: content is visible without JS) */

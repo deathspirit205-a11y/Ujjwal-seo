@@ -2,19 +2,19 @@
 /**
  * index.astro — Homepage
  * URL: /
- * H1: Consultant SEO & GEO
+ * H1: Consultant SEO & GEO — Développez votre visibilité sur Google et les moteurs de recherche IA.
  *
- * Information Architecture:
- *  01. Hero (SearchLandscapeHero) + CommitmentBand (animated offer facts)
- *  02. SEO vs GEO — interactive comparison (SerpVsAi)
- *  03. "Comment votre entreprise est comprise" (EntityDiagram)
- *  04. Services SEO & GEO (6 expertises claires)
- *  05. Méthode en 5 étapes (MethodTimeline)
- *  06. Ce que je refuse de faire (navy band + portrait)
- *  07. Zones d'intervention (Bretagne, Pays de la Loire & France à distance)
- *  08. Blog & Ressources
+ * Phase 4 Conversion & Information Architecture:
+ *  01. Hero (SearchLandscapeHero) + CommitmentBand
+ *  02. Proposition de valeur & comparaison interactive SEO vs GEO (SerpVsAi + EntityDiagram)
+ *  03. Aperçu synthétique des 6 Services (nom, résumé, bénéfice commercial, lien) — sans dupliquer /services/
+ *  04. Pourquoi travailler avec Ujjwal SEO (engagements, éthique & portrait)
+ *  05. Comment fonctionne l'accompagnement (MethodTimeline + lien vers /approche/ en 8 étapes)
+ *  06. Preuves & Réalisations vérifiables (architecture live ujjwal-seo.com + lien /realisations/)
+ *  07. Couverture géographique (Rennes, Vitré, Laval, Fougères, Janzé, Châteaubriant, Redon + Grand Ouest & France)
+ *  08. Derniers articles & analyses (Blog)
  *  09. FAQ
- *  10. CTA Final
+ *  10. Appel à l'action final (Contact)
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
@@ -39,53 +39,67 @@ const latestPosts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-// 5-step methodology — short, scannable, with indicative timing
+// 5-step high-level overview on homepage (links to full 8-step lifecycle on /approche/)
 const processSteps = [
   {
-    title: 'Comprendre',
-    when: 'Semaine 1',
-    description: 'Votre marché, vos marges, vos concurrents et ce que vos clients tapent vraiment.',
+    title: 'Comprendre & Auditer',
+    when: 'Semaines 1–2',
+    description: 'Échange initial sur votre modèle économique, audit technique complet et étude des concurrents classés.',
   },
   {
-    title: 'Structurer',
+    title: 'Structurer les intentions',
     when: 'Semaines 2–3',
-    description: 'Architecture, maillage interne et entités : des fondations que Google comprend.',
+    description: 'Cartographie des mots-clés à intention commerciale, architecture en silos et plan d\'action priorisé.',
   },
   {
-    title: 'Optimiser',
+    title: 'Optimiser le socle & les pages',
     when: 'Semaines 3–6',
-    description: 'Blocages techniques levés, pages clés réécrites, Schema.org en place.',
+    description: 'Correction des blocages d\'indexation, réécriture des pages d\'offres et déploiement du graphe Schema.org.',
   },
   {
-    title: 'Développer',
+    title: 'Mailler & Développer l\'autorité',
     when: 'Mois 2–6',
-    description: 'Contenus qui répondent aux vraies questions et construisent votre autorité.',
+    description: 'Maillage interne contextuel, contenus citables par les IA génératives et signaux de confiance locaux.',
   },
   {
-    title: 'Mesurer',
+    title: 'Suivre & Améliorer en continu',
     when: 'Chaque mois',
-    description: 'Search Console, positions, leads : ce qui progresse, ce qu\'on ajuste.',
+    description: 'Pilotage dans Google Search Console : clics qualifiés, positions, citations IA et ajustements itératifs.',
   },
 ];
 
-// "What I refuse to do" — confident positioning, replaces repeated generic claims
-const refusals = [
+// Why work with Ujjwal SEO — transparent principles & explicit refusals
+const differentiators = [
   {
-    title: 'Promettre des positions miracles',
-    text: 'Aucun consultant sérieux ne contrôle l\'algorithme de Google. Mon engagement repose sur une méthode rigoureuse, des fondations techniques solides et une croissance mesurable et pérenne.',
+    badge: 'Zéro promesse irréaliste',
+    title: 'Pas de « 1re place garantie en 15 jours »',
+    text: 'Aucun consultant sérieux ne contrôle l\'algorithme de Google. Mon engagement porte sur la rigueur technique, la qualité sémantique et la progression mesurable de vos demandes entrantes.',
   },
   {
-    title: 'Acheter des liens',
-    text: 'Les liens achetés finissent par coûter plus cher qu\'ils ne rapportent. L\'autorité se mérite.',
+    badge: 'Interlocuteur unique',
+    title: 'Aucune sous-traitance ni délégation junior',
+    text: 'Celui qui audite votre site est celui qui conçoit la stratégie, rédige les spécifications, configure vos données structurées et vous répond directement.',
   },
   {
-    title: 'Vous noyer sous des rapports',
-    text: 'Pas de PDF de 80 pages illisible. Une liste priorisée : quoi faire, dans quel ordre, pourquoi.',
+    badge: 'Livrables exploitables',
+    title: 'Fini les rapports PDF de 80 pages illisibles',
+    text: 'Vous recevez une feuille de route priorisée par impact commercial et complexité technique : quoi corriger en premier, pourquoi et comment.',
   },
   {
-    title: 'Déléguer votre dossier',
-    text: 'Celui qui audite est celui qui recommande, applique et vous répond. Toujours.',
+    badge: 'Autorité durable',
+    title: 'Refus des réseaux de liens artificiels',
+    text: 'Les liens achetés en masse finissent par pénaliser votre domaine. Nous construisons une autorité naturelle et pérenne conforme aux standards de Google Search Central.',
   },
+];
+
+const priorityCities = [
+  { name: 'Rennes', dept: 'Ille-et-Vilaine (35)', href: '/zones-intervention/seo-rennes/', desc: 'Métropole tertiaire, B2B, tech, services et commerces.' },
+  { name: 'Vitré', dept: 'Ille-et-Vilaine (35)', href: '/zones-intervention/seo-vitre/', desc: 'Bassin industriel dynamique, PME, sous-traitance et artisanat.' },
+  { name: 'Laval', dept: 'Mayenne (53)', href: '/zones-intervention/seo-laval/', desc: 'Pôle économique mayennais, industrie, réalité virtuelle et services.' },
+  { name: 'Fougères', dept: 'Ille-et-Vilaine (35)', href: '/zones-intervention/seo-fougeres/', desc: 'Savoir-faire industriels, commerce local et entreprises des Marches de Bretagne.' },
+  { name: 'Janzé', dept: 'Ille-et-Vilaine (35)', href: '/zones-intervention/seo-janze/', desc: 'Entreprises de La Roche-aux-Fées, artisanat et services de proximité.' },
+  { name: 'Châteaubriant', dept: 'Loire-Atlantique (44)', href: '/zones-intervention/seo-chateaubriant/', desc: 'Carrefour économique entre Rennes, Nantes et Angers.' },
+  { name: 'Redon', dept: 'Ille-et-Vilaine / Morbihan', href: '/zones-intervention/seo-redon/', desc: 'Bassin inter-départemental au croisement de 3 départements.' },
 ];
 
 // Organization + WebSite schema
@@ -94,7 +108,7 @@ const professionalServiceSchema = {
   '@type': 'ProfessionalService',
   '@id': `${SITE_URL}/#organization`,
   name: 'Ujjwal SEO',
-  description: 'Consultant SEO & GEO indépendant en France. Accompagnement en référencement naturel, optimisation technique, sémantique et visibilité dans les moteurs de recherche IA.',
+  description: 'Consultant SEO & GEO indépendant en France (Rennes, Vitré, Laval, Fougères, Janzé, Châteaubriant, Redon). Accompagnement en référencement naturel, SEO technique, contenu sémantique, SEO local et moteurs de recherche IA.',
   url: SITE_URL,
   founder: {
     '@type': 'Person',
@@ -108,6 +122,13 @@ const professionalServiceSchema = {
     { '@type': 'AdministrativeArea', name: 'Bretagne' },
     { '@type': 'AdministrativeArea', name: 'Pays de la Loire' },
     { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
+    { '@type': 'City', name: 'Rennes' },
+    { '@type': 'City', name: 'Vitré' },
+    { '@type': 'City', name: 'Laval' },
+    { '@type': 'City', name: 'Fougères' },
+    { '@type': 'City', name: 'Janzé' },
+    { '@type': 'City', name: 'Châteaubriant' },
+    { '@type': 'City', name: 'Redon' },
   ],
   knowsAbout: [
     'SEO',
@@ -135,8 +156,8 @@ const websiteSchema = {
 ---
 
 <BaseLayout
-  title={buildTitle('Consultant SEO & GEO — Visibilité Moteurs & Recherche IA', false)}
-  description="Consultant SEO & GEO indépendant en France. J'aide les entreprises à devenir plus visibles et compréhensibles dans les moteurs de recherche et les espaces de réponse IA."
+  title={buildTitle('Consultant SEO & GEO à Rennes & Grand Ouest — Google & Recherche IA', false)}
+  description="Consultant SEO & GEO indépendant (Rennes, Vitré, Laval, Fougères, Janzé, Châteaubriant, Redon & France). Développez votre visibilité sur Google et les moteurs de recherche IA."
   canonicalPath="/"
   schema={[professionalServiceSchema, websiteSchema]}
 >
@@ -145,29 +166,29 @@ const websiteSchema = {
   <main id="main-content">
 
     <!-- ══════════════════════════════════════
-         01. HERO (Search Landscape System)
+         01. HERO (Light Editorial Search Landscape)
     ══════════════════════════════════════ -->
     <SearchLandscapeHero
-      eyebrow="Consultant SEO & GEO indépendant"
-      heading="Consultant SEO & GEO"
-      subheading="Google ne se contente plus de classer des pages : il cherche à comprendre qui vous êtes. Mon travail consiste à rendre votre entreprise évidente, crédible et citée, sur Google comme dans les réponses des IA."
+      eyebrow="Consultant SEO & GEO indépendant · Bretagne, Grand Ouest & France"
+      heading="Consultant SEO & GEO — Développez votre visibilité sur Google et les moteurs de recherche IA."
+      subheading="Votre site web doit attirer des prospects qualifiés, pas seulement exister en ligne. J'aide les TPE, PME et indépendants à consolider leur référencement naturel sur Google et à devenir une source citée par ChatGPT, Perplexity et Google AI Overviews."
       primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
-      secondaryCTA={{ label: 'Voir ma méthode', href: '/approche/' }}
+      secondaryCTA={{ label: 'Explorer les services', href: '/services/' }}
     />
 
-    <!-- Concrete commitments band (animated) -->
+    <!-- Concrete commitments band -->
     <CommitmentBand />
 
     <!-- ══════════════════════════════════════
-         02. SEO + GEO : INTERACTIVE COMPARISON
+         02. PROPOSITION DE VALEUR : SEO + GEO
     ══════════════════════════════════════ -->
     <section class="duo-section section section--surface" aria-labelledby="duo-heading">
       <div class="container">
         <div class="section-header--centered reveal">
-          <p class="eyebrow">La recherche a changé</p>
-          <h2 id="duo-heading">Hier, il fallait être <span class="mark">classé</span>. Aujourd'hui, il faut aussi être <span class="mark">cité</span>.</h2>
+          <p class="eyebrow">Pourquoi associer SEO et GEO aujourd'hui</p>
+          <h2 id="duo-heading">Hier, il suffisait d'être <span class="mark">classé</span>. Aujourd'hui, il faut aussi être <span class="mark">compris et cité</span>.</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Même requête, deux façons de répondre. Cliquez pour comparer.
+            Vos futurs clients cherchent à la fois sur Google (résultats organiques et Google Maps) et via des assistants génératifs. Comparez comment une même recherche est traitée par les deux systèmes :
           </p>
         </div>
 
@@ -175,9 +196,9 @@ const websiteSchema = {
 
         <div class="duo-summary reveal">
           <div class="duo-summary__inner">
-            <div class="duo-summary__icon" aria-hidden="true">&bull;&bull;&bull;</div>
+            <div class="duo-summary__icon" aria-hidden="true">SEO + GEO</div>
             <p class="duo-summary__text">
-              <strong>Le GEO ne remplace pas le SEO, il le prolonge.</strong> Les IA puisent dans ce que Google comprend déjà de vous. Sans fondations solides, pas de citation.
+              <strong>Le GEO ne remplace pas le SEO : il s'appuie dessus.</strong> Les modèles de langage (ChatGPT, Perplexity, Gemini) extraient leurs réponses des sites bien indexés, rapides, structurés en <a href="https://schema.org/" target="_blank" rel="noopener noreferrer">Schema.org</a> et dotés d'un contenu factuel vérifiable.
             </p>
           </div>
         </div>
@@ -190,15 +211,15 @@ const websiteSchema = {
     <EntityDiagram />
 
     <!-- ══════════════════════════════════════
-         04. SERVICES (6 EXPERTISES)
+         04. APERÇU DES 6 SERVICES (CONCIS, SANS DUPLICATION)
     ══════════════════════════════════════ -->
     <section class="home-services section" aria-labelledby="services-heading">
       <div class="container">
         <div class="section-header--centered">
-          <p class="eyebrow">Domaines d'intervention</p>
-          <h2 id="services-heading">Six leviers. Un seul objectif : <span class="mark">être choisi</span>.</h2>
+          <p class="eyebrow">Expertises SEO &amp; GEO</p>
+          <h2 id="services-heading">Six leviers complémentaires au service de votre <span class="mark">chiffre d'affaires</span></h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Technique, contenu, local ou IA : on commence par ce qui bloque le plus, pas par ce qui se vend le mieux.
+            Chaque entreprise a son propre point de blocage : indexation technique, manque de pages commerciales, visibilité locale insuffisante ou absence des synthèses IA. Voici un aperçu synthétique de mes 6 interventions.
           </p>
         </div>
 
@@ -209,68 +230,67 @@ const websiteSchema = {
               slug={service.slug}
               description={service.shortDescription}
               category={service.category}
-              deliverables={service.deliverables}
+              businessBenefit={service.businessBenefit}
               index={i + 1}
             />
           ))}
         </div>
 
         <div class="home-services__footer">
+          <p class="home-services__hint">
+            Vous hésitez entre un audit ponctuel, une refonte technique ou un accompagnement mensuel ?
+          </p>
           <a href="/services/" class="btn btn--secondary">
-            Explorer le détail de tous les services &rarr;
+            Consulter le guide détaillé des 6 services (livrables, outils, méthodes &amp; FAQ) &rarr;
           </a>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════
-         05. PROCESSUS (5 ÉTAPES)
+         05. POURQUOI TRAVAILLER AVEC UJJWAL SEO (LIGHT EDITORIAL)
     ══════════════════════════════════════ -->
-    <MethodTimeline
-      steps={processSteps}
-      heading="De l'analyse aux résultats, sans zone grise"
-      subheading="Vous savez à chaque étape ce qui est fait, pourquoi, et ce que ça change."
-    />
-
-    <!-- ══════════════════════════════════════
-         06. CE QUE JE REFUSE DE FAIRE (confident positioning)
-    ══════════════════════════════════════ -->
-    <section class="refuse section section--navy" aria-labelledby="refuse-heading">
+    <section class="why-section section section--surface" aria-labelledby="why-heading">
       <div class="container">
-        <div class="refuse__grid">
-          <div class="refuse__content">
-            <p class="eyebrow reveal">Ma ligne de conduite</p>
-            <h2 id="refuse-heading" class="reveal">Ce que je refuse de faire. Et pourquoi c'est une bonne nouvelle pour vous.</h2>
+        <div class="why__grid">
+          <div class="why__content">
+            <p class="eyebrow reveal">Pourquoi choisir un consultant indépendant</p>
+            <h2 id="why-heading" class="reveal">Une relation directe, rigoureuse et tournée vers votre rentabilité</h2>
+            <p class="why__lead reveal">
+              Travailler avec un consultant SEO &amp; GEO indépendant, c'est éviter l'inertie des grandes structures tout en bénéficiant d'une méthodologie d'ingénierie transparente. Voici les 4 engagements qui cadrent chaque mission :
+            </p>
 
-            <ul class="refuse__list" role="list">
-              {refusals.map((r, i) => (
-                <li class={`refuse__item reveal reveal-delay-${Math.min(i, 3)}`}>
-                  <span class="refuse__icon" aria-hidden="true">✕</span>
-                  <div>
-                    <h3 class="refuse__title">{r.title}</h3>
-                    <p class="refuse__text">{r.text}</p>
-                  </div>
+            <ul class="why__list" role="list">
+              {differentiators.map((d, i) => (
+                <li class={`why__item reveal reveal-delay-${Math.min(i, 3)}`}>
+                  <span class="why__badge">{d.badge}</span>
+                  <h3 class="why__title">{d.title}</h3>
+                  <p class="why__text">{d.text}</p>
                 </li>
               ))}
             </ul>
           </div>
 
-          <figure class="refuse__portrait reveal reveal-delay-2">
-            <img
-              src="/assets/ujjwal-lage-portrait.jpg"
-              alt="Ujjwal Lage, consultant SEO & GEO indépendant"
-              width="682"
-              height="1024"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption class="refuse__caption">
-              <span class="refuse__name">Ujjwal Lage</span>
-              <span class="refuse__role">Consultant SEO &amp; GEO · Ille-et-Vilaine</span>
-              <span class="refuse__quote">« Je préfère vous dire non que vous vendre une promesse que je ne peux pas tenir. »</span>
-              <div class="refuse__actions">
-                <a href="/contact/" class="btn btn--accent">Échanger sur vos enjeux</a>
-                <a href="/a-propos/" class="refuse__link">Mon parcours &rarr;</a>
+          <figure class="why__portrait reveal reveal-delay-2">
+            <div class="why__portrait-img-wrap">
+              <img
+                src="/assets/ujjwal-lage-portrait.jpg"
+                alt="Ujjwal Lage, consultant SEO & GEO indépendant en Ille-et-Vilaine"
+                width="682"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="why__caption">
+              <span class="why__name">Ujjwal Lage</span>
+              <span class="why__role">Consultant SEO &amp; GEO indépendant · Ille-et-Vilaine (35)</span>
+              <p class="why__quote">
+                « Issu du commerce et du management avant l'ingénierie du search, je considère chaque page SEO sous l'angle de sa rentabilité réelle pour votre entreprise. »
+              </p>
+              <div class="why__actions">
+                <a href="/a-propos/" class="btn btn--secondary btn--sm">Découvrir mon parcours &rarr;</a>
+                <a href="/reserver-un-appel/" class="why__link">Réserver 30 min d'échange</a>
               </div>
             </figcaption>
           </figure>
@@ -279,68 +299,144 @@ const websiteSchema = {
     </section>
 
     <!-- ══════════════════════════════════════
-         07. ZONES D'INTERVENTION PREVIEW
+         06. COMMENT FONCTIONNE L'ACCOMPAGNEMENT
     ══════════════════════════════════════ -->
-    <section class="home-zones section" aria-labelledby="zones-heading">
+    <MethodTimeline
+      steps={processSteps}
+      heading="Comment se déroule un projet SEO & GEO"
+      subheading="De l'audit initial au suivi mensuel dans Google Search Console, vous savez toujours ce qui est fait, pourquoi et avec quel impact."
+    />
+
+    <div class="container method-cta-bar">
+      <p>
+        Envie de voir le détail complet des livrables et des 8 étapes d'un projet ?
+        <a href="/approche/">Consulter la méthodologie complète en 8 étapes &rarr;</a>
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         07. PREUVES & RÉALISATIONS VÉRIFIABLES
+    ══════════════════════════════════════ -->
+    <section class="proof-section section section--surface" aria-labelledby="proof-heading">
       <div class="container">
-        <div class="home-zones__wrapper">
-          <div class="home-zones__header">
-            <p class="eyebrow">Rayonnement Géographique</p>
-            <h2 id="zones-heading">De la Bretagne aux Pays de la Loire, et partout en France</h2>
-            <p class="lead" style="margin-top: var(--space-4)">
-              <strong>Local quand l'ancrage territorial compte. À distance quand la localisation n'a pas d'importance.</strong> J'accompagne des entreprises locales, des PME régionales et des acteurs à rayonnement national.
+        <div class="proof-box">
+          <div class="proof-box__content">
+            <p class="eyebrow">Preuves par l'exemple &amp; transparence</p>
+            <h2 id="proof-heading">Pas de statistiques inventées : inspectez l'architecture réelle et les livrables</h2>
+            <p class="proof-box__desc">
+              Plutôt que de publier des pourcentages anonymes invérifiables, je mets à votre disposition une <strong>étude de cas ouverte</strong> : l'ingénierie technique, sémantique et GEO de <code>ujjwal-seo.com</code> lui-même, accompagnée d'extraits réels de livrables d'audit et de scénarios d'intervention en Bretagne et Pays de la Loire.
             </p>
-          </div>
-
-          <div class="home-zones__grid">
-            <div class="zone-pill-card">
-              <span class="zone-pill-card__tag">Région Ouest</span>
-              <h3 class="zone-pill-card__title">Bretagne</h3>
-              <p class="zone-pill-card__desc">Rennes, Saint-Malo, Fougères, Vitré, Janzé, Saint-Brieuc, Vannes, Lorient, Brest.</p>
-              <a href="/zones-intervention/bretagne/" class="zone-pill-card__link">Découvrir le réseau Bretagne &rarr;</a>
-            </div>
-
-            <div class="zone-pill-card">
-              <span class="zone-pill-card__tag">Région Ouest</span>
-              <h3 class="zone-pill-card__title">Pays de la Loire</h3>
-              <p class="zone-pill-card__desc">Laval, Mayenne, Château-Gontier, Nantes, Châteaubriant, Angers, Segré.</p>
-              <a href="/zones-intervention/mayenne/" class="zone-pill-card__link">Découvrir le réseau Pays de la Loire &rarr;</a>
-            </div>
-
-            <div class="zone-pill-card zone-pill-card--highlight">
-              <span class="zone-pill-card__tag">National</span>
-              <h3 class="zone-pill-card__title">France entière (à distance)</h3>
-              <p class="zone-pill-card__desc">Accompagnement SEO & GEO via visioconférences régulières, tableaux de bord partagés et collaboration fluide.</p>
-              <a href="/contact/" class="zone-pill-card__link">Prendre contact pour un projet &rarr;</a>
+            <div class="proof-box__actions">
+              <a href="/realisations/" class="btn btn--primary">
+                Explorer les réalisations &amp; exemples de livrables &rarr;
+              </a>
+              <a href="/llms.txt" target="_blank" rel="noopener" class="btn btn--secondary">
+                Inspecter le fichier /llms.txt en direct
+              </a>
             </div>
           </div>
 
-          <div class="home-zones__cta">
-            <a href="/zones-intervention/" class="btn btn--primary">
-              Consulter la carte interactive des zones d'intervention &rarr;
-            </a>
+          <div class="proof-box__highlights">
+            <div class="proof-stat">
+              <span class="proof-stat__tag">Architecture Astro</span>
+              <strong>HTML statique pré-rendu</strong>
+              <p>Temps de réponse serveur immédiat, Core Web Vitals optimisés et zéro surcharge JavaScript inutile.</p>
+            </div>
+            <div class="proof-stat">
+              <span class="proof-stat__tag">Graphe d'entités</span>
+              <strong>Schema.org JSON-LD complet</strong>
+              <p>Liaison explicite entre <code>Organization</code>, <code>Person</code>, <code>Service</code> et identifiants Wikidata locaux.</p>
+            </div>
+            <div class="proof-stat">
+              <span class="proof-stat__tag">Standard GEO</span>
+              <strong>Protocole <code>/llms.txt</code> actif</strong>
+              <p>Cartographie structurée à la racine du domaine pour orienter les moteurs de réponse IA (ChatGPT, Perplexity, Claude).</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════
-         08. BLOG (ARTICLES & RESSOURCES)
+         08. COUVERTURE GÉOGRAPHIQUE (7 VILLES PRIORITAIRES + FRANCE)
+    ══════════════════════════════════════ -->
+    <section class="home-zones section" aria-labelledby="zones-heading">
+      <div class="container">
+        <div class="home-zones__wrapper">
+          <div class="home-zones__header">
+            <p class="eyebrow">Ancrage Territorial &amp; Intervention Nationale</p>
+            <h2 id="zones-heading">Consultant SEO en Bretagne, Pays de la Loire et partout en France</h2>
+            <p class="lead" style="margin-top: var(--space-4)">
+              Basé en <strong>Ille-et-Vilaine (35)</strong>, j'interviens au plus près des tissus économiques de l'Ouest tout en accompagnant des PME sur l'ensemble du territoire français à distance.
+            </p>
+          </div>
+
+          <div class="cities-showcase" aria-label="Villes d'intervention prioritaires">
+            {priorityCities.map((city) => (
+              <a href={city.href} class="city-card">
+                <div class="city-card__top">
+                  <h3 class="city-card__name">SEO {city.name}</h3>
+                  <span class="city-card__dept">{city.dept}</span>
+                </div>
+                <p class="city-card__desc">{city.desc}</p>
+                <span class="city-card__cta">Voir l'accompagnement à {city.name} &rarr;</span>
+              </a>
+            ))}
+          </div>
+
+          <div class="home-zones__grid">
+            <div class="zone-pill-card">
+              <span class="zone-pill-card__tag">Région &amp; Départements</span>
+              <h3 class="zone-pill-card__title">Bretagne &amp; Ille-et-Vilaine (35)</h3>
+              <p class="zone-pill-card__desc">Accompagnement des PME, artisans, commerces et acteurs B2B sur l'ensemble de la région bretonne.</p>
+              <div class="zone-pill-card__links">
+                <a href="/zones-intervention/bretagne/">Hub Bretagne &rarr;</a>
+                <a href="/zones-intervention/ille-et-vilaine/">Ille-et-Vilaine (35) &rarr;</a>
+              </div>
+            </div>
+
+            <div class="zone-pill-card">
+              <span class="zone-pill-card__tag">Départements limitrophes</span>
+              <h3 class="zone-pill-card__title">Mayenne (53), Loire-Atlantique (44) &amp; Anjou (49)</h3>
+              <p class="zone-pill-card__desc">Rayonnement sur les bassins industriels et tertiaires des Pays de la Loire et des Marches de Bretagne.</p>
+              <div class="zone-pill-card__links">
+                <a href="/zones-intervention/mayenne/">Mayenne (53) &rarr;</a>
+                <a href="/zones-intervention/loire-atlantique/">Loire-Atlantique (44) &rarr;</a>
+                <a href="/zones-intervention/maine-et-loire/">Maine-et-Loire (49) &rarr;</a>
+              </div>
+            </div>
+
+            <div class="zone-pill-card zone-pill-card--highlight">
+              <span class="zone-pill-card__tag">Accompagnement à distance</span>
+              <h3 class="zone-pill-card__title">France entière (visioconférence)</h3>
+              <p class="zone-pill-card__desc">Points réguliers en visio, partage d'écran en direct sur Search Console et livrables partagés pour les entreprises de toute la France.</p>
+              <div class="zone-pill-card__links">
+                <a href="/zones-intervention/">Toutes les zones d'intervention &rarr;</a>
+                <a href="/contact/">Demander un diagnostic &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         09. BLOG (ARTICLES & RESSOURCES)
     ══════════════════════════════════════ -->
     <section class="home-blog section section--surface" aria-labelledby="blog-heading">
       <div class="container">
         <div class="section-header">
           <div class="home-blog__header-row">
             <div>
-              <p class="eyebrow">Publications & Analyses</p>
-              <h2 id="blog-heading">Dernières réflexions SEO & GEO</h2>
+              <p class="eyebrow">Publications &amp; Guides Pratiques</p>
+              <h2 id="blog-heading">Dernières analyses SEO &amp; GEO</h2>
             </div>
             <a href="/blog/" class="btn btn--secondary home-blog__all-link">
               Tous les articles &rarr;
             </a>
           </div>
           <p class="lead" style="margin-top: var(--space-4)">
-            Des guides pédagogiques, des analyses techniques et des réflexions concrètes sur l'évolution de la recherche web et des intelligences artificielles.
+            Des guides méthodologiques, des études sur le référencement local à Rennes et en Bretagne, et des décryptages concrets sur les moteurs de réponse IA.
           </p>
         </div>
 
@@ -372,18 +468,18 @@ const websiteSchema = {
     </section>
 
     <!-- ══════════════════════════════════════
-         09. FAQ
+         10. FAQ
     ══════════════════════════════════════ -->
     <FAQ items={faqGeneral} heading="Questions fréquentes sur le SEO & le GEO" />
 
     <!-- ══════════════════════════════════════
-         10. CTA FINAL
+         11. CTA FINAL
     ══════════════════════════════════════ -->
     <CTA
-      heading="Construisons une visibilité durable pour votre entreprise."
-      body="Échangeons pendant 30 minutes sur vos enjeux actuels, votre concurrence et les opportunités de positionnement sur Google et les moteurs IA. Échange direct, sans engagement."
+      heading="Construisons une visibilité durable et rentable pour votre entreprise."
+      body="Échangeons pendant 30 minutes sur votre site actuel, vos concurrents et les opportunités de positionnement sur Google et les moteurs IA. Premier avis honnête, sans engagement."
       primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
-      secondaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
+      secondaryCTA={{ label: 'Réserver un appel de 30 min', href: '/reserver-un-appel/' }}
       variant="navy"
     />
 
@@ -393,149 +489,13 @@ const websiteSchema = {
 </BaseLayout>
 
 <style>
-/* ══ REFUSE SECTION (navy band) ══ */
-.refuse__grid {
-  display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: var(--space-12);
-  align-items: center;
-}
-
-@media (max-width: 900px) {
-  .refuse__grid { grid-template-columns: 1fr; }
-}
-
-.refuse__content h2 {
-  max-width: 34rem;
-  margin-bottom: var(--space-10);
-}
-
-.refuse__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
-}
-
-@media (max-width: 640px) {
-  .refuse__list { grid-template-columns: 1fr; }
-}
-
-.refuse__item {
-  display: flex;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  transition: border-color var(--transition-base), background var(--transition-base);
-}
-
-.refuse__item:hover {
-  border-color: rgba(245, 158, 11, 0.5);
-  background: rgba(255, 255, 255, 0.07);
-}
-
-.refuse__icon {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: rgba(245, 158, 11, 0.15);
-  color: var(--color-highlight);
-  font-size: 0.8rem;
-  font-weight: var(--weight-bold);
-}
-
-.refuse__title {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  font-weight: var(--weight-bold);
-  margin-bottom: var(--space-1);
-}
-
-.refuse__text {
-  font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.7);
-  line-height: var(--leading-normal);
-  margin: 0;
-}
-
-.refuse__portrait {
-  margin: 0;
-  position: relative;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.refuse__portrait img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center 15%;
-  display: block;
-}
-
-.refuse__caption {
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: var(--space-16) var(--space-5) var(--space-5);
-  background: linear-gradient(transparent, rgba(11, 19, 43, 0.92) 45%);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.refuse__name {
-  font-family: var(--font-serif);
-  font-size: var(--text-xl);
-  font-weight: var(--weight-bold);
-  color: #FFFFFF;
-}
-
-.refuse__role {
-  font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.refuse__quote {
-  margin-top: var(--space-3);
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.9);
-  line-height: var(--leading-snug);
-}
-
-.refuse__actions {
-  margin-top: var(--space-4);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-}
-
-.refuse__link {
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  color: #FFFFFF;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 /* ══ DUO SUMMARY ══ */
 .duo-summary {
   margin-top: var(--space-8);
   background: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-navy);
-  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--color-atlantic);
+  border-radius: var(--radius-md);
   padding: var(--space-6);
 }
 
@@ -546,9 +506,14 @@ const websiteSchema = {
 }
 
 .duo-summary__icon {
-  color: var(--color-atlantic);
-  letter-spacing: 0.2em;
-  font-size: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
 }
 
@@ -563,27 +528,351 @@ const websiteSchema = {
 .home-services__footer {
   margin-top: var(--space-12);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
 }
 
-/* ══ HOME ZONES PREVIEW ══ */
-.home-zones__wrapper {
+.home-services__hint {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ══ WHY WORK WITH UJJWAL SEO (Light Editorial Section) ══ */
+.why__grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+@media (max-width: 920px) {
+  .why__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.why__content h2 {
+  max-width: 38rem;
+  margin-bottom: var(--space-4);
+}
+
+.why__lead {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-8);
+  max-width: 64ch;
+}
+
+.why__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+@media (max-width: 640px) {
+  .why__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.why__item {
   background: #FFFFFF;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  box-shadow: var(--shadow-xs);
+}
+
+.why__badge {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-atlantic);
+  background: var(--color-surface);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.why__title {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.why__text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+.why__portrait {
+  margin: 0;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.why__portrait-img-wrap {
+  aspect-ratio: 4 / 4.4;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.why__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
+
+.why__caption {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.why__name {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+}
+
+.why__role {
+  font-size: var(--text-xs);
+  color: var(--color-atlantic);
+  font-weight: var(--weight-semibold);
+}
+
+.why__quote {
+  margin: var(--space-3) 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+}
+
+.why__actions {
+  margin-top: var(--space-2);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.why__link {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ══ METHOD CTA BAR ══ */
+.method-cta-bar {
+  margin-top: calc(-1 * var(--space-8));
+  margin-bottom: var(--space-12);
+  text-align: center;
+}
+
+.method-cta-bar p {
+  display: inline-block;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0 auto;
+}
+
+.method-cta-bar a {
+  font-weight: var(--weight-semibold);
+  color: var(--color-atlantic);
+  margin-left: var(--space-2);
+}
+
+/* ══ PROOF SECTION ══ */
+.proof-box {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10);
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-10);
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 920px) {
+  .proof-box {
+    grid-template-columns: 1fr;
+    padding: var(--space-6);
+  }
+}
+
+.proof-box__content h2 {
+  margin-bottom: var(--space-4);
+}
+
+.proof-box__desc {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.proof-box__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.proof-box__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.proof-stat {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-left: 3px solid var(--color-atlantic);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+}
+
+.proof-stat__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-atlantic);
+  margin-bottom: 2px;
+}
+
+.proof-stat strong {
+  display: block;
+  font-size: var(--text-base);
+  color: var(--color-navy);
+  margin-bottom: 2px;
+}
+
+.proof-stat p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+/* ══ HOME ZONES PREVIEW & 7 PRIORITY CITIES ══ */
+.home-zones__wrapper {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
   padding: var(--space-12) var(--space-8);
+}
+
+@media (max-width: 640px) {
+  .home-zones__wrapper {
+    padding: var(--space-8) var(--space-5);
+  }
 }
 
 .home-zones__header {
   text-align: center;
-  max-width: 44rem;
+  max-width: 46rem;
   margin: 0 auto var(--space-10) auto;
+}
+
+.cities-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.city-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.city-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-atlantic);
+  box-shadow: var(--shadow-sm);
+}
+
+.city-card__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.city-card__name {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.city-card__dept {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-atlantic);
+}
+
+.city-card__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+  flex: 1;
+}
+
+.city-card__cta {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-atlantic);
+  margin-top: var(--space-1);
 }
 
 .home-zones__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
-  margin-bottom: var(--space-10);
+  gap: var(--space-5);
 }
 
 @media (max-width: 860px) {
@@ -594,7 +883,7 @@ const websiteSchema = {
 
 .zone-pill-card {
   background: var(--color-surface);
-  border: 1px solid var(--color-border-light);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-6);
   display: flex;
@@ -602,16 +891,17 @@ const websiteSchema = {
 }
 
 .zone-pill-card--highlight {
-  border-color: rgba(37, 99, 235, 0.35);
-  background: rgba(37, 99, 235, 0.02);
+  background: var(--color-bg);
+  border-color: var(--color-atlantic);
 }
 
 .zone-pill-card__tag {
-  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   font-weight: var(--weight-semibold);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-atlantic);
   margin-bottom: var(--space-2);
 }
 
@@ -629,20 +919,23 @@ const websiteSchema = {
   margin-bottom: var(--space-4);
 }
 
-.zone-pill-card__link {
+.zone-pill-card__links {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.zone-pill-card__links a {
   font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
-  color: var(--color-atlantic);
-  text-decoration: none;
-  margin-top: auto;
-}
-
-.zone-pill-card__link:hover {
+  color: var(--color-navy);
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.home-zones__cta {
-  text-align: center;
+.zone-pill-card__links a:hover {
+  color: var(--color-atlantic);
 }
 
 /* ══ BLOG SECTION ══ */
