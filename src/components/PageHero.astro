@@ -1,4 +1,5 @@
 ---
+import HeroVisual, { type HeroVisualVariant } from "./HeroVisual.astro";
 /**
  * PageHero.astro
  * Search Landscape hero for inner pages.
@@ -20,6 +21,8 @@ export interface Props {
   overlay?: 'default' | 'dark' | 'light';
   /** Compact variant for inner pages */
   compact?: boolean;
+  /** Animated data illustration (used when no bgImage) */
+  visual?: HeroVisualVariant;
 }
 
 const {
@@ -33,10 +36,11 @@ const {
   focalPosition = 'center',
   overlay = 'default',
   compact = false,
+  visual,
 } = Astro.props;
 ---
 
-<section class:list={['page-hero', `page-hero--${overlay}`, { 'page-hero--compact': compact, 'page-hero--landscape': !bgImage }]}>
+<section class:list={['page-hero', `page-hero--${overlay}`, { 'page-hero--compact': compact, 'page-hero--landscape': !bgImage, 'page-hero--visual': !bgImage && Boolean(visual) }]}>
   {bgImage ? (
     <div class="page-hero__bg">
       <img
@@ -85,6 +89,7 @@ const {
       </svg>
     </div>
   )}
+  {!bgImage && visual && <HeroVisual variant={visual} />}
   <div class="page-hero__overlay"></div>
 
   <div class="container page-hero__content">
@@ -187,6 +192,7 @@ const {
 
 /* Content */
 .page-hero__content {
+  /* keep text clear of the visual */
   position: relative;
   z-index: 2;
   max-width: var(--max-width-content);
@@ -236,6 +242,10 @@ const {
   border-color: var(--color-text-inverse);
   background-color: rgba(249, 246, 241, 0.12);
   color: var(--color-text-inverse);
+}
+
+@media (min-width: 1025px) {
+  .page-hero--visual .page-hero__content { margin-left: max(1.5rem, calc((100vw - 1200px) / 2)); margin-right: auto; max-width: 52%; padding-inline: 0; }
 }
 
 /* Responsive */

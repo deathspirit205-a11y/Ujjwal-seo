@@ -7,7 +7,7 @@ pubDate: 2025-06-10
 author: "Ujjwal Lage"
 categories: ["SEO On-Page"]
 tags: ["balises title", "méta-description", "snippets Google", "SEO on-page", "taux de clic"]
-relatedServices: ["seo-on-page", "audit-seo"]
+relatedServices: ["seo-contenu", "audit-seo"]
 ---
 
 Votre site est positionné en première page de Google, mais personne ne clique dessus. Ou vous voulez améliorer votre positionnement sans repartir de zéro sur votre contenu. Dans les deux cas, l'optimisation des **balises title et méta-descriptions** est la première chose à regarder.
@@ -119,4 +119,4 @@ Modifiez la title ou la méta d'une page, attendez 2 semaines pour que Google re
 
 Balises title et méta-descriptions sont souvent les premières choses que voient vos prospects sur Google. Quelques heures passées à les optimiser peuvent significativement améliorer votre taux de clic — sans toucher à votre contenu.
 
-Si vous avez beaucoup de pages à optimiser ou si vous voulez un audit complet de vos snippets, c'est l'une des composantes de mon [audit SEO](/services/audit-seo/) et de mon [accompagnement SEO on-page](/services/seo-on-page/).
+Si vous avez beaucoup de pages à optimiser ou si vous voulez un audit complet de vos snippets, c'est l'une des composantes de mon [audit SEO](/services/audit-seo/) et de mon [accompagnement en SEO sémantique et contenu](/services/seo-contenu/).

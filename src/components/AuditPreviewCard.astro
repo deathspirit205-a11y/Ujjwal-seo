@@ -1,0 +1,447 @@
+---
+/**
+ * AuditPreviewCard.astro
+ * Interactive visual preview of what an Ujjwal SEO audit deliverable looks like:
+ * 1. Prioritized action plan (Impact / Effort / Priority P1-P3)
+ * 2. Technical & Semantic diagnostic scorecard
+ * 3. Entity & GEO readiness check
+ * Purely illustrative structure of the deliverable — never claims fake client traffic numbers.
+ */
+---
+
+<div class="audit-preview reveal" data-audit-preview>
+  <div class="audit-preview__topbar">
+    <div class="audit-preview__dots" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="audit-preview__doc-title">
+      Livrable — Feuille de route &amp; Diagnostic SEO / GEO (Exemple de structure)
+    </div>
+    <div class="audit-preview__tabs" role="tablist" aria-label="Aperçu des onglets du livrable d'audit">
+      <button type="button" role="tab" aria-selected="true" class="audit-preview__tab is-active" data-ap-tab="roadmap">
+        1. Plan d'action priorisé
+      </button>
+      <button type="button" role="tab" aria-selected="false" class="audit-preview__tab" data-ap-tab="diagnostic" tabindex="-1">
+        2. Diagnostic &amp; Scores
+      </button>
+      <button type="button" role="tab" aria-selected="false" class="audit-preview__tab" data-ap-tab="schema" tabindex="-1">
+        3. Graphe d'entités (GEO)
+      </button>
+    </div>
+  </div>
+
+  <!-- Panel 1: Action Roadmap -->
+  <div class="audit-preview__panel is-active" data-ap-panel="roadmap" role="tabpanel">
+    <div class="audit-table-wrap">
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Priorité</th>
+            <th>Chantier identifié</th>
+            <th>Impact</th>
+            <th>Effort</th>
+            <th>Responsable</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="p-badge p-badge--p1">P1 · Urgent</span></td>
+            <td>
+              <strong>Désindexation des pages parasites &amp; correction des canoniques</strong>
+              <span>14 URLs dupliquées diluant le budget de crawl sur les pages services</span>
+            </td>
+            <td><span class="impact-bar impact-bar--high">Élevé</span></td>
+            <td>Faible (2h)</td>
+            <td>Consultant / Dev</td>
+          </tr>
+          <tr>
+            <td><span class="p-badge p-badge--p1">P1 · Urgent</span></td>
+            <td>
+              <strong>Refonte des balises Title, H1 et de l'intention sur 6 pages piliers</strong>
+              <span>Alignement direct sur les requêtes commerciales locales et B2B</span>
+            </td>
+            <td><span class="impact-bar impact-bar--high">Élevé</span></td>
+            <td>Moyen</td>
+            <td>Ujjwal SEO</td>
+          </tr>
+          <tr>
+            <td><span class="p-badge p-badge--p2">P2 · Important</span></td>
+            <td>
+              <strong>Déploiement du graphe JSON-LD (ProfessionalService, Service, FAQPage)</strong>
+              <span>Liaison par <code>@id</code> et désambiguïsation Wikidata pour les moteurs IA</span>
+            </td>
+            <td><span class="impact-bar impact-bar--med">Moyen-Fort</span></td>
+            <td>Faible</td>
+            <td>Ujjwal SEO</td>
+          </tr>
+          <tr>
+            <td><span class="p-badge p-badge--p3">P3 · Croissance</span></td>
+            <td>
+              <strong>Création d'un silo éditorial répondant aux questions d'achat</strong>
+              <span>Maillage interne vers les pages transactionnelles avec ancres descriptives</span>
+            </td>
+            <td><span class="impact-bar impact-bar--high">Élevé</span></td>
+            <td>Continu</td>
+            <td>Conjoint</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="audit-preview__caption">
+      Chaque recommandation indique <strong>quoi modifier</strong>, <strong>sur quelle URL exacte</strong>, et <strong>pourquoi cela compte</strong> pour votre chiffre d'affaires.
+    </p>
+  </div>
+
+  <!-- Panel 2: Diagnostic Scorecard -->
+  <div class="audit-preview__panel" data-ap-panel="diagnostic" role="tabpanel" hidden>
+    <div class="diag-grid">
+      <div class="diag-card">
+        <div class="diag-card__head">
+          <span class="diag-card__label">Exploration &amp; Indexation</span>
+          <span class="diag-card__status diag-card__status--warn">Points bloquants</span>
+        </div>
+        <div class="diag-meter"><span style="width: 64%" class="diag-meter__fill diag-meter__fill--warn"></span></div>
+        <ul class="diag-list">
+          <li>✓ Sitemap XML et robots.txt valides</li>
+          <li>⚠ Pages orphelines sans liens internes entrants</li>
+          <li>✕ Redirections internes en chaîne (HTTP 200 meta-refresh)</li>
+        </ul>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-card__head">
+          <span class="diag-card__label">Pertinence Sémantique</span>
+          <span class="diag-card__status diag-card__status--ok">Potentiel rapide</span>
+        </div>
+        <div class="diag-meter"><span style="width: 78%" class="diag-meter__fill diag-meter__fill--ok"></span></div>
+        <ul class="diag-list">
+          <li>✓ Intention commerciale bien identifiée</li>
+          <li>⚠ Cannibalisation entre 2 pages proches</li>
+          <li>✓ Opportunités de longue traîne à faible concurrence</li>
+        </ul>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-card__head">
+          <span class="diag-card__label">Lisibilité IA &amp; Entités (GEO)</span>
+          <span class="diag-card__status diag-card__status--accent">À structurer</span>
+        </div>
+        <div class="diag-meter"><span style="width: 85%" class="diag-meter__fill diag-meter__fill--accent"></span></div>
+        <ul class="diag-list">
+          <li>✓ Entité Organisation reliée au fondateur (<code>@id</code>)</li>
+          <li>✓ Réponses factuelles extractibles par les LLM</li>
+          <li>✓ Fichier <code>/llms.txt</code> et zones d'intervention explicites</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 3: JSON-LD Entity Graph -->
+  <div class="audit-preview__panel" data-ap-panel="schema" role="tabpanel" hidden>
+    <div class="schema-preview">
+      <pre class="schema-code"><code>{`{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://votre-entreprise.fr/#organization",
+  "name": "Votre Entreprise",
+  "founder": { "@id": "https://votre-entreprise.fr/a-propos/#person" },
+  "areaServed": [
+    { "@type": "City", "name": "Rennes", "sameAs": "https://www.wikidata.org/wiki/Q647" },
+    { "@type": "AdministrativeArea", "name": "Bretagne" }
+  ],
+  "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Services B2B & Local" }
+}`}</code></pre>
+      <div class="schema-explain">
+        <h4>Pourquoi ce code est décisif</h4>
+        <p>
+          Les moteurs classiques et les IA génératives (Google AI Overviews, Perplexity, ChatGPT) ne devinent pas vos spécialités : ils lisent votre graphe d'entités. Relier votre organisation, vos services et vos zones par des identifiants uniques (<code>@id</code> et Wikidata) lève toute ambiguïté.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-audit-preview]').forEach((root) => {
+    const tabs = root.querySelectorAll<HTMLButtonElement>('.audit-preview__tab');
+    const panels = root.querySelectorAll<HTMLElement>('[data-ap-panel]');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.apTab;
+        tabs.forEach((t) => {
+          const active = t === tab;
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', String(active));
+          t.tabIndex = active ? 0 : -1;
+        });
+        panels.forEach((p) => {
+          const match = p.dataset.apPanel === target;
+          p.classList.toggle('is-active', match);
+          p.hidden = !match;
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+.audit-preview {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 50px -20px rgba(15, 23, 42, 0.16);
+  overflow: hidden;
+  margin-top: var(--space-10);
+}
+
+.audit-preview__topbar {
+  background: var(--color-navy);
+  color: #FFFFFF;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.audit-preview__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.audit-preview__dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.audit-preview__dots span:first-child { background: #F87171; }
+.audit-preview__dots span:nth-child(2) { background: var(--color-highlight); }
+.audit-preview__dots span:nth-child(3) { background: #34D399; }
+
+.audit-preview__doc-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.audit-preview__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.audit-preview__tab {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.audit-preview__tab.is-active {
+  background: var(--color-highlight);
+  border-color: var(--color-highlight);
+  color: var(--color-highlight-ink);
+}
+
+.audit-preview__panel {
+  padding: var(--space-6);
+}
+
+.audit-table-wrap {
+  overflow-x: auto;
+}
+
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.audit-table th {
+  text-align: left;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-warm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.audit-table td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: top;
+}
+
+.audit-table td strong {
+  display: block;
+  color: var(--color-navy);
+  margin-bottom: 2px;
+}
+
+.audit-table td span {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.p-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: var(--weight-bold);
+  white-space: nowrap;
+}
+
+.p-badge--p1 {
+  background: var(--color-highlight-soft);
+  color: var(--color-highlight-ink);
+}
+
+.p-badge--p2 {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+.p-badge--p3 {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.impact-bar {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-xs) !important;
+}
+
+.impact-bar--high { color: #B45309 !important; }
+.impact-bar--med { color: var(--color-accent) !important; }
+
+.audit-preview__caption {
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* Diagnostic cards */
+.diag-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+@media (max-width: 860px) {
+  .diag-grid { grid-template-columns: 1fr; }
+}
+
+.diag-card {
+  background: var(--color-surface-warm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.diag-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.diag-card__label {
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  color: var(--color-navy);
+}
+
+.diag-card__status {
+  font-size: 0.7rem;
+  font-weight: var(--weight-semibold);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.diag-card__status--warn { background: var(--color-highlight-soft); color: var(--color-highlight-ink); }
+.diag-card__status--ok { background: #DCFCE7; color: #166534; }
+.diag-card__status--accent { background: var(--color-accent-light); color: var(--color-accent); }
+
+.diag-meter {
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.diag-meter__fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-full);
+}
+
+.diag-meter__fill--warn { background: var(--color-highlight); }
+.diag-meter__fill--ok { background: #10B981; }
+.diag-meter__fill--accent { background: var(--color-atlantic); }
+
+.diag-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Schema preview */
+.schema-preview {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .schema-preview { grid-template-columns: 1fr; }
+}
+
+.schema-code {
+  margin: 0;
+  padding: var(--space-5);
+  background: var(--color-navy);
+  color: #E2E8F0;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.schema-explain h4 {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.schema-explain p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+</style>
+

@@ -1,13 +1,13 @@
 ---
 title: "Maillage interne : la stratégie SEO sous-estimée qui booste votre référencement"
-description: "Le maillage interne est l'une des leviers SEO les plus puissants et les plus négligés. Découvrez comment structurer les liens entre vos pages pour améliorer votre référencement et l'expérience utilisateur."
+description: "Le maillage interne est l'un des leviers SEO les plus puissants et les plus négligés. Découvrez comment structurer les liens entre vos pages pour améliorer votre référencement et l'expérience utilisateur."
 featuredImage: "/assets/blog/maillage-interne.jpg"
 featuredImageAlt: "Schéma du maillage interne : réseau de pages liées pour le référencement SEO"
 pubDate: 2025-05-18
 author: "Ujjwal Lage"
 categories: ["SEO On-Page"]
 tags: ["maillage interne", "liens internes", "architecture SEO", "référencement on-page"]
-relatedServices: ["seo-on-page", "accompagnement-seo"]
+relatedServices: ["seo-contenu", "strategie-seo"]
 ---
 
 Si on vous demandait de citer les facteurs SEO les plus importants, vous penseriez probablement aux backlinks, aux balises title ou à la vitesse de chargement. Peu de personnes mentionneraient spontanément le **maillage interne** — pourtant c'est l'un des leviers les plus efficaces et les moins exploités du référencement.
@@ -58,7 +58,7 @@ Ce sont vos pages les plus importantes commercialement : pages de services, page
 
 Organisez votre site en silos thématiques :
 - Page pilier : `/services/seo-local/`
-- Pages liées : `/seo-rennes/`, `/seo-bretagne/`, articles de blog sur le SEO local
+- Pages liées : `/zones-intervention/seo-rennes/`, `/zones-intervention/bretagne/`, articles de blog sur le SEO local
 
 ### 3. Linkez systématiquement depuis vos articles de blog
 
@@ -98,4 +98,4 @@ En quelques mois, cette page pilier aura accumulé suffisamment d'autorité inte
 
 Le maillage interne est un levier SEO puissant, gratuit à mettre en place, et souvent sous-exploité. Quelques heures d'audit et d'optimisation peuvent avoir un impact significatif sur votre référencement.
 
-Vous voulez analyser et améliorer le maillage interne de votre site ? C'est l'un des axes clés de mon [accompagnement SEO mensuel](/services/accompagnement-seo/).
+Vous voulez analyser et améliorer le maillage interne de votre site ? C'est l'un des axes clés de mon [accompagnement en stratégie SEO](/services/strategie-seo/).

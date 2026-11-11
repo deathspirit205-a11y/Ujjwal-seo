@@ -19,39 +19,85 @@ import { buildTitle } from '../utils/seo';
 >
   <Header />
   <main id="main-content">
-    <div class="container">
-      <h1>Politique de confidentialité</h1>
+    <section class="section">
+      <div class="container legal-prose">
+        <h1>Politique de confidentialité</h1>
 
-      <section aria-labelledby="collecte-heading">
-        <h2 id="collecte-heading">Données collectées</h2>
-        <p>
-          Ce site collecte uniquement les données nécessaires au traitement de vos demandes
-          (formulaire de contact : nom, adresse e-mail, message).
-        </p>
-        <p>
-          Aucune donnée n'est revendue à des tiers.
-        </p>
-      </section>
+        <section aria-labelledby="collecte-heading">
+          <h2 id="collecte-heading">Données collectées</h2>
+          <p>
+            Ce site collecte uniquement les données nécessaires au traitement de vos demandes
+            (formulaire de contact : nom, adresse e-mail, téléphone facultatif, URL du site, message).
+          </p>
+          <p>
+            Aucune donnée n'est revendue ou cédée à des tiers à des fins commerciales.
+          </p>
+        </section>
 
-      <section aria-labelledby="cookies-heading">
-        <h2 id="cookies-heading">Cookies et mesure d'audience</h2>
-        <p>
-          Ce site n'utilise actuellement aucun outil d'analyse d'audience, aucun cookie
-          de suivi et aucune technologie de traçage. Aucune donnée de navigation n'est
-          collectée à des fins statistiques ou publicitaires. Cette politique sera mise
-          à jour si un outil de mesure d'audience venait à être installé.
-        </p>
-      </section>
+        <section aria-labelledby="cookies-heading">
+          <h2 id="cookies-heading">Cookies et services tiers</h2>
+          <p>
+            Ce site n'utilise aucun cookie publicitaire ni traceur comportemental. Les formulaires
+            de contact sont traités de manière sécurisée par notre hébergeur Netlify, Inc. Les polices
+            typographiques sont chargées via le service Google Fonts (Google Ireland Limited), ce qui
+            implique une connexion technique depuis votre navigateur vers les serveurs de Google.
+          </p>
+        </section>
 
-      <section aria-labelledby="droits-heading">
-        <h2 id="droits-heading">Vos droits</h2>
-        <p>
-          Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression
-          de vos données. Pour exercer ces droits, contactez-nous via le
-          <a href="/contact/">formulaire de contact</a>.
-        </p>
-      </section>
-    </div>
+        <section aria-labelledby="droits-heading">
+          <h2 id="droits-heading">Vos droits</h2>
+          <p>
+            Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression
+            de vos données. Pour exercer ces droits, contactez-nous via le
+            <a href="/contact/">formulaire de contact</a> ou par e-mail à
+            <a href="mailto:lagechabau@gmail.com">lagechabau@gmail.com</a>.
+          </p>
+        </section>
+      </div>
+    </section>
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+  .legal-prose {
+    max-width: 48rem;
+  }
+
+  .legal-prose h1 {
+    margin-bottom: var(--space-10);
+  }
+
+  .legal-prose section {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .legal-prose section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .legal-prose h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-prose p {
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-prose a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

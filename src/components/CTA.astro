@@ -161,16 +161,17 @@ const isDarkTheme = variant === 'dark' || variant === 'navy' || Boolean(bgImage)
   flex-shrink: 0;
 }
 
-/* Light primary button for dark/green sections */
+/* Primary button on dark sections — amber highlight for the key action */
 .btn--cta-dark-primary {
-  background-color: var(--color-text-inverse);
-  border-color: var(--color-text-inverse);
-  color: var(--color-text);
+  background-color: var(--color-highlight);
+  border-color: var(--color-highlight);
+  color: var(--color-highlight-ink);
 }
 
 .btn--cta-dark-primary:hover {
-  background-color: var(--color-accent-light);
-  border-color: var(--color-accent-light);
+  background-color: var(--color-highlight-hover);
+  border-color: var(--color-highlight-hover);
+  color: #FFFFFF;
 }
 
 @media (max-width: 768px) {

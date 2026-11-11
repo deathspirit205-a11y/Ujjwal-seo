@@ -48,7 +48,7 @@ const blogListSchema = {
   <Header />
   <main id="main-content">
     <PageHero
-      bgImage="/assets/hero/local-shop.jpg"
+      visual="content"
       bgAlt=""
       eyebrow="Blog"
       title="Ressources SEO"
@@ -62,10 +62,15 @@ const blogListSchema = {
     {allCategories.length > 0 && (
       <section class="blog-categories section--compact">
         <div class="container">
-          <div class="categories-bar">
+          <div class="categories-bar" role="group" aria-label="Filtrer par catégorie">
             <span class="categories-bar__label">Catégories :</span>
+            <button type="button" class="category-pill is-active" data-filter="all" aria-pressed="true">
+              Tous ({posts.length})
+            </button>
             {allCategories.map((cat) => (
-              <span class="category-pill">{cat}</span>
+              <button type="button" class="category-pill" data-filter={cat} aria-pressed="false">
+                {cat}
+              </button>
             ))}
           </div>
         </div>
@@ -78,19 +83,21 @@ const blogListSchema = {
         {posts.length === 0 ? (
           <p class="blog-empty">Les articles seront publiés prochainement.</p>
         ) : (
-          <div class="articles-grid">
+          <div class="articles-grid" id="articles-grid">
             {posts.map((post) => {
               const slug = post.id.replace(/\.mdx?$/, '');
               return (
-                <BlogCard
-                  title={post.data.title}
-                  description={post.data.description}
-                  pubDate={post.data.pubDate}
-                  slug={slug}
-                  categories={post.data.categories}
-                  featuredImage={post.data.featuredImage}
-                  featuredImageAlt={post.data.featuredImageAlt}
-                />
+                <div class="article-item" data-categories={post.data.categories.join('|')}>
+                  <BlogCard
+                    title={post.data.title}
+                    description={post.data.description}
+                    pubDate={post.data.pubDate}
+                    slug={slug}
+                    categories={post.data.categories}
+                    featuredImage={post.data.featuredImage}
+                    featuredImageAlt={post.data.featuredImageAlt}
+                  />
+                </div>
               );
             })}
           </div>
@@ -175,16 +182,26 @@ const blogListSchema = {
     border: 1px solid var(--color-border);
     padding: var(--space-1) var(--space-3);
     border-radius: 100px;
+    font-family: var(--font-sans);
     font-size: var(--text-sm);
     color: var(--color-text);
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
-  .category-pill:hover {
+  .category-pill:hover,
+  .category-pill.is-active {
     background: var(--color-text);
     color: white;
     border-color: var(--color-text);
+  }
+
+  .article-item {
+    display: flex;
+  }
+
+  .article-item[hidden] {
+    display: none;
   }
 
   /* Articles grid */
@@ -235,3 +252,24 @@ const blogListSchema = {
     }
   }
 </style>
+
+<script>
+  const pills = document.querySelectorAll<HTMLButtonElement>('.category-pill');
+  const items = document.querySelectorAll<HTMLElement>('.article-item');
+
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const selected = pill.dataset.filter || 'all';
+      pills.forEach((p) => {
+        const active = p === pill;
+        p.classList.toggle('is-active', active);
+        p.setAttribute('aria-pressed', String(active));
+      });
+      items.forEach((item) => {
+        const cats = (item.dataset.categories || '').split('|');
+        const match = selected === 'all' || cats.includes(selected);
+        item.hidden = !match;
+      });
+    });
+  });
+</script>

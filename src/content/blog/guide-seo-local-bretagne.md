@@ -12,7 +12,7 @@ relatedServices: ["seo-local", "audit-seo"]
 
 Le SEO local est sans doute l'une des stratégies de marketing digital les plus rentables pour une entreprise bretonne qui cible une clientèle géographiquement définie. Pourtant, la plupart des TPE et PME passent à côté des fondamentaux — et laissent des clients potentiels aux mains de leurs concurrents.
 
-Ce guide vous explique comment fonctionner le référencement local en 2025, et comment l'appliquer concrètement à votre activité en Bretagne.
+Ce guide vous explique comment fonctionne le référencement local en 2025, et comment l'appliquer concrètement à votre activité en Bretagne.
 
 ## Qu'est-ce que le SEO local ?
 
@@ -110,4 +110,4 @@ Si vous intervenez dans plusieurs villes, créez des pages dédiées pour chacun
 
 Le SEO local n'est pas une formule magique, mais une discipline rigoureuse qui demande du temps et de la cohérence. Les fondamentaux — Google Business Profile optimisé, citations cohérentes, contenu géolocalisé — peuvent vous amener des résultats significatifs en 3 à 6 mois.
 
-Si vous voulez savoir où en est votre référencement local aujourd'hui, [demandez un audit SEO gratuit](/services/audit-seo/) ou [réservez un appel découverte](/reserver-un-appel/).
+Si vous voulez savoir où en est votre référencement local aujourd'hui, [demandez un audit SEO complet](/services/audit-seo/) ou [réservez un appel découverte gratuit](/reserver-un-appel/).

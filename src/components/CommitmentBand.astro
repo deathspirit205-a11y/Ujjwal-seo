@@ -1,0 +1,99 @@
+---
+/**
+ * CommitmentBand.astro
+ * Animated band of concrete, verifiable offer commitments (no invented performance stats).
+ * Numbers use data-count for a count-up animation handled in BaseLayout.
+ */
+const items = [
+  { value: 30, suffix: 'min', label: "d'appel découverte offert", note: 'Sans engagement' },
+  { value: 24, suffix: 'h', label: 'pour une réponse personnelle', note: 'Jours ouvrés' },
+  { value: 1, suffix: '', label: 'seul interlocuteur', note: "De l'audit au suivi" },
+  { value: 14, suffix: 'j', label: 'max. pour un audit complet', note: 'Rapport priorisé' },
+];
+---
+
+<section class="commit-band" aria-label="Engagements">
+  <div class="container">
+    <ul class="commit-band__grid" role="list">
+      {items.map((item, i) => (
+        <li class={`commit-item reveal reveal-delay-${i}`}>
+          <span class="commit-item__value">
+            <span data-count={item.value}>{item.value}</span><span class="commit-item__suffix">{item.suffix}</span>
+          </span>
+          <span class="commit-item__label">{item.label}</span>
+          <span class="commit-item__note">{item.note}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.commit-band {
+  background: var(--color-navy);
+  color: #FFFFFF;
+  padding-block: var(--space-10);
+  position: relative;
+  overflow: hidden;
+}
+
+.commit-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 50%, rgba(245, 158, 11, 0.14), transparent 35%),
+    radial-gradient(circle at 88% 50%, rgba(37, 99, 235, 0.22), transparent 40%);
+  pointer-events: none;
+}
+
+.commit-band__grid {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 860px) {
+  .commit-band__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.commit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: var(--space-5);
+  border-left: 2px solid rgba(245, 158, 11, 0.55);
+}
+
+.commit-item__value {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  color: var(--color-highlight);
+  font-variant-numeric: tabular-nums;
+}
+
+.commit-item__suffix {
+  font-size: 0.5em;
+  margin-left: 2px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.commit-item__label {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: #FFFFFF;
+}
+
+.commit-item__note {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.55);
+}
+</style>
+

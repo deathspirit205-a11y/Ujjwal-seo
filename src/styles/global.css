@@ -20,6 +20,7 @@
   --color-surface:      #FFFFFF;  /* pure white cards */
   --color-surface-warm: #F8FAFC;  /* cool slate for subtle alternating sections */
   --color-surface-subtle:#F1F5F9; /* subtle component background */
+  --color-bg-subtle:    #F1F5F9;  /* alias for subtle component background */
   --color-surface-dark: #0B132B;  /* midnight deep navy */
 
   /* ── Color: Text ── */
@@ -33,6 +34,12 @@
   --color-accent-hover: #1E40AF;  /* darker blue on hover */
   --color-accent-light: #EFF6FF;  /* light blue tint */
   --color-accent-dim:   rgba(29, 78, 216, 0.08);
+
+  /* ── Color: Warm highlight (Amber) — use sparingly: key numbers, primary CTA, highlights ── */
+  --color-highlight:       #F59E0B;
+  --color-highlight-hover: #D97706;
+  --color-highlight-soft:  #FEF3C7;
+  --color-highlight-ink:   #451A03;  /* text on amber */
 
   /* ── Color: Navy / Atlantic ── */
   --color-navy:          #0B132B;  /* midnight navy */
@@ -50,6 +57,7 @@
   /* ── Typography: Font Families ── */
   --font-serif: 'Playfair Display', Georgia, serif;   /* editorial / brand */
   --font-sans:  'Inter', system-ui, -apple-system, sans-serif;  /* UI / body */
+  --font-mono:  'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* ── Typography: Scale ── */
   --text-xs:    0.75rem;    /* 12px */
@@ -269,7 +277,8 @@ p + p {
   background-color: var(--color-surface);
 }
 
-.section--warm {
+.section--warm,
+.section--alt {
   background-color: var(--color-surface-warm);
 }
 
@@ -281,6 +290,18 @@ p + p {
 /* Section heading group */
 .section-header {
   margin-bottom: var(--space-12);
+}
+
+.section-title {
+  margin-bottom: var(--space-4);
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-10);
+  max-width: 44rem;
 }
 
 .section-header--centered {
@@ -495,16 +516,20 @@ p + p {
   box-shadow: 0 4px 12px var(--color-accent-dim);
 }
 
-/* Secondary: outlined */
+/* Secondary / Outline: outlined */
 .btn--secondary,
-.btn-secondary {
+.btn-secondary,
+.btn--outline,
+.btn-outline {
   background-color: transparent;
   border-color: var(--color-border);
   color: var(--color-text);
 }
 
 .btn--secondary:hover,
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn--outline:hover,
+.btn-outline:hover {
   border-color: var(--color-text);
   background-color: var(--color-text);
   color: var(--color-text-inverse);
@@ -537,6 +562,10 @@ p + p {
   font-size: var(--text-base);
 }
 
+.btn--full {
+  width: 100%;
+}
+
 /* CTA on dark/hero backgrounds: cream button for contrast */
 .btn--cta-dark-primary {
   background-color: var(--color-text-inverse);
@@ -549,7 +578,7 @@ p + p {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
   color: var(--color-text-inverse);
-  box-shadow: 0 4px 16px rgba(43, 107, 78, 0.35);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
 }
 
 
@@ -704,3 +733,69 @@ p + p {
   }
 }
 
+
+
+/* ─────────────────────────────────────────
+   VITALITY LAYER — accent CTA, highlights, navy band, scroll reveal
+───────────────────────────────────────── */
+
+/* Amber CTA — reserve for the single most important action per view */
+.btn--accent {
+  background-color: var(--color-highlight);
+  border-color: var(--color-highlight);
+  color: var(--color-highlight-ink);
+  font-weight: var(--weight-bold);
+}
+
+.btn--accent:hover {
+  background-color: var(--color-highlight-hover);
+  border-color: var(--color-highlight-hover);
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+}
+
+/* Marker-style highlight for one key phrase per section */
+.mark {
+  background: linear-gradient(transparent 60%, var(--color-highlight-soft) 60%);
+  padding-inline: 0.1em;
+}
+
+/* Dark navy band to break the white rhythm */
+.section--navy {
+  background:
+    radial-gradient(circle at 85% 15%, rgba(37, 99, 235, 0.25), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(245, 158, 11, 0.12), transparent 40%),
+    var(--color-navy);
+  color: var(--color-text-inverse);
+}
+
+.section--navy h2,
+.section--navy h3 {
+  color: #FFFFFF;
+}
+
+.section--navy .eyebrow {
+  color: var(--color-highlight);
+}
+
+.section--navy .lead {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Scroll reveal (progressive enhancement: content is visible without JS) */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 600ms ease, transform 600ms ease;
+  }
+
+  .js-reveal .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js-reveal .reveal-delay-1 { transition-delay: 100ms; }
+  .js-reveal .reveal-delay-2 { transition-delay: 200ms; }
+  .js-reveal .reveal-delay-3 { transition-delay: 300ms; }
+}

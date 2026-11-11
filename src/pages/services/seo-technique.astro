@@ -10,6 +10,7 @@ import FAQ from '../../components/FAQ.astro';
 import CTA from '../../components/CTA.astro';
 import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CwvGauges from '../../components/CwvGauges.astro';
 import { buildTitle, SITE_URL } from '../../utils/seo';
 
 const breadcrumbs = [
@@ -78,7 +79,7 @@ const serviceSchema = {
 
     <!-- ══ HERO ══ -->
     <PageHero
-      bgImage="/assets/hero/digital-network.jpg"
+      visual="speed"
       bgAlt="Réseau numérique abstrait sur fond bleu sombre"
       eyebrow="Service"
       title="SEO Technique — Les fondations de votre référencement"
@@ -209,6 +210,8 @@ const serviceSchema = {
             </ul>
           </article>
         </div>
+
+        <CwvGauges />
       </div>
     </section>
 
@@ -267,13 +270,13 @@ const serviceSchema = {
             <span class="suite-link__desc">Pour identifier l'ensemble des problèmes techniques en amont</span>
             <span class="suite-link__arrow" aria-hidden="true">→</span>
           </a>
-          <a href="/services/seo-on-page/" class="suite-link">
-            <span class="suite-link__title">SEO On-Page</span>
+          <a href="/services/seo-contenu/" class="suite-link">
+            <span class="suite-link__title">SEO Sémantique &amp; Contenu</span>
             <span class="suite-link__desc">Une fois la technique en ordre, optimiser le contenu</span>
             <span class="suite-link__arrow" aria-hidden="true">→</span>
           </a>
-          <a href="/services/accompagnement-seo/" class="suite-link">
-            <span class="suite-link__title">Accompagnement SEO</span>
+          <a href="/services/strategie-seo/" class="suite-link">
+            <span class="suite-link__title">Stratégie &amp; Accompagnement SEO</span>
             <span class="suite-link__desc">Suivi technique continu dans le cadre d'une mission mensuelle</span>
             <span class="suite-link__arrow" aria-hidden="true">→</span>
           </a>

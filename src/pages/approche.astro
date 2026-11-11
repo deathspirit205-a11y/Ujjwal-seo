@@ -12,7 +12,7 @@ import Footer from '../components/Footer.astro';
 import PageHero from '../components/PageHero.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import EntityDiagram from '../components/EntityDiagram.astro';
-import ProcessSteps from '../components/ProcessSteps.astro';
+import MethodTimeline from '../components/MethodTimeline.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import { buildTitle, SITE_URL } from '../utils/seo';
@@ -24,29 +24,29 @@ const breadcrumbs = [
 
 const approachSteps = [
   {
-    number: 1,
     title: 'Comprendre',
-    description: 'Immersion dans votre modèle économique, vos offres phares, la typologie de vos clients idéaux et l\'environnement concurrentiel sur vos requêtes cibles.',
+    when: 'Semaine 1',
+    description: 'Immersion dans votre modèle économique, vos offres à forte marge et la demande réelle sur votre marché.',
   },
   {
-    number: 2,
     title: 'Structurer',
-    description: 'Cartographie des entités sémantiques, arborescence du site, maillage interne et résolution des anomalies d\'exploration ou d\'indexation.',
+    when: 'Semaines 2–3',
+    description: 'Cartographie des entités, arborescence en silos, maillage interne et levée des blocages d\'indexation.',
   },
   {
-    number: 3,
     title: 'Optimiser',
-    description: 'Intervention sur les leviers on-page, balisage Schema.org rigoureux, temps de chargement, intention de recherche et cohérence géographique.',
+    when: 'Semaines 3–6',
+    description: 'Réécriture des pages clés, balisage Schema.org (JSON-LD), Core Web Vitals et signaux locaux.',
   },
   {
-    number: 4,
     title: 'Développer',
-    description: 'Création d\'actifs de contenu à haute valeur ajoutée, renforcement de l\'autorité thématique et diffusion d\'informations fiables pour l\'écosystème web et IA.',
+    when: 'Mois 2–6',
+    description: 'Création de contenus d\'autorité et réponses synthétiques citables par Google et les IA génératives.',
   },
   {
-    number: 5,
-    title: 'Observer',
-    description: 'Analyse méthodique des données de Search Console, positions organiques, conversions générées et citations dans les réponses génératives.',
+    title: 'Mesurer',
+    when: 'Chaque mois',
+    description: 'Suivi dans Google Search Console : positions, clics qualifiés, prises de contact et citations IA.',
   },
 ];
 
@@ -97,6 +97,7 @@ const schemaWebPage = {
 
   <main id="main-content">
     <PageHero
+      visual="traffic"
       eyebrow="Méthode & Vision"
       title="Une approche rigoureuse, transparente et orientée business"
       description="Le référencement naturel et l'optimisation pour les moteurs IA ne relèvent pas de l'alchimie. C'est une discipline d'ingénierie de l'information qui associe structure technique, pertinence éditoriale et compréhension d'entités."
@@ -107,39 +108,39 @@ const schemaWebPage = {
 
     <Breadcrumbs items={breadcrumbs} />
 
-    <!-- ══ PHILOSOPHIE DE TRAVAIL ══ -->
+    <!-- ══ CADRE MÉTHODOLOGIQUE : LA MÉTHODE A.R.C. ══ -->
     <section class="section section--surface" aria-labelledby="philosophy-heading">
       <div class="container">
-        <div class="section-header--centered">
-          <p class="eyebrow">Principes directeurs</p>
-          <h2 id="philosophy-heading">Pas de boîte noire, pas de recettes toutes faites</h2>
+        <div class="section-header--centered reveal">
+          <p class="eyebrow">Cadre de travail propriétaire</p>
+          <h2 id="philosophy-heading">La Méthode <span class="mark">A.R.C.</span> : trois couches indissociables</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Chaque site web possède son historique, ses contraintes techniques et un écosystème commercial qui lui est propre. Voici les piliers immuables de mes accompagnements.
+            Pour qu'une entreprise soit classée par Google et citée par les moteurs IA, elle doit valider trois niveaux successifs : <strong>Accessibilité</strong>, <strong>Relevance (Pertinence)</strong> et <strong>Citations</strong>.
           </p>
         </div>
 
         <div class="pillars-grid">
-          <div class="pillar-card">
-            <span class="pillar-card__num">01</span>
-            <h3 class="pillar-card__title">La technique au service de l'utilisateur</h3>
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num">A · Accessibilité</span>
+            <h3 class="pillar-card__title">Être lu et indexé sans friction</h3>
             <p class="pillar-card__desc">
-              Un site rapide, proprement codé et logiquement structuré n'est pas seulement apprécié des robots de Google : il convertit mieux les visiteurs humains qui le consultent.
+              Un robot qui bute sur des erreurs d'exploration, des pages lentes ou une arborescence confuse n'indexera jamais correctement vos offres. On assainit d'abord le socle technique et les Core Web Vitals.
             </p>
           </div>
 
-          <div class="pillar-card">
-            <span class="pillar-card__num">02</span>
-            <h3 class="pillar-card__title">La sémantique et la clarté d'entités</h3>
+          <div class="pillar-card reveal reveal-delay-1">
+            <span class="pillar-card__num">R · Relevance &amp; Entités</span>
+            <h3 class="pillar-card__title">Répondre exactement à l'intention</h3>
             <p class="pillar-card__desc">
-              Nous n'empilons pas des mots-clés au hasard. Nous explicitons la valeur de votre entreprise à travers des relations thématiques nettes et des données structurées vérifiables.
+              Chaque page cible une intention précise et déclare explicitement vos entités (qui vous êtes, ce que vous faites, où vous intervenez) via un maillage logique et un graphe Schema.org complet.
             </p>
           </div>
 
-          <div class="pillar-card">
-            <span class="pillar-card__num">03</span>
-            <h3 class="pillar-card__title">La rentabilité avant le volume d'affichage</h3>
+          <div class="pillar-card reveal reveal-delay-2">
+            <span class="pillar-card__num">C · Citations &amp; Autorité</span>
+            <h3 class="pillar-card__title">Devenir la source que l'on cite</h3>
             <p class="pillar-card__desc">
-              Attirer 500 visiteurs qualifiés prêts à vous contacter pour une prestation à forte marge vaut infiniment mieux que 10 000 clics sans intention d'achat.
+              Qu'il s'agisse du Pack Local Google Maps ou d'une réponse générée par ChatGPT / Perplexity, les moteurs retiennent les entreprises dont les faits, avis et preuves sont cohérents partout sur le web.
             </p>
           </div>
         </div>
@@ -150,10 +151,10 @@ const schemaWebPage = {
     <EntityDiagram />
 
     <!-- ══ CYCLE DE VIE D'UN PROJET ══ -->
-    <ProcessSteps
+    <MethodTimeline
       steps={approachSteps}
       heading="Le déroulement concret d'un projet"
-      subheading="De la prise de contact initiale à l'observation continue des retombées, chaque étape est documentée et validée ensemble."
+      subheading="De la prise de contact initiale au suivi mensuel des retombées, chaque étape est documentée et validée ensemble."
     />
 
     <!-- ══ OUTILS & EXIGENCES TECHNIQUES ══ -->

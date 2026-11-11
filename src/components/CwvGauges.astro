@@ -1,0 +1,166 @@
+---
+/**
+ * CwvGauges.astro
+ * Visual Core Web Vitals threshold gauges (official Google thresholds: LCP, INP, CLS).
+ * Replaces walls of text about web performance with clear visual gauges.
+ */
+const metrics = [
+  {
+    acronym: 'LCP',
+    name: 'Largest Contentful Paint',
+    target: '≤ 2,5 s',
+    percent: 88,
+    question: 'À quelle vitesse l\'élément principal de la page s\'affiche-t-il ?',
+    fix: 'Compression WebP/AVIF, priorité de chargement (fetchpriority="high"), préconnexion aux polices et serveur réactif.',
+  },
+  {
+    acronym: 'INP',
+    name: 'Interaction to Next Paint',
+    target: '≤ 200 ms',
+    percent: 92,
+    question: 'La page réagit-elle instantanément quand un visiteur clique ou tape ?',
+    fix: 'Suppression des scripts tiers bloquants, réduction du JavaScript inutile et exécution différée.',
+  },
+  {
+    acronym: 'CLS',
+    name: 'Cumulative Layout Shift',
+    target: '≤ 0,1',
+    percent: 96,
+    question: 'La mise en page reste-t-elle parfaitement stable pendant le chargement ?',
+    fix: 'Dimensions explicites sur chaque image/vidéo, réservation d\'espace pour les bannières et chargement maîtrisé des polices.',
+  },
+];
+---
+
+<div class="cwv-gauges reveal" aria-label="Seuils officiels Core Web Vitals de Google">
+  <div class="cwv-gauges__grid">
+    {metrics.map((m, i) => (
+      <article class={`cwv-card reveal reveal-delay-${i}`}>
+        <div class="cwv-card__top">
+          <div class="cwv-ring" style={`--pct: ${m.percent}%`} aria-hidden="true">
+            <div class="cwv-ring__inner">
+              <span class="cwv-ring__acronym">{m.acronym}</span>
+              <span class="cwv-ring__target">{m.target}</span>
+            </div>
+          </div>
+          <div>
+            <span class="cwv-card__badge">Seuil Google « Bon »</span>
+            <h3 class="cwv-card__title">{m.name}</h3>
+            <p class="cwv-card__question">{m.question}</p>
+          </div>
+        </div>
+        <div class="cwv-card__fix">
+          <strong>Levier d'optimisation :</strong> {m.fix}
+        </div>
+      </article>
+    ))}
+  </div>
+</div>
+
+<style>
+.cwv-gauges {
+  margin-top: var(--space-10);
+}
+
+.cwv-gauges__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .cwv-gauges__grid { grid-template-columns: 1fr; }
+}
+
+.cwv-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  box-shadow: var(--shadow-xs);
+}
+
+.cwv-card__top {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.cwv-ring {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: conic-gradient(#10B981 var(--pct), #E2E8F0 0);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.cwv-ring__inner {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
+}
+
+.cwv-ring__acronym {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+}
+
+.cwv-ring__target {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #059669;
+  font-weight: var(--weight-semibold);
+}
+
+.cwv-card__badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #047857;
+  background: #D1FAE5;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-2);
+}
+
+.cwv-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--space-1);
+}
+
+.cwv-card__question {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+.cwv-card__fix {
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  background: var(--color-surface-warm);
+  border-left: 3px solid var(--color-atlantic);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  line-height: var(--leading-normal);
+}
+</style>
+

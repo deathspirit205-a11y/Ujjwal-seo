@@ -1,0 +1,35 @@
+# Ujjwal SEO — Consultant SEO & GEO indépendant (France & Grand Ouest)
+
+> Ujjwal Lage est un consultant SEO (Search Engine Optimization) et GEO (Generative Engine Optimization) indépendant basé en Ille-et-Vilaine (Bretagne, France). Il accompagne les TPE, PME, artisans et entreprises B2B dans leur visibilité organique sur Google et dans les moteurs de réponse IA (Google AI Overviews, Perplexity, ChatGPT, Claude).
+
+## Identité & Entité (Faits vérifiables)
+
+- **Nom de l'entité** : Ujjwal SEO
+- **Fondateur & Interlocuteur unique** : Ujjwal Lage
+- **Statut juridique** : Micro-entreprise (SIRET : 944 143 957 00016)
+- **Siège** : 1 Le Petit Chevrolais, 35130 Moutiers (Ille-et-Vilaine, Bretagne, France)
+- **Zones d'intervention sur site** : Bretagne (Rennes, Vitré, Fougères, Janzé, Redon) et Pays de la Loire (Laval, Châteaubriant, Nantes, Angers)
+- **Intervention à distance** : France entière
+- **Site officiel** : https://ujjwal-seo.com
+- **Cadre méthodologique** : Méthode A.R.C. (Accessibilité technique, Relevance & Entités, Citations & Autorité IA)
+
+## Services principaux
+
+- [Audit SEO & GEO](https://ujjwal-seo.com/services/audit-seo/) : Diagnostic complet (technique, sémantique, indexation, entités) livré sous 7 à 14 jours ouvrés avec plan d'action priorisé (P1/P2/P3).
+- [SEO Technique](https://ujjwal-seo.com/services/seo-technique/) : Optimisation du crawl, de l'indexation, des Core Web Vitals (LCP, INP, CLS), de l'architecture et du balisage Schema.org (JSON-LD).
+- [SEO Sémantique & Contenu](https://ujjwal-seo.com/services/seo-contenu/) : Structuration en silos thématiques, alignement sur l'intention de recherche et maillage interne.
+- [SEO Local](https://ujjwal-seo.com/services/seo-local/) : Optimisation Google Business Profile (Pack Local / Google Maps), cohérence NAP et pages locales à forte valeur ajoutée.
+- [GEO — Generative Engine Optimization](https://ujjwal-seo.com/services/geo/) : Structuration d'entités, graphes JSON-LD liés par `@id` et Wikidata, et réponses factuelles extractibles pour les moteurs IA.
+- [Stratégie & Accompagnement SEO](https://ujjwal-seo.com/services/strategie-seo/) : Suivi mensuel continu, exécution priorisée et pilotage via Google Search Console.
+
+## Pages clés & Documentation
+
+- [Accueil](https://ujjwal-seo.com/)
+- [À propos d'Ujjwal Lage](https://ujjwal-seo.com/a-propos/)
+- [Approche & Méthode A.R.C.](https://ujjwal-seo.com/approche/)
+- [Réalisations & Livrables](https://ujjwal-seo.com/realisations/)
+- [Zones d'intervention (Grand Ouest & France)](https://ujjwal-seo.com/zones-intervention/)
+- [Blog & Ressources SEO/GEO](https://ujjwal-seo.com/blog/)
+- [Réserver un appel découverte gratuit (30 min)](https://ujjwal-seo.com/reserver-un-appel/)
+- [Contact](https://ujjwal-seo.com/contact/)
+

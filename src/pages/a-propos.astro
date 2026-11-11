@@ -23,11 +23,14 @@ const breadcrumbs = [
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': `${SITE_URL}/a-propos/#person`,
   name: 'Ujjwal Lage',
   jobTitle: 'Consultant SEO & GEO indépendant',
   url: `${SITE_URL}/a-propos/`,
+  image: `${SITE_URL}/assets/ujjwal-lage-portrait.jpg`,
   worksFor: {
     '@type': 'ProfessionalService',
+    '@id': `${SITE_URL}/#organization`,
     name: 'Ujjwal SEO',
     url: SITE_URL,
   },
@@ -87,6 +90,7 @@ const toolsEnvironment = [
 
   <main id="main-content">
     <PageHero
+      visual="network"
       eyebrow="Parcours & Philosophie"
       title="Ujjwal Lage — Consultant SEO & GEO indépendant"
       description="Une approche fondée sur la clarté stratégique, l'ingénierie du search et la compréhension des enjeux d'affaires réels des entreprises."
@@ -108,23 +112,56 @@ const toolsEnvironment = [
             </div>
             
             <p class="lead" style="margin-top: var(--space-4)">
-              Mon parcours n'est pas celui d'un technicien enfermé dans des lignes de code sans vision commerciale. Il s'est construit au carrefour de la gestion d'entreprise, de l'expérience internationale et de la passion pour les mécanismes de visibilité numérique.
+              Je ne suis pas venu au SEO par le code, mais par le commerce. C'est ce qui change tout dans la façon dont je travaille : <span class="mark">un site n'a de valeur que s'il sert vos objectifs économiques.</span>
             </p>
 
-            <p>
-              Formé au management et au commerce, j'ai exercé dans des environnements internationaux où la rigueur organisationnelle, le sens du service client et la compréhension rapide de modèles économiques variés étaient quotidiens. Cette expérience sur le terrain m'a forgé une conviction : <strong>un site web n'a d'utilité que s'il sert directement les objectifs économiques de l'entreprise</strong>.
-            </p>
-
-            <p>
-              Ma transition vers le référencement naturel s'est opérée naturellement par passion pour la façon dont l'information est classée, indexée et restituée sur Internet. J'ai développé mes compétences techniques de manière approfondie et pratique : architecture de sites, analyse de logs, performance web (Core Web Vitals), stratégie sémantique et balisage structuré.
-            </p>
-
-            <p>
-              Aujourd'hui, l'arrivée de l'intelligence artificielle générative dans les moteurs de recherche ouvre un nouveau chapitre passionnant : le <strong>GEO (Generative Engine Optimization)</strong>. J'y consacre une veille active quotidienne pour permettre aux entreprises que j'accompagne de ne pas seulement réagir aux évolutions des algorithmes, mais d'avoir une longueur d'avance.
-            </p>
+            <ol class="trajectory" role="list">
+              <li class="trajectory__step reveal">
+                <span class="trajectory__dot" aria-hidden="true"></span>
+                <span class="trajectory__tag">Les bases</span>
+                <h3 class="trajectory__title">Commerce &amp; management</h3>
+                <p>Comprendre une marge, un client, un modèle économique, avant de parler de mots-clés.</p>
+              </li>
+              <li class="trajectory__step reveal reveal-delay-1">
+                <span class="trajectory__dot" aria-hidden="true"></span>
+                <span class="trajectory__tag">Le terrain</span>
+                <h3 class="trajectory__title">Environnements internationaux</h3>
+                <p>Rigueur d'organisation, sens du service, adaptation rapide à des secteurs très différents.</p>
+              </li>
+              <li class="trajectory__step reveal reveal-delay-2">
+                <span class="trajectory__dot" aria-hidden="true"></span>
+                <span class="trajectory__tag">Le métier</span>
+                <h3 class="trajectory__title">Ingénierie du search</h3>
+                <p>Architecture, Core Web Vitals, sémantique, données structurées : appris et pratiqué sur des sites réels.</p>
+              </li>
+              <li class="trajectory__step trajectory__step--now reveal reveal-delay-3">
+                <span class="trajectory__dot" aria-hidden="true"></span>
+                <span class="trajectory__tag">Aujourd'hui</span>
+                <h3 class="trajectory__title">SEO + GEO</h3>
+                <p>Veille quotidienne sur les moteurs IA pour que mes clients anticipent au lieu de subir.</p>
+              </li>
+            </ol>
           </div>
 
           <div class="story-sidebar">
+            <figure class="story-portrait">
+              <div class="story-portrait__media">
+                <img
+                  src="/assets/ujjwal-lage-portrait.jpg"
+                  alt="Ujjwal Lage — Consultant SEO & GEO indépendant"
+                  width="682"
+                  height="1024"
+                  loading="eager"
+                  decoding="async"
+                  class="story-portrait__img"
+                />
+              </div>
+              <figcaption class="story-portrait__caption">
+                <strong>Ujjwal Lage</strong>
+                <span>Consultant SEO &amp; GEO indépendant</span>
+              </figcaption>
+            </figure>
+
             <div class="story-card">
               <h3 class="story-card__title">Profil professionnel</h3>
               <ul class="story-card__list">
@@ -222,10 +259,115 @@ const toolsEnvironment = [
   margin-bottom: var(--space-5);
 }
 
+/* Career trajectory (visual timeline) */
+.trajectory {
+  position: relative;
+  list-style: none;
+  padding: 0 0 0 var(--space-8);
+  margin: var(--space-10) 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.trajectory::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 7px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-border), var(--color-atlantic) 60%, var(--color-highlight));
+}
+
+.trajectory__step {
+  position: relative;
+}
+
+.trajectory__dot {
+  position: absolute;
+  left: calc(-1 * var(--space-8));
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 3px solid var(--color-atlantic);
+}
+
+.trajectory__step--now .trajectory__dot {
+  border-color: var(--color-highlight);
+  box-shadow: 0 0 0 5px var(--color-highlight-soft);
+}
+
+.trajectory__tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.trajectory__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  color: var(--color-navy);
+  margin: 2px 0 var(--space-1);
+}
+
+.story-text .trajectory__step p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
 .story-sidebar {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+}
+
+.story-portrait {
+  margin: 0;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.story-portrait__media {
+  aspect-ratio: 4 / 4.5;
+  overflow: hidden;
+  background: var(--color-surface-subtle);
+}
+
+.story-portrait__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+.story-portrait__caption {
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.story-portrait__caption strong {
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  color: var(--color-navy);
+}
+
+.story-portrait__caption span {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
 }
 
 .story-card {

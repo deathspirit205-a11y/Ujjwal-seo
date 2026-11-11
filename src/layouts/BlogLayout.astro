@@ -32,18 +32,24 @@ const {
 
 const articleSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
+  '@type': 'BlogPosting',
   headline: title,
   description,
   author: {
     '@type': 'Person',
+    '@id': `${SITE_URL}/a-propos/#person`,
     name: author,
     url: `${SITE_URL}/a-propos/`,
   },
   publisher: {
     '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`,
     name: 'Ujjwal SEO',
     url: SITE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/favicon.svg`,
+    },
   },
   datePublished: pubDate.toISOString(),
   ...(updatedDate && { dateModified: updatedDate.toISOString() }),

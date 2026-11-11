@@ -73,7 +73,7 @@ const servicesSchema = {
     item: {
       '@type': 'Service',
       name: s.title,
-      url: `${SITE_URL}/services/${s.slug}/`,
+      url: `${SITE_URL}${s.slug}`,
       description: s.shortDescription,
     },
   })),
@@ -91,6 +91,7 @@ const servicesSchema = {
 
   <main id="main-content">
     <PageHero
+      visual="serp"
       eyebrow="Expertises & Prestations"
       title="Services SEO & GEO"
       description="Une suite d'interventions ciblées, pensées pour résoudre des blocages concrets et construire une présence numérique robuste, compréhensible et durable."

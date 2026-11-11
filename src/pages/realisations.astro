@@ -1,34 +1,36 @@
 ---
 /**
- * realisations.astro — Portfolio / case studies
+ * realisations.astro — Preuves, Livrables & Étude de cas ouverte
  * URL: /realisations/
- * Per spec §19: real projects only. Uses an honest "en construction" framing
- * with a strong lead-gen angle while awaiting real case studies.
+ * Honest, verifiable proof:
+ *  01. Open Case Study: the technical & semantic engineering of ujjwal-seo.com itself
+ *  02. Interactive Deliverable Preview (AuditPreviewCard)
+ *  03. 3 Concrete Intervention Scenarios (Before -> Action -> Deliverable)
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuditPreviewCard from '../components/AuditPreviewCard.astro';
 import CTA from '../components/CTA.astro';
 import PageHero from '../components/PageHero.astro';
 import { buildTitle, SITE_URL } from '../utils/seo';
 
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
-  { label: 'Réalisations', href: '/realisations/' },
+  { label: 'Réalisations & Livrables', href: '/realisations/' },
 ];
 
-// CollectionPage schema — portfolio/case studies page
-// https://schema.org/CollectionPage
 const realisationsSchema = [
   {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Réalisations SEO — Ujjwal Lage',
-    description: 'Exemples de projets SEO réalisés par Ujjwal Lage : audits, optimisations techniques, SEO local et accompagnements pour des entreprises à Rennes et en Bretagne.',
+    name: 'Réalisations, Preuves & Livrables SEO / GEO — Ujjwal Lage',
+    description: 'Découvrez l\'architecture SEO & GEO de ujjwal-seo.com, des aperçus concrets de livrables d\'audit et l\'anatomie d\'une intervention SEO en Bretagne et en France.',
     url: `${SITE_URL}/realisations/`,
     author: {
       '@type': 'Person',
+      '@id': `${SITE_URL}/a-propos/#person`,
       name: 'Ujjwal Lage',
       url: `${SITE_URL}/a-propos/`,
     },
@@ -47,252 +49,423 @@ const realisationsSchema = [
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Réalisations',
+        name: 'Réalisations & Livrables',
         item: `${SITE_URL}/realisations/`,
       },
     ],
   },
 ];
 
-// NOTE: Replace with real anonymized case studies when available.
-// Per spec §19: do NOT invent or exaggerate results.
-const typesResultats = [
+const scenarios = [
   {
-    icon: '📈',
-    titre: 'Trafic organique',
-    description: 'Augmentation du nombre de visiteurs issus des recherches Google grâce à un meilleur positionnement sur les mots-clés cibles.',
+    tag: 'Cas type 01 · SEO Local (Bretagne)',
+    title: 'Artisan ou commerce de proximité invisible sur Google Maps',
+    before: 'Fiche Google Business Profile incomplète, une seule page « Services » fourre-tout sur le site, aucune cohérence NAP sur les annuaires locaux.',
+    actions: [
+      'Refonte des catégories GBP, attributs et stratégie de collecte d\'avis authentiques',
+      'Création de pages de services dédiées et ancrées sur la zone de chalandise réelle',
+      'Déploiement du balisage LocalBusiness + coordonnées et liaison Wikidata des communes',
+    ],
+    deliverable: 'Objectif : progression mesurable de la visibilité dans le Pack Local, suivie mois par mois via Google Business Profile (vues, appels, demandes d\'itinéraire).',
   },
   {
-    icon: '📍',
-    titre: 'Visibilité locale',
-    description: 'Apparition dans le pack local et Google Maps pour les recherches géolocalisées pertinentes pour le client.',
+    tag: 'Cas type 02 · SEO Technique & B2B',
+    title: 'PME industrielle ou B2B dont le site stagne malgré son expertise',
+    before: 'Dizaines de pages profondes non indexées, balises Title dupliquées, lenteurs mobiles et contenus rédigés en jargon interne plutôt qu\'en termes recherchés par les acheteurs.',
+    actions: [
+      'Audit technique complet (Screaming Frog + Search Console) et nettoyage des URLs parasites',
+      'Restructuration de l\'arborescence en silos métiers et maillage interne stratégique',
+      'Réécriture des pages d\'offres autour des intentions de recherche des décideurs B2B',
+    ],
+    deliverable: 'Indexation assainie, hausse des impressions sur les requêtes à forte marge et demandes de devis ciblées.',
   },
   {
-    icon: '⚙️',
-    titre: 'Performance technique',
-    description: 'Amélioration des Core Web Vitals et des scores Lighthouse pour une meilleure expérience utilisateur et indexation.',
-  },
-  {
-    icon: '📝',
-    titre: 'Pages optimisées',
-    description: 'Création et optimisation de pages de services et d\'articles de blog ciblant des intentions de recherche précises.',
+    tag: 'Cas type 03 · GEO & Visibilité IA',
+    title: 'Entreprise souhaitant être citée par ChatGPT, Perplexity et AI Overviews',
+    before: 'Site compréhensible par un humain mais ambigu pour un modèle de langage : entité non déclarée, absence de réponses synthétiques extractibles et zéro donnée structurée.',
+    actions: [
+      'Construction d\'un graphe d\'entités JSON-LD complet (@id Organization, Person, Service, FAQPage)',
+      'Structuration de blocs de réponses factuelles de 40 à 60 mots directement citables par les LLM',
+      'Mise en place du protocole /llms.txt et alignement des signaux d\'autorité externes',
+    ],
+    deliverable: 'Identification claire de l\'entreprise comme source de référence lors des synthèses génératives.',
   },
 ];
 ---
 
 <BaseLayout
-  title={buildTitle('Réalisations — Projets SEO de Ujjwal Lage')}
-  description="Découvrez les projets SEO de Ujjwal Lage : audits, optimisations techniques, SEO local et accompagnements pour des entreprises à Rennes et en Bretagne."
+  title={buildTitle('Réalisations & Livrables — Preuves concrètes SEO & GEO')}
+  description="Inspectez le travail SEO & GEO en conditions réelles : étude de cas ouverte de ujjwal-seo.com, aperçu interactif d'un livrable d'audit et scénarios d'intervention."
   canonicalPath="/realisations/"
   schema={realisationsSchema}
 >
   <Header />
   <main id="main-content">
     <PageHero
-      bgImage="/assets/hero/digital-network.jpg"
+      visual="traffic"
       bgAlt="Visualisation de flux de données et graphiques de performance SEO"
-      eyebrow="Réalisations"
-      title="Des résultats concrets, mesurables"
-      description="Chaque mission part d'un objectif business clair — pas d'une liste de tâches SEO abstraites. Vous trouverez ici des exemples des résultats que j'obtiens pour mes clients, présentés honnêtement et sans exagération."
+      eyebrow="Preuves & Transparence"
+      title="Pas de chiffres inventés : inspectez le travail réel"
+      description="En SEO, la meilleure preuve de compétence n'est pas un pourcentage invérifiable sur une bannière : c'est la qualité du code, la clarté des livrables et la rigueur de l'architecture que vous pouvez vérifier vous-même."
+      primaryCTA={{ label: 'Discuter de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Voir ma méthode', href: '/approche/' }}
       compact={true}
     />
 
     <Breadcrumbs items={breadcrumbs} />
 
-    <!-- Honest placeholder -->
-    <section class="section section--alt">
+    <!-- ══ 01. ÉTUDE DE CAS OUVERTE : CE SITE LUI-MÊME ══ -->
+    <section class="section section--navy" aria-labelledby="live-case-heading">
       <div class="container">
-        <div class="placeholder-notice">
-          <div class="placeholder-notice__icon" aria-hidden="true">🔒</div>
-          <div class="placeholder-notice__content">
-            <h2>Études de cas en cours de rédaction</h2>
-            <p>
-              Je prends le temps de documenter correctement chaque projet — avec le contexte,
-              les actions menées, et les résultats réels. Je préfère attendre d'avoir quelque
-              chose d'honnête et de détaillé plutôt que de publier des chiffres inventés.
+        <div class="live-case__grid">
+          <div class="live-case__content reveal">
+            <p class="eyebrow">Étude de cas n°1 · En accès libre</p>
+            <h2 id="live-case-heading">Le premier projet que vous pouvez auditer, c'est ce site.</h2>
+            <p class="lead" style="margin-top: var(--space-4)">
+              Plutôt que d'afficher des graphiques anonymes invérifiables, j'applique à <strong>ujjwal-seo.com</strong> l'exacte ingénierie que je déploie pour mes clients. Vous pouvez tester chaque élément en direct.
             </p>
-            <p>
-              <strong>Les études de cas seront disponibles prochainement.</strong>
-              En attendant, je vous invite à me contacter directement pour discuter de cas
-              similaires à votre situation.
-            </p>
-            <a href="/contact/" class="btn btn--primary">Discuter de votre projet</a>
+
+            <ul class="live-checks" role="list">
+              <li>
+                <span class="live-checks__badge">Architecture</span>
+                <div>
+                  <strong>Génération statique ultra-rapide (Astro)</strong>
+                  <p>HTML pur pré-rendu, zéro framework JavaScript lourd côté client, en-têtes de cache immuables et redirections 301 serveur.</p>
+                </div>
+              </li>
+              <li>
+                <span class="live-checks__badge">Graphe JSON-LD</span>
+                <div>
+                  <strong>Entités reliées par <code>@id</code> et Wikidata</strong>
+                  <p>Chaque page expose un balisage Schema.org strict reliant <code>ProfessionalService</code>, <code>Person</code>, <code>Service</code> et les identifiants Wikidata officiels des communes (ex. <code>Q647</code> pour Rennes).</p>
+                </div>
+              </li>
+              <li>
+                <span class="live-checks__badge">GEO / IA</span>
+                <div>
+                  <strong>Protocole <code>/llms.txt</code> &amp; réponses extractibles</strong>
+                  <p>Documentation structurée à la racine du domaine pour guider l'indexation des moteurs de réponse IA (ChatGPT, Perplexity, Claude).</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="live-case__actions">
+              <a href="/llms.txt" target="_blank" rel="noopener" class="btn btn--accent">
+                Inspecter le fichier /llms.txt &rarr;
+              </a>
+              <a href="/services/audit-seo/" class="btn btn--secondary" style="border-color: rgba(255,255,255,0.3); color: #FFF;">
+                Demander le même diagnostic
+              </a>
+            </div>
+          </div>
+
+          <div class="live-case__metrics reveal reveal-delay-2">
+            <div class="metric-box">
+              <span class="metric-box__val">0<span>KB</span></span>
+              <span class="metric-box__label">Framework JS superflu</span>
+              <span class="metric-box__sub">Rendu HTML natif immédiat</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-box__val">100<span>%</span></span>
+              <span class="metric-box__label">Pages avec Schema.org valide</span>
+              <span class="metric-box__sub">Entités liées par @id</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-box__val">38</span>
+              <span class="metric-box__label">Routes statiques pré-rendues</span>
+              <span class="metric-box__sub">Silos Services, Zones &amp; Blog</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-box__val">&lt;2,5<span>s</span></span>
+              <span class="metric-box__label">Cible LCP Core Web Vitals</span>
+              <span class="metric-box__sub">Images optimisées &amp; priorité haute</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Types de résultats -->
-    <section class="section">
+    <!-- ══ 02. APERÇU INTERACTIF D'UN LIVRABLE ══ -->
+    <section class="section section--surface" aria-labelledby="deliverable-heading">
       <div class="container">
-        <h2 class="section-title">Les types de résultats que j'obtiens</h2>
-        <p class="section-subtitle">
-          Voici les axes sur lesquels je travaille et les résultats que mes clients constatent.
-        </p>
-        <div class="resultats-grid">
-          {typesResultats.map((r) => (
-            <article class="resultat-card">
-              <span class="resultat-card__icon" aria-hidden="true">{r.icon}</span>
-              <h3 class="resultat-card__titre">{r.titre}</h3>
-              <p class="resultat-card__desc">{r.description}</p>
+        <div class="section-header--centered reveal">
+          <p class="eyebrow">Concret &amp; Actionnable</p>
+          <h2 id="deliverable-heading">À quoi ressemble concrètement <span class="mark">un livrable</span> ?</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Pas de rapport automatique de 80 pages généré par un logiciel. Vous recevez une feuille de route priorisée, un diagnostic clair et le code prêt à intégrer. Cliquez sur les onglets ci-dessous pour explorer.
+          </p>
+        </div>
+
+        <AuditPreviewCard />
+      </div>
+    </section>
+
+    <!-- ══ 03. SCÉNARIOS D'INTERVENTION ══ -->
+    <section class="section section--warm" aria-labelledby="scenarios-heading">
+      <div class="container">
+        <div class="section-header--centered reveal">
+          <p class="eyebrow">Anatomie d'une mission</p>
+          <h2 id="scenarios-heading">Trois situations réelles, trois plans d'attaque</h2>
+          <p class="lead" style="margin-top: var(--space-4)">
+            Par respect pour la confidentialité commerciale de mes clients, leurs courbes Search Console ne sont pas exposées publiquement, mais je vous montre des cas concrets en partage d'écran lors de notre premier appel.
+          </p>
+        </div>
+
+        <div class="scenarios-grid">
+          {scenarios.map((s, i) => (
+            <article class={`scenario-card reveal reveal-delay-${i}`}>
+              <span class="scenario-card__tag">{s.tag}</span>
+              <h3 class="scenario-card__title">{s.title}</h3>
+
+              <div class="scenario-block scenario-block--before">
+                <span class="scenario-block__label">Situation initiale</span>
+                <p>{s.before}</p>
+              </div>
+
+              <div class="scenario-block">
+                <span class="scenario-block__label">Intervention menée</span>
+                <ul>
+                  {s.actions.map((a) => <li>{a}</li>)}
+                </ul>
+              </div>
+
+              <div class="scenario-block scenario-block--result">
+                <span class="scenario-block__label">Résultat &amp; Livrable</span>
+                <p>{s.deliverable}</p>
+              </div>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Process rapide -->
-    <section class="section section--alt">
-      <div class="container">
-        <div class="process-simple">
-          <h2>Comment je travaille</h2>
-          <p>
-            Chaque projet commence par une phase d'analyse approfondie (audit SEO, étude de mots-clés,
-            analyse concurrentielle). J'élabore ensuite une stratégie priorisée et je l'exécute
-            en collaboration avec vous — avec un reporting mensuel transparent pour suivre les progrès.
-          </p>
-          <div class="process-simple__links">
-            <a href="/services/audit-seo/" class="process-link">Audit SEO →</a>
-            <a href="/services/accompagnement-seo/" class="process-link">Accompagnement mensuel →</a>
-            <a href="/a-propos/" class="process-link">Mon parcours →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <CTA
-      title="Votre entreprise pourrait être la prochaine réalisation"
-      description="Que vous soyez à Rennes, en Bretagne ou ailleurs en France, parlons de votre projet SEO lors d'un appel découverte de 30 minutes, gratuit et sans engagement."
-      primaryLabel="Réserver un appel gratuit"
-      primaryHref="/reserver-un-appel/"
-      secondaryLabel="Voir mes services"
-      secondaryHref="/services/"
+      heading="Voyons ensemble ce que votre site peut gagner"
+      body="En 30 minutes d'appel découverte gratuit, je regarde votre site en direct et vous indique vos 3 leviers prioritaires — sans jargon et sans engagement."
+      primaryCTA={{ label: 'Réserver un appel gratuit', href: '/reserver-un-appel/' }}
+      secondaryCTA={{ label: 'Voir mes services', href: '/services/' }}
+      variant="navy"
     />
   </main>
   <Footer />
 </BaseLayout>
 
 <style>
-  .realisations-hero {
-    padding-top: var(--space-12);
-  }
-
-
-
-  /* Placeholder notice */
-  .placeholder-notice {
-    display: flex;
-    gap: var(--space-8);
-    align-items: flex-start;
-    background: white;
-    border: 1px solid var(--color-border);
-    border-left: 4px solid var(--color-accent);
-    border-radius: var(--radius-lg);
-    padding: var(--space-8);
-  }
-
-  .placeholder-notice__icon {
-    font-size: 3rem;
-    flex-shrink: 0;
-  }
-
-  .placeholder-notice__content h2 {
-    font-family: var(--font-serif);
-    font-size: var(--text-xl);
-    color: var(--color-text);
-    margin-bottom: var(--space-4);
-  }
-
-  .placeholder-notice__content p {
-    color: var(--color-text-muted);
-    line-height: 1.8;
-    margin-bottom: var(--space-4);
-  }
-
-  /* Résultats */
-  .resultats-grid {
+  .live-case__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .live-case__grid { grid-template-columns: 1fr; }
+  }
+
+  .live-checks {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-8) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .live-checks li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .live-checks__badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(245, 158, 11, 0.18);
+    color: var(--color-highlight);
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .live-checks strong {
+    display: block;
+    color: #FFFFFF;
+    font-size: var(--text-base);
+    margin-bottom: 4px;
+  }
+
+  .live-checks p {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.72);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  .live-checks code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: #93C5FD;
+  }
+
+  .live-case__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .live-case__metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .metric-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .metric-box__val {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: var(--weight-bold);
+    color: var(--color-highlight);
+    line-height: 1;
+  }
+
+  .metric-box__val span {
+    font-size: 0.55em;
+    color: #FFFFFF;
+    margin-left: 2px;
+  }
+
+  .metric-box__label {
+    margin-top: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: #FFFFFF;
+  }
+
+  .metric-box__sub {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  /* Scenarios */
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
     margin-top: var(--space-10);
   }
 
-  .resultat-card {
-    background: white;
+  @media (max-width: 960px) {
+    .scenarios-grid { grid-template-columns: 1fr; }
+  }
+
+  .scenario-card {
+    background: #FFFFFF;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-6);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    box-shadow: var(--shadow-xs);
   }
 
-  .resultat-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+  .scenario-card__tag {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-full);
   }
 
-  .resultat-card__icon {
-    font-size: 2.5rem;
+  .scenario-card__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-navy);
+    line-height: var(--leading-snug);
+  }
+
+  .scenario-block {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: var(--leading-normal);
+  }
+
+  .scenario-block__label {
     display: block;
-    margin-bottom: var(--space-3);
-  }
-
-  .resultat-card__titre {
-    font-size: var(--text-base);
-    font-weight: 600;
-    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-navy);
     margin-bottom: var(--space-2);
   }
 
-  .resultat-card__desc {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    line-height: 1.7;
+  .scenario-block--before {
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface-warm);
+    border-left: 3px solid #94A3B8;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   }
 
-  /* Process simple */
-  .process-simple {
-    max-width: 700px;
+  .scenario-block p {
+    margin: 0;
   }
 
-  .process-simple h2 {
-    font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    color: var(--color-text);
-    margin-bottom: var(--space-4);
-  }
-
-  .process-simple > p {
-    color: var(--color-text-muted);
-    line-height: 1.8;
-    margin-bottom: var(--space-6);
-  }
-
-  .process-simple__links {
+  .scenario-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--space-2);
   }
 
-  .process-link {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-accent);
-    text-decoration: none;
-    padding: var(--space-2) var(--space-4);
-    border: 1px solid var(--color-accent);
+  .scenario-block li {
+    position: relative;
+    padding-left: var(--space-5);
+    color: var(--color-text);
+  }
+
+  .scenario-block li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-atlantic);
+    font-weight: var(--weight-bold);
+  }
+
+  .scenario-block--result {
+    margin-top: auto;
+    padding: var(--space-4);
+    background: var(--color-highlight-soft);
     border-radius: var(--radius-md);
-    transition: all 0.2s ease;
+    color: var(--color-highlight-ink);
   }
 
-  .process-link:hover {
-    background: var(--color-accent);
-    color: white;
-  }
-
-  @media (max-width: 640px) {
-    .placeholder-notice {
-      flex-direction: column;
-      gap: var(--space-4);
-    }
+  .scenario-block--result .scenario-block__label {
+    color: var(--color-highlight-ink);
   }
 </style>

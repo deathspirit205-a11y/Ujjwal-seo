@@ -5,12 +5,12 @@
  * H1: Consultant SEO & GEO
  *
  * Information Architecture:
- *  01. Hero (SearchLandscapeHero)
- *  02. SEO + GEO : Deux disciplines complémentaires
+ *  01. Hero (SearchLandscapeHero) + CommitmentBand (animated offer facts)
+ *  02. SEO vs GEO — interactive comparison (SerpVsAi)
  *  03. "Comment votre entreprise est comprise" (EntityDiagram)
  *  04. Services SEO & GEO (6 expertises claires)
- *  05. Méthodologie en 5 étapes (ProcessSteps)
- *  06. Pourquoi travailler avec un consultant indépendant
+ *  05. Méthode en 5 étapes (MethodTimeline)
+ *  06. Ce que je refuse de faire (navy band + portrait)
  *  07. Zones d'intervention (Bretagne, Pays de la Loire & France à distance)
  *  08. Blog & Ressources
  *  09. FAQ
@@ -20,9 +20,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SearchLandscapeHero from '../components/SearchLandscapeHero.astro';
+import CommitmentBand from '../components/CommitmentBand.astro';
+import SerpVsAi from '../components/SerpVsAi.astro';
 import EntityDiagram from '../components/EntityDiagram.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-import ProcessSteps from '../components/ProcessSteps.astro';
+import MethodTimeline from '../components/MethodTimeline.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import BlogCard from '../components/BlogCard.astro';
@@ -37,32 +39,52 @@ const latestPosts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-// 5-step methodology per prompt specification §10
+// 5-step methodology — short, scannable, with indicative timing
 const processSteps = [
   {
-    number: 1,
     title: 'Comprendre',
-    description: 'Analyse approfondie de votre modèle économique, de la demande de recherche réelle, des concurrents et des intentions de vos clients.',
+    when: 'Semaine 1',
+    description: 'Votre marché, vos marges, vos concurrents et ce que vos clients tapent vraiment.',
   },
   {
-    number: 2,
     title: 'Structurer',
-    description: 'Organisation de l\'architecture de l\'information, maillage interne, définition des entités et assainissement technique des fondations.',
+    when: 'Semaines 2–3',
+    description: 'Architecture, maillage interne et entités : des fondations que Google comprend.',
   },
   {
-    number: 3,
     title: 'Optimiser',
-    description: 'Résolution des blocages techniques, optimisation sémantique on-page, balisage Schema.org et cohérence locale.',
+    when: 'Semaines 3–6',
+    description: 'Blocages techniques levés, pages clés réécrites, Schema.org en place.',
   },
   {
-    number: 4,
     title: 'Développer',
-    description: 'Déploiement de contenus stratégiques à forte valeur ajoutée, renforcement de l\'autorité thématique et pertinence contextuelle.',
+    when: 'Mois 2–6',
+    description: 'Contenus qui répondent aux vraies questions et construisent votre autorité.',
   },
   {
-    number: 5,
-    title: 'Observer',
-    description: 'Pilotage via Google Search Console, suivi des positions, du trafic qualifié, des conversions et des signaux de visibilité IA émergents.',
+    title: 'Mesurer',
+    when: 'Chaque mois',
+    description: 'Search Console, positions, leads : ce qui progresse, ce qu\'on ajuste.',
+  },
+];
+
+// "What I refuse to do" — confident positioning, replaces repeated generic claims
+const refusals = [
+  {
+    title: 'Promettre des positions miracles',
+    text: 'Aucun consultant sérieux ne contrôle l\'algorithme de Google. Mon engagement repose sur une méthode rigoureuse, des fondations techniques solides et une croissance mesurable et pérenne.',
+  },
+  {
+    title: 'Acheter des liens',
+    text: 'Les liens achetés finissent par coûter plus cher qu\'ils ne rapportent. L\'autorité se mérite.',
+  },
+  {
+    title: 'Vous noyer sous des rapports',
+    text: 'Pas de PDF de 80 pages illisible. Une liste priorisée : quoi faire, dans quel ordre, pourquoi.',
+  },
+  {
+    title: 'Déléguer votre dossier',
+    text: 'Celui qui audite est celui qui recommande, applique et vous répond. Toujours.',
   },
 ];
 
@@ -70,11 +92,13 @@ const processSteps = [
 const professionalServiceSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
+  '@id': `${SITE_URL}/#organization`,
   name: 'Ujjwal SEO',
   description: 'Consultant SEO & GEO indépendant en France. Accompagnement en référencement naturel, optimisation technique, sémantique et visibilité dans les moteurs de recherche IA.',
   url: SITE_URL,
   founder: {
     '@type': 'Person',
+    '@id': `${SITE_URL}/a-propos/#person`,
     name: 'Ujjwal Lage',
     jobTitle: 'Consultant SEO & GEO indépendant',
     url: `${SITE_URL}/a-propos/`,
@@ -101,8 +125,12 @@ const professionalServiceSchema = {
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
   name: 'Ujjwal SEO',
   url: SITE_URL,
+  publisher: {
+    '@id': `${SITE_URL}/#organization`,
+  },
 };
 ---
 
@@ -122,67 +150,34 @@ const websiteSchema = {
     <SearchLandscapeHero
       eyebrow="Consultant SEO & GEO indépendant"
       heading="Consultant SEO & GEO"
-      subheading="J'aide les entreprises à devenir plus visibles dans les moteurs de recherche et les nouveaux espaces de recherche alimentés par l'IA. De la structure technique aux réseaux d'entités, je construis des fondations durables pour votre présence numérique."
-      primaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
-      secondaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      subheading="Google ne se contente plus de classer des pages : il cherche à comprendre qui vous êtes. Mon travail consiste à rendre votre entreprise évidente, crédible et citée, sur Google comme dans les réponses des IA."
+      primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
+      secondaryCTA={{ label: 'Voir ma méthode', href: '/approche/' }}
     />
 
+    <!-- Concrete commitments band (animated) -->
+    <CommitmentBand />
+
     <!-- ══════════════════════════════════════
-         02. SEO + GEO : DEUX DISCIPLINES COMPLÉMENTAIRES
+         02. SEO + GEO : INTERACTIVE COMPARISON
     ══════════════════════════════════════ -->
     <section class="duo-section section section--surface" aria-labelledby="duo-heading">
       <div class="container">
-        <div class="section-header--centered">
-          <p class="eyebrow">Vision & Positionnement</p>
-          <h2 id="duo-heading">SEO + GEO : Deux disciplines complémentaires</h2>
+        <div class="section-header--centered reveal">
+          <p class="eyebrow">La recherche a changé</p>
+          <h2 id="duo-heading">Hier, il fallait être <span class="mark">classé</span>. Aujourd'hui, il faut aussi être <span class="mark">cité</span>.</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Le référencement ne s'arrête plus à une liste de liens bleus. Pour construire une visibilité pérenne, il est indispensable de comprendre comment les moteurs traditionnels et les systèmes d'IA indexent et synthétisent vos informations.
+            Même requête, deux façons de répondre. Cliquez pour comparer.
           </p>
         </div>
 
-        <div class="duo-grid">
-          <article class="duo-card duo-card--seo">
-            <div class="duo-card__header">
-              <span class="duo-card__badge">Fondation classique</span>
-              <h3 class="duo-card__title">SEO — Search Engine Optimization</h3>
-            </div>
-            <p class="duo-card__desc">
-              Le SEO traditionnel consiste à positionner votre site sur Google en optimisant son accessibilité technique, sa pertinence sémantique et son autorité. L'objectif est de répondre précisément aux requêtes textuelles des internautes.
-            </p>
-            <ul class="duo-card__list">
-              <li><strong>Crawl & Indexation :</strong> Des pages facilement lues par les robots d'exploration.</li>
-              <li><strong>Intention de recherche :</strong> Des contenus ciblés répondant aux besoins de vos futurs clients.</li>
-              <li><strong>Expérience & Performance :</strong> Temps de chargement rapides, ergonomie mobile et balisage clair.</li>
-            </ul>
-            <div class="duo-card__footer">
-              <span class="duo-card__mechanic">Mécanique : Requête &rarr; Moteur &rarr; Index &rarr; Classement</span>
-            </div>
-          </article>
+        <SerpVsAi query="consultant SEO Rennes" />
 
-          <article class="duo-card duo-card--geo">
-            <div class="duo-card__header">
-              <span class="duo-card__badge duo-card__badge--geo">Espace émergent</span>
-              <h3 class="duo-card__title">GEO — Generative Engine Optimization</h3>
-            </div>
-            <p class="duo-card__desc">
-              Le GEO s'intéresse à la façon dont l'expertise et l'identité de votre entreprise sont comprises, extraites et citées par les moteurs de recherche enrichis d'IA (Google AI Overviews, Perplexity, moteurs de réponse).
-            </p>
-            <ul class="duo-card__list">
-              <li><strong>Clarté des entités :</strong> Rendre explicites vos domaines d'intervention, vos produits et votre singularité.</li>
-              <li><strong>Données structurées :</strong> Alimenter les modèles avec des faits vérifiables et standardisés.</li>
-              <li><strong>Sources de confiance :</strong> Devenir une référence citée lors des synthèses automatiques.</li>
-            </ul>
-            <div class="duo-card__footer">
-              <span class="duo-card__mechanic">Mécanique : Question complexe &rarr; Extraction contextuelle &rarr; Synthèse sourcée</span>
-            </div>
-          </article>
-        </div>
-
-        <div class="duo-summary">
+        <div class="duo-summary reveal">
           <div class="duo-summary__inner">
             <div class="duo-summary__icon" aria-hidden="true">&bull;&bull;&bull;</div>
             <p class="duo-summary__text">
-              <strong>Le GEO ne remplace pas le SEO.</strong> Il s'appuie sur les mêmes piliers d'excellence technique, de qualité éditoriale et de cohérence structurelle. Travailler les deux vous assure d'être présent là où vos clients cherchent aujourd'hui et chercheront demain.
+              <strong>Le GEO ne remplace pas le SEO, il le prolonge.</strong> Les IA puisent dans ce que Google comprend déjà de vous. Sans fondations solides, pas de citation.
             </p>
           </div>
         </div>
@@ -201,9 +196,9 @@ const websiteSchema = {
       <div class="container">
         <div class="section-header--centered">
           <p class="eyebrow">Domaines d'intervention</p>
-          <h2 id="services-heading">Des expertises précises pour chaque enjeu</h2>
+          <h2 id="services-heading">Six leviers. Un seul objectif : <span class="mark">être choisi</span>.</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Que vous ayez besoin de débloquer des freins techniques, d'asseoir une présence locale ou d'anticiper la recherche générative, mes prestations répondent à un besoin concret sans promesse artificielle.
+            Technique, contenu, local ou IA : on commence par ce qui bloque le plus, pas par ce qui se vend le mieux.
           </p>
         </div>
 
@@ -231,103 +226,54 @@ const websiteSchema = {
     <!-- ══════════════════════════════════════
          05. PROCESSUS (5 ÉTAPES)
     ══════════════════════════════════════ -->
-    <ProcessSteps
+    <MethodTimeline
       steps={processSteps}
-      heading="Une méthode structurée en 5 étapes"
-      subheading="Le référencement naturel pérenne repose sur une méthodologie rigoureuse, fondée sur l'analyse de données réelles et l'amélioration méthodique des fondations de votre site."
+      heading="De l'analyse aux résultats, sans zone grise"
+      subheading="Vous savez à chaque étape ce qui est fait, pourquoi, et ce que ça change."
     />
 
     <!-- ══════════════════════════════════════
-         06. POURQUOI UN CONSULTANT INDÉPENDANT
+         06. CE QUE JE REFUSE DE FAIRE (confident positioning)
     ══════════════════════════════════════ -->
-    <section class="consultant-value section section--surface" aria-labelledby="why-heading">
+    <section class="refuse section section--navy" aria-labelledby="refuse-heading">
       <div class="container">
-        <div class="consultant-value__grid">
-          <div class="consultant-value__text">
-            <p class="eyebrow">Collaboration directe</p>
-            <h2 id="why-heading">Pourquoi faire appel à un consultant indépendant ?</h2>
-            <p class="lead" style="margin-top: var(--space-4); margin-bottom: var(--space-8)">
-              Loin des schémas d'agences aux multiples intermédiaires, travailler avec un consultant indépendant vous garantit un échange direct avec l'expert qui analyse, conseille et intervient sur votre site.
-            </p>
+        <div class="refuse__grid">
+          <div class="refuse__content">
+            <p class="eyebrow reveal">Ma ligne de conduite</p>
+            <h2 id="refuse-heading" class="reveal">Ce que je refuse de faire. Et pourquoi c'est une bonne nouvelle pour vous.</h2>
 
-            <ul class="consultant-points" role="list">
-              <li class="consultant-point">
-                <span class="consultant-point__number">01</span>
-                <div>
-                  <h3 class="consultant-point__title">Interlocuteur unique & engagement direct</h3>
-                  <p class="consultant-point__desc">
-                    Aucun compte délégué à un stagiaire. Votre dossier est traité directement avec rigueur, écoute et réactivité.
-                  </p>
-                </div>
-              </li>
-              <li class="consultant-point">
-                <span class="consultant-point__number">02</span>
-                <div>
-                  <h3 class="consultant-point__title">Double sensibilité technique et commerciale</h3>
-                  <p class="consultant-point__desc">
-                    Issu d'une formation en management et commerce avant ma spécialisation en SEO, je ne perds jamais de vue vos objectifs d'affaires et la rentabilité de vos actions.
-                  </p>
-                </div>
-              </li>
-              <li class="consultant-point">
-                <span class="consultant-point__number">03</span>
-                <div>
-                  <h3 class="consultant-point__title">Pédagogie et transparence totale</h3>
-                  <p class="consultant-point__desc">
-                    Pas de jargon hermétique ni de faux mystère. Vous comprenez chaque choix technique, chaque priorité et la logique des actions mises en œuvre.
-                  </p>
-                </div>
-              </li>
-              <li class="consultant-point">
-                <span class="consultant-point__number">04</span>
-                <div>
-                  <h3 class="consultant-point__title">Veille continue sur l'IA et le GEO</h3>
-                  <p class="consultant-point__desc">
-                    Les moteurs de recherche évoluent vite. Mon approche intègre en permanence les changements d'algorithmes et l'apparition des nouvelles surfaces de réponse génératives.
-                  </p>
-                </div>
-              </li>
+            <ul class="refuse__list" role="list">
+              {refusals.map((r, i) => (
+                <li class={`refuse__item reveal reveal-delay-${Math.min(i, 3)}`}>
+                  <span class="refuse__icon" aria-hidden="true">✕</span>
+                  <div>
+                    <h3 class="refuse__title">{r.title}</h3>
+                    <p class="refuse__text">{r.text}</p>
+                  </div>
+                </li>
+              ))}
             </ul>
-
-            <div style="margin-top: var(--space-8);">
-              <a href="/a-propos/" class="btn btn--secondary">
-                En savoir plus sur mon parcours &rarr;
-              </a>
-            </div>
           </div>
 
-          <div class="consultant-value__panel">
-            <div class="consultant-card">
-              <div class="consultant-card__badge">Consultant SEO & GEO indépendant</div>
-              <h3 class="consultant-card__name">Ujjwal Lage</h3>
-              <p class="consultant-card__role">Stratégie de visibilité organique & architecture d'entités</p>
-              
-              <div class="consultant-card__principles">
-                <div class="consultant-card__item">
-                  <span class="consultant-card__dot"></span>
-                  <span>Zéro promesse irréaliste de positionnement n°1 garanti</span>
-                </div>
-                <div class="consultant-card__item">
-                  <span class="consultant-card__dot"></span>
-                  <span>Audit basé sur des données tangibles et vérifiables</span>
-                </div>
-                <div class="consultant-card__item">
-                  <span class="consultant-card__dot"></span>
-                  <span>Accompagnement adapté aux TPE, PME et structures ambitieuses</span>
-                </div>
-                <div class="consultant-card__item">
-                  <span class="consultant-card__dot"></span>
-                  <span>Interventions locales dans le Grand Ouest & partout en France à distance</span>
-                </div>
+          <figure class="refuse__portrait reveal reveal-delay-2">
+            <img
+              src="/assets/ujjwal-lage-portrait.jpg"
+              alt="Ujjwal Lage, consultant SEO & GEO indépendant"
+              width="682"
+              height="1024"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="refuse__caption">
+              <span class="refuse__name">Ujjwal Lage</span>
+              <span class="refuse__role">Consultant SEO &amp; GEO · Ille-et-Vilaine</span>
+              <span class="refuse__quote">« Je préfère vous dire non que vous vendre une promesse que je ne peux pas tenir. »</span>
+              <div class="refuse__actions">
+                <a href="/contact/" class="btn btn--accent">Échanger sur vos enjeux</a>
+                <a href="/a-propos/" class="refuse__link">Mon parcours &rarr;</a>
               </div>
-
-              <div class="consultant-card__cta">
-                <a href="/contact/" class="btn btn--primary btn--full">
-                  Échanger sur vos enjeux
-                </a>
-              </div>
-            </div>
-          </div>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -447,118 +393,145 @@ const websiteSchema = {
 </BaseLayout>
 
 <style>
-/* ══ DUO SECTION (SEO + GEO) ══ */
-.duo-grid {
+/* ══ REFUSE SECTION (navy band) ══ */
+.refuse__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
-  margin-top: var(--space-10);
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .refuse__grid { grid-template-columns: 1fr; }
+}
+
+.refuse__content h2 {
+  max-width: 34rem;
   margin-bottom: var(--space-10);
 }
 
-@media (max-width: 860px) {
-  .duo-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.duo-card {
-  background: #FFFFFF;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-8);
-  display: flex;
-  flex-direction: column;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.duo-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.duo-card--seo {
-  border-top: 3px solid var(--color-atlantic);
-}
-
-.duo-card--geo {
-  border-top: 3px solid #6366F1;
-}
-
-.duo-card__header {
-  margin-bottom: var(--space-4);
-}
-
-.duo-card__badge {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-atlantic);
-  background: rgba(37, 99, 235, 0.08);
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-full);
-  margin-bottom: var(--space-3);
-}
-
-.duo-card__badge--geo {
-  color: #4F46E5;
-  background: rgba(99, 102, 241, 0.1);
-}
-
-.duo-card__title {
-  font-size: var(--text-xl);
-  font-weight: var(--weight-bold);
-  color: var(--color-navy);
-}
-
-.duo-card__desc {
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-6);
-}
-
-.duo-card__list {
+.refuse__list {
   list-style: none;
   padding: 0;
-  margin: 0 0 var(--space-6) 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .refuse__list { grid-template-columns: 1fr; }
+}
+
+.refuse__item {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+.refuse__item:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.refuse__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-highlight);
+  font-size: 0.8rem;
+  font-weight: var(--weight-bold);
+}
+
+.refuse__title {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-1);
+}
+
+.refuse__text {
   font-size: var(--text-sm);
-  color: var(--color-text);
+  color: rgba(255, 255, 255, 0.7);
   line-height: var(--leading-normal);
+  margin: 0;
 }
 
-.duo-card__list li {
+.refuse__portrait {
+  margin: 0;
   position: relative;
-  padding-left: var(--space-5);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.duo-card__list li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--color-atlantic);
-  font-weight: bold;
-}
-
-.duo-card__footer {
-  margin-top: auto;
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border-light);
-}
-
-.duo-card__mechanic {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
+.refuse__portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 15%;
   display: block;
 }
 
+.refuse__caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: var(--space-16) var(--space-5) var(--space-5);
+  background: linear-gradient(transparent, rgba(11, 19, 43, 0.92) 45%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.refuse__name {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: #FFFFFF;
+}
+
+.refuse__role {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.refuse__quote {
+  margin-top: var(--space-3);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: var(--leading-snug);
+}
+
+.refuse__actions {
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.refuse__link {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ══ DUO SUMMARY ══ */
 .duo-summary {
+  margin-top: var(--space-8);
   background: #FFFFFF;
   border: 1px solid var(--color-border);
   border-left: 4px solid var(--color-navy);
@@ -590,128 +563,6 @@ const websiteSchema = {
 .home-services__footer {
   margin-top: var(--space-12);
   text-align: center;
-}
-
-/* ══ CONSULTANT VALUE SECTION ══ */
-.consultant-value__grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: var(--space-12);
-  align-items: center;
-}
-
-@media (max-width: 900px) {
-  .consultant-value__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.consultant-points {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.consultant-point {
-  display: flex;
-  gap: var(--space-5);
-  align-items: flex-start;
-}
-
-.consultant-point__number {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-bold);
-  color: var(--color-atlantic);
-  background: rgba(37, 99, 235, 0.08);
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-sm);
-  flex-shrink: 0;
-}
-
-.consultant-point__title {
-  font-size: var(--text-base);
-  font-weight: var(--weight-bold);
-  color: var(--color-navy);
-  margin-bottom: var(--space-1);
-}
-
-.consultant-point__desc {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
-  margin: 0;
-}
-
-/* Consultant Card Panel */
-.consultant-card {
-  background: var(--color-navy);
-  color: #FFFFFF;
-  border-radius: var(--radius-lg);
-  padding: var(--space-8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow-lg);
-}
-
-.consultant-card__badge {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #93C5FD;
-  background: rgba(37, 99, 235, 0.2);
-  border: 1px solid rgba(147, 197, 253, 0.3);
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-full);
-  margin-bottom: var(--space-4);
-}
-
-.consultant-card__name {
-  font-family: var(--font-serif);
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
-  color: #FFFFFF;
-  margin-bottom: var(--space-1);
-}
-
-.consultant-card__role {
-  font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: var(--space-6);
-}
-
-.consultant-card__principles {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  margin-bottom: var(--space-8);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: var(--space-6);
-}
-
-.consultant-card__item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.4;
-}
-
-.consultant-card__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-atlantic);
-  flex-shrink: 0;
-}
-
-.consultant-card__cta {
-  margin-top: var(--space-2);
 }
 
 /* ══ HOME ZONES PREVIEW ══ */

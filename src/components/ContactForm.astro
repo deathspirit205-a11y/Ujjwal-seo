@@ -15,11 +15,16 @@
   data-netlify="true"
   netlify-honeypot="bot-field"
   aria-label="Formulaire de contact"
-  novalidate
 >
   <!-- Netlify honeypot spam protection -->
   <p class="sr-only" aria-hidden="true">
-    <label>Ne pas remplir : <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+    <label
+      >Ne pas remplir : <input
+        name="bot-field"
+        tabindex="-1"
+        autocomplete="off"
+      /></label
+    >
   </p>
 
   <div class="form-row">
@@ -37,7 +42,9 @@
     </div>
 
     <div class="form-field">
-      <label for="contact-email">Adresse e-mail <span aria-hidden="true">*</span></label>
+      <label for="contact-email"
+        >Adresse e-mail <span aria-hidden="true">*</span></label
+      >
       <input
         type="email"
         id="contact-email"
@@ -62,7 +69,9 @@
   </div>
 
   <div class="form-field">
-    <label for="contact-message">Votre message <span aria-hidden="true">*</span></label>
+    <label for="contact-message"
+      >Votre message <span aria-hidden="true">*</span></label
+    >
     <textarea
       id="contact-message"
       name="message"
@@ -83,8 +92,9 @@
     />
     <label for="contact-consent">
       J'accepte que mes données soient utilisées pour traiter ma demande,
-      conformément à la <a href="/politique-confidentialite/">politique de confidentialité</a>.
-      Aucune donnée n'est revendue à des tiers.
+      conformément à la <a href="/politique-confidentialite/"
+        >politique de confidentialité</a
+      >. Aucune donnée n'est revendue à des tiers.
     </label>
   </div>
 
@@ -94,22 +104,22 @@
 </form>
 
 <style>
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* Two-column row for name + email */
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-}
-
-@media (max-width: 640px) {
-  .form-row {
-    grid-template-columns: 1fr;
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
-}
+
+  /* Two-column row for name + email */
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

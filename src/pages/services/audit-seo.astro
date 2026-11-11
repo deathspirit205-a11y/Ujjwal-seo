@@ -11,6 +11,7 @@ import FAQ from '../../components/FAQ.astro';
 import CTA from '../../components/CTA.astro';
 import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AuditPreviewCard from '../../components/AuditPreviewCard.astro';
 import { buildTitle, SITE_URL } from '../../utils/seo';
 
 const breadcrumbs = [
@@ -87,7 +88,7 @@ const serviceSchema = {
 
     <!-- ══ HERO ══ -->
     <PageHero
-      bgImage="/assets/hero/digital-network.jpg"
+      visual="audit"
       bgAlt="Réseau numérique abstrait sur fond bleu sombre"
       eyebrow="Service"
       title="Audit SEO — Diagnostic complet de votre référencement"
@@ -227,6 +228,8 @@ const serviceSchema = {
             </p>
           </article>
         </div>
+
+        <AuditPreviewCard />
       </div>
     </section>
 
@@ -344,8 +347,8 @@ const serviceSchema = {
           </div>
           <div class="suite-links">
             <p class="suite-links__label">Services complémentaires</p>
-            <a href="/services/accompagnement-seo/" class="suite-link">
-              <span class="suite-link__title">Accompagnement SEO</span>
+            <a href="/services/strategie-seo/" class="suite-link">
+              <span class="suite-link__title">Stratégie &amp; Accompagnement SEO</span>
               <span class="suite-link__desc">Implémenter les recommandations dans la durée</span>
               <span class="suite-link__arrow" aria-hidden="true">→</span>
             </a>
@@ -354,8 +357,8 @@ const serviceSchema = {
               <span class="suite-link__desc">Si l'audit révèle des problèmes techniques importants</span>
               <span class="suite-link__arrow" aria-hidden="true">→</span>
             </a>
-            <a href="/services/seo-on-page/" class="suite-link">
-              <span class="suite-link__title">SEO On-Page</span>
+            <a href="/services/seo-contenu/" class="suite-link">
+              <span class="suite-link__title">SEO Sémantique &amp; Contenu</span>
               <span class="suite-link__desc">Optimiser le contenu et les balises de vos pages</span>
               <span class="suite-link__arrow" aria-hidden="true">→</span>
             </a>

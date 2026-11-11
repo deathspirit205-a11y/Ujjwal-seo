@@ -19,8 +19,8 @@ const breadcrumbs = [
 const bookingSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Appel découverte SEO — 30 minutes gratuit',
-  description: 'Appel découverte de 30 minutes gratuit et sans engagement avec Ujjwal Lage, consultant SEO indépendant à Rennes.',
+  name: 'Appel découverte SEO & GEO — 30 minutes gratuit',
+  description: 'Appel découverte de 30 minutes gratuit et sans engagement avec Ujjwal Lage, consultant SEO & GEO indépendant (Bretagne, Grand Ouest & France).',
   url: `${SITE_URL}/reserver-un-appel/`,
   offers: {
     '@type': 'Offer',
@@ -31,6 +31,7 @@ const bookingSchema = {
   },
   provider: {
     '@type': 'ProfessionalService',
+    '@id': `${SITE_URL}/#organization`,
     name: 'Ujjwal SEO',
     url: SITE_URL,
   },
@@ -65,16 +66,16 @@ const faqAppel = [
 ];
 
 const etapes = [
-  { num: '01', title: 'Réservez un créneau', desc: 'Choisissez un horaire qui vous convient dans le calendrier ci-dessous.' },
-  { num: '02', title: 'Confirmez votre rendez-vous', desc: 'Vous recevrez une confirmation par e-mail avec le lien de la visioconférence.' },
+  { num: '01', title: 'Contactez-moi en 1 clic', desc: 'Envoyez un message sur WhatsApp ou via le formulaire avec vos disponibilités.' },
+  { num: '02', title: 'Validation du créneau', desc: 'Nous convenons d\'un horaire sous 24h et je vous transmets le lien de visioconférence.' },
   { num: '03', title: 'On se parle 30 minutes', desc: 'Votre situation, vos objectifs, vos concurrents. Un échange direct, sans jargon.' },
-  { num: '04', title: 'Proposition sous 48h', desc: 'Si c\'est une bonne piste, je vous envoie une proposition SEO sur mesure.' },
+  { num: '04', title: 'Proposition sous 48h', desc: 'Si c\'est une bonne piste, je vous envoie une proposition SEO & GEO sur mesure.' },
 ];
 ---
 
 <BaseLayout
   title={buildTitle('Réserver un appel découverte — 30 min gratuit avec Ujjwal SEO')}
-  description="Réservez un appel découverte de 30 minutes avec Ujjwal Lage, consultant SEO à Rennes. Gratuit et sans engagement. On discute de votre projet et de vos objectifs SEO."
+  description="Réservez un appel découverte de 30 minutes avec Ujjwal Lage, consultant SEO & GEO indépendant. Gratuit et sans engagement. Échangeons sur votre projet et vos objectifs."
   canonicalPath="/reserver-un-appel/"
   schema={bookingSchema}
 >
@@ -199,12 +200,7 @@ const etapes = [
     </section>
 
     <!-- FAQ -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Questions sur l'appel découverte</h2>
-        <FAQ items={faqAppel} />
-      </div>
-    </section>
+    <FAQ items={faqAppel} heading="Questions sur l'appel découverte" />
 
     <!-- Alternative contact -->
     <section class="section section--alt">
@@ -241,9 +237,9 @@ const etapes = [
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    background: rgba(93, 187, 119, 0.15);
-    color: #8ce1a3;
-    border: 1px solid rgba(93, 187, 119, 0.3);
+    background: rgba(96, 165, 250, 0.16);
+    color: #93C5FD;
+    border: 1px solid rgba(96, 165, 250, 0.35);
     padding: var(--space-2) var(--space-4);
     border-radius: 100px;
     font-size: var(--text-sm);
@@ -283,7 +279,7 @@ const etapes = [
   }
 
   .booking-benefits span {
-    color: #8ce1a3;
+    color: #93C5FD;
     font-weight: 700;
     flex-shrink: 0;
   }
@@ -310,7 +306,7 @@ const etapes = [
     font-family: var(--font-serif);
     font-size: var(--text-xl);
     font-weight: 700;
-    color: #8ce1a3;
+    color: #93C5FD;
     flex-shrink: 0;
     line-height: 1;
   }

@@ -1,0 +1,378 @@
+---
+/**
+ * SerpVsAi.astro
+ * Interactive comparison: the same query answered by a classic Google results page
+ * vs an AI-generated answer (AI Overviews / Perplexity style).
+ * Illustrative mockup only — no real brands or fabricated metrics.
+ */
+export interface Props {
+  query?: string;
+}
+
+const { query = 'consultant SEO Rennes' } = Astro.props;
+---
+
+<div class="svai reveal" data-svai>
+  <div class="svai__tabs" role="tablist" aria-label="Comparer recherche classique et réponse IA">
+    <button type="button" role="tab" id="svai-tab-seo" aria-controls="svai-panel-seo" aria-selected="true" class="svai__tab is-active" data-tab="seo">
+      <span class="svai__tab-dot"></span> Recherche classique · SEO
+    </button>
+    <button type="button" role="tab" id="svai-tab-geo" aria-controls="svai-panel-geo" aria-selected="false" class="svai__tab" data-tab="geo" tabindex="-1">
+      <span class="svai__tab-dot svai__tab-dot--geo"></span> Réponse IA · GEO
+    </button>
+  </div>
+
+  <div class="svai__body">
+    <!-- Mock browser -->
+    <div class="svai__screen" aria-hidden="true">
+      <div class="svai__bar">
+        <span></span><span></span><span></span>
+        <div class="svai__search">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          {query}
+        </div>
+      </div>
+
+      <!-- SEO view -->
+      <div class="svai__view svai__view--seo is-active" data-view="seo">
+        <div class="serp-result serp-result--you">
+          <span class="serp-result__url">votre-site.fr › services</span>
+          <span class="serp-result__title">Votre entreprise — titre clair et pertinent</span>
+          <span class="serp-result__desc">Une description qui donne envie de cliquer et répond à l'intention…</span>
+          <span class="serp-badge">Position visée</span>
+        </div>
+        <div class="serp-result">
+          <span class="serp-result__url">concurrent-a.fr</span>
+          <span class="serp-line serp-line--title"></span>
+          <span class="serp-line"></span>
+        </div>
+        <div class="serp-result">
+          <span class="serp-result__url">annuaire-local.fr</span>
+          <span class="serp-line serp-line--title"></span>
+          <span class="serp-line"></span>
+        </div>
+      </div>
+
+      <!-- GEO view -->
+      <div class="svai__view svai__view--geo" data-view="geo">
+        <div class="ai-answer">
+          <div class="ai-answer__head">
+            <span class="ai-answer__spark">✦</span> Réponse générée
+          </div>
+          <p class="ai-answer__text">
+            Pour ce besoin, plusieurs prestataires se distinguent. <mark class="ai-answer__cite-you">Votre entreprise</mark> est
+            citée pour son expertise clairement documentée, sa zone d'intervention précise et des informations vérifiables…
+          </p>
+          <div class="ai-answer__sources">
+            <span class="ai-source ai-source--you">1 · votre-site.fr</span>
+            <span class="ai-source">2 · source-tierce.fr</span>
+            <span class="ai-source">3 · annuaire.fr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explanations -->
+    <div class="svai__explain">
+      <div id="svai-panel-seo" role="tabpanel" aria-labelledby="svai-tab-seo" class="svai__panel is-active" data-panel="seo">
+        <h3>Être <span class="mark">classé</span></h3>
+        <p>Google compare des pages et les ordonne. Ce qui compte : un site lisible par les robots, des contenus qui répondent à l'intention, une autorité méritée.</p>
+        <ul>
+          <li>Crawl, indexation, performance</li>
+          <li>Contenus alignés sur la demande réelle</li>
+          <li>Autorité et signaux locaux</li>
+        </ul>
+      </div>
+      <div id="svai-panel-geo" role="tabpanel" aria-labelledby="svai-tab-geo" class="svai__panel" data-panel="geo" hidden>
+        <h3>Être <span class="mark">cité</span></h3>
+        <p>Les moteurs IA ne listent plus dix liens : ils rédigent une réponse et choisissent leurs sources. Ils retiennent celles dont l'identité et l'expertise sont explicites.</p>
+        <ul>
+          <li>Entités et données structurées claires</li>
+          <li>Faits vérifiables et cohérents partout</li>
+          <li>Réponses directes, faciles à extraire</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-svai]').forEach((root) => {
+    const tabs = root.querySelectorAll<HTMLButtonElement>('.svai__tab');
+    const select = (name: string) => {
+      tabs.forEach((t) => {
+        const on = t.dataset.tab === name;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      root.querySelectorAll<HTMLElement>('[data-view]').forEach((v) => v.classList.toggle('is-active', v.dataset.view === name));
+      root.querySelectorAll<HTMLElement>('[data-panel]').forEach((p) => {
+        const on = p.dataset.panel === name;
+        p.classList.toggle('is-active', on);
+        p.hidden = !on;
+      });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(t.dataset.tab!));
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+          next.focus();
+          select(next.dataset.tab!);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+.svai {
+  margin-top: var(--space-10);
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 50px -20px rgba(15, 23, 42, 0.18);
+  overflow: hidden;
+}
+
+.svai__tabs {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-surface-warm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.svai__tab {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.7rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.svai__tab.is-active {
+  background: #FFFFFF;
+  border-color: var(--color-border);
+  color: var(--color-navy);
+  box-shadow: var(--shadow-sm);
+}
+
+.svai__tab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-atlantic);
+}
+
+.svai__tab-dot--geo { background: #8B5CF6; }
+
+.svai__body {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .svai__body { grid-template-columns: 1fr; padding: var(--space-5); }
+}
+
+/* Mock screen */
+.svai__screen {
+  background: var(--color-surface-warm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.svai__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.6rem 0.8rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.svai__bar > span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #E2E8F0;
+}
+
+.svai__search {
+  margin-left: var(--space-3);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  color: var(--color-text);
+}
+
+.svai__view {
+  display: none;
+  padding: var(--space-5);
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.svai__view.is-active {
+  display: flex;
+  animation: svaiIn 350ms ease;
+}
+
+@keyframes svaiIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.serp-result {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+}
+
+.serp-result--you {
+  background: #FFFFFF;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 6px 16px -8px rgba(245, 158, 11, 0.45);
+}
+
+.serp-result__url { font-size: 0.7rem; color: #15803D; }
+.serp-result__title { font-size: 0.92rem; color: #1A0DAB; font-weight: 600; }
+.serp-result__desc { font-size: 0.75rem; color: var(--color-text-muted); }
+
+.serp-line {
+  height: 7px;
+  width: 85%;
+  border-radius: 4px;
+  background: #E2E8F0;
+}
+
+.serp-line--title { width: 60%; height: 9px; background: #CBD5E1; }
+
+.serp-badge {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 0.65rem;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--color-highlight);
+  color: var(--color-highlight-ink);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.ai-answer {
+  background: #FFFFFF;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.ai-answer__head {
+  font-size: 0.72rem;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7C3AED;
+  margin-bottom: var(--space-2);
+}
+
+.ai-answer__spark { margin-right: 4px; }
+
+.ai-answer__text {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.ai-answer__cite-you {
+  background: var(--color-highlight-soft);
+  color: var(--color-highlight-ink);
+  font-weight: var(--weight-semibold);
+  padding: 0 0.2em;
+  border-radius: 3px;
+}
+
+.ai-answer__sources { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.ai-source {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-subtle);
+  color: var(--color-text-muted);
+}
+
+.ai-source--you {
+  background: var(--color-highlight);
+  color: var(--color-highlight-ink);
+  font-weight: var(--weight-bold);
+}
+
+/* Explanations */
+.svai__panel h3 {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.svai__panel p {
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-5);
+}
+
+.svai__panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.svai__panel li {
+  position: relative;
+  padding-left: var(--space-6);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+.svai__panel li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-highlight-hover);
+  font-weight: var(--weight-bold);
+}
+</style>
+
