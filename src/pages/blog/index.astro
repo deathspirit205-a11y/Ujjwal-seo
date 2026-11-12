@@ -18,12 +18,38 @@ const breadcrumbs = [
 ];
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const posts = allPosts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+
+// Articles published as standalone pages outside /blog/ (not in the content collection)
+const standalonePosts = [
+  {
+    title: 'Comment apparaître sur Google Maps à Rennes : le guide pour les commerces locaux',
+    description:
+      'Découvrez comment créer, valider et optimiser votre fiche Google Business Profile pour apparaître sur Google Maps à Rennes et attirer plus de clients locaux.',
+    pubDate: new Date('2026-11-12'),
+    slug: 'comment-apparaitre-google-maps-rennes',
+    href: '/comment-apparaitre-google-maps-rennes/',
+    categories: ['SEO Local'],
+    featuredImage: undefined as string | undefined,
+    featuredImageAlt: undefined as string | undefined,
+  },
+];
+
+const posts = [
+  ...allPosts.map((post) => ({
+    title: post.data.title,
+    description: post.data.description,
+    pubDate: post.data.pubDate,
+    slug: post.id.replace(/\.mdx?$/, ''),
+    href: undefined as string | undefined,
+    categories: post.data.categories,
+    featuredImage: post.data.featuredImage,
+    featuredImageAlt: post.data.featuredImageAlt,
+  })),
+  ...standalonePosts,
+].sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
 
 // Get unique categories
-const allCategories = [...new Set(posts.flatMap((p) => p.data.categories))].sort();
+const allCategories = [...new Set(posts.flatMap((p) => p.categories))].sort();
 
 const blogListSchema = {
   '@context': 'https://schema.org',
@@ -84,22 +110,20 @@ const blogListSchema = {
           <p class="blog-empty">Les articles seront publiés prochainement.</p>
         ) : (
           <div class="articles-grid" id="articles-grid">
-            {posts.map((post) => {
-              const slug = post.id.replace(/\.mdx?$/, '');
-              return (
-                <div class="article-item" data-categories={post.data.categories.join('|')}>
-                  <BlogCard
-                    title={post.data.title}
-                    description={post.data.description}
-                    pubDate={post.data.pubDate}
-                    slug={slug}
-                    categories={post.data.categories}
-                    featuredImage={post.data.featuredImage}
-                    featuredImageAlt={post.data.featuredImageAlt}
-                  />
-                </div>
-              );
-            })}
+            {posts.map((post) => (
+              <div class="article-item" data-categories={post.categories.join('|')}>
+                <BlogCard
+                  title={post.title}
+                  description={post.description}
+                  pubDate={post.pubDate}
+                  slug={post.slug}
+                  href={post.href}
+                  categories={post.categories}
+                  featuredImage={post.featuredImage}
+                  featuredImageAlt={post.featuredImageAlt}
+                />
+              </div>
+            ))}
           </div>
         )}
       </div>

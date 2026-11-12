@@ -23,6 +23,10 @@ export interface Props {
   schema?: object | object[];
   /** Page author (renders meta name=author) */
   author?: string;
+  /** Explicit robots directive (ignored when noIndex is true) */
+  robots?: string;
+  /** Open Graph description, when it differs from the meta description */
+  ogDescription?: string;
 }
 
 const {
@@ -37,6 +41,8 @@ const {
   modifiedTime,
   schema,
   author,
+  robots,
+  ogDescription = description,
 } = Astro.props;
 
 const canonical = buildCanonical(canonicalPath);
@@ -76,12 +82,13 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    {!noIndex && robots && <meta name="robots" content={robots} />}
     {author && <meta name="author" content={author} />}
 
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={ogDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageAbsolute} />
     <meta property="og:image:width" content="1200" />
