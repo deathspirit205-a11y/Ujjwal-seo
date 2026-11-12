@@ -1,59 +1,56 @@
 ---
 /**
- * comment-apparaitre-google-maps-rennes.astro
- * URL: /comment-apparaitre-google-maps-rennes/
+ * comment-apparaitre-sur-google-maps.astro
+ * URL: /comment-apparaitre-sur-google-maps/
+ * (old URL /comment-apparaitre-google-maps-rennes/ redirects here via public/_redirects)
  *
  * Standalone blog article (lives at the site root, not under /blog/).
- * Content, meta tags and JSON-LD reproduced exactly from the source file
- * comment-apparaitre-google-maps-rennes.html — do not reword.
+ * Based on comment-apparaitre-google-maps-rennes.html, rewritten for all local
+ * businesses (no city-specific wording). Keep visible FAQ and JSON-LD FAQ in sync.
  * Listed on /blog/ via the manual entry in src/pages/blog/index.astro.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const title = 'Comment apparaître sur Google Maps à Rennes : le guide pour les commerces locaux';
+const title = 'Comment apparaître sur Google Maps : le guide pour les commerces locaux';
 const description =
-  'Découvrez comment créer, valider et optimiser votre fiche Google Business Profile pour apparaître sur Google Maps à Rennes et attirer plus de clients locaux.';
+  'Découvrez comment créer, valider et optimiser votre fiche Google Business Profile pour apparaître sur Google Maps et attirer plus de clients locaux.';
 const ogDescription =
-  'Créer, valider et optimiser votre fiche Google Business Profile pour apparaître sur Google Maps à Rennes et attirer plus de clients locaux.';
+  'Créer, valider et optimiser votre fiche Google Business Profile pour apparaître sur Google Maps et attirer plus de clients locaux.';
 
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'BlogPosting',
-      '@id': 'https://ujjwal-seo.com/comment-apparaitre-google-maps-rennes/#article',
-      headline: 'Comment apparaître sur Google Maps à Rennes : le guide pour les commerces locaux',
+      '@id': 'https://ujjwal-seo.com/comment-apparaitre-sur-google-maps/#article',
+      headline: 'Comment apparaître sur Google Maps : le guide pour les commerces locaux',
       description:
-        'Découvrez comment créer, valider et optimiser votre fiche Google Business Profile pour apparaître sur Google Maps à Rennes et attirer plus de clients locaux.',
+        'Découvrez comment créer, valider et optimiser votre fiche Google Business Profile pour apparaître sur Google Maps et attirer plus de clients locaux.',
       inLanguage: 'fr-FR',
       datePublished: '2026-11-12',
       dateModified: '2026-11-12',
-      mainEntityOfPage: 'https://ujjwal-seo.com/comment-apparaitre-google-maps-rennes/',
+      mainEntityOfPage: 'https://ujjwal-seo.com/comment-apparaitre-sur-google-maps/',
       author: {
         '@type': 'Person',
         name: 'Ujjwal',
         jobTitle: 'Consultant SEO',
         url: 'https://ujjwal-seo.com/',
-        homeLocation: {
-          '@type': 'Place',
-          address: { '@type': 'PostalAddress', addressLocality: 'Rennes', addressRegion: 'Bretagne', addressCountry: 'FR' },
-        },
       },
       publisher: {
         '@type': 'Organization',
         name: 'Ujjwal SEO',
         url: 'https://ujjwal-seo.com/',
       },
-      about: ['Google Business Profile', 'SEO local', 'Rennes'],
+      about: ['Google Business Profile', 'SEO local', 'Google Maps'],
     },
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://ujjwal-seo.com/' },
         { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://ujjwal-seo.com/blog/' },
-        { '@type': 'ListItem', position: 3, name: 'Comment apparaître sur Google Maps à Rennes' },
+        { '@type': 'ListItem', position: 3, name: 'Comment apparaître sur Google Maps' },
       ],
     },
     {
@@ -61,7 +58,7 @@ const schema = {
       mainEntity: [
         {
           '@type': 'Question',
-          name: 'Combien de temps faut-il pour apparaître sur Google Maps à Rennes ?',
+          name: 'Combien de temps faut-il pour apparaître sur Google Maps ?',
           acceptedAnswer: { '@type': 'Answer', text: "Cela dépend de la validation de votre fiche et de son optimisation. Google indique qu'un nouvel établissement peut nécessiter jusqu'à un mois pour être intégré dans ses classements. Mieux vaut donc s'y prendre tôt." },
         },
         {
@@ -94,7 +91,7 @@ const schema = {
   title={title}
   description={description}
   ogDescription={ogDescription}
-  canonicalPath="/comment-apparaitre-google-maps-rennes/"
+  canonicalPath="/comment-apparaitre-sur-google-maps/"
   robots="index, follow, max-image-preview:large"
   ogType="article"
   schema={schema}
@@ -108,17 +105,17 @@ const schema = {
 
       <article>
         <header class="gm-head">
-          <h1 class="gm-title">Comment apparaître sur Google Maps à Rennes : le guide pour les commerces locaux</h1>
-          <p class="gm-byline">Par <strong>Ujjwal</strong>, consultant SEO à Rennes &middot; <time datetime="2026-11-12">12 novembre 2026</time> &middot; 9 min de lecture</p>
+          <h1 class="gm-title">Comment apparaître sur Google Maps : le guide pour les commerces locaux</h1>
+          <p class="gm-byline">Par <strong>Ujjwal</strong>, consultant SEO &middot; <time datetime="2026-11-12">12 novembre 2026</time> &middot; 9 min de lecture</p>
         </header>
 
         <div class="gm-layout">
           <div class="gm-prose">
-            <p>Vous cherchez un restaurant ce soir, un coiffeur près de chez vous ou un plombier pour une fuite ? Vous sortez votre téléphone et tapez « restaurant à Rennes », « coiffeur Rennes centre » ou « plombier Rennes ». Vos clients font exactement la même chose, et ils choisissent souvent parmi les premiers établissements affichés sur Google ou sur Google Maps.</p>
+            <p>Vous cherchez un restaurant ce soir, un coiffeur près de chez vous ou un plombier pour une fuite ? Vous sortez votre téléphone et tapez « restaurant près de moi », « coiffeur centre-ville » ou « plombier » suivi du nom de leur ville. Vos clients font exactement la même chose, et ils choisissent souvent parmi les premiers établissements affichés sur Google ou sur Google Maps.</p>
             <p>Si votre commerce n'y figure pas, ou avec des informations fausses, vous passez à côté de ces clients. Ce guide vous explique, étape par étape, comment créer, valider et optimiser votre fiche <strong>Google Business Profile</strong>, l'outil gratuit de Google qui affiche les entreprises validées dans la Recherche et sur Maps.</p>
 
-            <h2 id="pourquoi-google-maps">Pourquoi Google Maps est essentiel pour un commerce à Rennes</h2>
-            <p>Pour un commerce de proximité, la recherche locale est souvent le premier contact avec le client. Que vous soyez installé en centre-ville, à Sainte-Anne, près du Thabor, à Cleunay, à Villejean ou ailleurs dans Rennes Métropole, vos clients potentiels veulent trouver rapidement :</p>
+            <h2 id="pourquoi-google-maps">Pourquoi Google Maps est essentiel pour un commerce local</h2>
+            <p>Pour un commerce de proximité, la recherche locale est souvent le premier contact avec le client. Que vous soyez installé en centre-ville, dans un quartier résidentiel, en zone commerciale ou dans une petite commune, vos clients potentiels veulent trouver rapidement :</p>
             <ul>
               <li>votre adresse et l'itinéraire pour s'y rendre ;</li>
               <li>vos horaires d'ouverture ;</li>
@@ -137,7 +134,7 @@ const schema = {
             <p>Dans les deux cas, voici la marche à suivre :</p>
             <ol>
               <li>Connectez-vous avec un compte Google professionnel.</li>
-              <li>Cherchez le nom de votre commerce suivi de « Rennes » sur Google Maps.</li>
+              <li>Cherchez le nom de votre commerce suivi du nom de votre ville sur Google Maps.</li>
               <li>Cliquez sur « Ajouter votre établissement » ou sur « Revendiquer cet établissement ».</li>
               <li>Renseignez le nom exact, l'adresse, la catégorie et vos coordonnées.</li>
               <li>Suivez la procédure de validation.</li>
@@ -155,7 +152,7 @@ const schema = {
             <p>Une fois la fiche validée, le vrai travail commence. Chaque champ renseigné aide Google à comprendre votre activité et à vous proposer aux bonnes personnes.</p>
 
             <h3>Le nom de l'établissement</h3>
-            <p>Utilisez votre nom commercial réel, celui qui figure sur votre enseigne. N'ajoutez pas de mots-clés dans le nom (par exemple « Dupont Plombier Rennes pas cher urgence ») : cela enfreint les consignes de Google et peut entraîner la suspension de la fiche.</p>
+            <p>Utilisez votre nom commercial réel, celui qui figure sur votre enseigne. N'ajoutez pas de mots-clés dans le nom (par exemple « Dupont Plombier pas cher urgence ») : cela enfreint les consignes de Google et peut entraîner la suspension de la fiche.</p>
 
             <h3>Les catégories</h3>
             <p>Choisissez une catégorie principale <strong>précise</strong> : « Boulangerie », « Salon de coiffure », « Restaurant français », « Plombier »… Plus elle est exacte, mieux Google comprend votre activité. Ajoutez ensuite quelques catégories secondaires pertinentes, sans en abuser.</p>
@@ -163,7 +160,7 @@ const schema = {
             <h3>L'adresse et la zone de service</h3>
             <ul>
               <li>Si vous accueillez du public, indiquez l'adresse complète et placez l'épingle sur l'entrée réelle du commerce.</li>
-              <li>Si vous n'avez pas de local ouvert au public (artisan, prestataire à domicile), définissez une zone d'intervention autour de Rennes plutôt que d'afficher une adresse personnelle.</li>
+              <li>Si vous n'avez pas de local ouvert au public (artisan, prestataire à domicile), définissez une zone d'intervention autour de votre ville plutôt que d'afficher une adresse personnelle.</li>
             </ul>
 
             <h3>Les horaires</h3>
@@ -174,7 +171,7 @@ const schema = {
 
             <h3>La description</h3>
             <p>Vous disposez de 750 caractères maximum. Présentez votre activité, vos services et votre localisation avec des mots naturels, sans bourrage de mots-clés.</p>
-            <blockquote>Exemple : « Boulangerie artisanale située à Rennes, près de [quartier]. Nous proposons pains au levain, viennoiseries, pâtisseries et sandwichs préparés sur place. »</blockquote>
+            <blockquote>Exemple : « Boulangerie artisanale située à [ville], près de [quartier]. Nous proposons pains au levain, viennoiseries, pâtisseries et sandwichs préparés sur place. »</blockquote>
 
             <h2 id="etape-4">Étape 4 : ajouter des photos et vidéos de qualité</h2>
             <p>Les photos rassurent les clients et rendent votre fiche plus attractive. Google recommande d'ajouter des photos, vos horaires et les informations essentielles pour aider les clients locaux à vous découvrir. Pensez à publier :</p>
@@ -198,7 +195,7 @@ const schema = {
             <p>Répondez aussi à <strong>tous</strong> les avis, positifs comme négatifs. Pour un avis négatif, restez calme, remerciez, reconnaissez le problème s'il existe et proposez de poursuivre la discussion en privé. Les futurs clients lisent aussi vos réponses.</p>
 
             <h2 id="etape-6">Étape 6 : publier régulièrement sur votre fiche</h2>
-            <p>Les publications Google vous permettent de présenter une promotion, une nouveauté, un événement, une offre ou un article de blog. Une publication toutes les une à deux semaines est un rythme réaliste. Quelques idées pour un commerce rennais :</p>
+            <p>Les publications Google vous permettent de présenter une promotion, une nouveauté, un événement, une offre ou un article de blog. Une publication toutes les une à deux semaines est un rythme réaliste. Quelques idées pour un commerce de proximité :</p>
             <ul>
               <li>« Nouveau menu de saison » ;</li>
               <li>« Promotion de rentrée » ;</li>
@@ -215,7 +212,7 @@ const schema = {
               <li>les horaires ;</li>
               <li>une carte Google Maps intégrée.</li>
             </ul>
-            <p>Si vous proposez plusieurs services, créez des pages dédiées avec la localisation : « Coiffeur à Rennes », « Plombier à Rennes », « Restaurant à Rennes centre ». Si votre site le permet, ajoutez aussi des données structurées de type <code>LocalBusiness</code>, qui aident Google à lire vos informations.</p>
+            <p>Si vous proposez plusieurs services, créez des pages dédiées avec la localisation : « Coiffeur à [ville] », « Plombier à [ville] », « Restaurant [quartier] ». Si votre site le permet, ajoutez aussi des données structurées de type <code>LocalBusiness</code>, qui aident Google à lire vos informations.</p>
             <p>Rappelez-vous le principe : des informations exactes, complètes et à jour améliorent la visibilité dans les recherches de proximité.</p>
 
             <h2 id="etape-8">Étape 8 : suivre les performances et corriger les erreurs</h2>
@@ -243,7 +240,7 @@ const schema = {
             <p>Attention : Google peut désactiver ou suspendre une fiche qui ne respecte pas ses consignes. Mieux vaut les lire avant de se lancer que de devoir tout reprendre.</p>
 
             <h2 id="faq">FAQ</h2>
-            <h3>Combien de temps faut-il pour apparaître sur Google Maps à Rennes ?</h3>
+            <h3>Combien de temps faut-il pour apparaître sur Google Maps ?</h3>
             <p>Cela dépend de la validation de votre fiche et de son optimisation. Google indique qu'un nouvel établissement peut nécessiter jusqu'à un mois pour être intégré dans ses classements. Mieux vaut donc s'y prendre tôt.</p>
             <h3>Google Business Profile est-il gratuit ?</h3>
             <p>Oui. La création et la gestion d'une fiche d'établissement sont gratuites.</p>
@@ -255,11 +252,11 @@ const schema = {
             <p>Plusieurs facteurs jouent : la pertinence de votre fiche par rapport à la recherche, la distance entre l'internaute et votre établissement, la notoriété locale, les avis, les catégories choisies, la complétude des informations et la concurrence dans votre secteur. Aucun professionnel sérieux ne peut vous garantir la première position.</p>
 
             <h2 id="conclusion">Conclusion</h2>
-            <p>Apparaître sur Google Maps à Rennes commence par une fiche Google Business Profile créée et validée. Ensuite, votre visibilité dépend de la qualité de vos informations (complètes, exactes, à jour) et de l'activité autour de la fiche : photos, avis, publications et cohérence avec votre site web.</p>
+            <p>Apparaître sur Google Maps commence par une fiche Google Business Profile créée et validée. Ensuite, votre visibilité dépend de la qualité de vos informations (complètes, exactes, à jour) et de l'activité autour de la fiche : photos, avis, publications et cohérence avec votre site web.</p>
             <p>Retenez surtout que le SEO local est un travail continu, pas une action unique. Une fiche bien optimisée peut transformer les recherches locales en visites en boutique, appels et rendez-vous.</p>
 
             <aside class="gm-cta" aria-label="Demander un audit">
-              <p><strong>Vous souhaitez apparaître sur Google Maps à Rennes ?</strong> Demandez un audit gratuit de votre fiche Google Business Profile. J'accompagne les commerces de Rennes et de Bretagne dans leur référencement local.</p>
+              <p><strong>Vous souhaitez apparaître sur Google Maps ?</strong> Demandez un audit gratuit de votre fiche Google Business Profile. J'accompagne les commerces et petites entreprises dans leur référencement local.</p>
               <a class="btn btn--primary" href="/contact/">Demander mon audit gratuit</a>
             </aside>
           </div>

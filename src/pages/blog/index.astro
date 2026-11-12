@@ -22,12 +22,12 @@ const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 // Articles published as standalone pages outside /blog/ (not in the content collection)
 const standalonePosts = [
   {
-    title: 'Comment apparaître sur Google Maps à Rennes : le guide pour les commerces locaux',
+    title: 'Comment apparaître sur Google Maps : le guide pour les commerces locaux',
     description:
-      'Découvrez comment créer, valider et optimiser votre fiche Google Business Profile pour apparaître sur Google Maps à Rennes et attirer plus de clients locaux.',
+      'Découvrez comment créer, valider et optimiser votre fiche Google Business Profile pour apparaître sur Google Maps et attirer plus de clients locaux.',
     pubDate: new Date('2026-11-12'),
-    slug: 'comment-apparaitre-google-maps-rennes',
-    href: '/comment-apparaitre-google-maps-rennes/',
+    slug: 'comment-apparaitre-sur-google-maps',
+    href: '/comment-apparaitre-sur-google-maps/',
     categories: ['SEO Local'],
     featuredImage: undefined as string | undefined,
     featuredImageAlt: undefined as string | undefined,
