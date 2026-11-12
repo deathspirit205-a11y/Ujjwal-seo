@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Grille d’analyse de mots-clés</title>
+  <desc id="desc">Exemple de tableau reliant des requêtes à leur intention, leur demande estimée et une décision de page.</desc>
+  <rect width="1200" height="630" fill="#F9F6F1"/>
+  <rect x="64" y="52" width="1072" height="526" rx="18" fill="#FFFFFF" stroke="#D9D5CD" stroke-width="2"/>
+  <text x="104" y="116" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#172A46">Une requête n’est qu’un début</text>
+  <text x="104" y="153" font-family="Arial,sans-serif" font-size="16" fill="#566477">Relier le besoin, la page et la prochaine action</text>
+  <rect x="100" y="186" width="1000" height="54" rx="8" fill="#172A46"/>
+  <text x="122" y="220" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">REQUÊTE</text>
+  <text x="470" y="220" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">INTENTION</text>
+  <text x="665" y="220" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">DEMANDE</text>
+  <text x="823" y="220" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">DÉCISION</text>
+  <g font-family="Arial,sans-serif" font-size="17" fill="#253248">
+    <rect x="100" y="252" width="1000" height="78" fill="#FFFFFF"/>
+    <text x="122" y="298">comment choisir ses mots-clés</text><text x="470" y="298">Informationnelle</text><text x="665" y="298">À vérifier</text><text x="823" y="298">Guide pratique</text>
+    <path d="M100 330H1100" stroke="#E4E0D8"/>
+    <rect x="100" y="331" width="1000" height="78" fill="#FBFAF7"/>
+    <text x="122" y="377">outil recherche mots-clés</text><text x="470" y="377">Comparaison</text><text x="665" y="377">À vérifier</text><text x="823" y="377">Guide outils</text>
+    <path d="M100 409H1100" stroke="#E4E0D8"/>
+    <rect x="100" y="410" width="1000" height="78" fill="#FFFFFF"/>
+    <text x="122" y="456">audit SEO pour une PME</text><text x="470" y="456">Commerciale</text><text x="665" y="456">À vérifier</text><text x="823" y="456">Page de service</text>
+  </g>
+  <path d="M100 488H1100" stroke="#E4E0D8"/>
+  <rect x="100" y="514" width="12" height="12" rx="6" fill="#149C91"/>
+  <text x="124" y="526" font-family="Arial,sans-serif" font-size="14" fill="#566477">Exemple de structure, sans données d’outil</text>
+</svg>

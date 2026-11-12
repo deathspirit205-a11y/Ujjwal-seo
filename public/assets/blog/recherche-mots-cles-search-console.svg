@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Schéma du rapport Performances de Search Console</title>
+  <desc id="desc">Maquette sans chiffres montrant les indicateurs clics, impressions, taux de clics et position moyenne, ainsi que les dimensions requêtes et pages.</desc>
+  <rect width="1200" height="630" fill="#F5F7FA"/>
+  <rect x="58" y="48" width="1084" height="534" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="2"/>
+  <text x="96" y="102" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#172A46">Performances dans les résultats de recherche</text>
+  <text x="96" y="133" font-family="Arial,sans-serif" font-size="15" fill="#566477">Quatre indicateurs à interpréter ensemble</text>
+  <g font-family="Arial,sans-serif">
+    <rect x="96" y="164" width="236" height="86" rx="10" fill="#F4F8FF" stroke="#CAD8EA"/>
+    <text x="116" y="198" font-size="14" font-weight="700" fill="#566477">CLICS</text><text x="116" y="228" font-size="18" fill="#253248">Visites depuis Google</text>
+    <rect x="350" y="164" width="236" height="86" rx="10" fill="#F2F8F6" stroke="#C7DED8"/>
+    <text x="370" y="198" font-size="14" font-weight="700" fill="#566477">IMPRESSIONS</text><text x="370" y="228" font-size="18" fill="#253248">Affichages du résultat</text>
+    <rect x="604" y="164" width="236" height="86" rx="10" fill="#FFF8F0" stroke="#E8D8C6"/>
+    <text x="624" y="198" font-size="14" font-weight="700" fill="#566477">CTR</text><text x="624" y="228" font-size="18" fill="#253248">Clics ÷ impressions</text>
+    <rect x="858" y="164" width="236" height="86" rx="10" fill="#F7F5FA" stroke="#D9D2E4"/>
+    <text x="878" y="198" font-size="14" font-weight="700" fill="#566477">POSITION MOYENNE</text><text x="878" y="228" font-size="18" fill="#253248">Meilleur résultat moyen</text>
+  </g>
+  <text x="96" y="302" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#172A46">Évolution sur la période sélectionnée</text>
+  <path d="M110 442H1085M110 390H1085M110 338H1085" stroke="#E6EAF0" stroke-width="2"/>
+  <path d="M112 424 C220 416 242 377 340 390 S465 415 555 367 S705 377 790 341 S930 370 1080 314" fill="none" stroke="#168D84" stroke-width="4" stroke-linecap="round"/>
+  <path d="M112 456 C220 449 260 423 340 431 S495 405 555 418 S690 392 790 402 S930 373 1080 388" fill="none" stroke="#365F96" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 7"/>
+  <text x="96" y="482" font-family="Arial,sans-serif" font-size="13" fill="#68768A">Schéma sans données : consultez les valeurs réelles de votre propriété.</text>
+  <rect x="96" y="507" width="190" height="42" rx="8" fill="#172A46"/><text x="121" y="534" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Requêtes</text>
+  <rect x="300" y="507" width="160" height="42" rx="8" fill="#EEF1F5"/><text x="332" y="534" font-family="Arial,sans-serif" font-size="15" fill="#253248">Pages</text>
+  <rect x="474" y="507" width="160" height="42" rx="8" fill="#EEF1F5"/><text x="506" y="534" font-family="Arial,sans-serif" font-size="15" fill="#253248">Pays</text>
+  <rect x="648" y="507" width="190" height="42" rx="8" fill="#EEF1F5"/><text x="680" y="534" font-family="Arial,sans-serif" font-size="15" fill="#253248">Appareils</text>
+</svg>

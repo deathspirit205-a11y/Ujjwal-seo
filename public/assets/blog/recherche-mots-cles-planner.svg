@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Maquette pédagogique du Planificateur de mots clés</title>
+  <desc id="desc">Schéma illustratif des deux tâches : trouver de nouvelles idées ou analyser une liste existante, avec ciblage France et français.</desc>
+  <rect width="1200" height="630" fill="#F5F7FA"/>
+  <rect x="60" y="55" width="1080" height="520" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="2"/>
+  <rect x="60" y="55" width="1080" height="76" rx="18" fill="#172A46"/>
+  <path d="M60 112h1080v19H60z" fill="#172A46"/>
+  <circle cx="101" cy="93" r="12" fill="#24A79C"/>
+  <text x="128" y="101" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#FFFFFF">PLANIFICATEUR DE MOTS CLÉS</text>
+  <text x="100" y="178" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172A46">Choisissez la tâche avant d’interpréter les chiffres</text>
+  <rect x="100" y="204" width="474" height="190" rx="12" fill="#F8FAFC" stroke="#C9D2DE" stroke-width="2"/>
+  <rect x="126" y="230" width="42" height="42" rx="10" fill="#DCEFEB"/>
+  <path d="M137 251h20m-10-10v20" stroke="#087F77" stroke-width="3" stroke-linecap="round"/>
+  <text x="126" y="304" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#172A46">Trouver de nouveaux mots clés</text>
+  <text x="126" y="337" font-family="Arial,sans-serif" font-size="15" fill="#566477">Partir d’un service, d’une expression</text>
+  <text x="126" y="360" font-family="Arial,sans-serif" font-size="15" fill="#566477">ou d’un site pour explorer des idées.</text>
+  <rect x="602" y="204" width="498" height="190" rx="12" fill="#F8FAFC" stroke="#C9D2DE" stroke-width="2"/>
+  <rect x="628" y="230" width="42" height="42" rx="10" fill="#E4EAF4"/>
+  <path d="M639 242h20m-20 9h20m-20 9h14" stroke="#234A78" stroke-width="3" stroke-linecap="round"/>
+  <text x="628" y="304" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#172A46">Obtenir volumes et prévisions</text>
+  <text x="628" y="337" font-family="Arial,sans-serif" font-size="15" fill="#566477">Coller une liste déjà constituée</text>
+  <text x="628" y="360" font-family="Arial,sans-serif" font-size="15" fill="#566477">pour examiner les estimations.</text>
+  <text x="100" y="439" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#172A46">Ciblage de l’analyse</text>
+  <rect x="100" y="459" width="198" height="54" rx="8" fill="#FFFFFF" stroke="#C9D2DE" stroke-width="2"/>
+  <text x="122" y="493" font-family="Arial,sans-serif" font-size="16" fill="#253248">Pays : France</text>
+  <rect x="316" y="459" width="198" height="54" rx="8" fill="#FFFFFF" stroke="#C9D2DE" stroke-width="2"/>
+  <text x="338" y="493" font-family="Arial,sans-serif" font-size="16" fill="#253248">Langue : français</text>
+  <text x="100" y="547" font-family="Arial,sans-serif" font-size="13" fill="#68768A">Illustration pédagogique, l’interface Google Ads peut évoluer.</text>
+</svg>
