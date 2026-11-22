@@ -27,3 +27,6 @@ pnpm-debug.log*
 
 # Netlify
 .netlify/
+
+# Duplicate copies created by macOS/iCloud sync (e.g. "file 2.md")
+* [0-9].*
