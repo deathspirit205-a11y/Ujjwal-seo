@@ -47,4 +47,11 @@ export const faqGeneral: FAQItem[] = [
       'Un audit permet d\'identifier précisément ce qui freine votre visibilité : erreurs techniques, problèmes d\'indexation, contenu mal optimisé, maillage interne insuffisant. Sans diagnostic, on travaille à l\'aveugle. L\'audit est le point de départ de toute stratégie efficace.',
     pages: ['home', 'audit-seo'],
   },
+  {
+    id: 'plateformes',
+    question: 'Sur quelles plateformes travaillez-vous ?',
+    answer:
+      'Je travaille sur Astro, WordPress, Shopify et Wix. Que votre site soit une vitrine, une boutique en ligne ou un site sur mesure, j\'adapte le travail à votre plateforme.',
+    pages: ['home'],
+  },
 ];

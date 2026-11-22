@@ -10,6 +10,7 @@
 - **Localisation** : Basé à Rennes, en Bretagne (France)
 - **Zones d'intervention sur site** : Bretagne (Rennes, Vitré, Fougères, Janzé, Redon) et Pays de la Loire (Laval, Châteaubriant, Nantes, Angers)
 - **Intervention à distance** : France entière
+- **Plateformes** : Astro, WordPress, Shopify, Wix
 - **Site officiel** : https://ujjwal-seo.com
 - **Profils officiels** : [Google Business Profile](https://maps.app.goo.gl/YmAa7rHR44WfHFu86), [Instagram](https://www.instagram.com/seo_ujjwalfr/), [Facebook](https://www.facebook.com/profile.php?id=61589067783854), [LinkedIn d'Ujjwal Lage](https://www.linkedin.com/in/ujjwal2050)
 - **Cadre méthodologique** : Méthode A.R.C. (Accessibilité technique, Relevance & Entités, Citations & Autorité IA)

@@ -1,9 +1,9 @@
 ---
-title: "Core update Google : comment savoir si votre site est touché"
-metaTitle: "Core update Google : votre site est-il touché ?"
-description: "Google déploie sa core update de novembre 2026. Découvrez comment vérifier dans Search Console si votre site est touché et quoi faire, sans paniquer."
-featuredImage: "/assets/blog/core-update-google-site-touche.jpg"
-featuredImageAlt: "Titre stylisé « Core update Google : comment savoir si votre site est touché » avec une courbe de trafic Search Console"
+title: "Core update Google : comment savoir si votre site est impacté"
+metaTitle: "Core update Google : votre site est-il impacté ?"
+description: "Google déploie sa core update de novembre 2026. Découvrez comment vérifier dans Search Console si votre site est impacté et quoi faire, sans paniquer."
+featuredImage: "/assets/blog/core-update-google-site-impacte.jpg"
+featuredImageAlt: "Titre stylisé « Core update Google : comment savoir si votre site est impacté » avec une courbe de trafic Search Console"
 pubDate: 2026-11-22
 author: "Ujjwal Lage"
 categories: ["Audit SEO"]
@@ -16,7 +16,7 @@ Vous avez remarqué que les visites de votre site bougent depuis quelques jours 
 
 Pour une boutique en ligne ou un artisan, la tentation est grande de tout modifier en urgence. C'est souvent une erreur. Une baisse de trafic peut d'ailleurs avoir une autre cause que la core update Google.
 
-Dans cet article, vous allez voir ce que Google a réellement annoncé. Vous apprendrez aussi à vérifier si votre site est touché, à trouver la vraie cause d'une baisse et à agir selon votre situation.
+Dans cet article, vous allez voir ce que Google a réellement annoncé. Vous apprendrez aussi à vérifier si votre site est impacté, à trouver la vraie cause d'une baisse et à agir selon votre situation.
 
 ## Core update de novembre 2026 : qu'a vraiment annoncé Google ?
 
@@ -34,7 +34,7 @@ Google conseille d'attendre au moins une semaine complète après la fin du dép
 
 Pensez aussi à la saison. Pour une boutique en ligne ou un fleuriste, le trafic change naturellement autour du Black Friday et des fêtes. Une hausse ou une baisse à cette période n'est pas forcément liée à Google.
 
-## Comment vérifier dans Google Search Console si votre site est touché ?
+## Comment vérifier dans Google Search Console si votre site est impacté ?
 
 Google Search Console est un outil gratuit de Google. Il montre comment votre site apparaît dans les résultats de recherche. Si vous ne l'avez pas encore installé, c'est le moment de le faire.
 

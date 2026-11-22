@@ -170,7 +170,7 @@ export const services: Service[] = [
         },
         {
           question: 'Sur quels CMS et technologies intervenez-vous ?',
-          answer: 'J\'interviens sur WordPress, Shopify, Webflow ainsi que sur les architectures modernes (Astro, Next.js, sites statiques et sur-mesure).',
+          answer: 'Je travaille sur WordPress, Shopify, Wix et Astro. J\'adapte mes recommandations à ce que votre plateforme permet.',
         },
       ],
       relatedLinks: [
