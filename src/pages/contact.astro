@@ -23,21 +23,7 @@ const contactSchema = {
   description:
     "Contactez Ujjwal Lage, consultant SEO & GEO indépendant en France. Échangeons sur votre projet, vos blocages techniques ou demandez un audit.",
   url: `${SITE_URL}/contact/`,
-  mainEntity: {
-    "@type": "ProfessionalService",
-    "@id": `${SITE_URL}/#organization`,
-    name: "Ujjwal SEO",
-    url: SITE_URL,
-    areaServed: [
-      { "@type": "City", name: "Rennes" },
-      { "@type": "City", name: "Vitré" },
-      { "@type": "City", name: "Laval" },
-      { "@type": "City", name: "Nantes" },
-      { "@type": "AdministrativeArea", name: "Bretagne" },
-      { "@type": "AdministrativeArea", name: "Pays de la Loire" },
-      { "@type": "Country", name: "France" },
-    ],
-  },
+  mainEntity: { "@id": `${SITE_URL}/#organization` },
 };
 
 const infos = [
@@ -60,7 +46,7 @@ const infos = [
 ---
 
 <BaseLayout
-  title={buildTitle("Contact — Parlez de votre projet SEO & GEO")}
+  title={buildTitle('Contact — Parlez de votre projet SEO & GEO')}
   description="Contactez Ujjwal Lage, consultant SEO & GEO indépendant en France. Échangeons sur votre projet, vos blocages techniques ou demandez un audit."
   canonicalPath="/contact/"
   schema={contactSchema}
@@ -94,7 +80,7 @@ const infos = [
               />
               <div>
                 <strong class="contact-person-card__name">Ujjwal Lage</strong>
-                <span class="contact-person-card__role">Consultant SEO &amp; GEO indépendant · Ille-et-Vilaine</span>
+                <span class="contact-person-card__role">Consultant SEO &amp; GEO indépendant · Rennes, Bretagne</span>
                 <span class="contact-person-card__status">
                   <span class="contact-person-card__dot" aria-hidden="true"></span>
                   Je lis et réponds personnellement à chaque message

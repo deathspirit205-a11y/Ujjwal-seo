@@ -53,11 +53,7 @@ const serviceSchema = {
   description:
     'Optimisation technique SEO : crawlabilité, indexation, Core Web Vitals, architecture, données structurées, redirections. Fondations techniques pour un référencement efficace.',
   url: `${SITE_URL}/services/seo-technique/`,
-  provider: {
-    '@type': 'ProfessionalService',
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
-  },
+  provider: { '@id': `${SITE_URL}/#organization` },
   areaServed: [
     { '@type': 'City', name: 'Rennes' },
     { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
@@ -68,8 +64,8 @@ const serviceSchema = {
 ---
 
 <ServiceLayout
-  title={buildTitle('SEO Technique — Optimisation technique de votre site web')}
-  description="SEO technique : crawlabilité, indexation, Core Web Vitals, architecture, données structurées, redirections. Les fondations techniques d'un référencement durable. Consultant SEO Rennes."
+  title={buildTitle('SEO Technique — Optimisation de votre site')}
+  description="SEO technique : crawl, indexation, Core Web Vitals, architecture, données structurées et redirections. Les fondations d'un référencement durable à Rennes."
   canonicalPath="/services/seo-technique/"
   breadcrumbs={breadcrumbs}
   schema={serviceSchema}

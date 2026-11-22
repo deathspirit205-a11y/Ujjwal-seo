@@ -22,23 +22,26 @@ const faqFougeres = [
   {
     id: 'fougeres-interet',
     question: 'Quel est l\'intérêt du SEO pour une entreprise à Fougères ?',
-    answer: 'Fougères dispose d\'un bassin de vie de plus de 55 000 habitants. Les internautes fougerais recherchent quotidiennement des prestataires fiables sur Google (artisans, experts, commerces spécialisés). Un site bien référencé localement capte cette demande directe sans frais publicitaires récurrents.',
+    answer: 'Fougères dispose d\'un bassin de vie actif. Les internautes fougerais recherchent quotidiennement des prestataires fiables sur Google (artisans, experts, commerces spécialisés). Un site bien référencé localement peut vous aider à recevoir ces demandes, sans payer de publicité à chaque clic.',
   },
   {
     id: 'fougeres-normandie',
     question: 'Peut-on cibler à la fois Fougères et les communes proches en Normandie ou Mayenne ?',
-    answer: 'Oui, c\'est un atout géographique majeur de Fougères. Nous pouvons concevoir une architecture sémantique ciblant le Pays de Fougères, mais aussi le sud-Manche (Avranches, Saint-James) et l\'ouest mayennais (Ernée).',
+    answer: 'Oui, c\'est un vrai atout de Fougères. Nous pouvons concevoir une architecture sémantique ciblant le Pays de Fougères, mais aussi le sud-Manche (Avranches, Saint-James) et l\'ouest mayennais (Ernée).',
   },
 ];
 
 const schemaFougeres = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/zones-intervention/seo-fougeres/#service`,
+  serviceType: 'Consultant SEO & GEO',
+  provider: { '@id': `${SITE_URL}/#organization` },
   name: 'Ujjwal SEO — Consultant SEO & GEO à Fougères',
   description: 'Consultant SEO & GEO intervenant à Fougères et dans le Pays de Fougères : référencement naturel, optimisation Google Maps et visibilité IA.',
   url: `${SITE_URL}/zones-intervention/seo-fougeres/`,
   areaServed: [
-    { '@type': 'City', name: 'Fougères', sameAs: 'https://www.wikidata.org/wiki/Q181462' },
+    { '@type': 'City', name: 'Fougères', sameAs: 'https://www.wikidata.org/wiki/Q4043' },
     { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
   ],
 };
@@ -48,6 +51,7 @@ const schemaFougeres = {
   title={buildTitle('Consultant SEO & GEO à Fougères — Référencement naturel & Local')}
   description="Consultant SEO & GEO à Fougères : gagnez en visibilité sur Google et les moteurs IA. SEO local, Google Business Profile et stratégie pour les entreprises fougeraises."
   canonicalPath="/zones-intervention/seo-fougeres/"
+  robots="noindex, follow"
   schema={[schemaFougeres]}
 >
   <Header />
@@ -74,7 +78,7 @@ const schemaFougeres = {
               <h2 id="fougeres-context-heading">Fougères : tradition industrielle et renouveau économique</h2>
             </div>
             <p class="lead" style="margin-top: var(--space-4)">
-              Célèbre pour son château médiéval et son histoire industrielle (chaussure, maroquinerie d'excellence, mécanique de précision, agroalimentaire et optique), le Pays de Fougères combine attractivité patrimoniale et vitalité productive.
+              Célèbre pour son château médiéval et son histoire industrielle (chaussure, maroquinerie, mécanique de précision, agroalimentaire et optique), le Pays de Fougères combine attractivité patrimoniale et vitalité productive.
             </p>
             <p>
               Pour les artisans, les commerçants du centre et les PME industrielles du bassin de Fougères Agglomération, le référencement naturel offre un canal d'acquisition stable et rentable, reliant votre savoir-faire aux besoins des clients du nord-est de l'Ille-et-Vilaine.

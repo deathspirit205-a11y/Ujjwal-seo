@@ -22,7 +22,7 @@ const faqChateaubriant = [
   {
     id: 'chateaubriant-potentiel',
     question: 'Quel est le potentiel SEO pour une entreprise à Châteaubriant ?',
-    answer: 'Le potentiel est élevé en raison de la situation géographique de carrefour : Châteaubriant est au centre d\'un quadrilatère reliant Nantes, Rennes, Angers et Laval. Une entreprise locale qui structure bien son SEO local et son rayonnement multicommunal capte des prospects sur un rayon de 40 km.',
+    answer: 'Châteaubriant est bien placée : Châteaubriant est au centre d\'un quadrilatère reliant Nantes, Rennes, Angers et Laval. Une entreprise locale qui structure bien son SEO local et son rayonnement multicommunal peut recevoir des demandes, y compris au-delà de la commune.',
   },
   {
     id: 'chateaubriant-secteurs',
@@ -33,12 +33,15 @@ const faqChateaubriant = [
 
 const schemaChateaubriant = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/zones-intervention/seo-chateaubriant/#service`,
+  serviceType: 'Consultant SEO & GEO',
+  provider: { '@id': `${SITE_URL}/#organization` },
   name: 'Ujjwal SEO — Consultant SEO & GEO à Châteaubriant',
   description: 'Consultant SEO & GEO intervenant à Châteaubriant et en Loire-Atlantique : référencement naturel local, pack Google Maps et stratégie numérique.',
   url: `${SITE_URL}/zones-intervention/seo-chateaubriant/`,
   areaServed: [
-    { '@type': 'City', name: 'Châteaubriant', sameAs: 'https://www.wikidata.org/wiki/Q207601' },
+    { '@type': 'City', name: 'Châteaubriant', sameAs: 'https://www.wikidata.org/wiki/Q211187' },
     { '@type': 'AdministrativeArea', name: 'Loire-Atlantique' },
   ],
 };
@@ -48,6 +51,7 @@ const schemaChateaubriant = {
   title={buildTitle('Consultant SEO & GEO à Châteaubriant — Référencement naturel & Local')}
   description="Consultant SEO & GEO à Châteaubriant : positionnez votre entreprise sur Google et les moteurs IA. SEO local, pack Google Maps et accompagnement dans le Pays de Châteaubriant."
   canonicalPath="/zones-intervention/seo-chateaubriant/"
+  robots="noindex, follow"
   schema={[schemaChateaubriant]}
 >
   <Header />
@@ -57,7 +61,7 @@ const schemaChateaubriant = {
       visual="map"
       eyebrow="Pays de Châteaubriant & Carrefour de l'Ouest"
       title="Consultant SEO & GEO à Châteaubriant"
-      description="Développez votre acquisition locale et régionale à Châteaubriant : un référencement naturel ciblé pour dominer les recherches de vos clients sur Google et les espaces IA."
+      description="Développez votre acquisition locale et régionale à Châteaubriant : un référencement naturel ciblé pour être mieux trouvé par vos clients sur Google et les espaces IA."
       primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
       secondaryCTA={{ label: 'Découvrir l\'audit SEO', href: '/services/audit-seo/' }}
       compact={true}
@@ -74,7 +78,7 @@ const schemaChateaubriant = {
               <h2 id="chateaubriant-context-heading">Châteaubriant : au carrefour de quatre départements</h2>
             </div>
             <p class="lead" style="margin-top: var(--space-4)">
-              Idéalement située au centre du triangle Nantes-Rennes-Angers, Châteaubriant est le centre névralgique d'un bassin de vie de plus de 45 000 habitants.
+              Idéalement située au centre du triangle Nantes-Rennes-Angers, Châteaubriant est au cœur d'un bassin de vie actif du nord de la Loire-Atlantique.
             </p>
             <p>
               Caractérisée par une solide tradition industrielle dans la métallurgie, la fonderie, le machinisme agricole et la logistique, la ville abrite de nombreuses PME dont l'offre mérite une meilleure résonance sur le web. Le SEO vous permet de capter la demande des professionnels et des particuliers sur l'ensemble du nord de la Loire-Atlantique.
@@ -84,9 +88,9 @@ const schemaChateaubriant = {
           <div class="local-fact-card">
             <h3>Bassin Castelbriantais</h3>
             <ul>
-              <li><strong>Localisation :</strong> À équidistance de Nantes, Rennes, Angers et Laval (environ 1h de route).</li>
+              <li><strong>Localisation :</strong> À équidistance de Nantes, Rennes, Angers et Laval.</li>
               <li><strong>Tissu d'entreprises :</strong> Métallurgie, usinage, fonderie, artisans du bâtiment, commerces de centre-ville.</li>
-              <li><strong>Opportunité SEO :</strong> Faible concurrence technique locale, facilitant l'accès aux premières places sur Google.</li>
+              <li><strong>Point de départ :</strong> Selon votre secteur, la concurrence en ligne peut être plus ou moins forte ; un audit permet de le mesurer.</li>
             </ul>
           </div>
         </div>

@@ -48,11 +48,7 @@ const serviceSchema = {
   name: 'SEO Contenu & Sémantique',
   description: 'Stratégie éditoriale SEO, analyse des intentions de recherche, architecture documentaire et optimisation sémantique on-page pour générer un trafic qualifié.',
   url: `${SITE_URL}/services/seo-contenu/`,
-  provider: {
-    '@type': 'ProfessionalService',
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
-  },
+  provider: { '@id': `${SITE_URL}/#organization` },
   areaServed: {
     '@type': 'Country',
     name: 'France',
@@ -61,8 +57,8 @@ const serviceSchema = {
 ---
 
 <ServiceLayout
-  title={buildTitle('SEO Contenu & Sémantique — Référencement éditorial et intention de recherche')}
-  description="Optimisation sémantique, architecture de contenu, intentions de recherche et maillage interne. Faites de votre site une référence d'autorité pour vos clients et Google."
+  title={buildTitle('SEO Contenu — Sémantique et intentions')}
+  description="Optimisation sémantique, architecture de contenu, intentions de recherche et maillage interne. Faites de votre site une référence d'autorité pour Google."
   canonicalPath="/services/seo-contenu/"
   breadcrumbs={breadcrumbs}
   schema={serviceSchema}

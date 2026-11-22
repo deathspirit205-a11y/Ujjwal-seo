@@ -28,12 +28,8 @@ const personSchema = {
   jobTitle: 'Consultant SEO & GEO indépendant',
   url: `${SITE_URL}/a-propos/`,
   image: `${SITE_URL}/assets/ujjwal-lage-portrait.jpg`,
-  worksFor: {
-    '@type': 'ProfessionalService',
-    '@id': `${SITE_URL}/#organization`,
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
-  },
+  worksFor: { '@id': `${SITE_URL}/#organization` },
+  sameAs: ['https://www.linkedin.com/in/ujjwal2050'],
   knowsAbout: [
     'SEO',
     'GEO - Generative Engine Optimization',
@@ -82,7 +78,7 @@ const toolsEnvironment = [
 
 <BaseLayout
   title={buildTitle('À propos — Ujjwal Lage, Consultant SEO & GEO')}
-  description="Découvrez mon parcours et ma vision du SEO et du GEO : double compétence commerce et technique, pragmatisme, transparence et accompagnement personnalisé."
+  description="Découvrez mon parcours et ma vision du SEO et du GEO : double compétence commerce et technique, pragmatisme, transparence et accompagnement sur mesure."
   canonicalPath="/a-propos/"
   schema={[personSchema]}
 >
@@ -167,9 +163,17 @@ const toolsEnvironment = [
               <ul class="story-card__list">
                 <li><strong>Statut :</strong> Consultant indépendant</li>
                 <li><strong>Spécialités :</strong> SEO Technique, SEO Contenu, SEO Local, GEO (Search IA)</li>
-                <li><strong>Localisation :</strong> Ille-et-Vilaine (35), Grand Ouest & accompagnement France à distance</li>
+                <li><strong>Localisation :</strong> Basé à Rennes, en Bretagne · Grand Ouest & accompagnement France à distance</li>
                 <li><strong>Clients types :</strong> TPE, PME, commerçants, artisans, professions libérales et entreprises en croissance</li>
               </ul>
+            </div>
+
+            <div class="story-card">
+              <h3 class="story-card__title">Réalisations</h3>
+              <p class="story-card__text">
+                Pour Soleya Reiki, une praticienne de Reiki à La Guerche-de-Bretagne, j'ai pris en charge la recherche de mots-clés, la conception du site, les textes, le référencement et la fiche Google Business Profile.
+                Vous pouvez <a href="https://soleya-reiki.com" target="_blank" rel="noopener">consulter le site de Soleya Reiki</a> ou lire <a href="/realisations/">le détail de mes réalisations</a>.
+              </p>
             </div>
 
             <div class="story-quote">
@@ -396,6 +400,20 @@ const toolsEnvironment = [
   font-size: var(--text-sm);
   color: var(--color-text);
   line-height: var(--leading-normal);
+}
+
+.story-card__text {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+.story-card__text a {
+  color: var(--color-atlantic);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .story-quote {

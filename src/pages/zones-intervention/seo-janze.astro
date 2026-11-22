@@ -22,7 +22,7 @@ const faqJanze = [
   {
     id: 'janze-taille',
     question: 'Le SEO est-il rentable pour une entreprise dans une ville à taille humaine comme Janzé ?',
-    answer: 'Absolument. Janzé et le Pays de la Roche-aux-Fées regroupent plus de 25 000 habitants et des centaines d\'entreprises. Avec une concurrence numérique encore peu optimisée, des actions SEO local bien ciblées (fiche Google Business Profile complète, avis, pages de service localisées) permettent généralement de gagner en visibilité sur Google Maps de façon mesurable, sans pour autant pouvoir garantir une position précise.',
+    answer: 'Absolument. Janzé et le Pays de la Roche-aux-Fées regroupent de nombreux artisans, commerçants et PME. Selon votre métier, la concurrence en ligne peut être plus ou moins forte ; un audit permet de le mesurer. Quelques actions simples (une fiche Google Business Profile complète, des avis clients, des pages par service) aident en général à être mieux vu sur Google Maps. Aucune position précise ne peut être garantie.',
   },
   {
     id: 'janze-rennes',
@@ -33,12 +33,15 @@ const faqJanze = [
 
 const schemaJanze = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/zones-intervention/seo-janze/#service`,
+  serviceType: 'Consultant SEO & GEO',
+  provider: { '@id': `${SITE_URL}/#organization` },
   name: 'Ujjwal SEO — Consultant SEO & GEO à Janzé',
   description: 'Consultant SEO & GEO intervenant à Janzé et au Pays de la Roche-aux-Fées : référencement naturel local, visibilité Google Maps et stratégie numérique.',
   url: `${SITE_URL}/zones-intervention/seo-janze/`,
   areaServed: [
-    { '@type': 'City', name: 'Janzé', sameAs: 'https://www.wikidata.org/wiki/Q383431' },
+    { '@type': 'City', name: 'Janzé', sameAs: 'https://www.wikidata.org/wiki/Q662265' },
     { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
   ],
 };
@@ -48,6 +51,7 @@ const schemaJanze = {
   title={buildTitle('Consultant SEO & GEO à Janzé — Référencement naturel & Local')}
   description="Consultant SEO & GEO à Janzé : positionnez votre entreprise sur Google et les moteurs IA. SEO local, pack Google Maps et accompagnement pour les artisans et PME de Janzé."
   canonicalPath="/zones-intervention/seo-janze/"
+  robots="noindex, follow"
   schema={[schemaJanze]}
 >
   <Header />
@@ -71,13 +75,13 @@ const schemaJanze = {
           <div>
             <div class="prose-header">
               <p class="eyebrow">Ancrage Territorial</p>
-              <h2 id="janze-context-heading">Janzé : pôle d'excellence agroalimentaire et artisanal</h2>
+              <h2 id="janze-context-heading">Janzé : pôle agroalimentaire et artisanal</h2>
             </div>
             <p class="lead" style="margin-top: var(--space-4)">
-              Célèbre pour sa filière avicole reconnue nationalement, Janzé constitue le pôle central de la communauté de communes de Roche aux Fées Communauté.
+              Connue pour sa filière avicole, Janzé constitue le pôle central de la communauté de communes de Roche aux Fées Communauté.
             </p>
             <p>
-              Idéalement positionnée sur l'axe Rennes-Angers, la ville bénéficie d'une forte croissance démographique et d'un tissu dynamique d'artisans, commerçants, professions libérales et PME. Le SEO local est l'outil privilégié pour vous positionner comme l'artisan ou le prestataire de référence auprès des résidents du secteur.
+              Idéalement positionnée sur l'axe Rennes-Angers, la ville bénéficie d'un tissu dynamique d'artisans, commerçants, professions libérales et PME. Le SEO local aide les habitants du secteur à vous trouver quand ils cherchent un artisan ou un prestataire près de chez eux.
             </p>
           </div>
 
@@ -86,7 +90,7 @@ const schemaJanze = {
             <ul>
               <li><strong>Communes clés :</strong> Janzé, Retiers, Corps-Nuds, Châteaugiron, Vern-sur-Seiche, Brie, Amanlis.</li>
               <li><strong>Secteurs porteurs :</strong> Élevage et agroalimentaire, construction et rénovation de l'habitat, santé, commerces de bouche.</li>
-              <li><strong>Atout majeur :</strong> Accès direct au marché rennais tout en conservant une forte identité locale.</li>
+              <li><strong>Atout :</strong> Accès direct au marché rennais tout en conservant une forte identité locale.</li>
             </ul>
           </div>
         </div>

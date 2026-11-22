@@ -58,11 +58,7 @@ const serviceSchema = {
   description:
     'Optimisation du référencement local : Google Business Profile, citations, contenu géolocalisé pour apparaître dans les recherches locales et sur Google Maps.',
   url: `${SITE_URL}/services/seo-local/`,
-  provider: {
-    '@type': 'ProfessionalService',
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
-  },
+  provider: { '@id': `${SITE_URL}/#organization` },
   areaServed: [
     { '@type': 'City', name: 'Rennes' },
     { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
@@ -73,8 +69,8 @@ const serviceSchema = {
 ---
 
 <ServiceLayout
-  title={buildTitle('SEO Local — Référencement local à Rennes et en Bretagne')}
-  description="SEO local : optimisez votre visibilité dans les recherches géolocalisées et Google Maps. Google Business Profile, citations locales, contenu de proximité. Consultant SEO Rennes."
+  title={buildTitle('SEO Local — Référencement à Rennes et Bretagne')}
+  description="SEO local : gagnez en visibilité dans les recherches géolocalisées et sur Google Maps. Google Business Profile, citations locales et contenu de proximité."
   canonicalPath="/services/seo-local/"
   breadcrumbs={breadcrumbs}
   schema={serviceSchema}
@@ -252,7 +248,7 @@ const serviceSchema = {
           <p class="eyebrow">Zones d'intervention</p>
           <h2 id="zones-heading">SEO local à Rennes, en Bretagne et en France</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Basé en Ille-et-Vilaine (près de Rennes et Vitré), j'accompagne prioritairement les entreprises rennaises, bretonnes et du Grand Ouest.
+            Basé à Rennes, en Bretagne, j'accompagne prioritairement les entreprises rennaises, bretonnes et du Grand Ouest.
             J'interviens également à distance pour des entreprises partout en France.
           </p>
         </div>

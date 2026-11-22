@@ -755,10 +755,9 @@ p + p {
   box-shadow: 0 6px 18px rgba(23, 50, 77, 0.22);
 }
 
-/* Marker-style highlight for one key phrase per section */
+/* Key phrase in a heading: no decoration (the old highlighter band looked like a strike line) */
 .mark {
-  background: linear-gradient(transparent 58%, rgba(184, 209, 214, 0.55) 58%);
-  padding-inline: 0.15em;
+  background: none;
 }
 
 /* Deep Atlantic Navy band to contrast gently with light sections */

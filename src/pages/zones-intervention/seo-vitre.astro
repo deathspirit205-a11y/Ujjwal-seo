@@ -22,7 +22,7 @@ const faqVitre = [
   {
     id: 'vitre-concurrence',
     question: 'Le marché SEO à Vitré est-il très concurrentiel ?',
-    answer: 'La concurrence numérique à Vitré est modérée comparée à Rennes. La majorité des acteurs locaux n\'ont pas encore structuré de stratégie SEO approfondie. C\'est une excellente opportunité : un travail méthodique sur le SEO local et la pertinence on-page permet généralement d\'observer les premiers signaux mesurables (impressions, requêtes locales, appels) en 3 à 6 mois, selon le point de départ du site. Aucun positionnement précis ne peut être garanti.',
+    answer: 'Selon votre secteur, la concurrence en ligne peut être plus ou moins forte ; un audit permet de le mesurer. Un travail régulier sur le SEO local et sur le contenu des pages permet en général de voir les premiers résultats mesurables (affichages sur Google, recherches locales, appels) en 3 à 6 mois, selon le point de départ du site. Aucun positionnement précis ne peut être garanti.',
   },
   {
     id: 'vitre-zone',
@@ -32,18 +32,21 @@ const faqVitre = [
   {
     id: 'vitre-deplacement',
     question: 'Pouvons-nous organiser des réunions de travail à Vitré ?',
-    answer: 'Tout à fait. Étant basé en Ille-et-Vilaine, je me déplace régulièrement à Vitré pour des points d\'étape physiques, des ateliers de cadrage ou des audits dans vos locaux.',
+    answer: 'Tout à fait. Étant basé à Rennes, en Bretagne, je me déplace régulièrement à Vitré pour des points d\'étape physiques, des ateliers de cadrage ou des audits dans vos locaux.',
   },
 ];
 
 const schemaVitre = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/zones-intervention/seo-vitre/#service`,
+  serviceType: 'Consultant SEO & GEO',
+  provider: { '@id': `${SITE_URL}/#organization` },
   name: 'Ujjwal SEO — Consultant SEO & GEO à Vitré',
   description: 'Consultant SEO & GEO intervenant à Vitré et en Ille-et-Vilaine : référencement naturel local, audit technique et stratégie digitale pour les entreprises du Pays de Vitré.',
   url: `${SITE_URL}/zones-intervention/seo-vitre/`,
   areaServed: [
-    { '@type': 'City', name: 'Vitré', sameAs: 'https://www.wikidata.org/wiki/Q203737' },
+    { '@type': 'City', name: 'Vitré', sameAs: 'https://www.wikidata.org/wiki/Q234704' },
     { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
   ],
 };
@@ -53,6 +56,7 @@ const schemaVitre = {
   title={buildTitle('Consultant SEO & GEO à Vitré — Référencement naturel & Local')}
   description="Consultant SEO & GEO à Vitré : boostez votre visibilité sur Google et les moteurs IA. SEO local, pack Google Maps et accompagnement pour les entreprises vitréennes."
   canonicalPath="/zones-intervention/seo-vitre/"
+  robots="noindex, follow"
   schema={[schemaVitre]}
 >
   <Header />
@@ -80,19 +84,19 @@ const schemaVitre = {
               <h2 id="vitre-context-heading">Vitré : un écosystème d'entreprises robuste et pragmatique</h2>
             </div>
             <p class="lead" style="margin-top: var(--space-4)">
-              Célèbre pour son dynamisme industriel et son taux de chômage parmi les plus faibles de France, le bassin de Vitré regorge d'acteurs de premier plan dans l'agroalimentaire, la mécanique, la logistique et l'artisanat du bâtiment.
+              Réputé pour son dynamisme industriel et un bassin d'emploi actif, le Pays de Vitré compte de nombreux acteurs dans l'agroalimentaire, la mécanique, la logistique et l'artisanat du bâtiment.
             </p>
             <p>
-              Pourtant, de nombreuses entreprises locales sous-exploitent encore leur présence sur Google. En structurant votre fiche Google Business Profile, vos pages de services et vos données d'entreprise, vous captez directement les demandes issues du Pays de Vitré et de l'axe Rennes-Laval.
+              Pourtant, une présence soignée sur Google aide à être trouvé. En complétant votre fiche Google Business Profile, vos pages de services et les informations de votre entreprise, vous facilitez les demandes venant du Pays de Vitré et de l'axe Rennes-Laval.
             </p>
           </div>
 
           <div class="local-fact-card">
             <h3>Spécificités SEO Vitré</h3>
             <ul>
-              <li><strong>Position charnière :</strong> À mi-chemin entre Rennes (35) et Laval (53), sur l'axe LGV et routier majeur.</li>
+              <li><strong>Position charnière :</strong> À mi-chemin entre Rennes (35) et Laval (53), sur l'axe ferroviaire et routier Rennes–Laval.</li>
               <li><strong>Profil des entreprises :</strong> PME industrielles, artisans du second œuvre, commerces du centre historique, services de proximité.</li>
-              <li><strong>Opportunité majeure :</strong> Concurrence modérée permettant un retour sur investissement rapide sur les requêtes ciblées.</li>
+              <li><strong>Point de départ :</strong> Selon votre secteur, la concurrence en ligne peut être plus ou moins forte ; un audit permet de le mesurer.</li>
             </ul>
           </div>
         </div>

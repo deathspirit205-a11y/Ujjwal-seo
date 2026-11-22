@@ -45,16 +45,12 @@ const schemaWebPage = {
   name: 'Zones d\'intervention SEO & GEO — Bretagne, Pays de la Loire et France entière',
   description: 'Découvrez les zones d\'intervention d\'Ujjwal SEO : ancrage territorial dans le Grand Ouest (Rennes, Vitré, Fougères, Laval, Nantes) et accompagnement SEO/GEO à distance dans toute la France.',
   url: `${SITE_URL}/zones-intervention/`,
-  provider: {
-    '@type': 'ProfessionalService',
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
-  },
+  provider: { '@id': `${SITE_URL}/#organization` },
 };
 ---
 
 <BaseLayout
-  title={buildTitle('Zones d\'intervention SEO & GEO — Bretagne, Pays de la Loire & France')}
+  title={buildTitle('Zones d\'intervention SEO & GEO — Grand Ouest')}
   description="Consultant SEO & GEO : ancrage territorial dans le Grand Ouest (Rennes, Vitré, Fougères, Laval, Nantes) et accompagnement partout en France à distance."
   canonicalPath="/zones-intervention/"
   schema={[schemaWebPage]}
@@ -90,7 +86,7 @@ const schemaWebPage = {
             <span class="phil-card__badge">Proximité territoriale</span>
             <h3 class="phil-card__title">Grand Ouest & Rencontres physiques</h3>
             <p class="phil-card__desc">
-              Implanté au cœur de la Bretagne et des Pays de la Loire, je me déplace pour des audits stratégiques, des ateliers d'équipe ou des comités de direction à Rennes, Vitré, Fougères, Laval ou Nantes.
+              Basé à Rennes, en Bretagne, je me déplace pour des audits stratégiques, des ateliers d'équipe ou des comités de direction à Rennes, Vitré, Fougères, Laval ou Nantes.
             </p>
             <ul class="phil-card__list">
               <li>Connaissance des spécificités économiques locales</li>

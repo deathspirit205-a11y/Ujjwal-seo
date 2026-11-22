@@ -62,11 +62,7 @@ const serviceSchema = {
   description:
     'Analyse complète du référencement naturel d\'un site web : technique, architecture, contenu, mots-clés, concurrence. Livrable : rapport détaillé et plan d\'action priorisé.',
   url: `${SITE_URL}/services/audit-seo/`,
-  provider: {
-    '@type': 'ProfessionalService',
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
-  },
+  provider: { '@id': `${SITE_URL}/#organization` },
   areaServed: [
     { '@type': 'City', name: 'Rennes' },
     { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
@@ -77,8 +73,8 @@ const serviceSchema = {
 ---
 
 <ServiceLayout
-  title={buildTitle('Audit SEO — Diagnostic complet de votre référencement')}
-  description="Audit SEO complet : analyse technique, indexation, architecture, contenu, mots-clés et concurrence. Recevez un rapport détaillé et un plan d'action priorisé. Consultant SEO Rennes."
+  title={buildTitle('Audit SEO — Diagnostic complet de votre site')}
+  description="Audit SEO complet : technique, indexation, architecture, contenu, mots-clés et concurrence. Rapport détaillé et plan d'action priorisé par un consultant SEO."
   canonicalPath="/services/audit-seo/"
   breadcrumbs={breadcrumbs}
   schema={serviceSchema}

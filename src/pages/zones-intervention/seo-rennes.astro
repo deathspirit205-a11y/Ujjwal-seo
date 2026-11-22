@@ -28,7 +28,7 @@ const faqRennes = [
   {
     id: 'rennes-delais',
     question: 'Combien de temps faut-il pour progresser sur les requêtes rennaises ?',
-    answer: 'La concurrence à Rennes est plus dense que dans les villes secondaires. Pour le pack local Google Maps (ex: "architecte Rennes", "plombier Rennes"), des gains significatifs s\'observent en 2 à 3 mois. Pour des positions organiques sur des requêtes génériques, comptez 4 à 6 mois de structuration continue.',
+    answer: 'À Rennes, il y a souvent plus d\'entreprises sur les mêmes recherches que dans les villes plus petites. Pour le pack local Google Maps (ex: "architecte Rennes", "plombier Rennes"), des premiers résultats peuvent apparaître en 2 à 3 mois, selon le point de départ. Pour des positions organiques sur des requêtes génériques, comptez en général 4 à 6 mois de travail régulier. Aucune position ne peut être garantie.',
   },
   {
     id: 'rennes-consultant-vs-agence',
@@ -44,7 +44,10 @@ const faqRennes = [
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/zones-intervention/seo-rennes/#service`,
+  serviceType: 'Consultant SEO & GEO',
+  provider: { '@id': `${SITE_URL}/#organization` },
   name: 'Ujjwal SEO — Consultant SEO & GEO à Rennes',
   description: 'Consultant SEO & GEO indépendant à Rennes. Référencement naturel local, SEO technique, audit et visibilité dans les moteurs de recherche IA pour les entreprises rennaises.',
   url: `${SITE_URL}/zones-intervention/seo-rennes/`,
@@ -53,13 +56,6 @@ const localBusinessSchema = {
     { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
     { '@type': 'AdministrativeArea', name: 'Bretagne' },
   ],
-  founder: {
-    '@type': 'Person',
-    name: 'Ujjwal Lage',
-    jobTitle: 'Consultant SEO & GEO',
-    url: `${SITE_URL}/a-propos/`,
-  },
-  knowsAbout: ['SEO local Rennes', 'Référencement naturel', 'SEO technique', 'Audit SEO', 'GEO', 'Google Business Profile'],
 };
 ---
 
@@ -67,6 +63,7 @@ const localBusinessSchema = {
   title={buildTitle('Consultant SEO & GEO à Rennes — Référencement naturel & Local')}
   description="Consultant SEO & GEO indépendant à Rennes : améliorez durablement votre visibilité sur Google et les moteurs IA. SEO local, technique, audit et stratégie pour TPE/PME rennaises."
   canonicalPath="/zones-intervention/seo-rennes/"
+  robots="noindex, follow"
   schema={[localBusinessSchema]}
 >
   <Header />
@@ -94,10 +91,10 @@ const localBusinessSchema = {
               <h2 id="rennes-context-heading">Le SEO à Rennes : un marché dense et stimulant</h2>
             </div>
             <p class="lead" style="margin-top: var(--space-4)">
-              Capitale régionale de Bretagne et métropole de plus de 450 000 habitants, Rennes concentre une concurrence numérique forte dans le conseil, la santé, le bâtiment, l'immobilier et la tech.
+              Capitale régionale de Bretagne et métropole dynamique, Rennes compte beaucoup d'entreprises dans le conseil, la santé, le bâtiment, l'immobilier et la tech. Selon votre secteur, la concurrence en ligne peut y être forte ; un audit permet de le mesurer.
             </p>
             <p>
-              Pour émerger face à des concurrents établis, un simple site vitrine ne suffit pas : il faut aligner une vitesse de chargement exemplaire, une pertinence sémantique irréprochable et des signaux d'autorité locale (citations géographiques, avis vérifiés et maillage régional).
+              Un simple site vitrine ne suffit souvent pas. Il faut un site rapide, des pages qui répondent clairement aux recherches des clients, et des signes de confiance locaux (mentions de votre ville, avis vérifiés, liens entre vos pages).
             </p>
           </div>
 

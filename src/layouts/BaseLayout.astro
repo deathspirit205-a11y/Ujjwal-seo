@@ -17,6 +17,8 @@ export interface Props {
   ogImageAlt?: string;
   ogType?: "website" | "article";
   noIndex?: boolean;
+  /** Omit the canonical link (e.g. 404 page) */
+  noCanonical?: boolean;
   publishedTime?: string;
   modifiedTime?: string;
   /** JSON-LD structured data object(s) */
@@ -37,6 +39,7 @@ const {
   ogImageAlt = "Ujjwal SEO — Consultant SEO & GEO indépendant",
   ogType = "website",
   noIndex = false,
+  noCanonical = false,
   publishedTime,
   modifiedTime,
   schema,
@@ -80,7 +83,7 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {!noCanonical && <link rel="canonical" href={canonical} />}
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
     {!noIndex && robots && <meta name="robots" content={robots} />}
     {author && <meta name="author" content={author} />}

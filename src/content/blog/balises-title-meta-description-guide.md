@@ -1,6 +1,7 @@
 ---
 title: "Balises title et méta-descriptions : guide pratique pour optimiser vos snippets Google"
-description: "Les balises title et méta-descriptions sont les premiers éléments que vos prospects voient dans Google. Découvrez comment les rédiger pour maximiser votre taux de clic et votre positionnement."
+metaTitle: "Balise title et méta-description : le guide | Ujjwal SEO"
+description: "Balise title et méta-description : comment les rédiger pour que votre page soit claire dans les résultats Google et donne envie de cliquer. Méthode pas à pas."
 featuredImage: "/assets/blog/balises-title-meta.jpg"
 featuredImageAlt: "Représentation graphique des balises title et méta-description dans les résultats Google"
 pubDate: 2025-06-10

@@ -33,26 +33,14 @@ const {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
+  '@id': `${SITE_URL}${canonicalPath}#article`,
   headline: title,
+  inLanguage: 'fr-FR',
   description,
-  author: {
-    '@type': 'Person',
-    '@id': `${SITE_URL}/a-propos/#person`,
-    name: author,
-    url: `${SITE_URL}/a-propos/`,
-  },
-  publisher: {
-    '@type': 'Organization',
-    '@id': `${SITE_URL}/#organization`,
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${SITE_URL}/favicon.svg`,
-    },
-  },
+  author: { '@id': `${SITE_URL}/a-propos/#person` },
+  publisher: { '@id': `${SITE_URL}/#organization` },
   datePublished: pubDate.toISOString(),
-  ...(updatedDate && { dateModified: updatedDate.toISOString() }),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
   ...(featuredImage && {
     image: {
       '@type': 'ImageObject',

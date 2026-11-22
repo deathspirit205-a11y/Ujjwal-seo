@@ -43,11 +43,7 @@ const serviceSchema = {
   name: 'Stratégie SEO & Pilotage',
   description: 'Élaboration de feuille de route SEO, analyse de la demande de recherche et de la concurrence, priorisation par impact business et accompagnement dans la durée.',
   url: `${SITE_URL}/services/strategie-seo/`,
-  provider: {
-    '@type': 'ProfessionalService',
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
-  },
+  provider: { '@id': `${SITE_URL}/#organization` },
   areaServed: {
     '@type': 'Country',
     name: 'France',
@@ -56,8 +52,8 @@ const serviceSchema = {
 ---
 
 <ServiceLayout
-  title={buildTitle('Stratégie SEO — Feuille de route & Vision à long terme')}
-  description="Construisez une stratégie SEO claire, réaliste et mesurable. Analyse de la demande, cartographie concurrentielle, feuille de route trimestrielle et suivi des KPIs."
+  title={buildTitle('Stratégie SEO — Feuille de route long terme')}
+  description="Construisez une stratégie SEO claire, réaliste et mesurable : analyse de la demande, cartographie concurrentielle, feuille de route trimestrielle et suivi KPIs."
   canonicalPath="/services/strategie-seo/"
   breadcrumbs={breadcrumbs}
   schema={serviceSchema}

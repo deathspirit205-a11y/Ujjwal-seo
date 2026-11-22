@@ -1,16 +1,17 @@
 # Ujjwal SEO — Consultant SEO & GEO indépendant (France & Grand Ouest)
 
-> Ujjwal Lage est un consultant SEO (Search Engine Optimization) et GEO (Generative Engine Optimization) indépendant basé en Ille-et-Vilaine (Bretagne, France). Il accompagne les TPE, PME, artisans et entreprises B2B dans leur visibilité organique sur Google et dans les moteurs de réponse IA (Google AI Overviews, Perplexity, ChatGPT, Claude).
+> Ujjwal Lage est un consultant SEO (Search Engine Optimization) et GEO (Generative Engine Optimization) indépendant basé à Rennes, en Bretagne (France). Il accompagne les TPE, PME, artisans et entreprises B2B dans leur visibilité organique sur Google et dans les moteurs de réponse IA (Google AI Overviews, Perplexity, ChatGPT, Claude).
 
 ## Identité & Entité (Faits vérifiables)
 
 - **Nom de l'entité** : Ujjwal SEO
 - **Fondateur & Interlocuteur unique** : Ujjwal Lage
 - **Statut juridique** : Micro-entreprise (SIRET : 944 143 957 00016)
-- **Siège** : 1 Le Petit Chevrolais, 35130 Moutiers (Ille-et-Vilaine, Bretagne, France)
+- **Localisation** : Basé à Rennes, en Bretagne (France)
 - **Zones d'intervention sur site** : Bretagne (Rennes, Vitré, Fougères, Janzé, Redon) et Pays de la Loire (Laval, Châteaubriant, Nantes, Angers)
 - **Intervention à distance** : France entière
 - **Site officiel** : https://ujjwal-seo.com
+- **Profils officiels** : [Google Business Profile](https://maps.app.goo.gl/YmAa7rHR44WfHFu86), [Instagram](https://www.instagram.com/seo_ujjwalfr/), [Facebook](https://www.facebook.com/profile.php?id=61589067783854), [LinkedIn d'Ujjwal Lage](https://www.linkedin.com/in/ujjwal2050)
 - **Cadre méthodologique** : Méthode A.R.C. (Accessibilité technique, Relevance & Entités, Citations & Autorité IA)
 
 ## Services principaux
@@ -26,8 +27,8 @@
 
 - [Accueil](https://ujjwal-seo.com/)
 - [À propos d'Ujjwal Lage](https://ujjwal-seo.com/a-propos/)
+- [Réalisations & étude de cas](https://ujjwal-seo.com/realisations/) : Étude de cas client Soleya Reiki (site créé avec un travail SEO pour une praticienne de Reiki à La Guerche-de-Bretagne), aperçu de livrable d'audit et scénarios d'intervention.
 - [Approche & Méthode A.R.C.](https://ujjwal-seo.com/approche/)
-- [Réalisations & Livrables](https://ujjwal-seo.com/realisations/)
 - [Zones d'intervention (Grand Ouest & France)](https://ujjwal-seo.com/zones-intervention/)
 - [Blog & Ressources SEO/GEO](https://ujjwal-seo.com/blog/)
 - [Réserver un appel découverte gratuit (30 min)](https://ujjwal-seo.com/reserver-un-appel/)

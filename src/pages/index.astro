@@ -44,27 +44,27 @@ const processSteps = [
   {
     title: 'Comprendre & Auditer',
     when: 'Semaines 1–2',
-    description: 'Échange initial sur votre modèle économique, audit technique complet et étude des concurrents classés.',
+    description: 'On échange sur votre activité, j\'audite votre site et vos concurrents.',
   },
   {
     title: 'Structurer les intentions',
     when: 'Semaines 2–3',
-    description: 'Cartographie des mots-clés à intention commerciale, architecture en silos et plan d\'action priorisé.',
+    description: 'Je repère ce que cherchent vos clients et je fixe les priorités.',
   },
   {
     title: 'Optimiser le socle & les pages',
     when: 'Semaines 3–6',
-    description: 'Correction des blocages d\'indexation, réécriture des pages d\'offres et déploiement du graphe Schema.org.',
+    description: 'Je corrige les problèmes techniques et j\'améliore vos pages clés.',
   },
   {
     title: 'Mailler & Développer l\'autorité',
     when: 'Mois 2–6',
-    description: 'Maillage interne contextuel, contenus citables par les IA génératives et signaux de confiance locaux.',
+    description: 'Je relie vos pages, j\'ajoute du contenu utile et je renforce la confiance.',
   },
   {
     title: 'Suivre & Améliorer en continu',
     when: 'Chaque mois',
-    description: 'Pilotage dans Google Search Console : clics qualifiés, positions, citations IA et ajustements itératifs.',
+    description: 'Je suis les résultats chaque mois et j\'ajuste.',
   },
 ];
 
@@ -73,22 +73,22 @@ const differentiators = [
   {
     badge: 'Zéro promesse irréaliste',
     title: 'Pas de « 1re place garantie en 15 jours »',
-    text: 'Aucun consultant sérieux ne contrôle l\'algorithme de Google. Mon engagement porte sur la rigueur technique, la qualité sémantique et la progression mesurable de vos demandes entrantes.',
+    text: 'Personne ne contrôle Google. Je m\'engage sur un travail sérieux et des progrès mesurables.',
   },
   {
     badge: 'Interlocuteur unique',
     title: 'Aucune sous-traitance ni délégation junior',
-    text: 'Celui qui audite votre site est celui qui conçoit la stratégie, rédige les spécifications, configure vos données structurées et vous répond directement.',
+    text: 'Je fais moi-même l\'audit, la stratégie et le travail, et je vous réponds directement.',
   },
   {
     badge: 'Livrables exploitables',
     title: 'Fini les rapports PDF de 80 pages illisibles',
-    text: 'Vous recevez une feuille de route priorisée par impact commercial et complexité technique : quoi corriger en premier, pourquoi et comment.',
+    text: 'Un plan d\'action clair : quoi corriger en premier, et pourquoi.',
   },
   {
     badge: 'Autorité durable',
     title: 'Refus des réseaux de liens artificiels',
-    text: 'Les liens achetés en masse finissent par pénaliser votre domaine. Nous construisons une autorité naturelle et pérenne conforme aux standards de Google Search Central.',
+    text: 'Les liens achetés finissent par pénaliser votre site. Je construis une réputation durable, dans les règles de Google.',
   },
 ];
 
@@ -110,13 +110,13 @@ const professionalServiceSchema = {
   name: 'Ujjwal SEO',
   description: 'Consultant SEO & GEO indépendant en France (Rennes, Vitré, Laval, Fougères, Janzé, Châteaubriant, Redon). Accompagnement en référencement naturel, SEO technique, contenu sémantique, SEO local et moteurs de recherche IA.',
   url: SITE_URL,
-  founder: {
-    '@type': 'Person',
-    '@id': `${SITE_URL}/a-propos/#person`,
-    name: 'Ujjwal Lage',
-    jobTitle: 'Consultant SEO & GEO indépendant',
-    url: `${SITE_URL}/a-propos/`,
-  },
+  founder: { '@id': `${SITE_URL}/a-propos/#person` },
+  hasMap: 'https://maps.app.goo.gl/YmAa7rHR44WfHFu86',
+  sameAs: [
+    'https://maps.app.goo.gl/YmAa7rHR44WfHFu86',
+    'https://www.instagram.com/seo_ujjwalfr/',
+    'https://www.facebook.com/profile.php?id=61589067783854',
+  ],
   areaServed: [
     { '@type': 'Country', name: 'France' },
     { '@type': 'AdministrativeArea', name: 'Bretagne' },
@@ -156,8 +156,8 @@ const websiteSchema = {
 ---
 
 <BaseLayout
-  title={buildTitle('Consultant SEO & GEO à Rennes & Grand Ouest — Google & Recherche IA', false)}
-  description="Consultant SEO & GEO indépendant (Rennes, Vitré, Laval, Fougères, Janzé, Châteaubriant, Redon & France). Développez votre visibilité sur Google et les moteurs de recherche IA."
+  title={buildTitle('Consultant SEO & GEO à Rennes et Grand Ouest')}
+  description="Consultant SEO & GEO indépendant à Rennes, Vitré, Laval et partout en France. Développez votre visibilité sur Google et les moteurs de recherche IA."
   canonicalPath="/"
   schema={[professionalServiceSchema, websiteSchema]}
 >
@@ -169,9 +169,9 @@ const websiteSchema = {
          01. HERO (Light Editorial Search Landscape)
     ══════════════════════════════════════ -->
     <SearchLandscapeHero
-      eyebrow="Consultant SEO & GEO indépendant · Bretagne, Grand Ouest & France"
-      heading="Consultant SEO & GEO — Développez votre visibilité sur Google et les moteurs de recherche IA."
-      subheading="Votre site web doit attirer des prospects qualifiés, pas seulement exister en ligne. J'aide les TPE, PME et indépendants à consolider leur référencement naturel sur Google et à devenir une source citée par ChatGPT, Perplexity et Google AI Overviews."
+      eyebrow="Consultant SEO & GEO indépendant · Rennes, Bretagne"
+      heading="Consultant SEO & GEO — Soyez trouvé sur Google et cité par l'IA."
+      subheading="J'aide les TPE, PME et indépendants à attirer plus de clients grâce à Google, Google Maps et les assistants IA comme ChatGPT."
       primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
       secondaryCTA={{ label: 'Explorer les services', href: '/services/' }}
     />
@@ -188,7 +188,7 @@ const websiteSchema = {
           <p class="eyebrow">Pourquoi associer SEO et GEO aujourd'hui</p>
           <h2 id="duo-heading">Hier, il suffisait d'être <span class="mark">classé</span>. Aujourd'hui, il faut aussi être <span class="mark">compris et cité</span>.</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Vos futurs clients cherchent à la fois sur Google (résultats organiques et Google Maps) et via des assistants génératifs. Comparez comment une même recherche est traitée par les deux systèmes :
+            Vos clients cherchent sur Google et auprès des assistants IA. Voici la différence :
           </p>
         </div>
 
@@ -198,7 +198,7 @@ const websiteSchema = {
           <div class="duo-summary__inner">
             <div class="duo-summary__icon" aria-hidden="true">SEO + GEO</div>
             <p class="duo-summary__text">
-              <strong>Le GEO ne remplace pas le SEO : il s'appuie dessus.</strong> Les modèles de langage (ChatGPT, Perplexity, Gemini) extraient leurs réponses des sites bien indexés, rapides, structurés en <a href="https://schema.org/" target="_blank" rel="noopener noreferrer">Schema.org</a> et dotés d'un contenu factuel vérifiable.
+              <strong>Le GEO ne remplace pas le SEO : il s'appuie dessus.</strong> Les IA reprennent surtout les sites clairs, rapides et bien structurés.
             </p>
           </div>
         </div>
@@ -217,9 +217,9 @@ const websiteSchema = {
       <div class="container">
         <div class="section-header--centered">
           <p class="eyebrow">Expertises SEO &amp; GEO</p>
-          <h2 id="services-heading">Six leviers complémentaires au service de votre <span class="mark">chiffre d'affaires</span></h2>
+          <h2 id="services-heading">Six services pour développer votre activité</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Chaque entreprise a son propre point de blocage : indexation technique, manque de pages commerciales, visibilité locale insuffisante ou absence des synthèses IA. Voici un aperçu synthétique de mes 6 interventions.
+            Chaque entreprise a un blocage différent. Voici comment je peux vous aider.
           </p>
         </div>
 
@@ -237,11 +237,8 @@ const websiteSchema = {
         </div>
 
         <div class="home-services__footer">
-          <p class="home-services__hint">
-            Vous hésitez entre un audit ponctuel, une refonte technique ou un accompagnement mensuel ?
-          </p>
           <a href="/services/" class="btn btn--secondary">
-            Consulter le guide détaillé des 6 services (livrables, outils, méthodes &amp; FAQ) &rarr;
+            Voir le détail des services &rarr;
           </a>
         </div>
       </div>
@@ -255,9 +252,9 @@ const websiteSchema = {
         <div class="why__grid">
           <div class="why__content">
             <p class="eyebrow reveal">Pourquoi choisir un consultant indépendant</p>
-            <h2 id="why-heading" class="reveal">Une relation directe, rigoureuse et tournée vers votre rentabilité</h2>
+            <h2 id="why-heading" class="reveal">Un seul interlocuteur, une méthode claire</h2>
             <p class="why__lead reveal">
-              Travailler avec un consultant SEO &amp; GEO indépendant, c'est éviter l'inertie des grandes structures tout en bénéficiant d'une méthodologie d'ingénierie transparente. Voici les 4 engagements qui cadrent chaque mission :
+              Mes 4 engagements pour chaque mission :
             </p>
 
             <ul class="why__list" role="list">
@@ -284,9 +281,9 @@ const websiteSchema = {
             </div>
             <figcaption class="why__caption">
               <span class="why__name">Ujjwal Lage</span>
-              <span class="why__role">Consultant SEO &amp; GEO indépendant · Ille-et-Vilaine (35)</span>
+              <span class="why__role">Consultant SEO &amp; GEO indépendant · Rennes, Bretagne</span>
               <p class="why__quote">
-                « Issu du commerce et du management avant l'ingénierie du search, je considère chaque page SEO sous l'angle de sa rentabilité réelle pour votre entreprise. »
+                « Je viens du commerce : pour moi, une page SEO doit avant tout vous apporter des clients. »
               </p>
               <div class="why__actions">
                 <a href="/a-propos/" class="btn btn--secondary btn--sm">Découvrir mon parcours &rarr;</a>
@@ -304,13 +301,12 @@ const websiteSchema = {
     <MethodTimeline
       steps={processSteps}
       heading="Comment se déroule un projet SEO & GEO"
-      subheading="De l'audit initial au suivi mensuel dans Google Search Console, vous savez toujours ce qui est fait, pourquoi et avec quel impact."
+      subheading="Vous savez toujours ce qui est fait, et pourquoi."
     />
 
     <div class="container method-cta-bar">
       <p>
-        Envie de voir le détail complet des livrables et des 8 étapes d'un projet ?
-        <a href="/approche/">Consulter la méthodologie complète en 8 étapes &rarr;</a>
+        <a href="/approche/">Voir la méthode complète en 8 étapes &rarr;</a>
       </p>
     </div>
 
@@ -322,16 +318,16 @@ const websiteSchema = {
         <div class="proof-box">
           <div class="proof-box__content">
             <p class="eyebrow">Preuves par l'exemple &amp; transparence</p>
-            <h2 id="proof-heading">Pas de statistiques inventées : inspectez l'architecture réelle et les livrables</h2>
+            <h2 id="proof-heading">Pas de chiffres inventés : voyez le travail réel</h2>
             <p class="proof-box__desc">
-              Plutôt que de publier des pourcentages anonymes invérifiables, je mets à votre disposition une <strong>étude de cas ouverte</strong> : l'ingénierie technique, sémantique et GEO de <code>ujjwal-seo.com</code> lui-même, accompagnée d'extraits réels de livrables d'audit et de scénarios d'intervention en Bretagne et Pays de la Loire.
+              Découvrez un projet client réel, <strong>Soleya Reiki</strong>, ainsi que le fonctionnement de ce site et un exemple de livrable d'audit.
             </p>
             <div class="proof-box__actions">
               <a href="/realisations/" class="btn btn--primary">
-                Explorer les réalisations &amp; exemples de livrables &rarr;
+                Voir les réalisations &rarr;
               </a>
               <a href="/llms.txt" target="_blank" rel="noopener" class="btn btn--secondary">
-                Inspecter le fichier /llms.txt en direct
+                Voir le fichier /llms.txt
               </a>
             </div>
           </div>
@@ -340,17 +336,17 @@ const websiteSchema = {
             <div class="proof-stat">
               <span class="proof-stat__tag">Architecture Astro</span>
               <strong>HTML statique pré-rendu</strong>
-              <p>Temps de réponse serveur immédiat, Core Web Vitals optimisés et zéro surcharge JavaScript inutile.</p>
+              <p>Des pages rapides, sans code inutile.</p>
             </div>
             <div class="proof-stat">
               <span class="proof-stat__tag">Graphe d'entités</span>
               <strong>Schema.org JSON-LD complet</strong>
-              <p>Liaison explicite entre <code>Organization</code>, <code>Person</code>, <code>Service</code> et identifiants Wikidata locaux.</p>
+              <p>Des informations claires pour Google.</p>
             </div>
             <div class="proof-stat">
               <span class="proof-stat__tag">Standard GEO</span>
               <strong>Protocole <code>/llms.txt</code> actif</strong>
-              <p>Cartographie structurée à la racine du domaine pour orienter les moteurs de réponse IA (ChatGPT, Perplexity, Claude).</p>
+              <p>Un fichier qui guide les IA sur le site.</p>
             </div>
           </div>
         </div>
@@ -367,7 +363,7 @@ const websiteSchema = {
             <p class="eyebrow">Ancrage Territorial &amp; Intervention Nationale</p>
             <h2 id="zones-heading">Consultant SEO en Bretagne, Pays de la Loire et partout en France</h2>
             <p class="lead" style="margin-top: var(--space-4)">
-              Basé en <strong>Ille-et-Vilaine (35)</strong>, j'interviens au plus près des tissus économiques de l'Ouest tout en accompagnant des PME sur l'ensemble du territoire français à distance.
+              Basé à <strong>Rennes, en Bretagne</strong>. Sur place dans l'Ouest, à distance partout en France.
             </p>
           </div>
 
@@ -388,7 +384,7 @@ const websiteSchema = {
             <div class="zone-pill-card">
               <span class="zone-pill-card__tag">Région &amp; Départements</span>
               <h3 class="zone-pill-card__title">Bretagne &amp; Ille-et-Vilaine (35)</h3>
-              <p class="zone-pill-card__desc">Accompagnement des PME, artisans, commerces et acteurs B2B sur l'ensemble de la région bretonne.</p>
+              <p class="zone-pill-card__desc">PME, artisans et commerces de toute la Bretagne.</p>
               <div class="zone-pill-card__links">
                 <a href="/zones-intervention/bretagne/">Hub Bretagne &rarr;</a>
                 <a href="/zones-intervention/ille-et-vilaine/">Ille-et-Vilaine (35) &rarr;</a>
@@ -398,7 +394,7 @@ const websiteSchema = {
             <div class="zone-pill-card">
               <span class="zone-pill-card__tag">Départements limitrophes</span>
               <h3 class="zone-pill-card__title">Mayenne (53), Loire-Atlantique (44) &amp; Anjou (49)</h3>
-              <p class="zone-pill-card__desc">Rayonnement sur les bassins industriels et tertiaires des Pays de la Loire et des Marches de Bretagne.</p>
+              <p class="zone-pill-card__desc">Entreprises des départements voisins.</p>
               <div class="zone-pill-card__links">
                 <a href="/zones-intervention/mayenne/">Mayenne (53) &rarr;</a>
                 <a href="/zones-intervention/loire-atlantique/">Loire-Atlantique (44) &rarr;</a>
@@ -409,7 +405,7 @@ const websiteSchema = {
             <div class="zone-pill-card zone-pill-card--highlight">
               <span class="zone-pill-card__tag">Accompagnement à distance</span>
               <h3 class="zone-pill-card__title">France entière (visioconférence)</h3>
-              <p class="zone-pill-card__desc">Points réguliers en visio, partage d'écran en direct sur Search Console et livrables partagés pour les entreprises de toute la France.</p>
+              <p class="zone-pill-card__desc">Points réguliers en visio, partout en France.</p>
               <div class="zone-pill-card__links">
                 <a href="/zones-intervention/">Toutes les zones d'intervention &rarr;</a>
                 <a href="/contact/">Demander un diagnostic &rarr;</a>
@@ -435,9 +431,6 @@ const websiteSchema = {
               Tous les articles &rarr;
             </a>
           </div>
-          <p class="lead" style="margin-top: var(--space-4)">
-            Des guides méthodologiques, des études sur le référencement local à Rennes et en Bretagne, et des décryptages concrets sur les moteurs de réponse IA.
-          </p>
         </div>
 
         {latestPosts.length > 0 ? (

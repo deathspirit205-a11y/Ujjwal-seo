@@ -27,18 +27,21 @@ const faqLaval = [
   {
     id: 'laval-presence',
     question: 'Pouvons-nous organiser des réunions en présentiel à Laval ?',
-    answer: 'Oui. Laval est facilement accessible depuis l\'Ille-et-Vilaine (moins de 45 minutes). Je me déplace volontiers pour des réunions de cadrage, des audits sur site ou des sessions de restitution auprès de vos équipes.',
+    answer: 'Oui. Laval est facilement accessible depuis l\'Ille-et-Vilaine. Je me déplace volontiers pour des réunions de cadrage, des audits sur site ou des sessions de restitution auprès de vos équipes.',
   },
 ];
 
 const schemaLaval = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/zones-intervention/seo-laval/#service`,
+  serviceType: 'Consultant SEO & GEO',
+  provider: { '@id': `${SITE_URL}/#organization` },
   name: 'Ujjwal SEO — Consultant SEO & GEO à Laval',
   description: 'Consultant SEO & GEO intervenant à Laval et en Mayenne : référencement naturel, optimisation technique, SEO local et stratégie numérique pour les entreprises lavalloises.',
   url: `${SITE_URL}/zones-intervention/seo-laval/`,
   areaServed: [
-    { '@type': 'City', name: 'Laval', sameAs: 'https://www.wikidata.org/wiki/Q184152' },
+    { '@type': 'City', name: 'Laval', sameAs: 'https://www.wikidata.org/wiki/Q184154' },
     { '@type': 'AdministrativeArea', name: 'Mayenne' },
   ],
 };
@@ -48,6 +51,7 @@ const schemaLaval = {
   title={buildTitle('Consultant SEO & GEO à Laval — Référencement naturel en Mayenne')}
   description="Consultant SEO & GEO à Laval (53) : développez votre visibilité sur Google et les moteurs IA. SEO local, technique, audit et stratégie pour entreprises lavalloises."
   canonicalPath="/zones-intervention/seo-laval/"
+  robots="noindex, follow"
   schema={[schemaLaval]}
 >
   <Header />
@@ -74,10 +78,10 @@ const schemaLaval = {
               <h2 id="laval-context-heading">Laval : carrefour de l'innovation et de l'industrie</h2>
             </div>
             <p class="lead" style="margin-top: var(--space-4)">
-              Préfecture de la Mayenne et agglomération de plus de 115 000 habitants, Laval est mondialement connue pour son salon Laval Virtual et son statut de pionnière des technologies immersives.
+              Préfecture de la Mayenne, Laval est connue pour son salon Laval Virtual et son statut de pionnière des technologies immersives.
             </p>
             <p>
-              C'est également un bassin agroalimentaire et logistique de premier ordre abritant des fleurons nationaux. Pour les entreprises de Laval et de sa périphérie (Saint-Berthevin, Changé, Bonchamp-lès-Laval, Louverné), un référencement naturel rigoureux est le moyen le plus pérenne de capter des opportunités régionales et nationales.
+              C'est également un bassin agroalimentaire et logistique important. Pour les entreprises de Laval et de sa périphérie (Saint-Berthevin, Changé, Bonchamp-lès-Laval, Louverné), un référencement naturel (SEO) soigné est un moyen durable d'être trouvé par des clients de la région, et au-delà.
             </p>
           </div>
 
@@ -85,8 +89,8 @@ const schemaLaval = {
             <h3>Bassin Lavallois</h3>
             <ul>
               <li><strong>Périmètre :</strong> Laval, Saint-Berthevin, Changé, Bonchamp-lès-Laval, L'Huisserie, Louverné.</li>
-              <li><strong>Filières d'excellence :</strong> Réalité virtuelle & technologies immersives, transformation laitière, électronique, équipements industriels.</li>
-              <li><strong>Axe stratégique :</strong> Liaison directe Paris-Bretagne en 1h10 de TGV et par l'autoroute A81.</li>
+              <li><strong>Filières clés :</strong> Réalité virtuelle & technologies immersives, transformation laitière, électronique, équipements industriels.</li>
+              <li><strong>Axe stratégique :</strong> Liaison directe Paris-Bretagne par le train et par l'autoroute A81.</li>
             </ul>
           </div>
         </div>

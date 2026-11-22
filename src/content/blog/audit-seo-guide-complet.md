@@ -1,6 +1,7 @@
 ---
 title: "Audit SEO : pourquoi en faire un et comment l'interpréter ?"
-description: "L'audit SEO est la première étape de toute stratégie de référencement sérieuse. Découvrez ce qu'il analyse, ce qu'il révèle et comment utiliser ses résultats pour progresser."
+metaTitle: "Audit SEO : à quoi il sert et comment le lire | Ujjwal SEO"
+description: "Audit SEO : ce qu'il analyse sur votre site, ce qu'il révèle et comment lire ses résultats pour choisir les actions prioritaires, même sans être technicien."
 featuredImage: "/assets/blog/audit-seo.jpg"
 featuredImageAlt: "Illustration d'un audit SEO : loupe analysant la structure d'un site web"
 pubDate: 2025-03-15

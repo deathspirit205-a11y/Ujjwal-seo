@@ -1,7 +1,7 @@
 ---
 title: "Recherche de mots-clés SEO : la méthode complète pour attirer des visiteurs qui convertissent"
-metaTitle: "Recherche de mots-clés SEO : guide complet"
-description: "Découvrez comment trouver, analyser et prioriser les mots-clés SEO pour attirer un trafic qualifié, améliorer votre visibilité et générer des prospects."
+metaTitle: "Recherche de mots-clés SEO : guide complet | Ujjwal SEO"
+description: "Recherche de mots-clés SEO : comment trouver, analyser et choisir les bons mots-clés pour attirer des visiteurs qualifiés et recevoir plus de demandes."
 featuredImage: "/assets/blog/recherche-mots-cles-tableau.jpg"
 featuredImageAlt: "Tableau illustratif de recherche de mots-clés SEO avec intention, demande, difficulté et priorité"
 pubDate: 2026-10-18
@@ -16,7 +16,7 @@ Vous avez une idée d’article, une page de service à améliorer ou un nouveau
 
 La recherche de mots-clés SEO sert à faire ce lien entre les recherches des internautes, vos offres et les pages de votre site. Voici une méthode pour passer d’une liste d’expressions à un plan éditorial que vous pourrez réellement mettre en œuvre.
 
-![Tableau de recherche de mots-clés SEO avec volume, difficulté et intention de recherche](/assets/blog/recherche-mots-cles-tableau.svg)
+<img src="/assets/blog/recherche-mots-cles-tableau.svg" alt="Tableau de recherche de mots-clés SEO avec volume, difficulté et intention de recherche" width="1200" height="630" />
 
 *Exemple de grille de travail : un mot-clé prend du sens lorsqu’on le relie à une intention, une page et une décision éditoriale.*
 
@@ -101,7 +101,7 @@ Les questions (« comment », « pourquoi », « combien »), les problèmes, le
 
 Dans Google Ads, ouvrez le menu **Outils**, puis le **Planificateur de mots clés**. L’aide Google décrit deux parcours utiles : **Trouver de nouveaux mots clés** pour obtenir des idées à partir de mots, services ou d’un site ; **Obtenir le volume de recherche et les prévisions** pour examiner une liste déjà préparée. Les libellés peuvent évoluer avec l’interface ou sa langue, donc fiez-vous au nom de la tâche plutôt qu’à une capture d’écran ancienne.
 
-![Maquette du Planificateur de mots clés Google avec les options pour trouver de nouveaux mots clés et analyser une liste](/assets/blog/recherche-mots-cles-planner.svg)
+<img src="/assets/blog/recherche-mots-cles-planner.svg" alt="Maquette du Planificateur de mots clés Google avec les options pour trouver de nouveaux mots clés et analyser une liste" width="1200" height="630" loading="lazy" />
 
 *Maquette pédagogique, pas capture réelle de Google Ads. Dans l’outil, choisissez la France et le français avant d’interpréter les estimations.*
 
@@ -113,7 +113,7 @@ Si votre site reçoit déjà des impressions, Search Console vous donne des indi
 
 Les impressions indiquent combien de fois un résultat lié à votre site a été affiché selon les règles de Google. Les clics comptent les visites provenant d’un résultat. Le CTR est le rapport entre clics et impressions. La position moyenne est une moyenne du meilleur résultat de votre site ou de la page concernée : elle ne décrit pas une position fixe pour chaque recherche. La documentation Google détaille ces métriques et leurs regroupements dans le <a href="https://support.google.com/webmasters/answer/7576553?hl=fr" rel="nofollow noopener" target="_blank">rapport Performances de Search Console</a> et dans son <a href="https://support.google.com/webmasters/answer/10268906?hl=fr" rel="nofollow noopener" target="_blank">guide pour comprendre les performances</a>.
 
-![Maquette du rapport Performances de Google Search Console avec clics, impressions, CTR moyen et position moyenne](/assets/blog/recherche-mots-cles-search-console.svg)
+<img src="/assets/blog/recherche-mots-cles-search-console.svg" alt="Maquette du rapport Performances de Google Search Console avec clics, impressions, CTR moyen et position moyenne" width="1200" height="630" loading="lazy" />
 
 *Schéma illustratif : comparez les clics, impressions, CTR et positions dans Search Console sur plusieurs mois.*
 
@@ -152,7 +152,7 @@ Voici un exemple **entièrement fictif**, destiné à illustrer les arbitrages. 
 
 **Ces valeurs sont fictives et servent uniquement à illustrer la méthode.** Le tableau ne signifie pas que la dernière expression attire réellement un volume ou des prospects précis.
 
-![Graphique illustratif comparant volume, difficulté et valeur commerciale de trois mots-clés](/assets/blog/recherche-mots-cles-comparaison.svg)
+<img src="/assets/blog/recherche-mots-cles-comparaison.svg" alt="Graphique illustratif comparant volume, difficulté et valeur commerciale de trois mots-clés" width="1200" height="630" loading="lazy" />
 
 *Exemple illustratif : le volume, la difficulté et l’intérêt commercial répondent à des questions différentes. Les volumes indiqués sont fictifs.*
 

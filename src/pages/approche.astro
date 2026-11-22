@@ -149,7 +149,7 @@ const faqApproach = [
   {
     id: 'approche-distance',
     question: 'Comment se passe la collaboration à Rennes, en Bretagne ou à distance ?',
-    answer: 'Basé en Ille-et-Vilaine (35), je peux me déplacer pour des réunions clés à Rennes, Vitré, Fougères, Janzé ou Laval, et j\'accompagne avec la même réactivité des entreprises dans toute la France en visioconférence avec partage d\'écran et espaces de travail partagés.',
+    answer: 'Basé à Rennes, en Bretagne, je peux me déplacer pour des réunions clés à Rennes, Vitré, Fougères, Janzé ou Laval, et j\'accompagne avec la même réactivité des entreprises dans toute la France en visioconférence avec partage d\'écran et espaces de travail partagés.',
   },
   {
     id: 'approche-garantie',
@@ -165,12 +165,7 @@ const schemaWebPage = [
     name: 'Approche & Méthodologie SEO/GEO en 8 étapes — Ujjwal SEO',
     description: 'Découvrez la méthodologie complète en 8 étapes d\'Ujjwal SEO : cadrage métier, audit technique et concurrentiel, intentions de recherche, plan priorisé, optimisation, maillage, suivi et amélioration continue.',
     url: `${SITE_URL}/approche/`,
-    provider: {
-      '@type': 'ProfessionalService',
-      '@id': `${SITE_URL}/#organization`,
-      name: 'Ujjwal SEO',
-      url: SITE_URL,
-    },
+    provider: { '@id': `${SITE_URL}/#organization` },
   },
   {
     '@context': 'https://schema.org',
@@ -189,8 +184,8 @@ const schemaWebPage = [
 ---
 
 <BaseLayout
-  title={buildTitle('Méthodologie SEO & GEO en 8 étapes — Approche & Livrables')}
-  description="Découvrez le déroulement concret d'un projet SEO & GEO en 8 étapes : échange initial, audit, recherche d'intentions, plan d'action priorisé, optimisation, maillage, suivi et amélioration continue."
+  title={buildTitle('Méthodologie SEO & GEO en 8 étapes')}
+  description="Le déroulement concret d'un projet SEO & GEO en 8 étapes : échange initial, audit, intentions de recherche, plan d'action, optimisation et suivi continu."
   canonicalPath="/approche/"
   schema={schemaWebPage}
 >

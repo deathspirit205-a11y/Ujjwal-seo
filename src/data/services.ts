@@ -174,7 +174,7 @@ export const services: Service[] = [
         },
       ],
       relatedLinks: [
-        { label: 'Comprendre et améliorer vos scores Core Web Vitals', href: '/blog/core-web-vitals-2025/', type: 'blog' },
+        { label: 'Comprendre et améliorer vos scores Core Web Vitals', href: '/blog/core-web-vitals-2026/', type: 'blog' },
         { label: 'Maillage interne : la stratégie sous-estimée', href: '/blog/maillage-interne-strategie-seo/', type: 'blog' },
         { label: 'Audit SEO complet : diagnostiquer votre site', href: '/services/audit-seo/', type: 'service' },
       ],

@@ -51,11 +51,7 @@ const serviceSchema = {
   name: 'GEO — Generative Engine Optimization',
   description: 'Optimisation de la visibilité de votre entreprise pour les moteurs de réponse alimentés par l\'IA : clarté des entités, données structurées Schema.org, autorité thématique et architecture d\'information.',
   url: `${SITE_URL}/services/geo/`,
-  provider: {
-    '@type': 'ProfessionalService',
-    name: 'Ujjwal SEO',
-    url: SITE_URL,
-  },
+  provider: { '@id': `${SITE_URL}/#organization` },
   areaServed: {
     '@type': 'Country',
     name: 'France',
@@ -64,8 +60,8 @@ const serviceSchema = {
 ---
 
 <ServiceLayout
-  title={buildTitle('GEO — Generative Engine Optimization | Visibilité IA')}
-  description="Optimisez votre présence pour les moteurs de recherche alimentés par l'IA (Google AI Overviews, Perplexity). Clarté des entités, données structurées et autorité thématique."
+  title={buildTitle('GEO — Generative Engine Optimization')}
+  description="Optimisez votre présence sur les moteurs de recherche IA (Google AI Overviews, Perplexity) : entités, données structurées et autorité thématique."
   canonicalPath="/services/geo/"
   breadcrumbs={breadcrumbs}
   schema={serviceSchema}

@@ -3,6 +3,7 @@
  * realisations.astro — Preuves, Livrables & Étude de cas ouverte
  * URL: /realisations/
  * Honest, verifiable proof:
+ *  00. Client case study: Soleya Reiki (no result figures until measured)
  *  01. Open Case Study: the technical & semantic engineering of ujjwal-seo.com itself
  *  02. Interactive Deliverable Preview (AuditPreviewCard)
  *  03. 3 Concrete Intervention Scenarios (Before -> Action -> Deliverable)
@@ -28,13 +29,15 @@ const realisationsSchema = [
     name: 'Réalisations, Preuves & Livrables SEO / GEO — Ujjwal Lage',
     description: 'Découvrez l\'architecture SEO & GEO de ujjwal-seo.com, des aperçus concrets de livrables d\'audit et l\'anatomie d\'une intervention SEO en Bretagne et en France.',
     url: `${SITE_URL}/realisations/`,
-    author: {
-      '@type': 'Person',
-      '@id': `${SITE_URL}/a-propos/#person`,
-      name: 'Ujjwal Lage',
-      url: `${SITE_URL}/a-propos/`,
-    },
+    author: { '@id': `${SITE_URL}/a-propos/#person` },
     inLanguage: 'fr',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: 'Site web Soleya Reiki',
+    url: 'https://soleya-reiki.com',
+    creator: { '@id': `${SITE_URL}/#organization` },
   },
   {
     '@context': 'https://schema.org',
@@ -77,7 +80,7 @@ const scenarios = [
       'Restructuration de l\'arborescence en silos métiers et maillage interne stratégique',
       'Réécriture des pages d\'offres autour des intentions de recherche des décideurs B2B',
     ],
-    deliverable: 'Indexation assainie, hausse des impressions sur les requêtes à forte marge et demandes de devis ciblées.',
+    deliverable: 'Objectif : que Google indexe correctement les pages utiles et que le site apparaisse davantage sur les recherches des acheteurs, suivi via Google Search Console (impressions, clics, demandes de devis).',
   },
   {
     tag: 'Cas type 03 · GEO & Visibilité IA',
@@ -88,14 +91,14 @@ const scenarios = [
       'Structuration de blocs de réponses factuelles de 40 à 60 mots directement citables par les LLM',
       'Mise en place du protocole /llms.txt et alignement des signaux d\'autorité externes',
     ],
-    deliverable: 'Identification claire de l\'entreprise comme source de référence lors des synthèses génératives.',
+    deliverable: 'Objectif : que les moteurs IA comprennent clairement qui est l\'entreprise et ce qu\'elle propose, pour augmenter ses chances d\'être citée dans leurs réponses.',
   },
 ];
 ---
 
 <BaseLayout
-  title={buildTitle('Réalisations & Livrables — Preuves concrètes SEO & GEO')}
-  description="Inspectez le travail SEO & GEO en conditions réelles : étude de cas ouverte de ujjwal-seo.com, aperçu interactif d'un livrable d'audit et scénarios d'intervention."
+  title={buildTitle('Réalisations SEO & GEO — Preuves concrètes')}
+  description="Le travail SEO & GEO en conditions réelles : étude de cas ouverte de ujjwal-seo.com, aperçu interactif d'un livrable d'audit et scénarios d'intervention."
   canonicalPath="/realisations/"
   schema={realisationsSchema}
 >
@@ -114,13 +117,69 @@ const scenarios = [
 
     <Breadcrumbs items={breadcrumbs} />
 
+    <!-- ══ 00. ÉTUDE DE CAS CLIENT : SOLEYA REIKI ══ -->
+    <section class="section" aria-labelledby="soleya-heading">
+      <div class="container">
+        <div class="section-header--centered reveal">
+          <p class="eyebrow">Étude de cas n°1 · Client réel</p>
+          <h2 id="soleya-heading">Soleya Reiki : un site créé avec un travail SEO pour une praticienne de Reiki</h2>
+        </div>
+
+        <div class="client-case__grid">
+          <article class="scenario-card reveal">
+            <span class="scenario-card__tag">Le client &amp; son contexte</span>
+            <div class="scenario-block">
+              <p>
+                Soleya Reiki est le cabinet de Tatiana, praticienne certifiée en Reiki Usui (2ᵉ degré), à La Guerche-de-Bretagne, en Ille-et-Vilaine. Elle propose des séances en cabinet, des séances à distance, un forfait de plusieurs séances et des bons cadeaux, uniquement sur rendez-vous.
+              </p>
+            </div>
+            <div class="scenario-block scenario-block--before">
+              <span class="scenario-block__label">Le besoin</span>
+              <p>
+                Être trouvée par les personnes qui cherchent une séance de Reiki près de chez elles. Et leur présenter sa pratique, ses séances et ses tarifs de façon claire et rassurante.
+              </p>
+            </div>
+          </article>
+
+          <article class="scenario-card reveal reveal-delay-1">
+            <span class="scenario-card__tag">Ce que j'ai fait</span>
+            <div class="scenario-block">
+              <ul class="client-case__steps">
+                <li><strong>Recherche de mots-clés.</strong> Repérer les mots que les gens tapent vraiment sur Google pour trouver une séance de Reiki, en cabinet ou à distance.</li>
+                <li><strong>Conception du site.</strong> Une structure simple : accueil, à propos, séances et tarifs, blog, contact. Chaque visiteur trouve vite ce qu'il cherche.</li>
+                <li><strong>Création des contenus.</strong> Rédaction des textes des pages, en mots simples, autour de ces recherches.</li>
+                <li><strong>Référencement (SEO).</strong> Titres des pages, descriptions affichées dans Google, liens entre les pages et bases techniques pour que Google lise bien le site.</li>
+                <li><strong>Fiche Google Business Profile.</strong> Création et réglage de la fiche, c'est-à-dire la fiche qui permet à un cabinet d'apparaître sur Google Maps.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="scenario-card reveal reveal-delay-2">
+            <span class="scenario-card__tag">Le site aujourd'hui</span>
+            <div class="scenario-block">
+              <p>
+                Le site est en ligne. Le plus simple est d'aller le voir vous-même :
+                <a href="https://soleya-reiki.com" target="_blank" rel="noopener">découvrir le site de Soleya Reiki, praticienne Reiki à La Guerche-de-Bretagne</a>.
+              </p>
+            </div>
+            <div class="scenario-block scenario-block--result">
+              <span class="scenario-block__label">Et les résultats ?</span>
+              <p>
+                Ils sont en cours de mesure. Je n'affiche aucun chiffre tant qu'il n'est pas vérifié sur une durée suffisante et validé avec la cliente.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ══ 01. ÉTUDE DE CAS OUVERTE : CE SITE LUI-MÊME ══ -->
     <section class="section section--navy" aria-labelledby="live-case-heading">
       <div class="container">
         <div class="live-case__grid">
           <div class="live-case__content reveal">
-            <p class="eyebrow">Étude de cas n°1 · En accès libre</p>
-            <h2 id="live-case-heading">Le premier projet que vous pouvez auditer, c'est ce site.</h2>
+            <p class="eyebrow">Étude de cas n°2 · En accès libre</p>
+            <h2 id="live-case-heading">Un autre projet que vous pouvez auditer : ce site.</h2>
             <p class="lead" style="margin-top: var(--space-4)">
               Plutôt que d'afficher des graphiques anonymes invérifiables, j'applique à <strong>ujjwal-seo.com</strong> l'exacte ingénierie que je déploie pour mes clients. Vous pouvez tester chaque élément en direct.
             </p>
@@ -167,11 +226,11 @@ const scenarios = [
             </div>
             <div class="metric-box">
               <span class="metric-box__val">100<span>%</span></span>
-              <span class="metric-box__label">Pages avec Schema.org valide</span>
+              <span class="metric-box__label">Pages avec données Schema.org (JSON-LD sans erreur)</span>
               <span class="metric-box__sub">Entités liées par @id</span>
             </div>
             <div class="metric-box">
-              <span class="metric-box__val">38</span>
+              <span class="metric-box__val">40</span>
               <span class="metric-box__label">Routes statiques pré-rendues</span>
               <span class="metric-box__sub">Silos Services, Zones &amp; Blog</span>
             </div>
@@ -205,9 +264,9 @@ const scenarios = [
       <div class="container">
         <div class="section-header--centered reveal">
           <p class="eyebrow">Anatomie d'une mission</p>
-          <h2 id="scenarios-heading">Trois situations réelles, trois plans d'attaque</h2>
+          <h2 id="scenarios-heading">Trois situations types, trois plans d'action</h2>
           <p class="lead" style="margin-top: var(--space-4)">
-            Par respect pour la confidentialité commerciale de mes clients, leurs courbes Search Console ne sont pas exposées publiquement, mais je vous montre des cas concrets en partage d'écran lors de notre premier appel.
+            Ces trois cas sont des exemples types, inspirés de situations fréquentes chez les TPE et PME. Ils montrent comment je construis un plan d'action, pas des résultats déjà obtenus.
           </p>
         </div>
 
@@ -230,7 +289,7 @@ const scenarios = [
               </div>
 
               <div class="scenario-block scenario-block--result">
-                <span class="scenario-block__label">Résultat &amp; Livrable</span>
+                <span class="scenario-block__label">Objectif visé</span>
                 <p>{s.deliverable}</p>
               </div>
             </article>
@@ -361,6 +420,33 @@ const scenarios = [
   .metric-box__sub {
     font-size: var(--text-xs);
     color: rgba(255, 255, 255, 0.55);
+  }
+
+  /* Client case study (Soleya Reiki) */
+  .client-case__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+  }
+
+  @media (max-width: 960px) {
+    .client-case__grid { grid-template-columns: 1fr; }
+  }
+
+  .scenario-block .client-case__steps {
+    gap: var(--space-3);
+  }
+
+  .client-case__steps strong {
+    color: var(--color-navy);
+  }
+
+  .client-case__grid a {
+    color: var(--color-atlantic);
+    font-weight: var(--weight-semibold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   /* Scenarios */

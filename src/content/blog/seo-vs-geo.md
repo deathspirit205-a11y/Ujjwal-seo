@@ -1,6 +1,7 @@
 ---
 title: "SEO vs GEO : quelle différence et pourquoi les entreprises doivent penser aux deux ?"
-description: "Comprendre la différence entre le référencement traditionnel (SEO) et l'optimisation pour les moteurs génératifs (GEO). Fondations communes, ce qui change et comment bâtir une stratégie durable."
+metaTitle: "SEO vs GEO : quelle différence ? | Ujjwal SEO"
+description: "SEO vs GEO : la différence entre le référencement sur Google et l'optimisation pour les moteurs génératifs, leurs bases communes et comment préparer votre site."
 featuredImage: "/assets/blog/seo-vs-geo.jpg"
 featuredImageAlt: "Schéma conceptuel représentant le passage d'une recherche par mots-clés à une recherche sémantique par entités et IA"
 pubDate: 2025-05-10

@@ -1,6 +1,7 @@
 ---
 title: "Maillage interne : la stratégie SEO sous-estimée qui booste votre référencement"
-description: "Le maillage interne est l'un des leviers SEO les plus puissants et les plus négligés. Découvrez comment structurer les liens entre vos pages pour améliorer votre référencement et l'expérience utilisateur."
+metaTitle: "Maillage interne : bien relier vos pages | Ujjwal SEO"
+description: "Maillage interne : comment relier les pages de votre site entre elles pour aider Google à les comprendre et guider vos visiteurs vers les pages qui comptent."
 featuredImage: "/assets/blog/maillage-interne.jpg"
 featuredImageAlt: "Schéma du maillage interne : réseau de pages liées pour le référencement SEO"
 pubDate: 2025-05-18

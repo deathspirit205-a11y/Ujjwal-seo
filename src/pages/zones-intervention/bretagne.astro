@@ -38,7 +38,10 @@ const faqBretagne = [
 
 const bretagneSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/zones-intervention/bretagne/#service`,
+  serviceType: 'Consultant SEO & GEO',
+  provider: { '@id': `${SITE_URL}/#organization` },
   name: 'Ujjwal SEO — Consultant SEO & GEO Bretagne',
   description: 'Consultant SEO & GEO indépendant en région Bretagne. Référencement naturel, visibilité locale et optimisation pour moteurs de recherche IA.',
   url: `${SITE_URL}/zones-intervention/bretagne/`,
@@ -70,13 +73,13 @@ const sectorsList = [
   { title: 'Agroalimentaire & Terroir', desc: 'Producteurs, coopératives et transformateurs valorisant leur savoir-faire et leur traçabilité.' },
   { title: 'Nautisme & Économie maritime', desc: 'Chantiers, équipementiers, loueurs et services portuaires à rayonnement régional et national.' },
   { title: 'Tourisme, Hôtellerie & Patrimoine', desc: 'Hôtels, hébergements d\'exception et sites d\'accueil captant la clientèle touristique.' },
-  { title: 'BTP, Énergie & Artisanat', desc: 'Entreprises du bâtiment et artisans cherchant à dominer leur zone de chalandise.' },
+  { title: 'BTP, Énergie & Artisanat', desc: 'Entreprises du bâtiment et artisans qui veulent être mieux trouvés par les clients de leur secteur.' },
   { title: 'Services aux entreprises & Conseil', desc: 'Cabinets, éditeurs de logiciels et prestataires B2B renforçant leur autorité thématique.' },
 ];
 ---
 
 <BaseLayout
-  title={buildTitle('Consultant SEO & GEO en Bretagne — Visibilité Web Régionale')}
+  title={buildTitle('Consultant SEO & GEO en Bretagne')}
   description="Consultant SEO & GEO indépendant en Bretagne : développez votre visibilité sur Google et les moteurs IA. Stratégie régionale pour les entreprises bretonnes."
   canonicalPath="/zones-intervention/bretagne/"
   schema={[bretagneSchema]}

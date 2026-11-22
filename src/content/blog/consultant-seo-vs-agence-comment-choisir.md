@@ -1,6 +1,7 @@
 ---
 title: "Consultant SEO vs agence SEO : comment choisir en 2026 ?"
-description: "Faut-il faire appel à un consultant SEO indépendant ou à une agence SEO ? Comparatif honnête des avantages et inconvénients de chaque option pour les TPE et PME."
+metaTitle: "Consultant SEO ou agence : comment choisir ? | Ujjwal SEO"
+description: "Consultant SEO indépendant ou agence SEO ? Avantages, limites et questions à poser pour choisir le bon partenaire quand on dirige une TPE ou une PME."
 featuredImage: "/assets/blog/consultant-vs-agence.jpg"
 featuredImageAlt: "Comparaison consultant SEO indépendant versus agence SEO"
 pubDate: 2026-09-08

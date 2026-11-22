@@ -23,7 +23,8 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/mentions-legales/') &&
         !page.includes('/politique-confidentialite/') &&
-        !page.includes('/merci/'),
+        !page.includes('/merci/') &&
+        !/\/zones-intervention\/(ille-et-vilaine|mayenne|loire-atlantique|maine-et-loire|seo-[a-z-]+)\/?$/.test(page),
     }),
   ],
 });

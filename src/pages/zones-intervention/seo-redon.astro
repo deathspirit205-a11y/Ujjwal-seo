@@ -33,12 +33,15 @@ const faqRedon = [
 
 const schemaRedon = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/zones-intervention/seo-redon/#service`,
+  serviceType: 'Consultant SEO & GEO',
+  provider: { '@id': `${SITE_URL}/#organization` },
   name: 'Ujjwal SEO — Consultant SEO & GEO à Redon',
   description: 'Consultant SEO & GEO intervenant à Redon, en Ille-et-Vilaine, Morbihan et Loire-Atlantique : référencement naturel local, audit et stratégie web.',
   url: `${SITE_URL}/zones-intervention/seo-redon/`,
   areaServed: [
-    { '@type': 'City', name: 'Redon', sameAs: 'https://www.wikidata.org/wiki/Q213654' },
+    { '@type': 'City', name: 'Redon', sameAs: 'https://www.wikidata.org/wiki/Q206837' },
     { '@type': 'AdministrativeArea', name: 'Ille-et-Vilaine' },
     { '@type': 'AdministrativeArea', name: 'Morbihan' },
     { '@type': 'AdministrativeArea', name: 'Loire-Atlantique' },
@@ -50,6 +53,7 @@ const schemaRedon = {
   title={buildTitle('Consultant SEO & GEO à Redon — Référencement naturel & Local')}
   description="Consultant SEO & GEO à Redon : développez votre visibilité sur Google et les moteurs IA. SEO local au carrefour de l'Ille-et-Vilaine, du Morbihan et de la Loire-Atlantique."
   canonicalPath="/zones-intervention/seo-redon/"
+  robots="noindex, follow"
   schema={[schemaRedon]}
 >
   <Header />
@@ -79,7 +83,7 @@ const schemaRedon = {
               À la croisée de la Vilaine et du canal de Nantes à Brest, Redon occupe une situation géographique unique reliant l'Ille-et-Vilaine (35), le Morbihan (56) et la Loire-Atlantique (44).
             </p>
             <p>
-              Avec une agglomération de plus de 66 000 habitants, le territoire abrite des entreprises dynamiques dans l'industrie mécanique, les composants électroniques, la logistique et l'artisanat. Le SEO vous permet de capitaliser sur ce positionnement tri-départemental pour élargir considérablement votre zone de chalandise.
+              Le territoire abrite des entreprises dynamiques dans l'industrie mécanique, les composants électroniques, la logistique et l'artisanat. Le SEO peut vous aider à être trouvé dans les trois départements voisins et à élargir votre zone de clientèle.
             </p>
           </div>
 

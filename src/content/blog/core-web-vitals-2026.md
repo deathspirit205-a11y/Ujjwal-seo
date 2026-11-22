@@ -1,6 +1,7 @@
 ---
 title: "Core Web Vitals en 2026 : comprendre et améliorer vos scores"
-description: "Les Core Web Vitals sont des facteurs de classement Google depuis 2021. Découvrez ce que sont le LCP, l'INP et le CLS, comment les mesurer et comment les améliorer."
+metaTitle: "Core Web Vitals 2026 : comprendre et améliorer | Ujjwal SEO"
+description: "Core Web Vitals : ce que mesurent le LCP, l'INP et le CLS, comment vérifier les scores de votre site et quelles actions simples permettent de les améliorer."
 featuredImage: "/assets/blog/core-web-vitals.jpg"
 featuredImageAlt: "Illustration des Core Web Vitals LCP, INP et CLS pour l'optimisation SEO"
 pubDate: 2026-10-02

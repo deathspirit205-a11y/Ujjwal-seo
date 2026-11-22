@@ -80,7 +80,7 @@ const generalServicesFaq = [
   },
   {
     question: 'Intervenez-vous uniquement en Bretagne et Pays de la Loire ?',
-    answer: "Je suis ancré dans le Grand Ouest (Rennes, Vitré, Fougères, Janzé, Châteaubriant, Redon, Laval) où je peux me déplacer dans vos locaux, et j'accompagne également des entreprises partout en France en visioconférence avec la même réactivité.",
+    answer: "Je suis basé à Rennes, en Bretagne, et je peux me déplacer dans vos locaux à Rennes, Vitré, Fougères, Janzé, Châteaubriant, Redon ou Laval. J'accompagne également des entreprises partout en France en visioconférence avec la même réactivité.",
   },
 ];
 
@@ -105,25 +105,13 @@ const servicesSchema = [
         },
       },
     })),
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: generalServicesFaq.map((f) => ({
-      '@type': 'Question',
-      name: f.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: f.answer,
-      },
-    })),
-  },
+  }
 ];
 ---
 
 <ServiceLayout
-  title={buildTitle('Services SEO & GEO — Audit, Technique, Contenu, Local & Moteurs IA')}
-  description="Guide complet de mes prestations SEO & GEO : audit SEO, optimisation technique, stratégie éditoriale, référencement local (Rennes & Grand Ouest) et visibilité IA. Livrables, méthodes et KPIs."
+  title={buildTitle('Services SEO & GEO — Audit, Technique, Contenu')}
+  description="Mes prestations SEO & GEO : audit, optimisation technique, stratégie éditoriale, référencement local (Rennes & Grand Ouest) et visibilité IA. Livrables et KPIs."
   canonicalPath="/services/"
   breadcrumbs={breadcrumbs}
   schema={servicesSchema}

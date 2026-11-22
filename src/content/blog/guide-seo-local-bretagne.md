@@ -1,6 +1,7 @@
 ---
 title: "SEO Local : le guide complet pour les entreprises bretonnes"
-description: "Tout ce que vous devez savoir sur le SEO local en Bretagne : Google Business Profile, citations locales, mots-clés géolocalisés et stratégies pour dominer les recherches de proximité."
+metaTitle: "SEO local en Bretagne : le guide complet | Ujjwal SEO"
+description: "SEO local en Bretagne : fiche Google Business Profile, citations locales, mots-clés géolocalisés et avis pour être trouvé par les clients près de chez vous."
 featuredImage: "/assets/blog/seo-local-bretagne.jpg"
 featuredImageAlt: "Carte de la Bretagne avec un pin de localisation sur Rennes pour le SEO local"
 pubDate: 2025-02-10
@@ -42,6 +43,8 @@ La Bretagne présente quelques spécificités intéressantes pour le référence
 ## Google Business Profile : votre priorité numéro 1
 
 Google Business Profile (anciennement Google My Business) est la fiche d'établissement que vous voyez dans le pack local. C'est l'élément le plus important du SEO local — avant même votre site web.
+
+Pour la démarche complète, de la création de la fiche à son suivi, consultez notre [guide pour apparaître sur Google Maps](/comment-apparaitre-sur-google-maps/).
 
 ### Comment optimiser votre fiche GBP ?
 
