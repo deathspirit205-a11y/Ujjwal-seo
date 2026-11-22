@@ -9,6 +9,7 @@ author: "Ujjwal Lage"
 categories: ["Stratégie SEO", "SEO Contenu"]
 tags: ["recherche de mots-clés SEO", "analyse de mots-clés", "intention de recherche", "volume de recherche", "difficulté SEO", "longue traîne", "clustering de mots-clés"]
 relatedServices: ["audit-seo", "strategie-seo", "seo-contenu"]
+relatedArticles: ["core-update-google-site-touche"]
 ---
 
 Vous avez une idée d’article, une page de service à améliorer ou un nouveau marché à explorer. La première question est rarement « combien de fois ce mot est-il recherché ? ». Il faut d’abord comprendre ce que la personne veut accomplir, puis vérifier si votre site peut lui apporter une réponse utile.
