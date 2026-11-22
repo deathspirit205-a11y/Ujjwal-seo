@@ -1,0 +1,95 @@
+name: Monthly blog article
+# Prepares one new blog article per month and opens a pull request for review.
+# Nothing is published until the pull request is merged.
+
+on:
+  schedule:
+    # Runs at 06:00 UTC on days 1–7; the first step keeps only the Monday,
+    # so the article is prepared on the first Monday of each month.
+    - cron: "0 6 1-7 * *"
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Optional: impose a topic (leave empty to let the planner choose)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: monthly-blog
+  cancel-in-progress: false
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Only run on the first Monday (scheduled runs)
+        id: gate
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%u)" != "1" ]; then
+            echo "Not the first Monday of the month, skipping."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.run == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.run == 'true'
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          pip install anthropic pillow
+          npm ci
+
+      - name: Download cover fonts
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          mkdir -p automation/monthly-blog/fonts
+          curl -sfL -o automation/monthly-blog/fonts/PlayfairDisplay.ttf "https://github.com/google/fonts/raw/main/ofl/playfairdisplay/PlayfairDisplay%5Bwght%5D.ttf"
+          curl -sfL -o automation/monthly-blog/fonts/Inter.ttf "https://github.com/google/fonts/raw/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf"
+
+      - name: Research, plan and write the article
+        if: steps.gate.outputs.run == 'true'
+        id: write
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BLOG_TOPIC: ${{ github.event.inputs.topic }}
+        run: python automation/monthly-blog/write_post.py --pr-body "$RUNNER_TEMP/pr.md"
+
+      - name: Check the site still builds
+        if: steps.gate.outputs.run == 'true'
+        run: npm run build
+
+      - name: Open a pull request
+        if: steps.gate.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SLUG: ${{ steps.write.outputs.slug }}
+          TITLE: ${{ steps.write.outputs.title }}
+        run: |
+          branch="blog/$(date -u +%Y-%m)-${SLUG}"
+          git config user.name "blog-agent"
+          git config user.email "blog-agent@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add src/content/blog public/assets/blog automation/monthly-blog/history.md
+          git commit -m "Nouvel article : ${TITLE}"
+          git push -u origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Article du mois : ${TITLE}" \
+            --body-file "$RUNNER_TEMP/pr.md"

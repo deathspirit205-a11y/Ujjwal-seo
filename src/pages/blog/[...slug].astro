@@ -25,16 +25,23 @@ const { post } = Astro.props;
 const slug = post.id.replace(/\.mdx?$/, '');
 const { Content } = await render(post);
 
-// Build related articles (same category, excluding current)
+// Build related articles: hand-picked `relatedArticles` slugs first,
+// then fill with same-category articles (excluding current)
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const relatedPosts = allPosts
+type BlogPost = (typeof allPosts)[number];
+const idOf = (p: BlogPost) => p.id.replace(/\.mdx?$/, '');
+const picked = (post.data.relatedArticles || [])
+  .map((s: string) => allPosts.find((p) => idOf(p) === s))
+  .filter((p): p is BlogPost => p !== undefined && p.id !== post.id);
+const sameCategory = allPosts
   .filter(
     (p) =>
       p.id !== post.id &&
+      !picked.includes(p) &&
       p.data.categories.some((c: string) => post.data.categories.includes(c))
   )
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const relatedPosts = [...picked, ...sameCategory].slice(0, 3);
 
 // Service links map
 const serviceLinks: Record<string, { label: string; href: string }> = {
