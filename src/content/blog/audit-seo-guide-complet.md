@@ -8,6 +8,7 @@ author: "Ujjwal Lage"
 categories: ["Audit SEO", "SEO Technique"]
 tags: ["audit SEO", "référencement naturel", "analyse technique", "stratégie SEO"]
 relatedServices: ["audit-seo", "seo-technique"]
+relatedArticles: ["core-update-google-novembre-2026"]
 ---
 
 Vous pensez que votre site a un problème de référencement, mais vous ne savez pas d'où ça vient. Ou vous voulez simplement faire un point sur votre visibilité actuelle avant de lancer une stratégie SEO. Dans les deux cas, la réponse est la même : **commencez par un audit SEO**.

@@ -8,6 +8,7 @@ author: "Ujjwal Lage"
 categories: ["SEO Technique"]
 tags: ["Core Web Vitals", "LCP", "INP", "CLS", "performance web", "SEO technique"]
 relatedServices: ["seo-technique", "audit-seo"]
+relatedArticles: ["core-update-google-novembre-2026"]
 ---
 
 Depuis mai 2021, les Core Web Vitals (CWV) font partie des critères de classement de Google. En 2026, leur importance dans l'algorithme n'a fait que croître. Pourtant, beaucoup d'entreprises ignorent encore ces métriques — et laissent ainsi de la visibilité sur la table.
