@@ -8,8 +8,8 @@ const currentYear = new Date().getFullYear();
 const serviceLinks = [
   { label: 'Vue d\'ensemble des services', href: '/services/' },
   { label: 'Audit SEO complet', href: '/services/audit-seo/' },
-  { label: 'SEO Technique', href: '/services/seo-technique/' },
-  { label: 'SEO Contenu & Sémantique', href: '/services/seo-contenu/' },
+  { label: 'SEO technique', href: '/services/seo-technique/' },
+  { label: 'SEO contenu & sémantique', href: '/services/seo-contenu/' },
   { label: 'SEO Local & Google Maps', href: '/services/seo-local/' },
   { label: 'Stratégie SEO', href: '/services/strategie-seo/' },
   { label: 'GEO (Search IA & LLM)', href: '/services/geo/' },
@@ -17,12 +17,12 @@ const serviceLinks = [
 
 const navigationLinks = [
   { label: 'Accueil', href: '/' },
-  { label: 'Approche & Méthode (8 étapes)', href: '/approche/' },
-  { label: 'Réalisations & Livrables', href: '/realisations/' },
+  { label: 'Approche & méthode (8 étapes)', href: '/approche/' },
+  { label: 'Réalisations & livrables', href: '/realisations/' },
   { label: 'À propos d\'Ujjwal Lage', href: '/a-propos/' },
-  { label: 'Blog & Analyses SEO/GEO', href: '/blog/' },
+  { label: 'Blog & analyses SEO/GEO', href: '/blog/' },
   { label: 'Réserver un appel (30 min)', href: '/reserver-un-appel/' },
-  { label: 'Contact & Devis', href: '/contact/' },
+  { label: 'Contact & devis', href: '/contact/' },
 ];
 
 const zoneLinks = [
@@ -105,7 +105,7 @@ const zoneLinks = [
       <nav aria-label="Navigation pied de page" class="site-footer__nav">
 
         <div class="footer-nav-col">
-          <h3 class="footer-nav-col__title">Expertises & Services</h3>
+          <h3 class="footer-nav-col__title">Expertises & services</h3>
           <ul>
             {serviceLinks.map(({ label, href }) => (
               <li><a href={href} class="footer-nav-col__link">{label}</a></li>
@@ -123,7 +123,7 @@ const zoneLinks = [
         </div>
 
         <div class="footer-nav-col">
-          <h3 class="footer-nav-col__title">Rayonnement & Zones</h3>
+          <h3 class="footer-nav-col__title">Rayonnement & zones</h3>
           <ul>
             {zoneLinks.map(({ label, href }) => (
               <li><a href={href} class="footer-nav-col__link">{label}</a></li>

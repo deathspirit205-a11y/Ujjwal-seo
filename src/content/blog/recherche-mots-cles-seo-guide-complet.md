@@ -79,7 +79,7 @@ Pour examiner une SERP, notez les types de pages, les questions couvertes et la 
 
 ## Comment trouver des idées de mots-clés
 
-Commencez avec les besoins de vos clients. Les outils peuvent ensuite élargir la liste, mais ils ne savent pas seuls quels sujets sont importants pour votre offre.
+Commencez par les besoins de vos clients. Les outils peuvent ensuite élargir la liste, mais ils ne savent pas seuls quels sujets sont importants pour votre offre.
 
 1. **Listez vos offres et les problèmes résolus.** Pour un consultant SEO, cela peut inclure un audit, un problème d’indexation, une stratégie de contenu ou la visibilité locale.
 2. **Décrivez les personnes concernées et leur situation.** Un dirigeant de PME qui ne reçoit pas de demandes n’emploiera pas toujours les mêmes mots qu’un responsable marketing préparant un comparatif d’agences.
@@ -240,7 +240,7 @@ La position moyenne n’est pas un classement unique, et les impressions ne sont
 ## Les erreurs qui limitent votre visibilité
 
 - **Choisir uniquement les volumes élevés.** La demande estimée ne dit pas si le sujet attire les bons lecteurs.
-- **Confondre concurrence publicitaire et difficulté organique.** L’indicateur Google Ads décrit les enchères des annonces, pas la compétition naturelle.
+- **Confondre concurrence publicitaire et difficulté organique.** L’indicateur Google Ads décrit les enchères des annonces, pas la concurrence naturelle.
 - **Ignorer l’intention.** Une page au mauvais format peut manquer le besoin même si elle emploie le bon terme.
 - **Créer une URL pour chaque variante.** Plusieurs pages très proches peuvent se chevaucher et rendre le site plus difficile à parcourir.
 - **Copier les concurrents.** Leur présence dans la SERP donne des indices, pas un plan à reproduire mot pour mot.

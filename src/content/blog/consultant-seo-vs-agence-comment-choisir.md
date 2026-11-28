@@ -23,7 +23,7 @@ Un consultant SEO indépendant est un spécialiste qui travaille seul (ou avec u
 
 **Un interlocuteur unique et stable**
 
-Vous savez qui travaille sur votre site. Le même expert gère l'audit, la stratégie, les optimisations et le reporting. Pas de rotation de chefs de projet, pas de "je transmets votre question à l'équipe".
+Vous savez qui travaille sur votre site. Le même expert gère l'audit, la stratégie, les optimisations et le reporting. Pas de rotation de chefs de projet, pas de « je transmets votre question à l'équipe ».
 
 **Réactivité et flexibilité**
 
@@ -39,7 +39,7 @@ Sans les frais de structure d'une agence (bureaux, managers, équipes marketing)
 
 **Transparence**
 
-Vous savez exactement ce qui est fait sur votre site, par qui et avec quels outils. Pas de black box.
+Vous savez exactement ce qui est fait sur votre site, par qui et avec quels outils. Pas de boîte noire.
 
 ### Les limites
 
@@ -47,7 +47,7 @@ Vous savez exactement ce qui est fait sur votre site, par qui et avec quels outi
 
 Sur des projets très volumineux (centaines de pages de contenu, refonte technique massive), un consultant seul peut manquer de bande passante.
 
-**Pas de "one-stop shop"**
+**Pas de « guichet unique »**
 
 Si vous avez besoin simultanément de SEO, de publicité Google Ads, de social media et de création graphique, une agence full-service sera plus pratique.
 
@@ -113,7 +113,7 @@ Les agences proposent souvent des contrats annuels avec engagement minimum, moin
 
 **Optez pour une agence si :**
 - Vous avez un très grand site (e-commerce, site d'actualités) nécessitant une production de contenu massive
-- Vous voulez gérer SEO, Ads, social et email sous le même toit
+- Vous voulez gérer SEO, Ads, social et e-mailing sous le même toit
 - Vous avez besoin de SLA contractuels et de processus formalisés
 
 ## Les questions à poser avant de signer
@@ -122,7 +122,7 @@ Qu'il s'agisse d'un consultant ou d'une agence, posez ces questions :
 
 1. **Qui travaille concrètement sur mon compte ?** (nom, expérience)
 2. **Comment mesure-t-on le succès de la mission ?**
-3. **Quelle est la fréquence et le format des reportings ?**
+3. **Quels sont la fréquence et le format des reportings ?**
 4. **Puis-je contacter des clients précédents pour avoir leurs retours ?**
 5. **Quelle est la durée d'engagement minimum ?**
 
@@ -130,7 +130,7 @@ Un bon prestataire SEO — qu'il soit consultant ou agence — n'aura aucun prob
 
 ## Conclusion
 
-Le débat consultant vs agence est souvent moins important que la qualité intrinsèque du prestataire. Un excellent consultant vaut mieux qu'une agence médiocre, et vice versa.
+Le débat consultant vs agence est souvent moins important que la qualité intrinsèque du prestataire. Un excellent consultant vaut mieux qu'une agence médiocre, et une excellente agence vaut mieux qu'un consultant médiocre.
 
 Pour les TPE et PME bretonnes qui veulent un suivi personnalisé, réactif et transparent, le consultant indépendant est souvent la meilleure option rapport qualité/prix.
 

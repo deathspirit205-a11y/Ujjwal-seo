@@ -5,7 +5,7 @@
  *
  * Distinct from the Homepage overview: provides a complete, 12-part resource
  * for each of the 6 core SEO & GEO services (meaning, business problems solved,
- * target audience, scope, methodology, tools, deliverables, KPIs, common mistakes,
+ * target audience, scope, methodology, tools, deliverables, KPI, common mistakes,
  * service-specific FAQs, contextual internal/external links, and dedicated CTA).
  */
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
@@ -27,42 +27,42 @@ const breadcrumbs = [
 const decisionGuide = [
   {
     situation: "Mon site existe, mais il génère peu de visites ou de demandes et je ne sais pas ce qui bloque.",
-    recommendedService: 'Audit SEO Complet',
+    recommendedService: 'Audit SEO complet',
     anchor: '#audit-seo',
     url: '/services/audit-seo/',
     rationale: "Poser un diagnostic complet (technique, sémantique, concurrence) avant d'investir dans la bonne direction.",
   },
   {
     situation: 'Certaines de mes pages ne sont pas indexées, mon site est lent ou je prépare une refonte web.',
-    recommendedService: 'SEO Technique',
+    recommendedService: 'SEO technique',
     anchor: '#seo-technique',
     url: '/services/seo-technique/',
     rationale: "Lever les freins d'exploration, sécuriser vos redirections 301, optimiser les Core Web Vitals et le JSON-LD.",
   },
   {
     situation: 'Mes pages de services ou articles attirent peu de prospects qualifiés face à mes concurrents.',
-    recommendedService: 'SEO Contenu & Sémantique',
+    recommendedService: 'SEO contenu & sémantique',
     anchor: '#seo-contenu',
     url: '/services/seo-contenu/',
     rationale: "Aligner votre arborescence, vos titres et vos textes sur les intentions de recherche réelles de vos acheteurs.",
   },
   {
     situation: 'Je veux capter des clients à Rennes, Vitré, Laval, Fougères ou dans ma zone de chalandise.',
-    recommendedService: 'SEO Local & Territoire',
+    recommendedService: 'SEO local & territoire',
     anchor: '#seo-local',
     url: '/services/seo-local/',
     rationale: 'Renforcer votre présence dans le Pack Local Google Maps, votre fiche Google Business Profile et vos pages locales.',
   },
   {
     situation: "J'ai besoin d'un consultant impliqué mois après mois pour piloter et exécuter ma croissance organique.",
-    recommendedService: 'Stratégie & Accompagnement SEO',
+    recommendedService: 'Stratégie & accompagnement SEO',
     anchor: '#strategie-seo',
     url: '/services/strategie-seo/',
     rationale: 'Déployer une feuille de route trimestrielle priorisée avec suivi mensuel des positions et des conversions.',
   },
   {
     situation: 'Je veux que mon entreprise soit comprise et citée par ChatGPT, Perplexity et Google AI.',
-    recommendedService: 'GEO — Visibilité Moteurs IA',
+    recommendedService: 'GEO — visibilité moteurs IA',
     anchor: '#geo',
     url: '/services/geo/',
     rationale: "Structurer votre graphe d'entités Schema.org, votre fichier /llms.txt et la clarté factuelle de vos pages.",
@@ -72,7 +72,7 @@ const decisionGuide = [
 const generalServicesFaq = [
   {
     question: 'Quels facteurs déterminent le budget d\'une prestation SEO ou GEO ?',
-    answer: "Le tarif dépend de quatre critères objectifs : la taille et la complexité technique de votre site (un site vitrine de 15 pages ne demande pas le même travail qu'un catalogue de 2 000 URLs), l'intensité concurrentielle de votre secteur, votre point de départ actuel et le mode de répartition du travail (conseil seul ou intégration directe par mes soins). Chaque mission fait l'objet d'un devis détaillé et forfaitaire après un premier échange gratuit de 30 minutes.",
+    answer: "Le tarif dépend de quatre critères objectifs : la taille et la complexité technique de votre site (un site vitrine de 15 pages ne demande pas le même travail qu'un catalogue de 2 000 URL), l'intensité concurrentielle de votre secteur, votre point de départ actuel et le mode de répartition du travail (conseil seul ou intégration directe par mes soins). Chaque mission fait l'objet d'un devis détaillé et forfaitaire après un premier échange gratuit de 30 minutes.",
   },
   {
     question: 'Peut-on commencer par une mission ponctuelle avant un accompagnement régulier ?',
@@ -92,7 +92,7 @@ const servicesSchema = [
   {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Prestations et Services SEO & GEO — Ujjwal SEO',
+    name: 'Prestations et services SEO & GEO — Ujjwal SEO',
     description: "Catalogue détaillé des prestations de conseil en référencement naturel (SEO) et optimisation pour moteurs de recherche IA (GEO) par Ujjwal Lage.",
     url: `${SITE_URL}/services/`,
     itemListElement: services.map((s, i) => ({
@@ -115,7 +115,7 @@ const servicesSchema = [
 
 <ServiceLayout
   title={buildTitle('Services SEO & GEO — Audit, Technique, Contenu')}
-  description="Mes prestations SEO & GEO : audit, optimisation technique, stratégie éditoriale, référencement local (Rennes & Grand Ouest) et visibilité IA. Livrables et KPIs."
+  description="Mes prestations SEO & GEO : audit, optimisation technique, stratégie éditoriale, référencement local (Rennes & Grand Ouest) et visibilité IA. Livrables et KPI."
   canonicalPath="/services/"
   breadcrumbs={breadcrumbs}
   schema={servicesSchema}
@@ -302,7 +302,7 @@ const servicesSchema = [
 
               <!-- 10. Specific FAQs -->
               <div class="dossier__faqs">
-                <h4>10. Questions fréquentes sur {service.title.toLowerCase()}</h4>
+                <h4>10. Questions fréquentes : {service.title}</h4>
                 <div class="dossier__faq-grid">
                   {service.detail.faqs.map((f) => (
                     <div class="dossier__faq-item">
@@ -383,7 +383,7 @@ const servicesSchema = [
 
           <div class="format-card">
             <span class="format-card__tag">Format 03 · Ciblé</span>
-            <h3>Mission Spécifique (Local, Refonte, GEO)</h3>
+            <h3>Mission spécifique (local, refonte, GEO)</h3>
             <p>
               Une intervention chirurgicale sur un besoin précis : sécurisation d'une migration de site, déploiement local en Bretagne / Pays de la Loire ou structuration d'entités pour les IA.
             </p>

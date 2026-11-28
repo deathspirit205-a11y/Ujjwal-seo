@@ -1,6 +1,6 @@
 ---
 /**
- * services/seo-technique.astro — SEO Technique service page
+ * services/seo-technique.astro — SEO technique service page
  * URL: /services/seo-technique/
  */
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
@@ -16,7 +16,7 @@ import { buildTitle, SITE_URL } from '../../utils/seo';
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services/' },
-  { label: 'SEO Technique', href: '/services/seo-technique/' },
+  { label: 'SEO technique', href: '/services/seo-technique/' },
 ];
 
 const faqItems = [
@@ -34,7 +34,7 @@ const faqItems = [
   },
   {
     id: 'tech-cwv',
-    question: 'Qu\'est-ce que les Core Web Vitals et est-ce vraiment important ?',
+    question: 'Que sont les Core Web Vitals, et sont-ils vraiment importants ?',
     answer:
       'Les Core Web Vitals (LCP, INP, CLS) sont des indicateurs de performance définis par Google pour mesurer l\'expérience utilisateur : vitesse d\'affichage, réactivité et stabilité visuelle. Depuis 2021, ils font partie des signaux de classement. Un mauvais score peut vous pénaliser par rapport à des concurrents mieux optimisés, notamment sur mobile.',
   },
@@ -49,7 +49,7 @@ const faqItems = [
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'SEO Technique',
+  name: 'SEO technique',
   description:
     'Optimisation technique SEO : crawlabilité, indexation, Core Web Vitals, architecture, données structurées, redirections. Fondations techniques pour un référencement efficace.',
   url: `${SITE_URL}/services/seo-technique/`,
@@ -64,7 +64,7 @@ const serviceSchema = {
 ---
 
 <ServiceLayout
-  title={buildTitle('SEO Technique — Optimisation de votre site')}
+  title={buildTitle('SEO technique — Optimisation de votre site')}
   description="SEO technique : crawl, indexation, Core Web Vitals, architecture, données structurées et redirections. Les fondations d'un référencement durable à Rennes."
   canonicalPath="/services/seo-technique/"
   breadcrumbs={breadcrumbs}
@@ -78,7 +78,7 @@ const serviceSchema = {
       visual="speed"
       bgAlt="Réseau numérique abstrait sur fond bleu sombre"
       eyebrow="Service"
-      title="SEO Technique — Les fondations de votre référencement"
+      title="SEO technique — Les fondations de votre référencement"
       description="Un site peut avoir un excellent contenu et des mots-clés parfaitement ciblés — et rester totalement invisible sur Google pour des raisons techniques. Si Google ne peut pas explorer, comprendre et indexer vos pages correctement, aucune stratégie éditoriale ne peut compenser."
       primaryCTA={{ label: 'Réserver un appel', href: '/reserver-un-appel/' }}
       compact={true}
@@ -184,10 +184,10 @@ const serviceSchema = {
           <article class="domaine-item">
             <div class="domaine-item__header">
               <span class="domaine-item__icon" aria-hidden="true">🔗</span>
-              <h3 class="domaine-item__title">URLs et redirections</h3>
+              <h3 class="domaine-item__title">URL et redirections</h3>
             </div>
             <ul class="domaine-item__list">
-              <li>Structure et cohérence des URLs</li>
+              <li>Structure et cohérence des URL</li>
               <li>Redirections 301 et chaînes de redirections</li>
               <li>Gestion des erreurs 404 stratégiques</li>
               <li>Canonicalisation HTTPS et www/non-www</li>

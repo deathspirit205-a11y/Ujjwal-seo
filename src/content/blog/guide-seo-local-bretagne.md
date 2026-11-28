@@ -27,7 +27,7 @@ Concrètement, quand un internaute cherche :
 
 …Google lui affiche des résultats adaptés à sa localisation. Ces résultats se décomposent en deux zones :
 
-1. **Le pack local** (ou "3-pack") : trois entreprises affichées avec une carte Google Maps
+1. **Le pack local** (ou « 3-pack ») : trois entreprises affichées avec une carte Google Maps
 2. **Les résultats organiques classiques** en dessous
 
 Le SEO local vise à vous positionner dans ces deux zones simultanément.
@@ -37,14 +37,14 @@ Le SEO local vise à vous positionner dans ces deux zones simultanément.
 La Bretagne présente quelques spécificités intéressantes pour le référencement local :
 
 - **Une économie de proximité forte** : tourisme, artisanat, agriculture et services de proximité constituent un tissu économique dense.
-- **Des villes à taille humaine** : hors Rennes et Brest, la compétition SEO locale reste moins intense que dans les grandes métropoles, ce qui facilite un positionnement rapide.
-- **Un fort ancrage territorial** : les consommateurs bretons valorisent les entreprises locales — un positionnement "breton" dans vos contenus renforce la confiance.
+- **Des villes à taille humaine** : hors Rennes et Brest, la concurrence SEO locale reste moins intense que dans les grandes métropoles, ce qui facilite un positionnement rapide.
+- **Un fort ancrage territorial** : les consommateurs bretons valorisent les entreprises locales — un positionnement « breton » dans vos contenus renforce la confiance.
 
 ## Google Business Profile : votre priorité numéro 1
 
 Google Business Profile (anciennement Google My Business) est la fiche d'établissement que vous voyez dans le pack local. C'est l'élément le plus important du SEO local — avant même votre site web.
 
-Pour la démarche complète, de la création de la fiche à son suivi, consultez notre [guide pour apparaître sur Google Maps](/comment-apparaitre-sur-google-maps/).
+Pour la démarche complète, de la création de la fiche à son suivi, consultez mon [guide pour apparaître sur Google Maps](/comment-apparaitre-sur-google-maps/).
 
 ### Comment optimiser votre fiche GBP ?
 
@@ -79,7 +79,7 @@ Une citation locale est une mention de vos informations de contact (Name, Addres
 
 **Les principales sources de citations à couvrir :**
 
-- Pages Jaunes
+- PagesJaunes
 - Yelp
 - Tripadvisor (pour les restaurants, hôtels, activités)
 - Kompass
@@ -90,7 +90,7 @@ Une citation locale est une mention de vos informations de contact (Name, Addres
 
 ## Les mots-clés locaux
 
-Votre stratégie de contenu doit intégrer des mots-clés géolocalisés dans vos pages de services, vos balises `<title>`, vos méta-descriptions et vos URLs.
+Votre stratégie de contenu doit intégrer des mots-clés géolocalisés dans vos pages de services, vos balises `<title>`, vos méta-descriptions et vos URL.
 
 **Exemples de structures efficaces :**
 

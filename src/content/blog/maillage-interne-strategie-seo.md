@@ -23,7 +23,7 @@ Le maillage interne (ou linking interne) désigne l'ensemble des liens hypertext
 
 Chaque lien interne transmet deux types d'information à Google :
 1. **La structure du site** : quelles pages sont importantes, comment elles sont reliées, quelle est la hiérarchie
-2. **Du "jus de lien"** (link equity ou PageRank) : une certaine autorité SEO qui se redistribue entre les pages liées
+2. **Du « jus de lien »** (link equity ou PageRank) : une certaine autorité SEO qui se redistribue entre les pages liées
 
 ## Pourquoi le maillage interne impacte votre SEO
 
@@ -33,7 +33,7 @@ Quand Googlebot visite votre site, il suit les liens pour découvrir de nouvelle
 
 ### Il distribue l'autorité SEO
 
-Imaginez votre homepage comme un "réservoir" d'autorité. Chaque lien que vous placez sur vos pages redistribue une partie de cette autorité vers les pages de destination. En créant des liens stratégiques vers vos pages de services ou de contenu prioritaires, vous améliorez leur potentiel de classement.
+Imaginez votre homepage comme un « réservoir » d'autorité. Chaque lien que vous placez sur vos pages redistribue une partie de cette autorité vers les pages de destination. En créant des liens stratégiques vers vos pages de services ou de contenu prioritaires, vous améliorez leur potentiel de classement.
 
 ### Il améliore l'expérience utilisateur
 
@@ -43,9 +43,9 @@ Un bon maillage interne guide les visiteurs vers les pages les plus pertinentes 
 
 **Pages orphelines** : pages qui n'ont aucun lien interne pointant vers elles. Google a du mal à les trouver, et elles n'accumulent pas d'autorité.
 
-**Liens génériques** : utiliser "cliquez ici" ou "en savoir plus" comme texte d'ancre prive Google d'un signal de pertinence.
+**Liens génériques** : utiliser « cliquez ici » ou « en savoir plus » comme texte d'ancre prive Google d'un signal de pertinence.
 
-**Maillage concentré sur la homepage** : beaucoup de sites ne linkent en interne que vers leur page d'accueil. Les pages de services et de blog restent sous-linkées.
+**Maillage concentré sur la homepage** : beaucoup de sites ne font de liens internes que vers leur page d'accueil. Les pages de services et de blog reçoivent trop peu de liens.
 
 **Trop de liens par page** : une page avec 200 liens internes dilue excessivement le PageRank transmis. Priorisez la qualité sur la quantité.
 
@@ -61,7 +61,7 @@ Organisez votre site en silos thématiques :
 - Page pilier : `/services/seo-local/`
 - Pages liées : `/zones-intervention/seo-rennes/`, `/zones-intervention/bretagne/`, articles de blog sur le SEO local
 
-### 3. Linkez systématiquement depuis vos articles de blog
+### 3. Ajoutez systématiquement des liens depuis vos articles de blog
 
 Chaque article de blog est une opportunité de créer des liens vers vos pages de services. Si vous écrivez un article sur le SEO local, ajoutez un lien naturel vers votre page de service SEO local.
 
@@ -90,8 +90,8 @@ Imaginons un consultant en recrutement à Nantes. Son site a :
 
 Une bonne stratégie de maillage consiste à :
 1. Lier chaque article de blog vers `/recrutement-cadres-nantes/` avec une ancre pertinente
-2. Lier la page pilier vers les articles connexes ("pour aller plus loin")
-3. S'assurer que la homepage et le menu linkent vers la page pilier
+2. Lier la page pilier vers les articles connexes (« pour aller plus loin »)
+3. S'assurer que la homepage et le menu pointent vers la page pilier
 
 En quelques mois, cette page pilier aura accumulé suffisamment d'autorité interne pour rivaliser avec des concurrents qui ont plus de backlinks.
 

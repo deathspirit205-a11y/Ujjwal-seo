@@ -1,6 +1,6 @@
 ---
 /**
- * services/seo-contenu.astro — SEO Contenu & Sémantique Service Page
+ * services/seo-contenu.astro — SEO contenu & sémantique Service Page
  * URL: /services/seo-contenu/
  */
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
@@ -16,14 +16,14 @@ import { buildTitle, SITE_URL } from '../../utils/seo';
 const breadcrumbs = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services/' },
-  { label: 'SEO Contenu & Sémantique', href: '/services/seo-contenu/' },
+  { label: 'SEO contenu & sémantique', href: '/services/seo-contenu/' },
 ];
 
 const faqItems = [
   {
     id: 'contenu-intention',
     question: 'Qu\'est-ce que l\'intention de recherche et pourquoi est-elle cruciale ?',
-    answer: 'L\'intention de recherche correspond au besoin fondamental qui pousse un internaute à effectuer une recherche (acheter un service, comparer des solutions, trouver une adresse locale ou s\'informer). Aligner votre page avec l\'intention exacte est la condition numéro un pour que Google et les moteurs IA sélectionnent votre contenu.',
+    answer: 'L\'intention de recherche correspond au besoin fondamental qui pousse un internaute à effectuer une recherche (acheter un service, comparer des solutions, trouver une adresse locale ou s\'informer). Aligner votre page sur l\'intention exacte est la condition numéro un pour que Google et les moteurs IA sélectionnent votre contenu.',
   },
   {
     id: 'contenu-existant',
@@ -45,7 +45,7 @@ const faqItems = [
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'SEO Contenu & Sémantique',
+  name: 'SEO contenu & sémantique',
   description: 'Stratégie éditoriale SEO, analyse des intentions de recherche, architecture documentaire et optimisation sémantique on-page pour générer un trafic qualifié.',
   url: `${SITE_URL}/services/seo-contenu/`,
   provider: { '@id': `${SITE_URL}/#organization` },
@@ -68,9 +68,9 @@ const serviceSchema = {
   <main id="main-content">
     <PageHero
       visual="content"
-      eyebrow="Expertise Éditoriale & Sémantique"
-      title="SEO Contenu & Sémantique"
-      description="Le contenu n'est pas un simple texte pour remplir des pages. C'est l'expression structurée de votre expertise, conçue pour répondre avec précision à ce que cherchent vos clients et ce que valorisent les moteurs de recherche."
+      eyebrow="Expertise éditoriale & sémantique"
+      title="SEO contenu & sémantique"
+      description="Le contenu n'est pas un simple texte pour remplir des pages. C'est l'expression structurée de votre expertise, conçue pour répondre avec précision à ce que cherchent vos clients et à ce que valorisent les moteurs de recherche."
       primaryCTA={{ label: 'Parler de votre projet', href: '/contact/' }}
       secondaryCTA={{ label: 'Découvrir mon approche', href: '/approche/' }}
       compact={true}

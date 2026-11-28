@@ -37,7 +37,7 @@ export const faqGeneral: FAQItem[] = [
     id: 'difference-seo-local',
     question: 'Quelle différence entre SEO local et SEO classique ?',
     answer:
-      'Le SEO local vise à apparaître dans les résultats de recherche pour des requêtes géolocalisées ("plombier Rennes", "restaurant centre-ville"). Il inclut l\'optimisation de Google Business Profile, la cohérence de vos informations en ligne et la création de contenu local pertinent.',
+      'Le SEO local vise à apparaître dans les résultats de recherche pour des requêtes géolocalisées (« plombier Rennes », « restaurant centre-ville »). Il inclut l\'optimisation de Google Business Profile, la cohérence de vos informations en ligne et la création de contenu local pertinent.',
     pages: ['home', 'seo-local'],
   },
   {

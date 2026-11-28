@@ -42,7 +42,7 @@ const latestPosts = allPosts
 // 5-step high-level overview on homepage (links to full 8-step lifecycle on /approche/)
 const processSteps = [
   {
-    title: 'Comprendre & Auditer',
+    title: 'Comprendre & auditer',
     when: 'Semaines 1–2',
     description: 'On échange sur votre activité, j\'audite votre site et vos concurrents.',
   },
@@ -57,12 +57,12 @@ const processSteps = [
     description: 'Je corrige les problèmes techniques et j\'améliore vos pages clés.',
   },
   {
-    title: 'Mailler & Développer l\'autorité',
+    title: 'Mailler & développer l\'autorité',
     when: 'Mois 2–6',
     description: 'Je relie vos pages, j\'ajoute du contenu utile et je renforce la confiance.',
   },
   {
-    title: 'Suivre & Améliorer en continu',
+    title: 'Suivre & améliorer en continu',
     when: 'Chaque mois',
     description: 'Je suis les résultats chaque mois et j\'ajuste.',
   },
@@ -99,7 +99,7 @@ const priorityCities = [
   { name: 'Fougères', dept: 'Ille-et-Vilaine (35)', href: '/zones-intervention/seo-fougeres/', desc: 'Savoir-faire industriels, commerce local et entreprises des Marches de Bretagne.' },
   { name: 'Janzé', dept: 'Ille-et-Vilaine (35)', href: '/zones-intervention/seo-janze/', desc: 'Entreprises de La Roche-aux-Fées, artisanat et services de proximité.' },
   { name: 'Châteaubriant', dept: 'Loire-Atlantique (44)', href: '/zones-intervention/seo-chateaubriant/', desc: 'Carrefour économique entre Rennes, Nantes et Angers.' },
-  { name: 'Redon', dept: 'Ille-et-Vilaine / Morbihan', href: '/zones-intervention/seo-redon/', desc: 'Bassin inter-départemental au croisement de 3 départements.' },
+  { name: 'Redon', dept: 'Ille-et-Vilaine / Morbihan', href: '/zones-intervention/seo-redon/', desc: 'Bassin interdépartemental au croisement de 3 départements.' },
 ];
 
 // Organization + WebSite schema
@@ -110,6 +110,12 @@ const professionalServiceSchema = {
   name: 'Ujjwal SEO',
   description: 'Consultant SEO & GEO indépendant en France (Rennes, Vitré, Laval, Fougères, Janzé, Châteaubriant, Redon). Accompagnement en référencement naturel, SEO technique, contenu sémantique, SEO local et moteurs de recherche IA.',
   url: SITE_URL,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Rennes',
+    addressRegion: 'Bretagne',
+    addressCountry: 'FR',
+  },
   founder: { '@id': `${SITE_URL}/a-propos/#person` },
   hasMap: 'https://maps.app.goo.gl/YmAa7rHR44WfHFu86',
   sameAs: [
@@ -367,7 +373,7 @@ const websiteSchema = {
       <div class="container">
         <div class="home-zones__wrapper">
           <div class="home-zones__header">
-            <p class="eyebrow">Ancrage Territorial &amp; Intervention Nationale</p>
+            <p class="eyebrow">Ancrage territorial &amp; intervention nationale</p>
             <h2 id="zones-heading">Consultant SEO en Bretagne, Pays de la Loire et partout en France</h2>
             <p class="lead" style="margin-top: var(--space-4)">
               Basé à <strong>Rennes, en Bretagne</strong>. Sur place dans l'Ouest, à distance partout en France.

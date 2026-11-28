@@ -49,7 +49,7 @@ export interface Service {
 export const services: Service[] = [
   {
     id: 'audit-seo',
-    title: 'Audit SEO Complet',
+    title: 'Audit SEO complet',
     slug: '/services/audit-seo/',
     category: 'Diagnostic & Stratégie',
     shortDescription: 'Examen méthodique de l\'indexation, de l\'architecture, des contenus et de la concurrence de votre site.',
@@ -66,7 +66,7 @@ export const services: Service[] = [
       whoNeedsIt: 'Les dirigeants de PME, responsables marketing ou équipes techniques qui veulent comprendre précisément pourquoi leur site ne génère pas assez de demandes entrantes avant d\'engager un budget d\'accompagnement ou une refonte.',
       included: [
         'Analyse du crawl, de l\'indexation réelle dans Google Search Console et du budget d\'exploration.',
-        'Contrôle de l\'architecture des URLs, de la profondeur de clic et du maillage interne.',
+        'Contrôle de l\'architecture des URL, de la profondeur de clic et du maillage interne.',
         'Mesure des performances web (Core Web Vitals : LCP, INP, CLS) sur mobile et ordinateur.',
         'Évaluation sémantique des pages clés, détection de la cannibalisation et des contenus faibles.',
         'Vérification du balisage Schema.org (JSON-LD) et de l\'extractibilité pour les moteurs IA (GEO).',
@@ -107,7 +107,7 @@ export const services: Service[] = [
       ],
       relatedLinks: [
         { label: 'Guide complet : pourquoi faire un audit SEO et comment l\'interpréter', href: '/blog/audit-seo-guide-complet/', type: 'blog' },
-        { label: 'SEO Technique : assainir les fondations du site', href: '/services/seo-technique/', type: 'service' },
+        { label: 'SEO technique : assainir les fondations du site', href: '/services/seo-technique/', type: 'service' },
         { label: 'Voir un aperçu interactif de livrable d\'audit', href: '/realisations/', type: 'method' },
       ],
       externalRef: {
@@ -118,7 +118,7 @@ export const services: Service[] = [
   },
   {
     id: 'seo-technique',
-    title: 'SEO Technique',
+    title: 'SEO technique',
     slug: '/services/seo-technique/',
     category: 'SEO Fondamental',
     shortDescription: 'Optimisation du crawl, de l\'indexation, de la vitesse (Core Web Vitals) et des données structurées Schema.org.',
@@ -140,16 +140,16 @@ export const services: Service[] = [
         'Conception et déploiement d\'un graphe de données structurées JSON-LD interconnecté via @id.',
         'Accompagnement de migration / refonte : recette pré-production et surveillance post-mise en ligne.',
       ],
-      howPerformed: 'J\'analyse la manière dont votre serveur et votre code front-end répondent aux robots d\'indexation. Nous éliminons les ressources bloquantes, nettoyons les URLs inutiles et structurons l\'arborescence pour que chaque page stratégique reçoive un maximum de signal interne.',
+      howPerformed: 'J\'analyse la manière dont votre serveur et votre code front-end répondent aux robots d\'indexation. J\'élimine les ressources bloquantes, je nettoie les URL inutiles et je structure l\'arborescence pour que chaque page stratégique reçoive un maximum de signal interne.',
       toolsAndMethods: [
         'Rapport d\'indexation et statistiques d\'exploration Google Search Console',
         'Chrome User Experience Report (CrUX) & PageSpeed Insights',
-        'Screaming Frog & analyse des journaux/entêtes serveur',
+        'Screaming Frog & analyse des journaux/en-têtes serveur',
         'Spécifications Schema.org et validateurs JSON-LD',
       ],
       expectedDeliverables: [
         'Cahier des charges technique précis et actionnable (ou intervention directe sur le code/CMS).',
-        'Plan de redirection 301 complet en cas de refonte ou de nettoyage d\'URLs.',
+        'Plan de redirection 301 complet en cas de refonte ou de nettoyage d\'URL.',
         'Scripts JSON-LD sur mesure prêts à intégrer (Organization, ProfessionalService, Service, Article, FAQPage).',
         'Rapport de contrôle après déploiement validant la résolution des anomalies.',
       ],
@@ -159,7 +159,7 @@ export const services: Service[] = [
         'Indexation rapide des nouvelles pages publiées et stabilité des positions après refonte.',
       ],
       commonMistakes: [
-        'Lancer une refonte graphique sans mapper les anciennes URLs vers les nouvelles (perte immédiate d\'historique SEO).',
+        'Lancer une refonte graphique sans mapper les anciennes URL vers les nouvelles (perte immédiate d\'historique SEO).',
         'Empiler les extensions ou scripts tiers lourds qui paralysent le temps de réponse mobile (INP).',
         'Bloquer par erreur des fichiers CSS/JS indispensables au rendu de la page dans le robots.txt.',
       ],
@@ -186,7 +186,7 @@ export const services: Service[] = [
   },
   {
     id: 'seo-contenu',
-    title: 'SEO Contenu & Sémantique',
+    title: 'SEO contenu & sémantique',
     slug: '/services/seo-contenu/',
     category: 'SEO Fondamental',
     shortDescription: 'Architecture éditoriale, étude d\'intentions de recherche, rédaction structurée et maillage interne thématique.',
@@ -200,7 +200,7 @@ export const services: Service[] = [
         'Pages de services trop courtes ou génériques qui ne démontrent pas votre maîtrise du sujet.',
         'Articles de blog isolés qui ne transmettent aucune autorité vers vos pages commerciales.',
       ],
-      whoNeedsIt: 'Les entreprises B2B et B2C dont le savoir-faire réel est supérieur à ce que montre leur site actuel, et qui souhaitent transformer leurs pages en véritables arguments commerciaux disponibles 24h/24.',
+      whoNeedsIt: 'Les entreprises B2B et B2C dont le savoir-faire réel est supérieur à ce que montre leur site actuel, et qui souhaitent transformer leurs pages en véritables arguments commerciaux disponibles 24 h/24.',
       included: [
         'Recherche approfondie de mots-clés et classification par intention (informationnelle, commerciale, locale).',
         'Conception de l\'arborescence éditoriale (pages piliers, pages enfants et articles de support).',
@@ -216,7 +216,7 @@ export const services: Service[] = [
         'Rédaction orientée E-E-A-T et réponses extractibles pour le GEO',
       ],
       expectedDeliverables: [
-        'Matrice complète mots-clés / intentions / URLs cibles (sans doublon ni cannibalisation).',
+        'Matrice complète mots-clés / intentions / URL cibles (sans doublon ni cannibalisation).',
         'Plan de publication éditorial priorisé selon le retour sur investissement attendu.',
         'Briefs rédactionnels complets ou textes optimisés prêts à intégrer.',
         'Schéma de maillage interne reliant articles conseils et pages de conversion.',
@@ -254,7 +254,7 @@ export const services: Service[] = [
   },
   {
     id: 'seo-local',
-    title: 'SEO Local & Territoire',
+    title: 'SEO local & territoire',
     slug: '/services/seo-local/',
     category: 'Ancrage Local',
     shortDescription: 'Visibilité sur Google Maps (Pack Local), fiche Google Business Profile et pages d\'ancrage territorial en Bretagne et Grand Ouest.',
@@ -273,10 +273,10 @@ export const services: Service[] = [
         'Audit et optimisation complète de votre fiche Google Business Profile (catégories primaire et secondaires, services, attributs, description, médias).',
         'Harmonisation de la cohérence NAP (Nom, Adresse, Téléphone) et inscriptions ciblées sur les annuaires locaux et sectoriels légitimes.',
         'Création ou refonte de pages locales utiles, documentées et propres à chaque bassin économique (sans pages satellites dupliquées).',
-        'Mise en place d\'une méthode simple et conforme pour collecter et répondre aux avis clients.',
+        'Mise en place d\'une méthode simple et conforme pour collecter les avis clients et y répondre.',
         'Déploiement du balisage Schema.org LocalBusiness / ProfessionalService avec areaServed précis.',
       ],
-      howPerformed: 'J\'analyse la concurrence sur le Pack Local de votre zone de chalandise et je vérifie l\'alignement entre votre fiche Google Business Profile et les pages de votre site. Nous construisons des signaux géographiques authentiques (ancrage économique local, références régionales, maillage territorial).',
+      howPerformed: 'J\'analyse la concurrence sur le Pack Local de votre zone de chalandise et je vérifie l\'alignement entre votre fiche Google Business Profile et les pages de votre site. Je construis des signaux géographiques authentiques (ancrage économique local, références régionales, maillage territorial).',
       toolsAndMethods: [
         'Google Business Profile Manager & suivi des interactions locales (appels, itinéraires, clics)',
         'Google Search Console (filtrage des requêtes géolocalisées par ville et département)',
@@ -322,7 +322,7 @@ export const services: Service[] = [
   },
   {
     id: 'strategie-seo',
-    title: 'Stratégie & Accompagnement SEO',
+    title: 'Stratégie & accompagnement SEO',
     slug: '/services/strategie-seo/',
     category: 'Diagnostic & Stratégie',
     shortDescription: 'Pilotage mensuel, feuille de route trimestrielle et exécution continue pour inscrire votre croissance organique dans la durée.',
@@ -354,7 +354,7 @@ export const services: Service[] = [
       expectedDeliverables: [
         'Feuille de route SEO & GEO partagée et mise à jour en continu.',
         'Livrables mensuels concrets (pages optimisées, briefs, correctifs techniques, balisage).',
-        'Compte-rendu mensuel synthétique focalisé sur le trafic qualifié et les opportunités commerciales.',
+        'Compte rendu mensuel synthétique focalisé sur le trafic qualifié et les opportunités commerciales.',
         'Point téléphonique ou visioconférence mensuel d\'analyse et de décision.',
       ],
       successMetrics: [
@@ -386,7 +386,7 @@ export const services: Service[] = [
   },
   {
     id: 'geo',
-    title: 'GEO — Visibilité Moteurs IA',
+    title: 'GEO — visibilité moteurs IA',
     slug: '/services/geo/',
     category: 'GEO & Moteurs IA',
     shortDescription: 'Optimisation de vos contenus et de votre graphe d\'entités pour être compris et cité par ChatGPT, Perplexity et Google AI.',
@@ -427,7 +427,7 @@ export const services: Service[] = [
         'Progression des visites qualifiées issues des moteurs génératifs et des recherches conversationnelles longues.',
       ],
       commonMistakes: [
-        'Croire qu\'il est possible de « garantir » une citation fixe dans ChatGPT alors que les réponses des LLMs sont probabilistes.',
+        'Croire qu\'il est possible de « garantir » une citation fixe dans ChatGPT alors que les réponses des LLM sont probabilistes.',
         'Négliger le SEO fondamental : un site non indexé sur Google et Bing ne sera jamais récupéré en temps réel par les moteurs IA.',
         'Bloquer aveuglément tous les robots IA dans le fichier robots.txt tout en espérant être recommandé par eux.',
       ],
@@ -443,8 +443,8 @@ export const services: Service[] = [
       ],
       relatedLinks: [
         { label: 'Article de fond : SEO vs GEO, comprendre la complémentarité', href: '/blog/seo-vs-geo/', type: 'blog' },
-        { label: 'SEO Contenu & Sémantique : structurer vos pages', href: '/services/seo-contenu/', type: 'service' },
-        { label: 'Inspecter l\'architecture GEO de ujjwal-seo.com (/llms.txt & JSON-LD)', href: '/realisations/', type: 'method' },
+        { label: 'SEO contenu & sémantique : structurer vos pages', href: '/services/seo-contenu/', type: 'service' },
+        { label: 'Inspecter l\'architecture GEO d\'ujjwal-seo.com (/llms.txt & JSON-LD)', href: '/realisations/', type: 'method' },
       ],
       externalRef: {
         label: 'Spécification officielle Schema.org — Structuration des entités sur le Web',

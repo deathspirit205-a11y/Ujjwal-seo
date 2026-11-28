@@ -6,7 +6,7 @@ featuredImage: "/assets/blog/core-web-vitals.jpg"
 featuredImageAlt: "Illustration des Core Web Vitals LCP, INP et CLS pour l'optimisation SEO"
 pubDate: 2026-10-02
 author: "Ujjwal Lage"
-categories: ["SEO Technique"]
+categories: ["SEO technique"]
 tags: ["Core Web Vitals", "LCP", "INP", "CLS", "performance web", "SEO technique"]
 relatedServices: ["seo-technique", "audit-seo"]
 ---
@@ -21,11 +21,11 @@ Les Core Web Vitals sont trois métriques définies par Google pour mesurer l'ex
 
 ### 1. LCP — Largest Contentful Paint
 
-**Ce qu'il mesure** : le temps de chargement de l'élément le plus large et visible de la page (souvent une image hero ou un titre principal).
+**Ce qu'il mesure** : le temps de chargement de le plus grand élément visible de la page (souvent une image hero ou un titre principal).
 
 **Objectif** : inférieur à **2,5 secondes**
 
-**Impact sur l'expérience** : un LCP élevé donne à l'utilisateur l'impression que le site "met du temps à charger" même si d'autres éléments apparaissent rapidement.
+**Impact sur l'expérience** : un LCP élevé donne à l'utilisateur l'impression que le site « met du temps à charger » même si d'autres éléments apparaissent rapidement.
 
 **Causes fréquentes d'un mauvais LCP** :
 - Images non optimisées ou sans dimension définie
@@ -39,7 +39,7 @@ Les Core Web Vitals sont trois métriques définies par Google pour mesurer l'ex
 
 **Objectif** : inférieur à **200 millisecondes**
 
-**Impact sur l'expérience** : un INP élevé donne l'impression que le site est "lent" ou "ne répond pas" quand on clique sur un bouton.
+**Impact sur l'expérience** : un INP élevé donne l'impression que le site est « lent » ou « ne répond pas » quand on clique sur un bouton.
 
 **Causes fréquentes** :
 - JavaScript excessif ou mal optimisé
@@ -63,7 +63,7 @@ Les Core Web Vitals sont trois métriques définies par Google pour mesurer l'ex
 
 ### Google Search Console
 
-La méthode la plus simple. Dans la section "Expérience" > "Core Web Vitals", vous trouverez les données réelles de vos visiteurs, regroupées par type d'URL.
+La méthode la plus simple. Dans la section « Expérience » > « Core Web Vitals », vous trouverez les données réelles de vos visiteurs, regroupées par type d'URL.
 
 ### PageSpeed Insights
 
@@ -109,7 +109,7 @@ Pour un audit plus granulaire, ouvrez Chrome DevTools (F12), onglet Lighthouse, 
 
 Google a confirmé que les Core Web Vitals sont un facteur de classement. En pratique, leur influence directe sur le positionnement est réelle mais modérée — la pertinence du contenu reste prépondérante.
 
-Cela dit, des CWV mauvais ont un double impact négatif :
+Cela dit, de mauvais CWV ont un double impact négatif :
 1. Un léger désavantage dans le classement face à des concurrents avec des scores similaires
 2. Un taux de rebond plus élevé : les utilisateurs qui trouvent votre site lent ou instable repartent plus vite
 

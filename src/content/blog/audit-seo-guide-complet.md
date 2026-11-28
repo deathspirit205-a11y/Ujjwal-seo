@@ -6,7 +6,7 @@ featuredImage: "/assets/blog/audit-seo.jpg"
 featuredImageAlt: "Illustration d'un audit SEO : loupe analysant la structure d'un site web"
 pubDate: 2025-03-15
 author: "Ujjwal Lage"
-categories: ["Audit SEO", "SEO Technique"]
+categories: ["Audit SEO", "SEO technique"]
 tags: ["audit SEO", "référencement naturel", "analyse technique", "stratégie SEO"]
 relatedServices: ["audit-seo", "seo-technique"]
 relatedArticles: ["core-update-google-site-impacte"]
@@ -34,7 +34,7 @@ Un bon audit couvre quatre dimensions :
 Certains problèmes empêchent directement Google d'indexer vos pages correctement. Parmi les plus courants :
 
 - **Erreurs de crawl** : pages inaccessibles au robot de Google (erreurs 404, redirections en boucle)
-- **Contenu dupliqué** : plusieurs URLs pointant vers le même contenu, créant de la confusion pour Google
+- **Contenu dupliqué** : plusieurs URL pointant vers le même contenu, créant de la confusion pour Google
 - **Balises canoniques manquantes ou incorrectes**
 - **Sitemap absent ou mal configuré**
 - **Robots.txt bloquant certaines pages clés**
@@ -69,7 +69,7 @@ Un consultant SEO utilise généralement plusieurs outils complémentaires :
 | PageSpeed Insights | Core Web Vitals et performance |
 | Google Analytics 4 | Comportement des utilisateurs et conversions |
 
-Aucun outil seul ne suffit. C'est la combinaison et l'interprétation humaine des données qui fait la valeur d'un audit.
+Aucun outil seul ne suffit. C'est la combinaison et l'interprétation humaine des données qui font la valeur d'un audit.
 
 ## Comment utiliser les résultats d'un audit
 

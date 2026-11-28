@@ -86,7 +86,7 @@ const { variant = 'traffic' } = Astro.props;
 
     {variant === 'map' && (
       <g>
-        <text x="36" y="68" class="hv-label">Ancrage Territorial &amp; Proximité</text>
+        <text x="36" y="68" class="hv-label">Ancrage territorial &amp; proximité</text>
         {[0,1,2,3,4,5,6,7].map((i) => <line x1={36 + i*60} x2={36 + i*60} y1="86" y2="290" class="hv-grid" />)}
         {[0,1,2,3].map((i) => <line x1="36" x2="464" y1={86 + i*60} y2={86 + i*60} class="hv-grid" />)}
         <path d="M56 266 C 150 192, 230 245, 290 164 S 420 118, 452 98" class="hv-road" />
@@ -115,7 +115,7 @@ const { variant = 'traffic' } = Astro.props;
 
     {variant === 'audit' && (
       <g>
-        <text x="36" y="68" class="hv-label">Diagnostic Technique &amp; Sémantique</text>
+        <text x="36" y="68" class="hv-label">Diagnostic technique &amp; sémantique</text>
         {[0,1,2,3,4].map((i) => (
           <g>
             <rect x="36" y={92 + i*38} width="280" height="10" rx="5" class="hv-bar-bg" />
@@ -130,7 +130,7 @@ const { variant = 'traffic' } = Astro.props;
 
     {variant === 'content' && (
       <g>
-        <text x="36" y="68" class="hv-label">Architecture Éditoriale</text>
+        <text x="36" y="68" class="hv-label">Architecture éditoriale</text>
         <rect x="36" y="84" width="236" height="202" rx="10" class="hv-result" />
         <rect x="54" y="104" width="160" height="10" rx="5" fill="#17324D" />
         {[0,1,2,3,4,5].map((i) => <rect x="54" y={130 + i*22} width={[188,168,195,140,178,150][i]} height="6" rx="3" class="hv-line" />)}
